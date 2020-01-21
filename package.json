@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "build": "rollup -c && node lib/move-output.js",
-    "watch": "rollup -cw",
+    "dev": "rollup -cw & npm run serve",
     "serve": "http-server -c-1 .tmp/build/static"
   },
   "devDependencies": {

@@ -19,7 +19,7 @@ import clientBundlePlugin from './lib/client-bundle-plugin';
 import nodeExternalPlugin from './lib/node-external-plugin';
 import cssPlugin from './lib/css-plugin';
 import assetPlugin from './lib/asset-plugin';
-//import constsPlugin from './lib/consts-plugin';
+import constsPlugin from './lib/consts-plugin';
 import resolveDirsPlugin from './lib/resolve-dirs-plugin';
 import runScript from './lib/run-script';
 
@@ -34,7 +34,9 @@ export default async function({ watch }) {
   const commonPlugins = () => [
     tsPluginInstance,
     resolveDirsPlugin(['static-build', 'client']),
+    cssPlugin(),
     assetPlugin(),
+    constsPlugin({}),
   ];
   const dir = '.tmp/build';
   const staticPath = 'static/[name]-[hash][extname]';
@@ -68,7 +70,6 @@ export default async function({ watch }) {
         },
         resolveFileUrl,
       ),
-      cssPlugin(),
       ...commonPlugins(),
       nodeExternalPlugin(),
       runScript(dir + '/index.js'),

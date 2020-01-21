@@ -10,33 +10,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { promises as fsp } from 'fs';
-import { join as joinPath } from 'path';
-
 import { h } from 'preact';
 
-import { renderPage } from './render';
+import { renderPage, writeFiles } from './utils';
 import IndexPage from './pages/index';
 
 const toOutput = {
   'index.html': renderPage(<IndexPage />),
 };
 
-Promise.all(
-  Object.entries(toOutput).map(async ([path, content]) => {
-    const pathParts = ['.tmp', 'build', 'static', ...path.split('/')];
-    await fsp.mkdir(joinPath(...pathParts.slice(0, -1)), { recursive: true });
-    const fullPath = joinPath(...pathParts);
-    try {
-      await fsp.writeFile(fullPath, content, {
-        encoding: 'utf8',
-      });
-    } catch (err) {
-      console.error('Failed to write ' + fullPath);
-      throw err;
-    }
-  }),
-).catch(err => {
-  console.error(err);
-  process.exit(1);
-});
+writeFiles(toOutput);
