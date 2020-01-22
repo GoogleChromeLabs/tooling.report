@@ -22,6 +22,8 @@ import assetPlugin from './lib/asset-plugin';
 import constsPlugin from './lib/consts-plugin';
 import resolveDirsPlugin from './lib/resolve-dirs-plugin';
 import runScript from './lib/run-script';
+import markdownPlugin from './lib/markdown-plugin';
+import testDataPlugin from './lib/test-data-plugin';
 
 function resolveFileUrl({ fileName }) {
   return JSON.stringify(fileName.replace(/^static\//, '/'));
@@ -33,10 +35,11 @@ export default async function({ watch }) {
   const tsPluginInstance = simpleTS('static-build', { watch });
   const commonPlugins = () => [
     tsPluginInstance,
-    resolveDirsPlugin(['static-build', 'client']),
+    resolveDirsPlugin(['static-build', 'client', 'tests']),
     cssPlugin(),
     assetPlugin(),
     constsPlugin({}),
+    markdownPlugin(),
   ];
   const dir = '.tmp/build';
   const staticPath = 'static/[name]-[hash][extname]';
@@ -72,6 +75,7 @@ export default async function({ watch }) {
       ),
       ...commonPlugins(),
       nodeExternalPlugin(),
+      testDataPlugin(),
       runScript(dir + '/index.js'),
     ],
   };

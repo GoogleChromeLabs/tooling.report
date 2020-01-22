@@ -14,9 +14,27 @@ import { h } from 'preact';
 
 import { renderPage, writeFiles } from './utils';
 import IndexPage from './pages/index';
+import TestPage from './pages/test';
+import testData from 'test-data:';
 
-const toOutput = {
-  'index.html': renderPage(<IndexPage />),
+interface Output {
+  [outputPath: string]: string;
+}
+
+const toOutput: Output = {
+  'index.html': renderPage(<IndexPage tests={testData} />),
 };
 
+function addTestPages(tests: Tests, basePath = '') {
+  for (const [testPath, test] of Object.entries(tests)) {
+    const testBasePath = basePath + testPath + '/';
+    toOutput[testBasePath + 'index.html'] = renderPage(
+      <TestPage test={test} />,
+    );
+
+    if (test.subTests) addTestPages(test.subTests, testBasePath);
+  }
+}
+
+addTestPages(testData);
 writeFiles(toOutput);

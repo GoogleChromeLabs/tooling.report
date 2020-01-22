@@ -10,12 +10,52 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { h, FunctionalComponent } from 'preact';
+import { h, FunctionalComponent, JSX } from 'preact';
 
 import cssPath from 'css:./styles.css';
 import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
 
-const IndexPage: FunctionalComponent = () => {
+interface Props {
+  tests: Tests;
+}
+
+function renderTest(test: Test, basePath: string): JSX.Element {
+  let results: JSX.Element[] | undefined;
+
+  if (test.results) {
+    results = Object.entries(test.results).map(([subject, result]) => (
+      <li>
+        {subject}:{' '}
+        {result.meta.result === 1
+          ? 'Pass'
+          : result.meta.result === 0
+          ? 'Fail'
+          : 'So-so'}
+      </li>
+    ));
+  }
+
+  return (
+    <div>
+      <h1>{test.meta.title}</h1>
+      <p>
+        <a href={basePath}>More details</a>
+      </p>
+      {results && <ul>{results}</ul>}
+      {test.subTests && (
+        <section>{renderTests(test.subTests, basePath)}</section>
+      )}
+    </div>
+  );
+}
+
+function renderTests(tests: Tests, basePath = '/'): JSX.Element[] {
+  return Object.entries(tests).map(([testDir, test]) =>
+    renderTest(test, `${basePath}${testDir}/`),
+  );
+}
+
+const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
   return (
     <html>
       <head>
@@ -29,7 +69,8 @@ const IndexPage: FunctionalComponent = () => {
         ))}
       </head>
       <body>
-        <h1>This is buildoff!</h1>
+        <h1>Tests</h1>
+        <section>{renderTests(tests)}</section>
       </body>
     </html>
   );

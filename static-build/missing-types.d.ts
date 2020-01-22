@@ -23,3 +23,36 @@ declare module 'css:*' {
   export default value;
   export const inline: string;
 }
+
+type TestResultKey = 'rollup' | 'webpack' | 'parcel' | 'gulp';
+
+interface TestMeta {
+  title: string;
+}
+
+interface ResultMeta {
+  result: number;
+}
+
+interface Test {
+  meta: TestMeta;
+  html: string;
+  subTests?: Tests;
+  results: TestResults;
+}
+
+interface Tests {
+  [testName: string]: Test;
+}
+
+interface TestResult {
+  meta: ResultMeta;
+  html: string;
+}
+
+type TestResults = Record<TestResultKey, TestResult>;
+
+declare module 'test-data:' {
+  const value: Tests;
+  export default value;
+}

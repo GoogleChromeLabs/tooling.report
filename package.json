@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "build": "rollup -c && node lib/move-output.js",
+    "debug": "node --inspect-brk node_modules/.bin/rollup -c",
     "dev": "rollup -cw & npm run serve",
     "serve": "http-server -c-1 .tmp/build/static"
   },
@@ -11,9 +12,11 @@
     "cssnano": "^4.1.10",
     "del": "^5.1.0",
     "glob": "^7.1.6",
+    "gray-matter": "^4.0.2",
     "http-server": "^0.12.1",
     "husky": "^4.0.7",
     "lint-staged": "^10.0.1",
+    "marked": "^0.8.0",
     "postcss": "^7.0.26",
     "postcss-nested": "^4.2.1",
     "postcss-url": "^8.0.0",
@@ -31,8 +34,7 @@
   },
   "lint-staged": {
     "*.{js,css,json,md,ts,tsx}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   }
 }
