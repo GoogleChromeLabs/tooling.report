@@ -1,7 +1,7 @@
 # To get set up
 
 ```sh
-npm i
+npm install
 ```
 
 # To dev
@@ -9,6 +9,8 @@ npm i
 ```sh
 npm run dev
 ```
+
+This starts the build in watch mode, and starts an HTTP server.
 
 # To build for production
 
@@ -21,11 +23,15 @@ npm run build
 - `lib` - Various scripts and plugins for the build.
 - `static-build` - this script runs at the end of the build process and generates HTML.
 - `client` - All client-side JS goes here. It doesn't need to go here, but it keeps it separate from the static generation JS.
-- `tests` - Markdown for all the tests and results.
+- `tests` - Markdown for all the tests and results - see below.
 
-# Test structure
+## Test structure
 
-TODO - document 😀
+A test directory contains:
+
+- `index.md` - Describes the test or test category. Must include `title` in the front-matter.
+- Results (`rollup.md`, `webpack.md`, `parcel.md`, `gulp.md` - all optional) - Each describes how a particular build tool performs. If no results are present, this directory is considered to be a category only. Each result file requires `result` in the front-matter, which must be 'pass', 'fail' or 'partial'.
+- Any additional directories are considered sub-tests, which follow the same pattern as tests.
 
 # Special imports
 
@@ -86,4 +92,8 @@ If you want to add a constant value, add it to the object passed to `constsPlugi
 
 ## Test data
 
-TODO: document.
+```js
+import tests from 'test-data:';
+```
+
+This returns an object representation of everything in the `tests` directory. See `static-build/missing-types.d.ts` for the structure of this object.

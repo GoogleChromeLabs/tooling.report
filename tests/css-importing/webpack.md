@@ -1,5 +1,5 @@
 ---
-result: 1
+result: pass
 ---
 
 Webpack has CSS importing built in.

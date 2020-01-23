@@ -26,9 +26,9 @@ function renderTest(test: Test, basePath: string): JSX.Element {
     results = Object.entries(test.results).map(([subject, result]) => (
       <li>
         {subject}:{' '}
-        {result.meta.result === 1
+        {result.meta.result === 'pass'
           ? 'Pass'
-          : result.meta.result === 0
+          : result.meta.result === 'fail'
           ? 'Fail'
           : 'So-so'}
       </li>

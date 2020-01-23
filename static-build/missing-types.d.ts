@@ -24,35 +24,38 @@ declare module 'css:*' {
   export const inline: string;
 }
 
-type TestResultKey = 'rollup' | 'webpack' | 'parcel' | 'gulp';
-
-interface TestMeta {
-  title: string;
-}
-
-interface ResultMeta {
-  result: number;
-}
-
-interface Test {
-  meta: TestMeta;
-  html: string;
-  subTests?: Tests;
-  results: TestResults;
+declare module 'test-data:' {
+  const value: Tests;
+  export default value;
 }
 
 interface Tests {
   [testName: string]: Test;
 }
 
-interface TestResult {
-  meta: ResultMeta;
+interface Test {
+  /** Front-matter data from the index.md in the test. */
+  meta: TestMeta;
+  /** HTML from the index.md in the test. */
   html: string;
+  subTests?: Tests;
+  results: TestResults;
+}
+
+interface TestMeta {
+  title: string;
 }
 
 type TestResults = Record<TestResultKey, TestResult>;
+type TestResultKey = 'rollup' | 'webpack' | 'parcel' | 'gulp';
 
-declare module 'test-data:' {
-  const value: Tests;
-  export default value;
+interface TestResult {
+  /** Front-matter data from the result markdown file */
+  meta: ResultMeta;
+  /** HTML from the result markdown file */
+  html: string;
+}
+
+interface ResultMeta {
+  result: 'pass' | 'fail' | 'partial';
 }

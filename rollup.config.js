@@ -29,6 +29,22 @@ function resolveFileUrl({ fileName }) {
   return JSON.stringify(fileName.replace(/^static\//, '/'));
 }
 
+const validResults = new Set(['pass', 'fail', 'partial']);
+
+function validateMarkdownData(id, data) {
+  if (!id.startsWith('tests/')) return;
+  if (id.endsWith('index.md') && !data.title) {
+    throw Error(`Index pages must have a title. Error in ${id}`);
+  }
+  if ('result' in data && !validResults.has(data.result)) {
+    throw Error(
+      `Result must be one of ${[...validResults].join(', ')}. Found "${
+        data.result
+      }" in ${id}`,
+    );
+  }
+}
+
 export default async function({ watch }) {
   await del('.tmp/build');
 
@@ -39,7 +55,7 @@ export default async function({ watch }) {
     cssPlugin(),
     assetPlugin(),
     constsPlugin({}),
-    markdownPlugin(),
+    markdownPlugin({ metadataValidator: validateMarkdownData }),
   ];
   const dir = '.tmp/build';
   const staticPath = 'static/[name]-[hash][extname]';

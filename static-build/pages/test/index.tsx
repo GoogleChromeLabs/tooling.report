@@ -33,9 +33,9 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
               <div>
                 <h1>
                   {subject}:{' '}
-                  {result.meta.result === 1
+                  {result.meta.result === 'pass'
                     ? 'Pass'
-                    : result.meta.result === 0
+                    : result.meta.result === 'fail'
                     ? 'Fail'
                     : 'So-so'}
                 </h1>
