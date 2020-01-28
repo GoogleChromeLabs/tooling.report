@@ -36,5 +36,8 @@
     "*.{js,css,json,md,ts,tsx}": [
       "prettier --write"
     ]
+  },
+  "engines": {
+    "node": ">=12"
   }
 }
