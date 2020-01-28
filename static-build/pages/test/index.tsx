@@ -43,7 +43,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                     : 'So-so'}
                 </h1>
                 <div dangerouslySetInnerHTML={{ __html: result.html }}></div>
-                <a href={githubLink('lol')}>Inspect the test</a>
+                <a href={githubLink(result.path)}>Inspect the test</a>
               </div>
             ))}
           </section>
