@@ -30,7 +30,10 @@ declare module 'test-data:' {
 }
 
 declare module 'consts:config' {
-  const value: { [x: string]: string };
+  const value: {
+    testSubjects: string[];
+    githubRepository: string;
+  };
   export default value;
 }
 
