@@ -29,6 +29,14 @@ declare module 'test-data:' {
   export default value;
 }
 
+declare module 'consts:config' {
+  const value: {
+    testSubjects: string[];
+    githubRepository: string;
+  };
+  export default value;
+}
+
 interface Tests {
   [testName: string]: Test;
 }
@@ -54,6 +62,8 @@ interface TestResult {
   meta: ResultMeta;
   /** HTML from the result markdown file */
   html: string;
+  /** Path to the test project in the repository */
+  repositoryPath: string;
 }
 
 interface ResultMeta {

@@ -10,7 +10,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { h, FunctionalComponent, JSX } from 'preact';
+
+import { githubLink } from '../../utils.js';
 
 interface Props {
   test: Test;
@@ -40,6 +43,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                     : 'So-so'}
                 </h1>
                 <div dangerouslySetInnerHTML={{ __html: result.html }}></div>
+                <a href={githubLink(result.repositoryPath)}>Inspect the test</a>
               </div>
             ))}
           </section>
