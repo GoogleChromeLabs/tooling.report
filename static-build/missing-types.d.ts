@@ -59,8 +59,8 @@ interface TestResult {
   meta: ResultMeta;
   /** HTML from the result markdown file */
   html: string;
-  /** Path to the test project */
-  path: string;
+  /** Path to the test project in the repository */
+  repositoryPath: string;
 }
 
 interface ResultMeta {
