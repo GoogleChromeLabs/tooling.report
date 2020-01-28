@@ -30,8 +30,8 @@ npm run build
 A test directory contains:
 
 - `index.md` - Describes the test or test category. Must include `title` in the front-matter.
-- Results (`rollup.md`, `webpack.md`, `parcel.md`, `gulp.md` - all optional) - Each describes how a particular build tool performs. If no results are present, this directory is considered to be a category only. Each result file requires `result` in the front-matter, which must be 'pass', 'fail' or 'partial'.
-- Any additional directories are considered sub-tests, which follow the same pattern as tests.
+- Results for each tool in a folder (`rollup`, `webpack`, `parcel`, `gulp` - all optional) - Each folder contains an `index.md` describing how a particular build tool performs. If no results are present, this directory is considered to be a category only. Each result file requires `result` in the front-matter, which must be 'pass', 'fail' or 'partial'. The folder also contains a minimal project for the respective tool showing how to pass the current test. Build artifacts should be placed in a folder called `build`, as that folder is globally ignored.
+- If a test has subtests, the folder must be named `subtests` and contain the structure above.
 
 # Special imports
 
