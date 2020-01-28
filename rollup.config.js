@@ -24,6 +24,7 @@ import resolveDirsPlugin from './lib/resolve-dirs-plugin';
 import runScript from './lib/run-script';
 import markdownPlugin from './lib/markdown-plugin';
 import testDataPlugin from './lib/test-data-plugin';
+import * as config from './config.js';
 
 function resolveFileUrl({ fileName }) {
   return JSON.stringify(fileName.replace(/^static\//, '/'));
@@ -51,7 +52,7 @@ export default async function({ watch }) {
     resolveDirsPlugin(['static-build', 'client', 'tests']),
     cssPlugin(),
     assetPlugin(),
-    constsPlugin({}),
+    constsPlugin({ config }),
     markdownPlugin({ metadataValidator: validateMarkdownData }),
   ];
   const dir = '.tmp/build';

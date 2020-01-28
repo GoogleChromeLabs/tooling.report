@@ -29,6 +29,11 @@ declare module 'test-data:' {
   export default value;
 }
 
+declare module 'consts:config' {
+  const value: { [x: string]: string };
+  export default value;
+}
+
 interface Tests {
   [testName: string]: Test;
 }

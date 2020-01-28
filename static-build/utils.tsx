@@ -16,6 +16,12 @@ import { join as joinPath } from 'path';
 import render from 'preact-render-to-string';
 import { VNode } from 'preact';
 
+import config from 'consts:config';
+
+export function githubLink(filePath: string, ref: string = 'master') {
+  return joinPath(config.githubRepository, 'tree', ref, filePath);
+}
+
 export function renderPage(vnode: VNode) {
   return '<!DOCTYPE html>' + render(vnode);
 }
