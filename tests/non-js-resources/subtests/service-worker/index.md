@@ -7,5 +7,7 @@ Although the service worker _is_ a JavaScript dependency, it needs to contain in
 To pass this test, the service worker needs to be aware of the final URL of:
 
 - All script.
+- All HTML.
+- All assets.
 - All CSS.
 - All fonts included in the CSS.
