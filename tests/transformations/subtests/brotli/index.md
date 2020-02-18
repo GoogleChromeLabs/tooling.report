@@ -1,0 +1,7 @@
+---
+title: Brotli
+---
+
+Some hosts will let you provide compressed assets at build time, allowing you to use better compression that's too slow to do per request.
+
+This test takes a set of the output files and adds brotli-compressed versions with an extra `.br` extension.
