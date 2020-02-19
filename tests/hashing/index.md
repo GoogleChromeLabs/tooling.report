@@ -2,4 +2,4 @@
 title: Hashing
 ---
 
-Hashing allows you to make your URLs 'immutable', allowing for more efficient caching.
+Inserting hashes into the filenames of generated assets allows URLs to be treated as 'immutable', which is important for efficient caching.
