@@ -29,4 +29,4 @@ export function logCaps(msg) {
 
 The result should be three scripts: One for 'index', one for 'worker', and one for shared things.
 
-Since few browsers support ECMAScript modules in workers, and no browsers support ECMAScript modules in service workers, a custom module format must be used to pass this test.
+Since few browsers support ECMAScript modules in workers, and no browsers support ECMAScript modules in service workers, a custom module format or loader must be used to pass this test.
