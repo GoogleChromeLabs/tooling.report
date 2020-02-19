@@ -2,7 +2,7 @@
 title: Multiple entry points
 ---
 
-Imagine you had an 'index' page and a 'profile' page. Each has their own root script, but the two make use of the same library.
+Imagine you had an 'index' page and a 'profile' page. Each has their own root script, but the two make use of a common library.
 
 **index.js**
 
