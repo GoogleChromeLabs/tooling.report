@@ -8,11 +8,11 @@ Imagine you had an 'index' page and a 'profile' page. Each has their own root sc
 
 ```js
 import { logCaps } from './utils.js';
-import { exclaim } from './index-exclaim.js';
+import { exclaim } from './exclaim.js';
 logCaps(exclaim('This is index'));
 ```
 
-**index-exclaim.js**
+**exclaim.js**
 
 ```js
 export function exclaim(msg) {
