@@ -18,7 +18,7 @@
     "lint-staged": "^10.0.1",
     "marked": "^0.8.0",
     "postcss": "^7.0.26",
-    "postcss-nested": "^4.2.1",
+    "postcss-preset-env": "^6.7.0",
     "postcss-url": "^8.0.0",
     "preact": "^10.2.1",
     "preact-render-to-string": "^5.1.3",
