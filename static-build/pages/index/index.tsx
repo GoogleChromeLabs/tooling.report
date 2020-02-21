@@ -37,10 +37,11 @@ function renderTest(test: Test, basePath: string): JSX.Element {
 
   return (
     <div>
-      <h1>{test.meta.title}</h1>
-      <p>
-        <a href={basePath}>More details</a>
-      </p>
+      <div>
+        <a href={basePath}>
+          <h2>{test.meta.title}</h2>
+        </a>
+      </div>
       {results && <ul>{results}</ul>}
       {test.subTests && (
         <section>{renderTests(test.subTests, basePath)}</section>
@@ -59,7 +60,11 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
   return (
     <html>
       <head>
-        <title>Buildoff</title>
+        <title>Tooling.Report</title>
+        <meta
+          name="description"
+          content="Measuring Buildtools for your convenience"
+        />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         {/* TODO: favicon */}
         <link rel="stylesheet" href={cssPath} />
@@ -69,8 +74,10 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
         ))}
       </head>
       <body>
-        <h1>Tests</h1>
-        <section>{renderTests(tests)}</section>
+        <header>
+          <h1>tooling.report</h1>
+        </header>
+        <main>{renderTests(tests)}</main>
       </body>
     </html>
   );
