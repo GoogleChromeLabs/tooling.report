@@ -8,6 +8,11 @@ html {
   color: var(--text);
 }
 
+body {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
 h1,
 h2,
 h3,
@@ -27,10 +32,10 @@ h1 {
   font-size: 4rem;
 }
 h2 {
-  font-size: 3rem;
+  font-size: 2.25rem;
 }
 h3 {
-  font-size: 2.25rem;
+  font-size: 2rem;
 }
 h4 {
   font-size: 1.875rem;
@@ -57,15 +62,29 @@ main {
   gap: max(4rem, 10vmax);
   justify-content: center;
 
-  & > div > div > a > h2 {
+  & > article > div > a {
+    position: sticky;
+    top: 0;
+  }
+
+  & > article > div > a > h3 {
+    /* todo: solve in template system */
     text-transform: capitalize;
   }
 }
 
-:is(main, section) > div {
+:is(main, section) > div,
+article {
   display: grid;
   gap: 1rem;
   justify-content: flex-start;
+}
+
+main > article {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 20ch max-content;
+  position: relative;
 }
 
 section {
@@ -74,16 +93,13 @@ section {
   padding: 2rem;
   display: grid;
   gap: 1rem;
-
-  & h2 {
-    font-size: 2em;
-  }
 }
 
 a {
   display: inline-block;
+}
 
-  > h2 {
-    display: inline-block;
-  }
+/* todo: delete this */
+ul:empty {
+  display: none;
 }

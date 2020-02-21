@@ -36,17 +36,17 @@ function renderTest(test: Test, basePath: string): JSX.Element {
   }
 
   return (
-    <div>
+    <article>
       <div>
         <a href={basePath}>
-          <h2>{test.meta.title}</h2>
+          <h3>{test.meta.title}</h3>
         </a>
       </div>
       {results && <ul>{results}</ul>}
       {test.subTests && (
         <section>{renderTests(test.subTests, basePath)}</section>
       )}
-    </div>
+    </article>
   );
 }
 
