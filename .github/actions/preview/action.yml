@@ -1,6 +1,9 @@
 name: 'preview-action'
 description: 'Deploy Preview'
 author: 'GoogleChromeLabs'
+runs:
+  using: 'node12'
+  main: 'bundled.js'
 inputs:
   repo-token:
     description: 'The GITHUB_TOKEN secret'
