@@ -79,20 +79,42 @@ async function run(github, context) {
 (async () => {
     const token = process.env.GITHUB_TOKEN || getInput('repo-token');
     const github = token ? new GitHub(token) : {};
-    // if (github.context) {
-    //     const {owner, repo} = github.context.repo;
-    //     const check = await github.checks.create({
-    //         owner,
-    //         repo,
-    //         name: CHECK_NAME,
-    //         head_sha: github.context.sha,
-    //         status: 'in_progress',
-    //     });
-    //     // const checkId = check.data.id;
-    // }
+    let check;
+    if (github.context) {
+        check = await github.checks.create({
+            ...github.context.repo,
+            name: CHECK_NAME,
+            head_sha: github.context.sha,
+            status: 'in_progress',
+        });
+        // const checkId = check.data.id;
+    }
     try {
-        await run(github, context);
+        const result = await run(github, context);
+
+        await github.checks.update({
+            ...github.context.repo,
+            check_run_id: check.data.id,
+            completed_at: new Date().toISOString(),
+            status: 'completed',
+            details_url: result.url,
+            conclusion: 'success',
+            output: {
+                title: `Deployed to ${result.url}`
+            }
+        });
 	} catch (e) {
 		setFailed(e.message);
-	}
+
+        await github.checks.update({
+            ...github.context.repo,
+            check_run_id: check.data.id,
+            completed_at: new Date().toISOString(),
+            status: 'completed',
+            conclusion: 'failure',
+            output: {
+                title: `Deploy preview failed.`
+            }
+        });
+    }
 })();
