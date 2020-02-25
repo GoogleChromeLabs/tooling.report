@@ -7,6 +7,9 @@ runs:
 inputs:
   repo-token:
     description: 'The GITHUB_TOKEN secret'
+  firebase-token:
+    description: 'Firebase CI auth token (firebase login:ci)'
+    required: true
   build-script:
     description: 'A script to run that builds your project'
     default: 'npm run build'

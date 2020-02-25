@@ -8,3 +8,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: ./.github/actions/preview
+        with:
+          firebase-token: "${{ secrets.FIREBASE_TOKEN }}"

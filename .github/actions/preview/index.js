@@ -3,10 +3,10 @@ import { getInput, startGroup, endGroup, setFailed } from '@actions/core';
 import { GitHub, context } from '@actions/github';
 
 async function run(github, context) {
-    startGroup(`Installing Firebase`);
-    await exec(`npm i https://storage.googleapis.com/firebase-preview-drop/node/firebase-tools/firebase-tools-7.13.0-hostingpreviews.1.tgz`);
+    startGroup('Installing dependencies');
+    await exec('npm install --no-audit');
     endGroup();
-    
+
     const buildScript = getInput('build-script');
     if (buildScript) {
         startGroup(`Building using "${buildScript}"`);
@@ -14,8 +14,19 @@ async function run(github, context) {
         endGroup();
     }
 
-    startGroup(`Deploying`);
-    const json = await exec(`./node_modules/.bin/firebase hosting:preview --json`);
+    const firebaseToken = getInput('firebase-token', { required: true });
+
+    startGroup(`Installing Firebase`);
+    await exec(`npm i --no-save --no-package-lock https://storage.googleapis.com/firebase-preview-drop/node/firebase-tools/firebase-tools-7.13.0-hostingpreviews.1.tgz`);
+    endGroup();
+    
+    startGroup(`Deploying to Firebase`);
+    const json = await exec('./node_modules/.bin/firebase', [
+        'hosting:preview',
+        '--token',
+        firebaseToken,
+        '--json'
+    ]);
     endGroup();
 
     console.log(json);
