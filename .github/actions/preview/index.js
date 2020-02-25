@@ -43,9 +43,9 @@ async function run(github, context) {
     });
     const deploymentText = Buffer.concat(buf).toString('utf-8');
     const deployment = JSON.parse(deploymentText);
-    endGroup();
-
+    console.log('Deployment response:');
     console.log(JSON.stringify(deployment, null, 2));
+    endGroup();
 
     if (deployment.status !== 'success') {
         throw Error(deploymentText);
@@ -59,7 +59,7 @@ async function run(github, context) {
 
     setOutput('details_url', url);
 
-    // return { url };
+    return { url };
 
     /*
     {
@@ -100,7 +100,11 @@ async function run(github, context) {
         };
     }
     try {
-        const result = await run(github, context);
+        const result = await run(github, context) || {};
+
+        if (!result.url) {
+            throw Error('No URL was returned for the deployment.');
+        }
 
         await finish({
             details_url: result.url,
