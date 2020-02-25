@@ -79,41 +79,43 @@ async function run(github, context) {
 (async () => {
     const token = process.env.GITHUB_TOKEN || getInput('repo-token');
     const github = token ? new GitHub(token) : {};
-    let check;
+    let finish = details => console.log(details);
     if (github.context) {
-        check = await github.checks.create({
+        const check = await github.checks.create({
             ...github.context.repo,
-            name: CHECK_NAME,
+            name: 'Deploy Preview',
             head_sha: github.context.sha,
             status: 'in_progress',
         });
-        // const checkId = check.data.id;
+        finish = async details => {
+            await github.checks.update({
+                ...github.context.repo,
+                check_run_id: check.data.id,
+                completed_at: new Date().toISOString(),
+                status: 'completed',
+                ...details
+            });
+        };
     }
     try {
         const result = await run(github, context);
 
-        await github.checks.update({
-            ...github.context.repo,
-            check_run_id: check.data.id,
-            completed_at: new Date().toISOString(),
-            status: 'completed',
+        await finish({
             details_url: result.url,
             conclusion: 'success',
             output: {
-                title: `Deployed to ${result.url}`
+                title: `Deployed to ${result.url}`,
+                text: `[View Preview](${result.url})`
             }
         });
 	} catch (e) {
 		setFailed(e.message);
 
-        await github.checks.update({
-            ...github.context.repo,
-            check_run_id: check.data.id,
-            completed_at: new Date().toISOString(),
-            status: 'completed',
+        await finish({
             conclusion: 'failure',
             output: {
-                title: `Deploy preview failed.`
+                title: 'Deploy preview failed',
+                text: e.message
             }
         });
     }
