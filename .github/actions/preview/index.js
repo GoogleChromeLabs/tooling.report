@@ -4,7 +4,7 @@ import { GitHub, context } from '@actions/github';
 
 async function run(github, context) {
     startGroup('Installing dependencies');
-    await exec('npm install --no-audit');
+    await exec('npm', ['install', '--no-audit']);
     endGroup();
 
     const buildScript = getInput('build-script');
@@ -16,8 +16,14 @@ async function run(github, context) {
 
     const firebaseToken = getInput('firebase-token', { required: true });
 
-    startGroup(`Installing Firebase`);
-    await exec(`npm i --no-save --no-package-lock https://storage.googleapis.com/firebase-preview-drop/node/firebase-tools/firebase-tools-7.13.0-hostingpreviews.1.tgz`);
+    startGroup('Setting up Firebase');
+    await exec('npm', [
+        'install',
+        '--no-save',
+        '--no-package-lock',
+        'https://storage.googleapis.com/firebase-preview-drop/node/firebase-tools/firebase-tools-7.13.0-hostingpreviews.1.tgz'
+    ]);
+    await exec('firebase', ['--open-sesame', 'hostingpreviews']);
     endGroup();
     
     startGroup(`Deploying to Firebase`);
