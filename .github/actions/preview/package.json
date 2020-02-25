@@ -10,6 +10,6 @@
     "microbundle": "^0.12.0-next.8"
   },
   "scripts": {
-    "build": "microbundle -f cjs --target node --no-sourcemap index.js"
+    "build": "microbundle -f cjs --target node --compress --no-sourcemap index.js"
   }
 }
