@@ -1,0 +1,9 @@
+name: 'preview-action'
+description: 'Deploy Preview'
+author: 'GoogleChromeLabs'
+inputs:
+  repo-token:
+    description: 'The GITHUB_TOKEN secret'
+  build-script:
+    description: 'A script to run that builds your project'
+    default: 'npm run build'
