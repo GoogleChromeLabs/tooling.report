@@ -45,7 +45,7 @@ async function run(github, context) {
     const deployment = JSON.parse(deploymentText);
     endGroup();
 
-    console.log(deployment);
+    console.log(JSON.stringify(deployment, null, 2));
 
     if (deployment.status !== 'success') {
         throw Error(deploymentText);
