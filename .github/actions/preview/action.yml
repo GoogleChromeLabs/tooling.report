@@ -13,3 +13,5 @@ inputs:
   build-script:
     description: 'A script to run that builds your project'
     default: 'npm run build'
+  use-web-tld:
+    description: 'Use .web.app suffix instead of .firebaseapp.com'
