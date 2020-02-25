@@ -24,8 +24,8 @@ async function run(github, context) {
 (async () => {
 	try {
 		const token = getInput('repo-token');
-		const octokit = new GitHub(token);
-		await run(octokit, context);
+		const github = token ? new GitHub(token) : {};
+		await run(github, context);
 	} catch (e) {
 		setFailed(e.message);
 	}
