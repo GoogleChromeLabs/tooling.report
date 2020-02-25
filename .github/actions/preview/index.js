@@ -16,6 +16,7 @@ async function run(github, context) {
 
     const firebaseToken = getInput('firebase-token', { required: true });
 
+    const firebase = './node_modules/.bin/firebase';
     startGroup('Setting up Firebase');
     await exec('npm', [
         'install',
@@ -23,11 +24,11 @@ async function run(github, context) {
         '--no-package-lock',
         'https://storage.googleapis.com/firebase-preview-drop/node/firebase-tools/firebase-tools-7.13.0-hostingpreviews.1.tgz'
     ]);
-    await exec('firebase', ['--open-sesame', 'hostingpreviews']);
+    await exec(firebase, ['--open-sesame', 'hostingpreviews']);
     endGroup();
     
     startGroup(`Deploying to Firebase`);
-    const json = await exec('./node_modules/.bin/firebase', [
+    const json = await exec(firebase, [
         'hosting:preview',
         '--token',
         firebaseToken,
