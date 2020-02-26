@@ -92,13 +92,13 @@ async function run(github, context) {
         });
         console.log('status check: ', check);
         finish = async details => {
-            await github.checks.update({
+            console.log('check update: ', await github.checks.update({
                 ...context.repo,
                 check_run_id: check.data.id,
                 completed_at: new Date().toISOString(),
                 status: 'completed',
                 ...details
-            });
+            }));
         };
     }
     try {
