@@ -113,7 +113,7 @@ async function run(github, context) {
             conclusion: 'success',
             output: {
                 title: `Deployed to ${result.url}`,
-                text: `[View Preview](${result.url})`
+                summary: `[View Preview](${result.url})`
             }
         });
 	} catch (e) {
@@ -123,7 +123,7 @@ async function run(github, context) {
             conclusion: 'failure',
             output: {
                 title: 'Deploy preview failed',
-                text: e.message
+                summary: `Error: ${e.message}`
             }
         });
     }
