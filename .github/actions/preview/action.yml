@@ -3,7 +3,7 @@ description: 'Deploy Preview'
 author: 'GoogleChromeLabs'
 runs:
   using: 'node12'
-  main: 'bundled.js'
+  main: 'bundled.min.js'
 inputs:
   repo-token:
     description: 'The GITHUB_TOKEN secret'

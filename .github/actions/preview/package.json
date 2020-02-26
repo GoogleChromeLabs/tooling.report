@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "preview-action",
-  "main": "bundled.js",
+  "main": "bundled.min.js",
   "source": "index.js",
   "devDependencies": {
     "@actions/core": "^1.2.2",
