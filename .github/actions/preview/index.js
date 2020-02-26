@@ -3,6 +3,8 @@ import { getInput, startGroup, endGroup, setFailed, setOutput } from '@actions/c
 import { GitHub, context } from '@actions/github';
 
 async function run(github, context) {
+    const { number: pull_number } = context.issue
+
     startGroup('Installing dependencies');
     await exec('npm', ['install', '--no-audit']);
     endGroup();
@@ -123,6 +125,12 @@ async function run(github, context) {
         }
         
         if (token) {
+            await postOrUpdateComment(github, context, `
+                🧭 Deploy preview for ${context.payload.pull_request.head.sha.substring(0,7)}:
+
+                🔗 <a href="${result.url}">${result.url}</a>
+            `.trim().replace(/^\t+/gm, ''));
+
             await github.checks.create({
                 ...context.repo,
                 name: 'Deploy Preview',
@@ -130,11 +138,11 @@ async function run(github, context) {
                 status: 'completed',
                 completed_at: new Date().toISOString(),
                 details_url: result.url,
-                conclusion: 'success'
-                // output: {
-                //     title: `Deployed to ${result.url}`,
-                //     summary: `[View Preview](${result.url})`
-                // }
+                conclusion: 'success',
+                output: {
+                    title: `Preview Deployed`,
+                    summary: `[${result.url}](${result.url})`
+                }
             });
         }
 
@@ -158,3 +166,59 @@ async function run(github, context) {
         // });
     }
 })();
+
+
+
+async function postOrUpdateComment(github, context, commentMarkdown) {
+    const commentInfo = {
+		...context.repo,
+		issue_number: context.issue.number
+	};
+
+	const comment = {
+		...commentInfo,
+		body: commentMarkdown + '\n\n<sub>firebase-preview-action</sub>'
+	};
+
+	startGroup(`Updating PR comment`);
+	let commentId;
+	try {
+		const comments = (await github.issues.listComments(commentInfo)).data;
+		for (let i=comments.length; i--; ) {
+			const c = comments[i];
+			if (c.user.type === 'Bot' && /<sub>[\s\n]*firebase-preview-action/.test(c.body)) {
+				commentId = c.id;
+				break;
+			}
+		}
+	}
+	catch (e) {
+		console.log('Error checking for previous comments: ' + e.message);
+	}
+
+	if (commentId) {
+		console.log(`Updating previous comment #${commentId}`)
+		try {
+			await github.issues.updateComment({
+				...context.repo,
+				comment_id: commentId,
+				body: comment.body
+			});
+		}
+		catch (e) {
+			console.log('Error editing previous comment: ' + e.message);
+			commentId = null;
+		}
+	}
+
+	// no previous or edit failed
+	if (!commentId) {
+		console.log('Creating new comment');
+		try {
+			await github.issues.createComment(comment);
+		} catch (e) {
+			console.log(`Error creating comment: ${e.message}`);
+        }
+    }
+    endGroup();
+}
