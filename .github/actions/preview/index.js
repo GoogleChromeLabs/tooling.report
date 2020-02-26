@@ -58,16 +58,18 @@ async function run(github, context) {
     }
 
     setOutput('details_url', url);
+    setOutput('target_url', url);
+    setOutput('url', url);
 
-    const dep = await github.repos.createDeploymentStatus({
-        ...context.repo,
-        deployment_id: context.payload.deployment.id,
-        state: 'success',
-        log_url: url,
-        target_url: url,
-        description: 'Deployment succeeded.'
-    });
-    console.log('deployment created: ', dep);
+    // const dep = await github.repos.createDeploymentStatus({
+    //     ...context.repo,
+    //     deployment_id: context.payload.deployment.id,
+    //     state: 'success',
+    //     log_url: url,
+    //     target_url: url,
+    //     description: 'Deployment succeeded.'
+    // });
+    // console.log('deployment created: ', dep);
 
     return { url };
 
@@ -93,6 +95,7 @@ async function run(github, context) {
     const github = token ? new GitHub(token) : {};
     let finish = details => console.log(details);
     if (token) {
+        console.log(context);
         console.log('GITHUB_TOKEN / repo-token available, creating status check.');
         const check = await github.checks.create({
             ...context.repo,
