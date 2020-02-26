@@ -84,7 +84,7 @@ async function run(github, context) {
 
                 <a href="${result.url}">${result.url}</a>
 
-                <small>(${new Date().toISOString()})</small>
+                <sub>(${new Date().toUTCString()})</sub>
             `.trim().replace(/^\s+/gm, ''));
         }
 
