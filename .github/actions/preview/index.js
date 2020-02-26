@@ -43,8 +43,8 @@ async function run(github, context) {
     });
     const deploymentText = Buffer.concat(buf).toString('utf-8');
     const deployment = JSON.parse(deploymentText);
-    console.log('Deployment response:');
-    console.log(JSON.stringify(deployment, null, 2));
+    //console.log('Deployment response:');
+    //console.log(JSON.stringify(deployment, null, 2));
     endGroup();
 
     if (deployment.status !== 'success') {
@@ -82,16 +82,18 @@ async function run(github, context) {
     const token = process.env.GITHUB_TOKEN || getInput('repo-token');
     const github = token ? new GitHub(token) : {};
     let finish = details => console.log(details);
-    if (github.context) {
+    if (token) {
+        console.log('GITHUB_TOKEN / repo-token available, creating status check.');
         const check = await github.checks.create({
             ...github.context.repo,
             name: 'Deploy Preview',
-            head_sha: github.context.sha,
+            head_sha: context.sha,
             status: 'in_progress',
         });
+        console.log('status check: ', check);
         finish = async details => {
             await github.checks.update({
-                ...github.context.repo,
+                ...context.repo,
                 check_run_id: check.data.id,
                 completed_at: new Date().toISOString(),
                 status: 'completed',
