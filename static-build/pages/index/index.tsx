@@ -13,6 +13,7 @@
 import { h, FunctionalComponent, JSX } from 'preact';
 
 import cssPath from 'css:./styles.css';
+import config from 'consts:config';
 import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
 
 interface Props {
@@ -61,10 +62,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
     <html>
       <head>
         <title>Tooling.Report</title>
-        <meta
-          name="description"
-          content="Measuring Buildtools for your convenience"
-        />
+        <meta name="description" content={config.pageDesc} />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         {/* TODO: favicon */}
         <link rel="stylesheet" href={cssPath} />

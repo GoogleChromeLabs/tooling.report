@@ -33,6 +33,7 @@ declare module 'consts:config' {
   const value: {
     testSubjects: string[];
     githubRepository: string;
+    pageDesc: string;
   };
   export default value;
 }

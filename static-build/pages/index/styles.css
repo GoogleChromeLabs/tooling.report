@@ -59,6 +59,7 @@ main {
   margin-inline: auto;
 
   display: grid;
+  gap: 4rem;
   gap: max(4rem, 10vmax);
   justify-content: center;
 
@@ -97,9 +98,4 @@ section {
 
 a {
   display: inline-block;
-}
-
-/* todo: delete this */
-ul:empty {
-  display: none;
 }
