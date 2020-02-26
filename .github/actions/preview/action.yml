@@ -1,0 +1,17 @@
+name: 'preview-action'
+description: 'Deploy Preview'
+author: 'GoogleChromeLabs'
+runs:
+  using: 'node12'
+  main: 'bundled.min.js'
+inputs:
+  repo-token:
+    description: 'The GITHUB_TOKEN secret'
+  firebase-token:
+    description: 'Firebase CI auth token (firebase login:ci)'
+    required: true
+  build-script:
+    description: 'A script to run that builds your project'
+    default: 'npm run build'
+  use-web-tld:
+    description: 'Use .web.app suffix instead of .firebaseapp.com'
