@@ -95,28 +95,12 @@ async function run(github, context) {
 (async () => {
     const token = process.env.GITHUB_TOKEN || getInput('repo-token');
     const github = token ? new GitHub(token) : {};
-    // let finish = details => console.log(details);
+
+    let finish = details => console.log(details);
     if (token) {
-        // console.log({ sha: context.sha, head_sha: context.payload.pull_request.head.sha });
-        // console.log('GITHUB_TOKEN / repo-token available, creating status check.');
-        // const check = await github.checks.create({
-        //     ...context.repo,
-        //     name: 'Deploy Preview',
-        //     // head_sha: context.sha,
-        //     head_sha: context.payload.pull_request.head.sha,
-        //     status: 'in_progress',
-        // });
-        // console.log('status check: ', check);
-        // finish = async details => {
-        //     console.log('check update: ', await github.checks.update({
-        //         ...context.repo,
-        //         check_run_id: check.data.id,
-        //         completed_at: new Date().toISOString(),
-        //         status: 'completed',
-        //         ...details
-        //     }));
-        // };
+        finish = await createCheck(github, context);
     }
+
     try {
         const result = await run(github, context) || {};
 
@@ -126,49 +110,56 @@ async function run(github, context) {
         
         if (token) {
             await postOrUpdateComment(github, context, `
-                ☑️ Deploy preview for ${context.payload.pull_request.head.sha.substring(0,7)} succeeded:
+                🚀 Deploy preview for ${context.payload.pull_request.head.sha.substring(0,7)} succeeded:
 
                 <a href="${result.url}">${result.url}</a>
             `.trim().replace(/^\s+/gm, ''));
-
-            await github.checks.create({
-                ...context.repo,
-                name: 'Deploy Preview',
-                head_sha: context.payload.pull_request.head.sha,
-                status: 'completed',
-                completed_at: new Date().toISOString(),
-                details_url: result.url,
-                conclusion: 'success',
-                output: {
-                    title: `Preview Deployed`,
-                    summary: `[${result.url}](${result.url})`
-                }
-            });
         }
 
-        // await finish({
-        //     details_url: result.url,
-        //     conclusion: 'success',
-        //     output: {
-        //         title: `Deployed to ${result.url}`,
-        //         summary: `[View Preview](${result.url})`
-        //     }
-        // });
+        await finish({
+            details_url: result.url,
+            conclusion: 'success',
+            output: {
+                title: `Deploy preview succeeded`,
+                summary: `[${result.url}](${result.url})`
+            }
+        });
 	} catch (e) {
 		setFailed(e.message);
 
-        // await finish({
-        //     conclusion: 'failure',
-        //     output: {
-        //         title: 'Deploy preview failed',
-        //         summary: `Error: ${e.message}`
-        //     }
-        // });
+        await finish({
+            conclusion: 'failure',
+            output: {
+                title: 'Deploy preview failed',
+                summary: `Error: ${e.message}`
+            }
+        });
     }
 })();
 
 
+// create a check and return a function that updates (completes) it
+async function createCheck(github, context) {
+    const check = await github.checks.create({
+        ...context.repo,
+        name: 'Deploy Preview',
+        head_sha: context.payload.pull_request.head.sha,
+        status: 'in_progress',
+    });
 
+    return async details => {
+        await github.checks.update({
+            ...context.repo,
+            check_run_id: check.data.id,
+            completed_at: new Date().toISOString(),
+            status: 'completed',
+            ...details
+        });
+    };
+}
+
+
+// create a PR comment, or update one if it already exists
 async function postOrUpdateComment(github, context, commentMarkdown) {
     const commentInfo = {
 		...context.repo,
@@ -197,7 +188,6 @@ async function postOrUpdateComment(github, context, commentMarkdown) {
 	}
 
 	if (commentId) {
-		console.log(`Updating previous comment #${commentId}`)
 		try {
 			await github.issues.updateComment({
 				...context.repo,
@@ -206,14 +196,12 @@ async function postOrUpdateComment(github, context, commentMarkdown) {
 			});
 		}
 		catch (e) {
-			console.log('Error editing previous comment: ' + e.message);
 			commentId = null;
 		}
 	}
 
 	// no previous or edit failed
 	if (!commentId) {
-		console.log('Creating new comment');
 		try {
 			await github.issues.createComment(comment);
 		} catch (e) {
