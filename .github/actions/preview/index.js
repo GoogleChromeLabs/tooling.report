@@ -59,6 +59,16 @@ async function run(github, context) {
 
     setOutput('details_url', url);
 
+    const dep = await github.repos.createDeploymentStatus({
+        ...context.repo,
+        deployment_id: context.payload.deployment.id,
+        state: 'success',
+        log_url: url,
+        target_url: url,
+        description: 'Deployment succeeded.'
+    });
+    console.log('deployment created: ', dep);
+
     return { url };
 
     /*
