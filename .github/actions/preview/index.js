@@ -85,7 +85,7 @@ async function run(github, context) {
     if (token) {
         console.log('GITHUB_TOKEN / repo-token available, creating status check.');
         const check = await github.checks.create({
-            ...github.context.repo,
+            ...context.repo,
             name: 'Deploy Preview',
             head_sha: context.sha,
             status: 'in_progress',
