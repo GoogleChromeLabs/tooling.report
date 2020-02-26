@@ -126,10 +126,10 @@ async function run(github, context) {
         
         if (token) {
             await postOrUpdateComment(github, context, `
-                🧭 Deploy preview for ${context.payload.pull_request.head.sha.substring(0,7)}:
+                🧭 Deploy preview for ${context.payload.pull_request.head.sha.substring(0,7)} succeeded:
 
                 🔗 <a href="${result.url}">${result.url}</a>
-            `.trim().replace(/^\t+/gm, ''));
+            `.trim().replace(/^\s+/gm, ''));
 
             await github.checks.create({
                 ...context.repo,
