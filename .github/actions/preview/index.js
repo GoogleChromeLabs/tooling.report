@@ -80,9 +80,11 @@ async function run(github, context) {
         
         if (token) {
             await postOrUpdateComment(github, context, `
-                🚀 Deploy preview for ${context.payload.pull_request.head.sha.substring(0,7)}: <em>(<relative-time datetime="${new Date().toISOString()}">${new Date().toLocaleString()}</relative-time>)</em>
+                🚀 Deploy preview for ${context.payload.pull_request.head.sha.substring(0,7)}:
 
                 <a href="${result.url}">${result.url}</a>
+
+                <small>(${new Date().toISOString()})</small>
             `.trim().replace(/^\s+/gm, ''));
         }
 
