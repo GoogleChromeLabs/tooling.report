@@ -93,27 +93,27 @@ async function run(github, context) {
 (async () => {
     const token = process.env.GITHUB_TOKEN || getInput('repo-token');
     const github = token ? new GitHub(token) : {};
-    let finish = details => console.log(details);
+    // let finish = details => console.log(details);
     if (token) {
-        console.log({ sha: context.sha, head_sha: context.payload.pull_request.head.sha });
-        console.log('GITHUB_TOKEN / repo-token available, creating status check.');
-        const check = await github.checks.create({
-            ...context.repo,
-            name: 'Deploy Preview',
-            // head_sha: context.sha,
-            head_sha: context.payload.pull_request.head.sha,
-            status: 'in_progress',
-        });
-        console.log('status check: ', check);
-        finish = async details => {
-            console.log('check update: ', await github.checks.update({
-                ...context.repo,
-                check_run_id: check.data.id,
-                completed_at: new Date().toISOString(),
-                status: 'completed',
-                ...details
-            }));
-        };
+        // console.log({ sha: context.sha, head_sha: context.payload.pull_request.head.sha });
+        // console.log('GITHUB_TOKEN / repo-token available, creating status check.');
+        // const check = await github.checks.create({
+        //     ...context.repo,
+        //     name: 'Deploy Preview',
+        //     // head_sha: context.sha,
+        //     head_sha: context.payload.pull_request.head.sha,
+        //     status: 'in_progress',
+        // });
+        // console.log('status check: ', check);
+        // finish = async details => {
+        //     console.log('check update: ', await github.checks.update({
+        //         ...context.repo,
+        //         check_run_id: check.data.id,
+        //         completed_at: new Date().toISOString(),
+        //         status: 'completed',
+        //         ...details
+        //     }));
+        // };
     }
     try {
         const result = await run(github, context) || {};
@@ -121,24 +121,40 @@ async function run(github, context) {
         if (!result.url) {
             throw Error('No URL was returned for the deployment.');
         }
+        
+        if (token) {
+            await github.checks.create({
+                ...context.repo,
+                name: 'Deploy Preview',
+                head_sha: context.payload.pull_request.head.sha,
+                status: 'completed',
+                completed_at: new Date().toISOString(),
+                details_url: result.url,
+                conclusion: 'success'
+                // output: {
+                //     title: `Deployed to ${result.url}`,
+                //     summary: `[View Preview](${result.url})`
+                // }
+            });
+        }
 
-        await finish({
-            details_url: result.url,
-            conclusion: 'success',
-            output: {
-                title: `Deployed to ${result.url}`,
-                summary: `[View Preview](${result.url})`
-            }
-        });
+        // await finish({
+        //     details_url: result.url,
+        //     conclusion: 'success',
+        //     output: {
+        //         title: `Deployed to ${result.url}`,
+        //         summary: `[View Preview](${result.url})`
+        //     }
+        // });
 	} catch (e) {
 		setFailed(e.message);
 
-        await finish({
-            conclusion: 'failure',
-            output: {
-                title: 'Deploy preview failed',
-                summary: `Error: ${e.message}`
-            }
-        });
+        // await finish({
+        //     conclusion: 'failure',
+        //     output: {
+        //         title: 'Deploy preview failed',
+        //         summary: `Error: ${e.message}`
+        //     }
+        // });
     }
 })();
