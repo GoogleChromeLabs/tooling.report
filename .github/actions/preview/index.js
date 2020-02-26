@@ -3,8 +3,6 @@ import { getInput, startGroup, endGroup, setFailed, setOutput } from '@actions/c
 import { GitHub, context } from '@actions/github';
 
 async function run(github, context) {
-    const { number: pull_number } = context.issue
-
     startGroup('Installing dependencies');
     await exec('npm', ['install', '--no-audit']);
     endGroup();
@@ -45,8 +43,6 @@ async function run(github, context) {
     });
     const deploymentText = Buffer.concat(buf).toString('utf-8');
     const deployment = JSON.parse(deploymentText);
-    //console.log('Deployment response:');
-    //console.log(JSON.stringify(deployment, null, 2));
     endGroup();
 
     if (deployment.status !== 'success') {
@@ -63,33 +59,7 @@ async function run(github, context) {
     setOutput('target_url', url);
     setOutput('url', url);
 
-    // const dep = await github.repos.createDeploymentStatus({
-    //     ...context.repo,
-    //     deployment_id: context.payload.deployment.id,
-    //     state: 'success',
-    //     log_url: url,
-    //     target_url: url,
-    //     description: 'Deployment succeeded.'
-    // });
-    // console.log('deployment created: ', dep);
-
     return { url };
-
-    /*
-    {
-        "status": "success",
-        "result": {
-            "previews": {
-                "default": {
-                    "target": null,
-                    "site": "tooling-report",
-                    "url": "https://tooling-report--18d5620fef5fe2d9.firebaseapp.com",
-                    "name": "sites/tooling-report/versions/18d5620fef5fe2d9"
-                }
-            }
-        }
-    }
-    */
 }
 
 (async () => {
@@ -200,7 +170,6 @@ async function postOrUpdateComment(github, context, commentMarkdown) {
 		}
 	}
 
-	// no previous or edit failed
 	if (!commentId) {
 		try {
 			await github.issues.createComment(comment);
