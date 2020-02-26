@@ -1,6 +1,6 @@
 name: Preview
 
-on: [deployment]
+on: [pull_request]
 
 jobs:
   build:
