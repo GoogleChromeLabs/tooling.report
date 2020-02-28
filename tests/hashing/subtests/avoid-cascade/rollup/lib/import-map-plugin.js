@@ -32,8 +32,6 @@ export default function importMapPlugin() {
       const assets = Object.values(bundle).filter(b => b.type === 'asset');
       const chunks = Object.values(bundle).filter(b => b.type === 'chunk');
 
-      console.log(assets);
-
       for (const asset of assets) {
         const noHashFilename = removeAssetHash(asset.fileName);
         importMap.imports['./' + noHashFilename] = './' + asset.fileName;
