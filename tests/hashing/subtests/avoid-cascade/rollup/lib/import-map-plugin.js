@@ -21,15 +21,22 @@ function removeAssetHash(fileName) {
 }
 
 export default function importMapPlugin() {
+  let assetsToMap;
   return {
     name: 'import-map-plugin',
+    buildStart() {
+      assetsToMap = new Set();
+    },
     resolveFileUrl({ fileName }) {
+      assetsToMap.add(fileName);
       return `System.resolve('./${removeAssetHash(fileName)}')`;
     },
     generateBundle(outputOpts, bundle) {
       const importMap = { imports: {} };
 
-      const assets = Object.values(bundle).filter(b => b.type === 'asset');
+      const assets = Object.values(bundle).filter(b =>
+        assetsToMap.has(b.fileName),
+      );
       const chunks = Object.values(bundle).filter(b => b.type === 'chunk');
 
       for (const asset of assets) {
