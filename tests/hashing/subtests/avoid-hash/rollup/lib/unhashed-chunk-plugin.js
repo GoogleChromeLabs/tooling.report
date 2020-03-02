@@ -10,25 +10,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { promises as fs } from 'fs';
 import { basename } from 'path';
 
-const prefix = 'asset-url';
+const prefix = 'unhashed-chunk:';
 
-export default function assetPlugin() {
+export default function unhasedChunkPlugin() {
   return {
-    name: 'asset-plugin',
+    name: 'unhashed-chunk-plugin',
     async resolveId(id, importer) {
       if (!id.startsWith(prefix)) return;
       return prefix + (await this.resolveId(id.slice(prefix.length), importer));
     },
     async load(id) {
       if (!id.startsWith(prefix)) return;
-      const realId = id.slice(prefix.length);
       return `export default import.meta.ROLLUP_FILE_URL_${this.emitFile({
-        type: 'asset',
-        source: await fs.readFile(realId),
-        name: basename(realId),
+        type: 'chunk',
+        id: id.slice(prefix.length),
+        fileName: basename(id),
       })}`;
     },
   };

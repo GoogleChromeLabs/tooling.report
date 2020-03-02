@@ -10,7 +10,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import txtURL from 'asset-url:./some-asset.txt';
-import { logCaps } from './utils.js';
-logCaps('This is profile');
-fetch(txtURL).then(async response => console.log(await response.text()));
+import assetPlugin from './lib/asset-plugin';
+import unhasedChunkPlugin from './lib/unhashed-chunk-plugin';
+
+export default {
+  input: ['src/hashed-entry.js', 'src/unhashed-entry.js'],
+  output: {
+    dir: 'build/',
+    format: 'esm',
+  },
+  plugins: [
+    assetPlugin({
+      hashChunk(path) {
+        return !path.endsWith('unhashed-asset.txt');
+      },
+    }),
+    unhasedChunkPlugin(),
+  ],
+};

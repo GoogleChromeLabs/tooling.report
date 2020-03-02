@@ -13,9 +13,9 @@
 import { promises as fs } from 'fs';
 import { basename } from 'path';
 
-const prefix = 'asset-url';
+const prefix = 'asset-url:';
 
-export default function assetPlugin() {
+export default function assetPlugin({ hashChunk = () => true }) {
   return {
     name: 'asset-plugin',
     async resolveId(id, importer) {
@@ -25,11 +25,16 @@ export default function assetPlugin() {
     async load(id) {
       if (!id.startsWith(prefix)) return;
       const realId = id.slice(prefix.length);
-      return `export default import.meta.ROLLUP_FILE_URL_${this.emitFile({
+      const emitOpts = {
         type: 'asset',
         source: await fs.readFile(realId),
-        name: basename(realId),
-      })}`;
+      };
+
+      emitOpts[hashChunk(realId) ? 'name' : 'fileName'] = basename(realId);
+
+      return `export default import.meta.ROLLUP_FILE_URL_${this.emitFile(
+        emitOpts,
+      )}`;
     },
   };
 }

@@ -10,7 +10,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import txtURL from 'asset-url:./some-asset.txt';
-import { logCaps } from './utils.js';
-logCaps('This is profile');
-fetch(txtURL).then(async response => console.log(await response.text()));
+import hashedUrl from 'asset-url:./hashed-asset.txt';
+import unhashedUrl from 'asset-url:./unhashed-asset.txt';
+import unhashedChunkUrl from 'unhashed-chunk:./unhashed-chunk.js';
+
+console.log('Hashed entry');
+console.log(hashedUrl, unhashedUrl);
+import('./hashed-chunk.js');
+import(unhashedChunkUrl);

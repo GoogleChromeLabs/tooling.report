@@ -10,7 +10,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import txtURL from 'asset-url:./some-asset.txt';
-import { logCaps } from './utils.js';
-logCaps('This is profile');
-fetch(txtURL).then(async response => console.log(await response.text()));
+export function logCaps(msg) {
+  console.log(msg.toUpperCase());
+}

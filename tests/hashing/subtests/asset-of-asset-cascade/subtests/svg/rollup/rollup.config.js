@@ -10,7 +10,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import txtURL from 'asset-url:./some-asset.txt';
-import { logCaps } from './utils.js';
-logCaps('This is profile');
-fetch(txtURL).then(async response => console.log(await response.text()));
+import stupidSVGPlugin from './lib/stupid-svg-plugin';
+
+export default [1, 2, 3].map(num => ({
+  input: `src${num}/index.js`,
+  output: {
+    dir: 'build/' + num,
+    format: 'esm',
+  },
+  plugins: [stupidSVGPlugin()],
+}));

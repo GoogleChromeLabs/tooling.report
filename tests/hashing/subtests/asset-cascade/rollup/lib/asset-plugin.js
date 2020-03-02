@@ -13,7 +13,7 @@
 import { promises as fs } from 'fs';
 import { basename } from 'path';
 
-const prefix = 'asset-url';
+const prefix = 'asset-url:';
 
 export default function assetPlugin() {
   return {
