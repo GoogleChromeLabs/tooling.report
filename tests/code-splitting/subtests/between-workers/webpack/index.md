@@ -2,4 +2,4 @@
 result: fail
 ---
 
-Webpack will duplicate code in each worker bundle.
+Webpack will create and load duplicate copies of dependencies even if they're shared by each worker bundle.
