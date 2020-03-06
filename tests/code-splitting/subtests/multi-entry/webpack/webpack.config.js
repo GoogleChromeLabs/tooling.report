@@ -11,26 +11,28 @@
  * limitations under the License.
  */
 const path = require('path');
-// const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   stats: 'minimal',
   entry: {
     index: './src/index.js',
-    profile: './src/profile.js'
+    profile: './src/profile.js',
   },
   output: {
     path: path.resolve(__dirname, 'build'),
   },
   optimization: {
-    // Create a dedicated `runtime.js` chunk.
-    // Without this, the entry chunks' shared dependencies must be loaded manually.
-    runtimeChunk: 'single',
     splitChunks: {
+      // extract shared dependencies from entry bundles:
       chunks: 'all',
-      minSize: 0
-    }
-    // minimizer: [new TerserPlugin({
+      // allow any size dependency to be shared:
+      minSize: 0,
+    },
+    // create a runtime.js script containing the module loader:
+    // (without this, entry chunks dependencies must be loaded manually)
+    runtimeChunk: 'single',
+
+    // minimizer: [new (require('terser-webpack-plugin')({
     //   terserOptions: {
     //     mangle: false,
     //     output: {
@@ -38,5 +40,5 @@ module.exports = {
     //     }
     //   }
     // })]
-  }
+  },
 };
