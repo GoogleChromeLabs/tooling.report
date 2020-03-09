@@ -1,5 +1,6 @@
 ---
 title: Preloading script dependencies
+importance: 1
 ---
 
 **index.js**

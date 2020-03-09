@@ -1,5 +1,6 @@
 ---
 title: Multiple entry points
+importance: 1
 ---
 
 Imagine you had an 'index' page and a 'profile' page. Each has their own root script, but the two make use of a common library.

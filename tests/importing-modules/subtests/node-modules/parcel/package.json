@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "start": "parcel build src/index.js"
+  },
+  "dependencies": {
+    "idb": "^5.0.1",
+    "parcel": "^2.0.0-alpha.3.2"
+  }
+}

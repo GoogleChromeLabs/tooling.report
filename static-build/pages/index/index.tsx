@@ -12,8 +12,12 @@
  */
 import { h, FunctionalComponent, JSX } from 'preact';
 
+import { renderIssueLinksForTest } from '../../utils.js';
+
 import cssPath from 'css:./styles.css';
 import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
+import config from 'consts:config';
+import { calculateScore } from 'static-build/utils';
 
 interface Props {
   tests: Tests;
@@ -38,6 +42,17 @@ function renderTest(test: Test, basePath: string): JSX.Element {
   return (
     <div>
       <h1>{test.meta.title}</h1>
+      <ul>
+        {config.testSubjects.map(subject => {
+          const { score, possible } = calculateScore(test, subject);
+          return (
+            <li>
+              {subject}: {score}/{possible}
+              {renderIssueLinksForTest(test, subject)}
+            </li>
+          );
+        })}
+      </ul>
       <p>
         <a href={basePath}>More details</a>
       </p>

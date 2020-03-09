@@ -1,5 +1,6 @@
 ---
 title: Output module formats
+importance: 1
 ---
 
 If you're targeting Node.js, [CommonJS](https://nodejs.org/api/modules.html) is still the best format. Although, [ECMAScript modules are coming soon](https://nodejs.org/api/esm.html).

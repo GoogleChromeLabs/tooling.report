@@ -1,5 +1,6 @@
 ---
 title: Entry points
+importance: 1
 ---
 
 Can entry points be something else than JavaScript (like HTML)?

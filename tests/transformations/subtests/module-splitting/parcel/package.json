@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "start": "parcel build src/index.js src/profile.js"
+  },
+  "dependencies": {
+    "parcel": "^2.0.0-alpha.3.2"
+  }
+}

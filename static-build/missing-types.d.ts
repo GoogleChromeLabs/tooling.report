@@ -31,7 +31,7 @@ declare module 'test-data:' {
 
 declare module 'consts:config' {
   const value: {
-    testSubjects: string[];
+    testSubjects: BuildTool[];
     githubRepository: string;
   };
   export default value;
@@ -52,10 +52,11 @@ interface Test {
 
 interface TestMeta {
   title: string;
+  importance: number;
 }
 
-type TestResults = Record<TestResultKey, TestResult>;
-type TestResultKey = 'rollup' | 'webpack' | 'parcel' | 'gulp';
+type TestResults = Record<BuildTool, TestResult>;
+type BuildTool = 'rollup' | 'webpack' | 'parcel' | 'gulp';
 
 interface TestResult {
   /** Front-matter data from the result markdown file */
@@ -68,4 +69,5 @@ interface TestResult {
 
 interface ResultMeta {
   result: 'pass' | 'fail' | 'partial';
+  issue?: string | string[];
 }

@@ -10,6 +10,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { h, JSX } from 'preact';
+
 import { promises as fsp } from 'fs';
 import { join as joinPath } from 'path';
 
@@ -49,4 +51,64 @@ export function writeFiles(toOutput: OutputMap) {
     console.error(err);
     process.exit(1);
   });
+}
+
+export function calculateScore(
+  test: Test,
+  tool: BuildTool,
+): { score: number; possible: number } {
+  let score = 0;
+  let possible = 1;
+  if (test.results[tool]) {
+    switch (test.results[tool].meta.result) {
+      case 'pass':
+        score = 1;
+        break;
+      case 'partial':
+        score = 0.5;
+        break;
+      // All other values are value = 0;
+    }
+  }
+  if (typeof test.meta.importance !== 'number') {
+    console.warn(
+      `No valid \`importance\` defined for "${test.meta.title}". Setting to 0`,
+    );
+    test.meta.importance = 0;
+  }
+  score *= test.meta.importance;
+  possible *= test.meta.importance;
+  if (test.subTests) {
+    for (const subtest of Object.values(test.subTests)) {
+      const subtestScore = calculateScore(subtest, tool);
+      score += subtestScore.score;
+      possible += subtestScore.possible;
+    }
+  }
+  return { score, possible };
+}
+
+export function renderIssueLinksForTest(test: Test, tool: BuildTool) {
+  const result = test.results[tool];
+  if (!result) {
+    return;
+  }
+  let issues = result.meta.issue;
+  if (!issues) {
+    return;
+  }
+  if (!Array.isArray(issues)) {
+    issues = [issues];
+  }
+  // TODO: Would be nice to grab the issue titles and stuff
+  // https://github.com/GoogleChromeLabs/tooling.report/issues/34
+  return (
+    <ul class="issues">
+      {issues.map(issue => (
+        <li>
+          <a href={issue}>Issue</a>
+        </li>
+      ))}
+    </ul>
+  );
 }

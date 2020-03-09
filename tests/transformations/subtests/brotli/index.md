@@ -1,5 +1,6 @@
 ---
 title: Brotli
+importance: 1
 ---
 
 Some hosts will let you provide compressed assets at build time, allowing you to use better compression that's too slow to do per request.

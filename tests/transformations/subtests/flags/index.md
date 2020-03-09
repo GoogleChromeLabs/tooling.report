@@ -1,5 +1,6 @@
 ---
 title: Flags
+importance: 1
 ---
 
 Can a flag be set at build time and used within modules?
