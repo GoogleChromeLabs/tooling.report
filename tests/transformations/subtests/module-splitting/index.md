@@ -1,5 +1,6 @@
 ---
 title: Module Splitting
+importance: 1
 ---
 
 **index.js**
