@@ -10,5 +10,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { logCaps } from './utils.js';
-logCaps('This is profile');
+import { bar } from './objects.js';
+console.log(bar, '!');

@@ -10,5 +10,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { logCaps } from './utils.js';
-logCaps('This is profile');
+export default {
+  input: [1, 2, 3].map(num => `src/entry-${num}.js`),
+  output: {
+    dir: 'build',
+    format: 'esm',
+  },
+};
