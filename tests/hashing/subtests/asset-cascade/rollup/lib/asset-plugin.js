@@ -16,8 +16,32 @@ import { basename } from 'path';
 const prefix = 'asset-url:';
 
 export default function assetPlugin() {
+  /** @type {Map<string, Buffer>} */
+  let assetIdToSourceBuffer;
+
   return {
     name: 'asset-plugin',
+    buildStart() {
+      assetIdToSourceBuffer = new Map();
+    },
+    augmentChunkHash(info) {
+      // Get the sources for all assets imported by this chunk.
+      const buffers = Object.keys(info.modules)
+        .map(moduleId => assetIdToSourceBuffer.get(moduleId))
+        .filter(Boolean);
+
+      if (buffers.length === 0) return;
+
+      for (const moduleId of Object.keys(info.modules)) {
+        const buffer = assetIdToSourceBuffer.get(moduleId);
+        if (buffer) buffers.push(buffer);
+      }
+
+      const combinedBuffer =
+        buffers.length === 1 ? buffers[0] : Buffer.concat(buffers);
+
+      return combinedBuffer;
+    },
     async resolveId(id, importer) {
       if (!id.startsWith(prefix)) return;
       return prefix + (await this.resolveId(id.slice(prefix.length), importer));
@@ -25,9 +49,12 @@ export default function assetPlugin() {
     async load(id) {
       if (!id.startsWith(prefix)) return;
       const realId = id.slice(prefix.length);
+      const source = await fs.readFile(realId);
+      assetIdToSourceBuffer.set(id, source);
+
       return `export default import.meta.ROLLUP_FILE_URL_${this.emitFile({
         type: 'asset',
-        source: await fs.readFile(realId),
+        source,
         name: basename(realId),
       })}`;
     },
