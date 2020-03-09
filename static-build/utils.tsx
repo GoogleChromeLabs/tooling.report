@@ -10,6 +10,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { h, JSX } from 'preact';
+
 import { promises as fsp } from 'fs';
 import { join as joinPath } from 'path';
 
@@ -78,13 +80,26 @@ export function calculateScore(
   return { score, possible };
 }
 
-export function issueLinkForTest(
-  test: Test,
-  tool: BuildTool,
-): string | undefined {
+export function renderIssueLinksForTest(test: Test, tool: BuildTool) {
   const result = test.results[tool];
   if (!result) {
     return;
   }
-  return result.meta.issue;
+  let issues = result.meta.issue;
+  if (!issues) {
+    return;
+  }
+  if (!Array.isArray(issues)) {
+    issues = [issues];
+  }
+  // TODO: Would be nice to grab the issue titles and stuff
+  return (
+    <ul class="issues">
+      {issues.map(issue => (
+        <li>
+          <a href={issue}>Issue</a>
+        </li>
+      ))}
+    </ul>
+  );
 }

@@ -12,7 +12,7 @@
  */
 import { h, FunctionalComponent, JSX } from 'preact';
 
-import { issueLinkForTest } from '../../utils.js';
+import { renderIssueLinksForTest } from '../../utils.js';
 
 import cssPath from 'css:./styles.css';
 import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
@@ -45,17 +45,10 @@ function renderTest(test: Test, basePath: string): JSX.Element {
       <ul>
         {config.testSubjects.map(subject => {
           const { score, possible } = calculateScore(test, subject);
-          const issueLink = issueLinkForTest(test, subject);
           return (
             <li>
-              {subject}
-              {issueLink && (
-                <span>
-                  {' '}
-                  (<a href="{issueLink}">GitHub issue</a>)
-                </span>
-              )}
-              : {score}/{possible}
+              {subject}: {score}/{possible}
+              {renderIssueLinksForTest(test, subject)}
             </li>
           );
         })}
