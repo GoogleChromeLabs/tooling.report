@@ -52,7 +52,7 @@ function renderTest(test: Test, basePath: string): JSX.Element {
               {issueLink ? (
                 <span>
                   {' '}
-                  (<a href="{issueLink}">GH iusse</a>)
+                  (<a href="{issueLink}">GitHub issue</a>)
                 </span>
               ) : null}
               : {score}/{possible}
