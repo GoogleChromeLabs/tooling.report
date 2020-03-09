@@ -10,6 +10,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { h, JSX } from 'preact';
+
 import { promises as fsp } from 'fs';
 import { join as joinPath } from 'path';
 
@@ -84,4 +86,29 @@ export function calculateScore(
     }
   }
   return { score, possible };
+}
+
+export function renderIssueLinksForTest(test: Test, tool: BuildTool) {
+  const result = test.results[tool];
+  if (!result) {
+    return;
+  }
+  let issues = result.meta.issue;
+  if (!issues) {
+    return;
+  }
+  if (!Array.isArray(issues)) {
+    issues = [issues];
+  }
+  // TODO: Would be nice to grab the issue titles and stuff
+  // https://github.com/GoogleChromeLabs/tooling.report/issues/34
+  return (
+    <ul class="issues">
+      {issues.map(issue => (
+        <li>
+          <a href={issue}>Issue</a>
+        </li>
+      ))}
+    </ul>
+  );
 }

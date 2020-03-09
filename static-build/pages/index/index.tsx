@@ -12,6 +12,8 @@
  */
 import { h, FunctionalComponent, JSX } from 'preact';
 
+import { renderIssueLinksForTest } from '../../utils.js';
+
 import cssPath from 'css:./styles.css';
 import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
 import config from 'consts:config';
@@ -46,6 +48,7 @@ function renderTest(test: Test, basePath: string): JSX.Element {
           return (
             <li>
               {subject}: {score}/{possible}
+              {renderIssueLinksForTest(test, subject)}
             </li>
           );
         })}

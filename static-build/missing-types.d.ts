@@ -69,4 +69,5 @@ interface TestResult {
 
 interface ResultMeta {
   result: 'pass' | 'fail' | 'partial';
+  issue?: string | string[];
 }
