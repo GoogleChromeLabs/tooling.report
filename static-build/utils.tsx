@@ -77,3 +77,14 @@ export function calculateScore(
   }
   return { score, possible };
 }
+
+export function issueLinkForTest(
+  test: Test,
+  tool: BuildTool,
+): string | undefined {
+  const result = test.results[tool];
+  if (!result) {
+    return;
+  }
+  return result.meta.issue;
+}
