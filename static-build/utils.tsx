@@ -68,6 +68,12 @@ export function calculateScore(
       // All other values are value = 0;
     }
   }
+  if (typeof test.meta.importance !== 'number') {
+    console.warn(
+      `No valid \`importance\` defined for "${test.meta.title}". Setting to 0`,
+    );
+    test.meta.importance = 0;
+  }
   score *= test.meta.importance;
   possible *= test.meta.importance;
   if (test.subTests) {
