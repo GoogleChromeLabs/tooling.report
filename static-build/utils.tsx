@@ -70,10 +70,12 @@ export function calculateScore(
   }
   score *= test.meta.importance;
   possible *= test.meta.importance;
-  for (const subtest of Object.values(test.subTests || {})) {
-    const subtestScore = calculateScore(subtest, tool);
-    score += subtestScore.score;
-    possible += subtestScore.possible;
+  if (test.subTests) {
+    for (const subtest of Object.values(test.subTests)) {
+      const subtestScore = calculateScore(subtest, tool);
+      score += subtestScore.score;
+      possible += subtestScore.possible;
+    }
   }
   return { score, possible };
 }
