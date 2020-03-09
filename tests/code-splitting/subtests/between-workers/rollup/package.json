@@ -1,9 +1,10 @@
 {
+  "private": true,
   "scripts": {
     "build": "rollup -c"
   },
-  "dependencies": {},
   "devDependencies": {
+    "@surma/rollup-plugin-off-main-thread": "^1.4.1",
     "rollup": "^2.0.2"
   }
 }
