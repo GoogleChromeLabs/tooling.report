@@ -1,0 +1,53 @@
+/* footer namespace will be removed once we have CSS modules in place */
+
+:root {
+  --paragraph-width: 460px;
+}
+
+footer {
+  background: var(--backpack-blue);
+  padding: 3rem 0;
+}
+
+footer .container {
+  max-width: 660px;
+  margin: 0 auto;
+}
+
+footer h2 {
+  font-weight: 100;
+  color: var(--light-blue);
+  font-size: 24px;
+  line-height: 0;
+}
+
+footer h2 span {
+  opacity: 0.8;
+}
+
+footer hr {
+  border: 0;
+  border-top: 1px solid var(--denim-blue);
+}
+
+footer p {
+  line-height: 2;
+  color: var(--ice-blue);
+  font-weight: 100;
+  font-size: 14px;
+  max-width: var(--paragraph-width);
+}
+
+footer ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: var(--paragraph-width);
+  padding: 0;
+}
+
+footer a {
+  font-size: 14px;
+  color: var(--ice-blue);
+}
