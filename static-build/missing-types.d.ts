@@ -71,3 +71,9 @@ interface ResultMeta {
   result: 'pass' | 'fail' | 'partial';
   issue?: string | string[];
 }
+
+interface ToolSummary {
+  tool: BuildTool;
+  total: number;
+  possible: number;
+}

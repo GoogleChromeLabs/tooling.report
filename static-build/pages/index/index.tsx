@@ -17,7 +17,7 @@ import { renderIssueLinksForTest } from '../../utils.js';
 import cssPath from 'css:./styles.css';
 import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
 import config from 'consts:config';
-import { calculateScore } from 'static-build/utils';
+import { calculateScore, calculateScoreTotals } from 'static-build/utils';
 
 interface Props {
   tests: Tests;
@@ -70,6 +70,21 @@ function renderTests(tests: Tests, basePath = '/'): JSX.Element[] {
   );
 }
 
+function renderSummary(tests: Tests): JSX.Element {
+  const tools = calculateScoreTotals(tests);
+  // sort by alpha
+
+  return (
+    <ul>
+      {tools.map(t => (
+        <li>
+          {t.tool}: {t.total}/{t.possible}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
   return (
     <html>
@@ -84,6 +99,8 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
         ))}
       </head>
       <body>
+        <h1>Summary</h1>
+        <section>{renderSummary(tests)}</section>
         <h1>Tests</h1>
         <section>{renderTests(tests)}</section>
       </body>
