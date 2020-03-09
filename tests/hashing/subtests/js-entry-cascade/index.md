@@ -1,5 +1,6 @@
 ---
 title: JS entry-point hashing cascade
+importance: 1
 ---
 
 **index.js**

@@ -50,3 +50,38 @@ export function writeFiles(toOutput: OutputMap) {
     process.exit(1);
   });
 }
+
+export function calculateScore(
+  test: Test,
+  tool: BuildTool,
+): { score: number; possible: number } {
+  let score = 0;
+  let possible = 1;
+  if (test.results[tool]) {
+    switch (test.results[tool].meta.result) {
+      case 'pass':
+        score = 1;
+        break;
+      case 'partial':
+        score = 0.5;
+        break;
+      // All other values are value = 0;
+    }
+  }
+  if (typeof test.meta.importance !== 'number') {
+    console.warn(
+      `No valid \`importance\` defined for "${test.meta.title}". Setting to 0`,
+    );
+    test.meta.importance = 0;
+  }
+  score *= test.meta.importance;
+  possible *= test.meta.importance;
+  if (test.subTests) {
+    for (const subtest of Object.values(test.subTests)) {
+      const subtestScore = calculateScore(subtest, tool);
+      score += subtestScore.score;
+      possible += subtestScore.possible;
+    }
+  }
+  return { score, possible };
+}

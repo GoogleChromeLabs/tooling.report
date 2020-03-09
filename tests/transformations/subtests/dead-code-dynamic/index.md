@@ -1,5 +1,6 @@
 ---
 title: Dead code elimination
+importance: 1
 ---
 
 **index.js**

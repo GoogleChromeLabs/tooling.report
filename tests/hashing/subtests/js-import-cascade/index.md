@@ -1,5 +1,6 @@
 ---
 title: JS import() hashing cascade
+importance: 1
 ---
 
 **index.js**
