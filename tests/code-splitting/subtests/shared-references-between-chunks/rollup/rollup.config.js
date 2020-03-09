@@ -11,9 +11,9 @@
  * limitations under the License.
  */
 export default {
-  input: ['src/index.js', 'src/profile.js'],
-  output: {
-    dir: 'build',
-    format: 'esm',
-  },
+  input: 'src/index.js',
+  output: ['esm', 'amd', 'system'].map(format => ({
+    dir: 'build/' + format,
+    format,
+  })),
 };

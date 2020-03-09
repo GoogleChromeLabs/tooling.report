@@ -10,10 +10,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export default {
-  input: ['src/index.js', 'src/profile.js'],
-  output: {
-    dir: 'build',
-    format: 'esm',
-  },
-};
+import { num, incrementNum } from './num.js';
+incrementNum();
+console.log(num);
+import('./lazy.js');

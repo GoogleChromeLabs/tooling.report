@@ -10,10 +10,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export default {
-  input: ['src/index.js', 'src/profile.js'],
-  output: {
-    dir: 'build',
-    format: 'esm',
-  },
-};
+import obj from './obj.js';
+obj.count++;
+console.log('component-1', obj.count);
