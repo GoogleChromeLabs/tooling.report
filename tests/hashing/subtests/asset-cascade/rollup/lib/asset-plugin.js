@@ -44,7 +44,9 @@ export default function assetPlugin() {
     },
     async resolveId(id, importer) {
       if (!id.startsWith(prefix)) return;
-      return prefix + (await this.resolveId(id.slice(prefix.length), importer));
+      return (
+        prefix + (await this.resolve(id.slice(prefix.length), importer)).id
+      );
     },
     async load(id) {
       if (!id.startsWith(prefix)) return;

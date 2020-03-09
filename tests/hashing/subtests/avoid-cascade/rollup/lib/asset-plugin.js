@@ -13,14 +13,16 @@
 import { promises as fs } from 'fs';
 import { basename } from 'path';
 
-const prefix = 'asset-url';
+const prefix = 'asset-url:';
 
 export default function assetPlugin() {
   return {
     name: 'asset-plugin',
     async resolveId(id, importer) {
       if (!id.startsWith(prefix)) return;
-      return prefix + (await this.resolveId(id.slice(prefix.length), importer));
+      return (
+        prefix + (await this.resolve(id.slice(prefix.length), importer)).id
+      );
     },
     async load(id) {
       if (!id.startsWith(prefix)) return;
