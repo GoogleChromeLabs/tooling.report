@@ -49,12 +49,12 @@ function renderTest(test: Test, basePath: string): JSX.Element {
           return (
             <li>
               {subject}
-              {issueLink ? (
+              {issueLink && (
                 <span>
                   {' '}
                   (<a href="{issueLink}">GitHub issue</a>)
                 </span>
-              ) : null}
+              )}
               : {score}/{possible}
             </li>
           );
