@@ -1,5 +1,6 @@
 ---
 title: Hash based on content only
+importance: 1
 ---
 
 **index.js**

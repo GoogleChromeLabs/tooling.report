@@ -1,5 +1,6 @@
 ---
 title: Shared objects between entry points
+importance: 1
 ---
 
 Can multiple entry points be safely used on a single page?

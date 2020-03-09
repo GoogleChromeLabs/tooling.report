@@ -1,5 +1,6 @@
 ---
 title: Shared references between chunks
+importance: 1
 ---
 
 When you import a value in ES modules, you have a reference to it. If you update the value, the value is updated across modules that import it.
