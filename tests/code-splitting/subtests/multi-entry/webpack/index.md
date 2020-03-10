@@ -2,18 +2,10 @@
 result: pass
 ---
 
-Webpack supports bundling multiple named entries by setting the `entry` configuration option to an object, where each entry creates a named bundle starting at the given module path:
+Webpack supports bundling multiple named entries by setting the `entry` configuration option to an object. By default, dependencies shared by entry bundles duplicated in each entry bundle rather than being extracted into a shared bundle. This can cause issues with modules that expect to be instantiated once, such as caches and frameworks.
 
-```js
-{
-  entry: {
-    index: './src/index.js',
-    profile: './src/profile.js'
-  }
-}
-```
-
-By default, dependencies shared by entry bundles duplicated in each entry bundle rather than being extracted into a shared bundle. This can cause issues with modules that expect to be instantiated once, such as caches and frameworks.
+<details>
+<summary>Additional Information</summary>
 
 Setting the `optimization.splitChunks.chunks` configuration option to `"all"` enables the generation of shared bundles for common dependencies. While this works in many applications, it's important to understand that `splitChunks` does not automatically create bundles for all shared dependencies by default. Instead, a set of [threshold conditions] are used to determine when common dependencies should be extracted into a shared bundle. To achieve full shared dependencies as tested here, the bundle size threshold can be effectively disabled by setting `optimization.splitChunks.minSize` to `0`.
 
@@ -23,6 +15,10 @@ Thankfully, there is a solution. Webpack relies on a runtime module loader and r
 
 ```js
 {
+  entry: {
+    index: './src/index.js',
+    profile: './src/profile.js'
+  },
   optimization: {
     splitChunks: {
       // extract shared dependencies from entry bundles:
@@ -35,5 +31,7 @@ Thankfully, there is a solution. Webpack relies on a runtime module loader and r
   }
 }
 ```
+
+</details>
 
 [threshold conditions]: https://webpack.js.org/plugins/split-chunks-plugin/#defaults
