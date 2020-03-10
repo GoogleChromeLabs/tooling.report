@@ -17,7 +17,7 @@ import('./lazy.js');
 **lazy.js**
 
 ```js
-import { num } from './num.js';
+import { num, incrementNum } from './num.js';
 incrementNum();
 console.log(num);
 ```
