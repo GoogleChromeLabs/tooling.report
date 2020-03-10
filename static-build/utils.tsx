@@ -91,7 +91,7 @@ export function calculateScore(
 export function calculateScoreTotals(tests: Tests): ToolSummary[] {
   const tools = Object.values(tests).reduce(collectBuildTools, []);
 
-  return tools.map(tool => {
+  return tools.sort().map(tool => {
     return Object.values(tests).reduce(
       (score, test) => {
         let sub_score = calculateScore(test, tool);

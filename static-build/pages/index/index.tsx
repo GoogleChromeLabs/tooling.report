@@ -72,7 +72,6 @@ function renderTests(tests: Tests, basePath = '/'): JSX.Element[] {
 
 function renderSummary(tests: Tests): JSX.Element {
   const tools = calculateScoreTotals(tests);
-  // sort by alpha
 
   return (
     <ul>
