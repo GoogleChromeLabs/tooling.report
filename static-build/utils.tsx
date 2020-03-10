@@ -89,7 +89,7 @@ export function calculateScore(
 }
 
 export function calculateScoreTotals(tests: Tests): ToolSummary[] {
-  const tools = Object.values(tests).reduce(collectBuildTools, []);
+  const tools = config.testSubjects;
 
   return tools.sort().map(tool => {
     return Object.values(tests).reduce(
@@ -109,26 +109,6 @@ export function calculateScoreTotals(tests: Tests): ToolSummary[] {
     );
   });
 }
-
-const collectBuildTools = (tools: [], test: Test): [] => {
-  if (test.results) {
-    // for each key (tool) in results, check if we've noticed it
-    Object.keys(test.results).forEach(toolkey => {
-      if (!tools.includes(toolkey as never)) {
-        tools.push(toolkey as never);
-      }
-    });
-  }
-
-  if (test.subTests) {
-    // crawl
-    Object.values(test.subTests).forEach(subtest => {
-      return collectBuildTools(tools, subtest);
-    });
-  }
-
-  return tools;
-};
 
 export function renderIssueLinksForTest(test: Test, tool: BuildTool) {
   const result = test.results[tool];
