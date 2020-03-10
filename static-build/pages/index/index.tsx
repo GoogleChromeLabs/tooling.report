@@ -14,7 +14,7 @@ import { h, FunctionalComponent, JSX } from 'preact';
 
 import { renderIssueLinksForTest } from '../../utils.js';
 
-import cssPath from 'css:./styles.css';
+import cssPath from './styles.css';
 import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
 import config from 'consts:config';
 import { calculateScore } from 'static-build/utils';

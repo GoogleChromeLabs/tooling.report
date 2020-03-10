@@ -50,7 +50,6 @@ export default async function({ watch }) {
   const commonPlugins = () => [
     tsPluginInstance,
     resolveDirsPlugin(['static-build', 'client', 'tests']),
-    cssPlugin(),
     assetPlugin(),
     constsPlugin({ config }),
     markdownPlugin({ metadataValidator: validateMarkdownData }),
@@ -88,6 +87,7 @@ export default async function({ watch }) {
         resolveFileUrl,
       ),
       ...commonPlugins(),
+      cssPlugin(),
       nodeExternalPlugin(),
       testDataPlugin(),
       runScript(dir + '/index.js'),
