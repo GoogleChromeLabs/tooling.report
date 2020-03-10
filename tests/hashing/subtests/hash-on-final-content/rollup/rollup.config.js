@@ -10,6 +10,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { num, incrementNum } from './num.js';
-incrementNum();
-console.log(num);
+import { terser } from 'rollup-plugin-terser';
+
+export default {
+  input: `src/index.js`,
+  plugins: [terser()],
+  output: {
+    entryFileNames: '[name]-[hash].js',
+    dir: 'build',
+    format: 'esm',
+  },
+};

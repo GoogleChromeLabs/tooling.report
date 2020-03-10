@@ -18,6 +18,7 @@ import cssPath from 'css:./styles.css';
 import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
 import config from 'consts:config';
 import { calculateScore, calculateScoreTotals } from 'static-build/utils';
+import Footer from '../../components/Footer/index';
 
 interface Props {
   tests: Tests;
@@ -102,6 +103,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
         <section>{renderSummary(tests)}</section>
         <h1>Tests</h1>
         <section>{renderTests(tests)}</section>
+        <Footer />
       </body>
     </html>
   );

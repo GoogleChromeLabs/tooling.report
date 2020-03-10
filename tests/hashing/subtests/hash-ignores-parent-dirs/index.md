@@ -1,5 +1,5 @@
 ---
-title: Hash based on content only
+title: Hash ignores parent directories
 importance: 1
 ---
 

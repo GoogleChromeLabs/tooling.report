@@ -14,9 +14,7 @@ import { promises as fsp } from 'fs';
 import { parse as parsePath } from 'path';
 
 import postcss from 'postcss';
-import postcssModules from 'postcss-modules';
 import cssnano from 'cssnano';
-import camelCase from 'lodash.camelcase';
 
 const prefix = 'css:';
 
@@ -40,23 +38,10 @@ export default function() {
       const parsedPath = parsePath(realId);
       this.addWatchFile(realId);
       const file = await fsp.readFile(realId);
-      let moduleJSON;
 
-      const cssResult = await postcss([
-        postcssModules({
-          getJSON(_, json) {
-            moduleJSON = json;
-          },
-        }),
-        cssnano,
-      ]).process(file, {
+      const cssResult = await postcss([cssnano]).process(file, {
         from: undefined,
       });
-
-      const exports = Object.entries(moduleJSON).map(
-        ([key, val]) =>
-          `export const ${camelCase(key)} = ${JSON.stringify(val)};`,
-      );
 
       const fileId = this.emitFile({
         type: 'asset',
@@ -64,9 +49,7 @@ export default function() {
         name: parsedPath.base,
       });
 
-      return `export default import.meta.ROLLUP_FILE_URL_${fileId};\n${exports.join(
-        '\n',
-      )}`;
+      return `export default import.meta.ROLLUP_FILE_URL_${fileId};`;
     },
   };
 }

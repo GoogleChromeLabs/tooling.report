@@ -5,9 +5,7 @@
   },
   "devDependencies": {
     "cssnano": "^4.1.10",
-    "lodash.camelcase": "^4.3.0",
     "postcss": "^7.0.27",
-    "postcss-modules": "^1.5.0",
     "rollup": "^2.0.2"
   }
 }
