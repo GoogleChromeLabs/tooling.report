@@ -1,4 +1,21 @@
+:root {
+  /* Blues */
+  --ice-blue: #e6f4ff;
+  --light-blue: #cce9ff;
+  --vivid-blue: #148ae3;
+  --teal-blue: #195380;
+  --backpack-blue: #406480;
+  --denim-blue: #5689b0;
+  /* Gra|eys */
+  --background-gray: #edf0f2;
+}
+
 html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
 }
