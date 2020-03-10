@@ -15,9 +15,7 @@ import { createHash } from 'crypto';
 import { parse as parsePath, resolve as resolvePath, dirname } from 'path';
 
 import postcss from 'postcss';
-import postCSSNested from 'postcss-nested';
 import postCSSUrl from 'postcss-url';
-import cssNano from 'cssnano';
 
 const prefix = 'css:';
 const assetRe = new RegExp('/fake/path/to/asset/([^/]+)/', 'g');
@@ -49,8 +47,8 @@ export default function() {
       const parsedPath = parsePath(realId);
       this.addWatchFile(realId);
       const file = await fsp.readFile(realId);
+
       const cssResult = await postcss([
-        postCSSNested,
         postCSSUrl({
           url: ({ relativePath, url }) => {
             if (/^https?:\/\//.test(url)) return url;
@@ -70,7 +68,6 @@ export default function() {
             return `/fake/path/to/asset/${md5}/`;
           },
         }),
-        cssNano,
       ]).process(file, {
         from: undefined,
       });
@@ -83,11 +80,9 @@ export default function() {
 
       emittedCSSIds.push(fileId);
 
-      return `export default import.meta.ROLLUP_FILE_URL_${fileId}; export const inline = ${JSON.stringify(
-        cssResult.css,
-      )}`;
+      return `export default import.meta.ROLLUP_FILE_URL_${fileId};`;
     },
-    async generateBundle(options, bundle) {
+    generateBundle(options, bundle) {
       const cssAssets = emittedCSSIds.map(id => this.getFileName(id));
 
       for (const cssAsset of cssAssets) {
@@ -97,13 +92,6 @@ export default function() {
             return '/' + this.getFileName(hashToId.get(p1));
           },
         );
-      }
-
-      for (const item of Object.values(bundle)) {
-        if (item.type === 'asset') continue;
-        item.code = item.code.replace(assetRe, (match, p1) => {
-          return '/' + this.getFileName(hashToId.get(p1));
-        });
       }
     },
   };
