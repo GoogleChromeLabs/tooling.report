@@ -10,19 +10,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { promises as fsp } from 'fs';
-import { parse as parsePath } from 'path';
+import { promises as fsp, readFileSync } from 'fs';
+import { createHash } from 'crypto';
+import { parse as parsePath, resolve as resolvePath, dirname } from 'path';
 
 import postcss from 'postcss';
-import postcssModules from 'postcss-modules';
-import cssnano from 'cssnano';
-import camelCase from 'lodash.camelcase';
+import postCSSUrl from 'postcss-url';
 
 const prefix = 'css:';
+const assetRe = new RegExp('/fake/path/to/asset/([^/]+)/', 'g');
 
 export default function() {
+  let emittedCSSIds;
+  let hashToId;
+
   return {
     name: 'css',
+    buildStart() {
+      emittedCSSIds = [];
+      hashToId = new Map();
+    },
     async resolveId(id, importer) {
       if (!id.startsWith(prefix)) return null;
 
@@ -40,23 +47,30 @@ export default function() {
       const parsedPath = parsePath(realId);
       this.addWatchFile(realId);
       const file = await fsp.readFile(realId);
-      let moduleJSON;
 
       const cssResult = await postcss([
-        postcssModules({
-          getJSON(_, json) {
-            moduleJSON = json;
+        postCSSUrl({
+          url: ({ relativePath, url }) => {
+            if (/^https?:\/\//.test(url)) return url;
+            const parsedPath = parsePath(relativePath);
+            const source = readFileSync(
+              resolvePath(dirname(realId), relativePath),
+            );
+            const fileId = this.emitFile({
+              type: 'asset',
+              name: parsedPath.base,
+              source,
+            });
+            const hash = createHash('md5');
+            hash.update(source);
+            const md5 = hash.digest('hex');
+            hashToId.set(md5, fileId);
+            return `/fake/path/to/asset/${md5}/`;
           },
         }),
-        cssnano,
       ]).process(file, {
         from: undefined,
       });
-
-      const exports = Object.entries(moduleJSON).map(
-        ([key, val]) =>
-          `export const ${camelCase(key)} = ${JSON.stringify(val)};`,
-      );
 
       const fileId = this.emitFile({
         type: 'asset',
@@ -64,9 +78,21 @@ export default function() {
         name: parsedPath.base,
       });
 
-      return `export default import.meta.ROLLUP_FILE_URL_${fileId};\n${exports.join(
-        '\n',
-      )}`;
+      emittedCSSIds.push(fileId);
+
+      return `export default import.meta.ROLLUP_FILE_URL_${fileId};`;
+    },
+    generateBundle(options, bundle) {
+      const cssAssets = emittedCSSIds.map(id => this.getFileName(id));
+
+      for (const cssAsset of cssAssets) {
+        bundle[cssAsset].source = bundle[cssAsset].source.replace(
+          assetRe,
+          (match, p1) => {
+            return '/' + this.getFileName(hashToId.get(p1));
+          },
+        );
+      }
     },
   };
 }

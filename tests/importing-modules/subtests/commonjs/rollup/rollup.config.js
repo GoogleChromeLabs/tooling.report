@@ -10,6 +10,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { num, incrementNum } from './num.js';
-incrementNum();
-console.log(num);
+import commonjs from '@rollup/plugin-commonjs';
+
+export default {
+  input: `src/index.js`,
+  plugins: [commonjs()],
+  output: {
+    dir: 'build',
+    format: 'esm',
+  },
+};

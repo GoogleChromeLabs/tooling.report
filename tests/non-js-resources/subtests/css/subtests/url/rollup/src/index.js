@@ -10,6 +10,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { num, incrementNum } from './num.js';
-incrementNum();
-console.log(num);
+import cssURL from 'css:./styles.css';
+document.head.insertAdjacentElement(
+  'afterend',
+  `<link rel="stylesheet" href="${cssURL}">`,
+);

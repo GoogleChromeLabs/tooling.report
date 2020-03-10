@@ -10,6 +10,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { num, incrementNum } from './num.js';
-incrementNum();
-console.log(num);
+import css from 'css:./styles.css';
+const style = document.createElement('style');
+style.textContent = css;
+document.head.append(style);
