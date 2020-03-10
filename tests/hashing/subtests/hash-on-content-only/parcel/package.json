@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "start": "parcel build src/index.js && sed -i.bak '5 s/dist/dist2/' package.json && parcel build src2/index.js && sed -i.bak '5 s/dist2/dist/' package.json"
+  },
+  "main": "dist/index.js",
+  "dependencies": {
+    "parcel": "^2.0.0-alpha.3.2"
+  }
+}
