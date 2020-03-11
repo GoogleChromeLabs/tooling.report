@@ -1,11 +1,12 @@
 {
-  "name": "buildoff",
+  "name": "tooling.report",
   "private": true,
   "scripts": {
     "build": "rollup -c && node lib/move-output.js",
     "debug": "node --inspect-brk node_modules/.bin/rollup -c",
     "dev": "rollup -cw & npm run serve",
-    "serve": "http-server -c-1 .tmp/build/static"
+    "serve": "http-server -s -c-1 .tmp/build/static",
+    "atest": "cd \"tests/$TEST\" && npm i --ignore-scripts --no-progress --no-fund --no-audit --prefer-offline --cache-min 9999999 --no-package-lock && npm start"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^7.0.0",
@@ -17,6 +18,7 @@
     "husky": "^4.0.7",
     "lint-staged": "^10.0.1",
     "marked": "^0.8.0",
+    "pnpm": "^4.10.0",
     "postcss": "^7.0.26",
     "postcss-nested": "^4.2.1",
     "postcss-url": "^8.0.0",

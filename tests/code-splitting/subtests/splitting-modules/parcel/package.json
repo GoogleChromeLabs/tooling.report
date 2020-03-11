@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "start": "parcel build src/entry-1.js src/entry-2.js src/entry-3.js"
+  },
+  "dependencies": {
+    "parcel": "^2.0.0-alpha.3.2"
+  }
+}

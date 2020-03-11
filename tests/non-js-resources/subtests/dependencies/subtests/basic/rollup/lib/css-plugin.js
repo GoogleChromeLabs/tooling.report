@@ -36,7 +36,7 @@ export default function() {
       const realId = id.slice(prefix.length);
       const resolveResult = await this.resolve(realId, importer);
       if (!resolveResult) {
-        throw Error(`Cannot resolve ${resolveResult.id}`);
+        throw Error(`Cannot resolve ${realId} from ${importer}`);
       }
       return prefix + resolveResult.id;
     },
