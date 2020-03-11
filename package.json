@@ -1,5 +1,5 @@
 {
-  "name": "buildoff",
+  "name": "tooling.report",
   "private": true,
   "scripts": {
     "build": "rollup -c && node lib/move-output.js",
