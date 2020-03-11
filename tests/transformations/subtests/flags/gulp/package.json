@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "gulp"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-pre-proc": "^2.0.4"
+  }
+}
