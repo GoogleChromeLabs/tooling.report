@@ -10,18 +10,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-module.exports = {
-  entry: {
-    index: './src/index.js',
-    profile: './src/profile.js',
-  },
+module.exports = [1, 2, 3].map(src => ({
+  entry: `./src${src}/index.js`,
   output: {
     filename: '[name].[contenthash:5].js',
   },
   module: {
     rules: [
       {
-        test: /\.txt$/,
+        test: /\.txt/,
         loader: 'file-loader',
         options: {
           name: '[name].[contenthash:5].[ext]',
@@ -29,14 +26,4 @@ module.exports = {
       },
     ],
   },
-  optimization: {
-    moduleIds: 'hashed',
-    // create a dedicated bootstrap + hash mapping bundle:
-    runtimeChunk: 'single',
-    // extract all shared dependencies from entry bundles:
-    splitChunks: {
-      chunks: 'all',
-      minSize: 0,
-    },
-  },
-};
+}));
