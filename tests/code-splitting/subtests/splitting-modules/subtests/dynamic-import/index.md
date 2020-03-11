@@ -3,7 +3,7 @@ title: Splitting modules between dynamic imports
 importance: 1
 ---
 
-Can the build tool split a single module when used in different split points created via dynamic import?
+Can the build tool split a single module subsets of its exports are used in code-splitted bundles?
 
 **index.js**
 
@@ -29,4 +29,7 @@ export const bar = { name: 'bar' };
 
 In this example, `index.js` needs `foo` from `objects.js`, whereas `lazy.js` needs `bar` from `objects.js`.
 
-Ideally this should inline `foo` and `bar` into the generated bundles for `index.js` and `lazy.js` respectively.
+There are a few outputs that would be considered ideal:
+
+- inline `foo` and `bar` into the generated bundles for `index.js` and `lazy.js` respectively
+- split `objects.js` along export boundaries and inline `foo` and `bar` to `index.js` and `lazy.js` separately
