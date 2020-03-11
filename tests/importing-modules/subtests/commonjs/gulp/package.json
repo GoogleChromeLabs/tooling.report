@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "gulp"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "browserify": "^16.5.0",
+    "vinyl-source-stream": "^2.0.0"
+  }
+}
