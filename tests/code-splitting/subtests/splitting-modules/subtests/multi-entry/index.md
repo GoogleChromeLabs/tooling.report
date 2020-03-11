@@ -1,5 +1,5 @@
 ---
-title: Splitting single modules
+title: Splitting modules between multiple entries
 importance: 1
 ---
 
