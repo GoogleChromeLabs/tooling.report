@@ -10,34 +10,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const path = require('path');
-const TerserPlugin = require('terser-webpack-plugin');
 const WorkerPlugin = require('worker-plugin');
 
 module.exports = {
-  stats: 'minimal',
-  entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'build'),
     // at some point this will probably become the default value:
-    globalObject: 'self'
+    globalObject: 'self',
   },
-  plugins: [
-    new WorkerPlugin()
-  ],
+  plugins: [new WorkerPlugin()],
   optimization: {
-    // runtimeChunk: 'single',
+    // create a dedicated bootstrap + hash mapping bundle:
+    runtimeChunk: 'single',
+    // extract all shared dependencies from entry bundles:
     splitChunks: {
       chunks: 'all',
-      minSize: 0
+      minSize: 0,
     },
-    minimizer: [new TerserPlugin({
-      terserOptions: {
-        mangle: false,
-        output: {
-          beautify: true
-        }
-      }
-    })]
-  }
+  },
 };

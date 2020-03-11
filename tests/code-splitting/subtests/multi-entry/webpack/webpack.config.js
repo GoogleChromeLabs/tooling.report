@@ -10,29 +10,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const path = require('path');
-
 module.exports = {
   stats: 'minimal',
   entry: {
     index: './src/index.js',
     profile: './src/profile.js',
   },
-  output: {
-    path: path.resolve(__dirname, 'build'),
-  },
   optimization: {
+    // create a runtime.js script containing the module loader:
+    // (without this, entry chunks dependencies must be loaded manually)
+    runtimeChunk: 'single',
+
     splitChunks: {
       // extract shared dependencies from entry bundles:
       chunks: 'all',
       // allow any size dependency to be shared:
       minSize: 0,
     },
-    // create a runtime.js script containing the module loader:
-    // (without this, entry chunks dependencies must be loaded manually)
-    runtimeChunk: 'single',
 
-    // minimizer: [new (require('terser-webpack-plugin')({
+    // minimizer: [new (require('terser-webpack-plugin'))({
     //   terserOptions: {
     //     mangle: false,
     //     output: {

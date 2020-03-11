@@ -11,21 +11,18 @@
  * limitations under the License.
  */
 module.exports = {
-  resolveLoader: {
-    alias: {
-      omt: 'worker-plugin/loader?esModule',
-    },
+  entry: {
+    'entry-1': './src/entry-1.js',
+    'entry-2': './src/entry-2.js',
+    'entry-3': './src/entry-3.js',
   },
   optimization: {
-    // create a runtime.js script containing the module loader:
-    // (without this, entry chunks dependencies must be loaded manually)
-    runtimeChunk: 'single',
-
     splitChunks: {
       // extract shared dependencies from entry bundles:
       chunks: 'all',
       // allow any size dependency to be shared:
       minSize: 0,
     },
+    runtimeChunk: 'single',
   },
 };
