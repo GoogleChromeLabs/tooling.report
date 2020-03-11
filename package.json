@@ -44,5 +44,9 @@
     "*.{js,css,json,md,ts,tsx}": [
       "prettier --write"
     ]
+  },
+  "dependencies": {
+    "@types/prismjs": "^1.16.0",
+    "prismjs": "^1.19.0"
   }
 }
