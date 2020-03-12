@@ -51,15 +51,16 @@ This style of import can only be used in `static-build`.
 ## CSS
 
 ```js
-import cssURL, { inline } from 'css:./styles.css';
+import cssURL, { inline, $tabButton } from './styles.css';
 ```
 
-`css:` followed by a path to some CSS will add and minify that CSS to the build.
+Imports ending `.css` are assumed to be CSS.
+
+The CSS supports CSS modules, Sass-style nesting, and will be minified.
 
 - `cssURL` - URL to the CSS resource.
 - `inline` - The text of the CSS.
-
-The CSS can also use Sass-style nesting.
+- `$*` - Other imports starting with \$ refer to class names within the CSS. So, if the CSS contains `.tab-button`, then `$tabButton` will be one of the exports.
 
 ## Markdown
 
