@@ -1,12 +1,12 @@
 import { h } from 'preact';
-import { inline } from 'css:./styles.css';
+import { inline, $container, $footer } from './styles.css';
 
 function Footer() {
   return (
-    <footer>
-      {/* What's the right way to style this? */}
+    <footer class={$footer}>
+      {/* Is there a cleaner way to include the styles? */}
       <style>{inline}</style>
-      <div className="container">
+      <div class={$container}>
         <h2>
           Tooling.<span>Report</span>
         </h2>
