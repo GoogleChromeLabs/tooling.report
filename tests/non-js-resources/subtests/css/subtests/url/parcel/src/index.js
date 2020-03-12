@@ -1,3 +1,3 @@
-import * as styles from './styles.css';
+import url from './styles.css';
 
-console.log(styles);
+console.log(url);
