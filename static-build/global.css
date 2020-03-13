@@ -1,0 +1,23 @@
+:root {
+  /* Blues */
+  --ice-blue: #e6f4ff;
+  --light-blue: #cce9ff;
+  --vivid-blue: #148ae3;
+  --teal-blue: #195380;
+  --backpack-blue: #406480;
+  --denim-blue: #5689b0;
+
+  /* Gra|eys */
+  --background-gray: #edf0f2;
+
+  /* Layout Sizing */
+  --paragraph-max: 460px;
+
+  /* Font Weights */
+  --weight--light: 100;
+  --weight--medium: 300;
+  --weight--bold: 500;
+
+  /* Font Sizing */
+  /* ... */
+}
