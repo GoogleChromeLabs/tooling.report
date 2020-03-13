@@ -10,13 +10,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const path = require('path');
+
+const ImageminPlugin = require('imagemin-webpack-plugin');
 
 module.exports = {
-  stats: 'minimal',
-  mode: 'production',
-  entry: './src/index.js',
-  output: {
-    path: path.resolve(__dirname, 'build'),
+  module: {
+    rules: [
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        loader: 'file-loader',
+      },
+    ],
   },
+  plugins: [new ImageminPlugin({})],
 };
