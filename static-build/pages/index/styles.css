@@ -1,5 +1,4 @@
-/* This isn't actually importing 🤔 */
-@import '../../global.css';
+@import 'static-build/global.css';
 
 html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,

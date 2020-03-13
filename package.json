@@ -40,5 +40,8 @@
     "*.{js,css,json,md,ts,tsx}": [
       "prettier --write"
     ]
+  },
+  "dependencies": {
+    "postcss-import": "^12.0.1"
   }
 }
