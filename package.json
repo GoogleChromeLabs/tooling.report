@@ -40,5 +40,8 @@
     "*.{js,css,json,md,ts,tsx}": [
       "prettier --write"
     ]
+  },
+  "dependencies": {
+    "jsdom": "^16.2.1"
   }
 }

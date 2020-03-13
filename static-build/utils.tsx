@@ -97,16 +97,15 @@ export function renderIssueLinksForTest(test: Test, tool: BuildTool) {
   if (!issues) {
     return;
   }
-  if (!Array.isArray(issues)) {
-    issues = [issues];
-  }
   // TODO: Would be nice to grab the issue titles and stuff
   // https://github.com/GoogleChromeLabs/tooling.report/issues/34
   return (
     <ul class="issues">
       {issues.map(issue => (
         <li>
-          <a href={issue}>Issue</a>
+          <a href={issue.issue}>
+            {issue.title} ({issue.status})
+          </a>
         </li>
       ))}
     </ul>
