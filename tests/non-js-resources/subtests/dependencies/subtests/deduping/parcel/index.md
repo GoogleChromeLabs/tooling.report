@@ -1,5 +1,3 @@
 ---
-result: fail
+result: pass
 ---
-
-Parcel cannot import images or fonts in JavaScript.

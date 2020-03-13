@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "rm -rf build && rollup -c"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "rollup": "^2.0.2"
+  },
+  "dependencies": {
+    "idb": "^5.0.1"
+  }
+}
