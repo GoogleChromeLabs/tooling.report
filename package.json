@@ -6,6 +6,7 @@
     "debug": "node --inspect-brk node_modules/.bin/rollup -c",
     "dev": "rollup -cw & npm run serve",
     "serve": "http-server -s -c-1 .tmp/build/static",
+    "linktests": "ln -s '../../../tests' .tmp/build/static/tests",
     "atest": "cd \"tests/$TEST\" && npm i --ignore-scripts --no-progress --no-fund --no-audit --prefer-offline --cache-min 9999999 --no-package-lock && npm run -s build"
   },
   "devDependencies": {
