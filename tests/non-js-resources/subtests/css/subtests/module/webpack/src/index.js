@@ -10,12 +10,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { className1, className2 } from './styles.css';
+import styles from './styles.css';
 document.body.insertAdjacentElement(
   'afterend',
-  `<div class="${className1}"></div>`,
+  `<div class="${styles.className1}"></div>`,
 );
 document.body.insertAdjacentElement(
   'afterend',
-  `<div class="${className2}"></div>`,
+  `<div class="${styles.className2}"></div>`,
 );

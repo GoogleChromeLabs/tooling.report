@@ -18,7 +18,6 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          'constant-locals-loader',
           {
             loader: MiniCSSExtractPlugin.loader,
             options: {
