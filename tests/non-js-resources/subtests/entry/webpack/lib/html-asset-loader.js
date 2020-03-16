@@ -60,17 +60,21 @@ module.exports = function svgLoader(content) {
       this.loadModule(source, (err, source, map, module) => {
         if (err) return reject(err);
 
+        let assetUrl;
+
         // get the generated hashed asset URL for the subresource:
-        let proxyAsset =
+        let assetName =
           module.buildInfo.assets && Object.keys(module.buildInfo.assets)[0];
 
-        // ...except for JS, where we use spawn-loader to compile entry modules.
-        // Spawn-loader does not produce assets in the parent compiler, instead manually copying them.
-        // To obtain the generated URL, we'll need to execute the created intermediary module that exports it:
-        if (!proxyAsset) {
-          proxyAsset = '' + executeModule(source, outputOpts.publicPath);
+        if (assetName) {
+          assetUrl = (outputOpts.publicPath || '') + assetName;
+        } else {
+          // For JS we use spawn-loader to compile entry modules, which doesn't produce assets in the root compiler (it manually copies them).
+          // To obtain the generated URL, we'll need to execute the created intermediary module that exports it:
+          assetUrl = '' + executeModule(source, outputOpts.publicPath);
         }
-        resolve(proxyAsset);
+
+        resolve(assetUrl);
       });
     });
 

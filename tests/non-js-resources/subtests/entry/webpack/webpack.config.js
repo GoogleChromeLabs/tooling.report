@@ -17,6 +17,7 @@ module.exports = {
     index: './src/index.html',
   },
   output: {
+    publicPath: '/',
     chunkFilename: '[name].[contenthash:5].js',
   },
   module: {
