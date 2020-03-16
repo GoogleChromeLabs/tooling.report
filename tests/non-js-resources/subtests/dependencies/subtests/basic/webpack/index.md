@@ -2,4 +2,4 @@
 result: pass
 ---
 
-Plugin authors can use Rollup's [`emitFile` method](https://rollupjs.org/guide/en/#thisemitfileemittedfile-emittedchunk--emittedasset--string) to add assets into the graph.
+`css-loader` parses CSS and generates a JavaScript module that exports the CSS stylesheet as a String. Any subresources are converted into dependency imports, which means CSS subresources follow the semantics of JavaScript dependencies.

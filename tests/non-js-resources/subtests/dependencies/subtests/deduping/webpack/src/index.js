@@ -11,7 +11,9 @@
  * limitations under the License.
  */
 import cssURL from './styles.css';
+import imgURL from './image.png';
 document.head.insertAdjacentHTML(
   'afterend',
   `<link rel="stylesheet" href="${cssURL}">`,
 );
+console.log(imgURL);
