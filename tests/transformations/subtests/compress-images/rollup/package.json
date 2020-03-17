@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "rm -rf build && rollup -c"
+  },
+  "devDependencies": {
+    "imagemin": "^7.0.1",
+    "imagemin-optipng": "^7.1.0",
+    "rollup": "^2.0.2"
+  }
+}
