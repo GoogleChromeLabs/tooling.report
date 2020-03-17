@@ -4,9 +4,6 @@
     "build": "rm -rf build && rollup -c"
   },
   "devDependencies": {
-    "posthtml": "^0.12.0",
-    "posthtml-urls": "^1.0.0",
     "rollup": "^2.0.2"
-  },
-  "dependencies": {}
+  }
 }
