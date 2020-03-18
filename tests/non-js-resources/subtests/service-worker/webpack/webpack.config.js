@@ -11,15 +11,20 @@
  * limitations under the License.
  */
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const AutoSWPlugin = require('./lib/auto-sw-plugin');
 
 module.exports = {
+  output: {
+    filename: '[name].[contenthash:5].js',
+  },
   module: {
     rules: [
       {
         test: /\.png$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]',
+          name: '[name].[contenthash:5].[ext]',
         },
       },
       {
@@ -30,7 +35,20 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].css',
+      filename: '[name].[contenthash:5].css',
+    }),
+
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      minify: {
+        removeScriptTypeAttributes: true,
+      },
+    }),
+
+    // Automatically compile navigator.serviceWorker.register("..") using Webpack.
+    // This also inlines a (optionally filtered) Array of asset URLs as `BUILD_ASSETS`.
+    new AutoSWPlugin({
+      filename: 'sw.js',
     }),
   ],
 };

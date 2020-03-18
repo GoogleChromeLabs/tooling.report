@@ -11,6 +11,6 @@
  * limitations under the License.
  */
 import './styles.css';
-import swURL from 'worker-plugin/loader?name=sw!./sw.js';
 
-navigator.serviceWorker.register(swURL);
+// AutoSWPlugin detects this and bundles the SW with an embeded list of asset URLs:
+navigator.serviceWorker.register('./sw.js');
