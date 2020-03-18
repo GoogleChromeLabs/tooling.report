@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "webpack -p"
+  },
+  "devDependencies": {
+    "css-loader": "3.4.2",
+    "extract-loader": "5.0.1",
+    "file-loader": "5.1.0",
+    "loader-utils": "1.4.0",
+    "jsdom": "16.2.1",
+    "spawn-loader": "6.0.0",
+    "webpack": "4.41.5",
+    "webpack-cli": "3.3.10",
+    "webpack-sources": "1.4.3"
+  }
+}

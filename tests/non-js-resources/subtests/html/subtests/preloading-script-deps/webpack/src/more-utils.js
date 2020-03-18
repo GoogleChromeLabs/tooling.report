@@ -10,13 +10,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const path = require('path');
-
-module.exports = {
-  stats: 'minimal',
-  mode: 'production',
-  entry: './src/index.js',
-  output: {
-    path: path.resolve(__dirname, 'build'),
-  },
-};
+export function em(msg) {
+  return '***' + msg + '***';
+}
