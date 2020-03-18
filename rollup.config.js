@@ -25,7 +25,7 @@ import runScript from './lib/run-script';
 import markdownPlugin from './lib/markdown-plugin';
 import testDataPlugin from './lib/test-data-plugin';
 import * as config from './config.js';
-import metadataProcessor from './lib/markdown-validator';
+import metadataProcessor from './lib/markdown-processor';
 
 function resolveFileUrl({ fileName }) {
   return JSON.stringify(fileName.replace(/^static\//, '/'));
