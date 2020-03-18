@@ -63,7 +63,11 @@ interface TestResult {
 
 interface ResultMeta {
   result: 'pass' | 'fail' | 'partial';
-  issue?: string | string[];
+  issue?: Array<{
+    title: string;
+    status: string;
+    url: string;
+  }>;
 }
 
 interface ToolSummary {

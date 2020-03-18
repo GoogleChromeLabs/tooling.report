@@ -25,7 +25,7 @@ import runScript from './lib/run-script';
 import markdownPlugin from './lib/markdown-plugin';
 import testDataPlugin from './lib/test-data-plugin';
 import * as config from './config.js';
-import validateMarkdownData from './lib/markdown-validator';
+import metadataProcessor from './lib/markdown-processor';
 
 function resolveFileUrl({ fileName }) {
   return JSON.stringify(fileName.replace(/^static\//, '/'));
@@ -40,7 +40,7 @@ export default async function({ watch }) {
     resolveDirsPlugin(['static-build', 'client', 'tests']),
     assetPlugin(),
     constsPlugin({ config }),
-    markdownPlugin({ metadataValidator: validateMarkdownData }),
+    markdownPlugin({ metadataProcessor }),
   ];
   const dir = '.tmp/build';
   const staticPath = 'static/[name]-[hash][extname]';
