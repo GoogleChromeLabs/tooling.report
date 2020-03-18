@@ -12,28 +12,18 @@
  */
 
 const { src, dest, series } = require('gulp');
-const rev = require('gulp-rev');
-const revCollector = require('gulp-rev-collector');
+const RevAll = require('gulp-rev-all');
 
-function hashBackground() {
-  return src('src/bg.svg')
-    .pipe(rev())
-    .pipe(dest('build/svg'))
-    .pipe(rev.manifest())
-    .pipe(dest('rev/svg'));
+function test1() {
+  return src('src1/*.svg')
+    .pipe(RevAll.revision())
+    .pipe(dest('build/svg1'));
 }
 
-function hashImg() {
-  return src(['rev/svg/*.json', 'src/img.svg'])
-    .pipe(
-      revCollector({
-        replaceReved: true,
-      }),
-    )
-    .pipe(rev())
-    .pipe(dest('build/svg'))
-    .pipe(rev.manifest())
-    .pipe(dest('rev/svg'));
+function test2() {
+  return src('src2/*.svg')
+    .pipe(RevAll.revision())
+    .pipe(dest('build/svg2'));
 }
 
-exports.default = series(hashBackground, hashImg);
+exports.default = series(test1, test2);
