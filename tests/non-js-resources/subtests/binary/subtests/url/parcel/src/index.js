@@ -1,2 +1,2 @@
-import * as something from './binary.bin';
-console.log(something);
+import url from './binary.bin';
+console.log(url);

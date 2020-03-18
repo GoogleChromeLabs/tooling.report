@@ -88,6 +88,28 @@ export function calculateScore(
   return { score, possible };
 }
 
+export function calculateScoreTotals(tests: Tests): ToolSummary[] {
+  const tools = config.testSubjects;
+
+  return tools.sort().map(tool => {
+    return Object.values(tests).reduce(
+      (score, test) => {
+        let sub_score = calculateScore(test, tool);
+
+        score.total += sub_score.score;
+        score.possible += sub_score.possible;
+
+        return score;
+      },
+      {
+        tool,
+        total: 0,
+        possible: 0,
+      },
+    );
+  });
+}
+
 export function renderIssueLinksForTest(test: Test, tool: BuildTool) {
   const result = test.results[tool];
   if (!result) {

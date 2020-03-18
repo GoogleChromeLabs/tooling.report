@@ -25,22 +25,10 @@ import runScript from './lib/run-script';
 import markdownPlugin from './lib/markdown-plugin';
 import testDataPlugin from './lib/test-data-plugin';
 import * as config from './config.js';
+import validateMarkdownData from './lib/markdown-validator';
 
 function resolveFileUrl({ fileName }) {
   return JSON.stringify(fileName.replace(/^static\//, '/'));
-}
-
-const validResults = new Set(['pass', 'fail', 'partial']);
-
-function validateMarkdownData(id, data) {
-  if (!id.startsWith('tests/')) return;
-  if ('result' in data && !validResults.has(data.result)) {
-    throw Error(
-      `Result must be one of ${[...validResults].join(', ')}. Found "${
-        data.result
-      }" in ${id}`,
-    );
-  }
 }
 
 export default async function({ watch }) {
@@ -50,7 +38,6 @@ export default async function({ watch }) {
   const commonPlugins = () => [
     tsPluginInstance,
     resolveDirsPlugin(['static-build', 'client', 'tests']),
-    cssPlugin(),
     assetPlugin(),
     constsPlugin({ config }),
     markdownPlugin({ metadataValidator: validateMarkdownData }),
@@ -88,6 +75,7 @@ export default async function({ watch }) {
         resolveFileUrl,
       ),
       ...commonPlugins(),
+      cssPlugin(),
       nodeExternalPlugin(),
       testDataPlugin(),
       runScript(dir + '/index.js'),

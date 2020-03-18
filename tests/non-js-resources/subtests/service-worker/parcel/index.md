@@ -1,5 +1,8 @@
 ---
 result: fail
+issue:
+  - https://github.com/parcel-bundler/parcel/issues/4227
+  - https://github.com/parcel-bundler/parcel/issues/3661
 ---
 
-While Parcel 1 would detect ServiceWorkers, Parcel 2 does not (at the time of writing).
+Parcel handles ServiceWorkers correctly, but doesn’t seem to give you access to the asset list.

@@ -11,6 +11,7 @@ Imagine you had an 'index' page and a 'profile' page. Each has their own root sc
 import { logCaps } from './utils.js';
 import { exclaim } from './exclaim.js';
 logCaps(exclaim('This is index'));
+import('./lazy.js');
 ```
 
 **exclaim.js**
@@ -26,6 +27,7 @@ export function exclaim(msg) {
 ```js
 import { logCaps } from './utils.js';
 logCaps('This is profile');
+import('./lazy.js');
 ```
 
 **utils.js**
@@ -36,4 +38,10 @@ export function logCaps(msg) {
 }
 ```
 
-Can HTML files be output where `index.html` contains, inlinined, everything it needs. Whereas `profile.html` will continue to use external scripts.
+**lazy.js**
+
+```js
+console.log('Totally lazy');
+```
+
+Can HTML files be output where `index.html` contains, inlinined, all static imports (but not dynamic imports). Whereas `profile.html` will continue to use external scripts. Both pages must reference the same `lazy.js`.

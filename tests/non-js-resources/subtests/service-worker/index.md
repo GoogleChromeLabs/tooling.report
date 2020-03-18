@@ -12,3 +12,5 @@ To pass this test, the service worker needs to be aware of the final URL of:
 - All assets.
 - All CSS.
 - All fonts included in the CSS.
+
+The cache name should also be versioned based on the content of all cached files, and the service worker itself.

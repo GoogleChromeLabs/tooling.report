@@ -1,5 +1,8 @@
 ---
 result: fail
+issue:
+  - https://github.com/parcel-bundler/parcel/issues/4319
+  - https://github.com/parcel-bundler/parcel/issues/4303
 ---
 
-Parcel does not split common depencies between entry points at all.
+Apart from the issues encountered in `code-splitting/multi-entry`, parcel does split out common dependencies above a certain size threshold, but does not split the module itself.

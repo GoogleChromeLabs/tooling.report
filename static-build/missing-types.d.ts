@@ -18,12 +18,6 @@ declare module 'client-bundle:*' {
   export const imports: string[];
 }
 
-declare module 'css:*' {
-  const value: string;
-  export default value;
-  export const inline: string;
-}
-
 declare module 'test-data:' {
   const value: Tests;
   export default value;
@@ -70,4 +64,10 @@ interface TestResult {
 interface ResultMeta {
   result: 'pass' | 'fail' | 'partial';
   issue?: string | string[];
+}
+
+interface ToolSummary {
+  tool: BuildTool;
+  total: number;
+  possible: number;
 }

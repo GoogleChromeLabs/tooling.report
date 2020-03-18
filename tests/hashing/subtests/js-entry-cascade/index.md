@@ -26,3 +26,5 @@ export function logCaps(msg) {
 ```
 
 Assuming `index.js` and `profile.js` are entry points, and the above is code-split into three files, does changing the contents of `utils.js` (which changes the file name hash) also change the hashes of `index.js` and `profile.js`?
+
+**Note:** for tools that move hashes out of bundles, it may not be necessary to cascade hash changes.
