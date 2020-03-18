@@ -66,6 +66,6 @@ interface ResultMeta {
   issue?: Array<{
     title: string;
     status: string;
-    issue: string;
+    url: string;
   }>;
 }

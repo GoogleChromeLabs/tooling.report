@@ -103,7 +103,7 @@ export function renderIssueLinksForTest(test: Test, tool: BuildTool) {
     <ul class="issues">
       {issues.map(issue => (
         <li>
-          <a href={issue.issue}>
+          <a href={issue.url}>
             {issue.title} ({issue.status})
           </a>
         </li>
