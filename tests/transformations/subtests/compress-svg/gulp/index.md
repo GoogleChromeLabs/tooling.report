@@ -2,4 +2,4 @@
 result: pass
 ---
 
-There are variety of plugins available to minify javascript. Simple choose your plugin and pipe it thru the gulp task. In this test, we used `gulp-uglify`.
+This test has been written with `gulp-svgmin` which is built based on SVGO.

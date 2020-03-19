@@ -1,5 +1,5 @@
 ---
-result: fail
+result: pass
 ---
 
-Browserify does not support this out of the box.
+(Browserify test) although browserify does not support this out of the box, tinyify plugin make this possible.
