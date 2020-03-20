@@ -104,12 +104,6 @@ export default function() {
         ),
       );
     },
-    renderChunk(code, { fileName }) {
-      return code.replace(
-        'System.register(',
-        `System.register('./${fileName}', `,
-      );
-    },
     async generateBundle(options, bundle) {
       const htmlAssets = emittedHTMLIds.map(id => this.getFileName(id));
 
