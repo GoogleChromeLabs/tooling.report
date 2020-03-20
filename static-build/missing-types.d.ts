@@ -13,9 +13,15 @@
 /// <reference path="../missing-types.d.ts" />
 
 declare module 'client-bundle:*' {
-  const value: string;
-  export default value;
+  const url: string;
+  export default url;
   export const imports: string[];
+}
+
+declare module 'css-bundle:*' {
+  const url: string;
+  export default url;
+  export const inline: string;
 }
 
 declare module 'test-data:' {

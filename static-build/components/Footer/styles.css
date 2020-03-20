@@ -1,0 +1,41 @@
+@import '../Logo/styles.css';
+
+.footer {
+  background: var(--backpack-blue);
+  padding: var(--spacing-6);
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.rule {
+  border: 0;
+  border-top: 1px solid var(--denim-blue);
+}
+
+.desc {
+  font-size: var(--font-reading-subdued-size);
+  line-height: 2;
+  color: var(--ice-blue);
+}
+
+.linkList {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.linkItem {
+  margin-right: var(--spacing-3);
+}
+
+.linkItself {
+  color: var(--ice-blue);
+
+  &:hover {
+    color: white;
+  }
+}

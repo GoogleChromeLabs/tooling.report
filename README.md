@@ -48,19 +48,24 @@ import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
 
 This style of import can only be used in `static-build`.
 
-## CSS
+## CSS modules
 
 ```js
-import cssURL, { inline, $tabButton } from './styles.css';
+import { $tabButton, $promo, $feature } from './styles.css';
 ```
 
-Imports ending `.css` are assumed to be CSS.
+Imports ending `.css` are assumed to be CSS modules. All exports are derived from classnames in the CSS. So, if the CSS contains `.tab-button`, then `$tabButton` will be one of the exports.
 
-The CSS supports CSS modules, Sass-style nesting, and will be minified.
+## CSS bundles
+
+```js
+import cssURL, { inline } from 'css-bundle:./styles.css';
+```
+
+The CSS supports CSS modules, Sass-style nesting, imports will be inlined, and the output will be minified.
 
 - `cssURL` - URL to the CSS resource.
 - `inline` - The text of the CSS.
-- `$*` - Other imports starting with \$ refer to class names within the CSS. So, if the CSS contains `.tab-button`, then `$tabButton` will be one of the exports.
 
 ## Markdown
 

@@ -1,0 +1,10 @@
+.logo {
+  font-weight: var(--weight--light);
+  color: var(--light-blue);
+  font-size: var(--heading-3);
+  line-height: 0;
+}
+
+.report {
+  color: var(--ice-blue);
+}

@@ -11,9 +11,11 @@
  * limitations under the License.
  */
 
-import { h, FunctionalComponent, JSX } from 'preact';
-
+import { h, FunctionalComponent } from 'preact';
+import sharedStyles from 'css-bundle:static-build/shared/styles/index.css';
 import { githubLink } from '../../utils.js';
+import pageStyles from 'css-bundle:./styles.css';
+import Footer from '../../components/Footer/index';
 
 interface Props {
   test: Test;
@@ -25,41 +27,48 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
       <head>
         <title>Buildoff</title>
         <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <link rel="stylesheet" href={sharedStyles} />
+        <link rel="stylesheet" href={pageStyles} />
         {/* TODO: favicon */}
       </head>
       <body>
-        <h1>{test.meta.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: test.html }}></div>
-        {test.results && (
-          <section>
-            {Object.entries(test.results).map(([subject, result]) => (
-              <div>
-                <h1>
-                  {subject}:{' '}
-                  {result.meta.result === 'pass'
-                    ? 'Pass'
-                    : result.meta.result === 'fail'
-                    ? 'Fail'
-                    : 'So-so'}
-                </h1>
-                <div dangerouslySetInnerHTML={{ __html: result.html }}></div>
-                <a href={githubLink(result.repositoryPath)}>Inspect the test</a>
-              </div>
-            ))}
-          </section>
-        )}
-        {test.subTests && (
-          <section>
-            <h1>Sub tests:</h1>
-            <ul>
-              {Object.entries(test.subTests).map(([path, test]) => (
-                <li>
-                  <a href={path + '/'}>{test.meta.title}</a>
-                </li>
+        <main>
+          <h1>{test.meta.title}</h1>
+          <div dangerouslySetInnerHTML={{ __html: test.html }}></div>
+          {test.results && (
+            <section>
+              {Object.entries(test.results).map(([subject, result]) => (
+                <div>
+                  <h1>
+                    {subject}:{' '}
+                    {result.meta.result === 'pass'
+                      ? 'Pass'
+                      : result.meta.result === 'fail'
+                      ? 'Fail'
+                      : 'So-so'}
+                  </h1>
+                  <div dangerouslySetInnerHTML={{ __html: result.html }}></div>
+                  <a href={githubLink(result.repositoryPath)}>
+                    Inspect the test
+                  </a>
+                </div>
               ))}
-            </ul>
-          </section>
-        )}
+            </section>
+          )}
+          {test.subTests && (
+            <section>
+              <h1>Sub tests:</h1>
+              <ul>
+                {Object.entries(test.subTests).map(([path, test]) => (
+                  <li>
+                    <a href={path + '/'}>{test.meta.title}</a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+        </main>
+        <Footer />
       </body>
     </html>
   );

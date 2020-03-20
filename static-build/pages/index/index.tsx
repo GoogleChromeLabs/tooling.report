@@ -14,9 +14,10 @@ import { h, FunctionalComponent, JSX } from 'preact';
 
 import { renderIssueLinksForTest } from '../../utils.js';
 
-import cssPath from './styles.css';
-import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
 import config from 'consts:config';
+import sharedStyles from 'css-bundle:static-build/shared/styles/index.css';
+import pageStyles from 'css-bundle:./styles.css';
+import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
 import { calculateScore, calculateScoreTotals } from 'static-build/utils';
 import Footer from '../../components/Footer/index';
 
@@ -92,17 +93,20 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
         <title>Buildoff</title>
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         {/* TODO: favicon */}
-        <link rel="stylesheet" href={cssPath} />
+        <link rel="stylesheet" href={sharedStyles} />
+        <link rel="stylesheet" href={pageStyles} />
         <script type="module" src={bundleURL} />
         {imports.map(v => (
           <link rel="preload" as="script" href={v} crossOrigin="" />
         ))}
       </head>
       <body>
-        <h1>Summary</h1>
-        <section>{renderSummary(tests)}</section>
-        <h1>Tests</h1>
-        <section>{renderTests(tests)}</section>
+        <main>
+          <h1>Summary</h1>
+          <section>{renderSummary(tests)}</section>
+          <h1>Tests</h1>
+          <section>{renderTests(tests)}</section>
+        </main>
         <Footer />
       </body>
     </html>
