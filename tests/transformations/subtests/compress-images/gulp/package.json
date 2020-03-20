@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "gulp"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-brotli": "^2.0.2",
+    "gulp-smushit": "^1.2.0"
+  }
+}
