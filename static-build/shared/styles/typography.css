@@ -11,7 +11,7 @@
 
 html {
   font-family: var(--font-reading);
-  color: var(--text-gray);
+  color: var(--backpack-blue);
   font-size: var(--font-reading-size);
   font-weight: 300;
   line-height: var(--font-reading-lineheight);
@@ -19,6 +19,7 @@ html {
 
 p {
   max-width: 50ch;
+  line-height: 2;
 }
 
 a {
@@ -27,4 +28,15 @@ a {
   &:hover {
     color: var(--teal-blue);
   }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure {
+  margin: 0;
 }

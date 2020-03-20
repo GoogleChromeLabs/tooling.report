@@ -6,12 +6,3 @@
   --spacing-5: 2rem;
   --spacing-6: 3rem;
 }
-
-body {
-  margin: 0;
-  padding: 0;
-}
-
-main {
-  padding: var(--spacing-4) var(--spacing-6);
-}
