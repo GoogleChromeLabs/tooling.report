@@ -27,7 +27,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
   return (
     <html>
       <head>
-        <title>Buildoff</title>
+        <title>Tooling.Report: {test.meta.title}</title>
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <link rel="stylesheet" href={sharedStyles} />
         <link rel="stylesheet" href={pageStyles} />

@@ -93,7 +93,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
   return (
     <html>
       <head>
-        <title>Buildoff</title>
+        <title>Tooling.Report</title>
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         {/* TODO: favicon */}
         <link rel="stylesheet" href={sharedStyles} />
