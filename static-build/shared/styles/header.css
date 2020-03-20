@@ -1,9 +1,0 @@
-header {
-  min-height: 80vh;
-  padding: 0 var(--spacing-6);
-  background: white;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}

@@ -15,9 +15,7 @@ import { h, FunctionalComponent } from 'preact';
 import sharedStyles from 'css-bundle:static-build/shared/styles/index.css';
 import { githubLink } from '../../utils.js';
 import pageStyles from 'css-bundle:./styles.css';
-import Logo from '../../components/Logo/index';
 import Footer from '../../components/Footer/index';
-import LinkList from '../../components/LinkList/index';
 
 interface Props {
   test: Test;
@@ -34,35 +32,11 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
         {/* TODO: favicon */}
       </head>
       <body>
-        <header>
-          <Logo />
-          <section>
-            <small>feature</small>
-            <h2>{test.meta.title}</h2>
-            <p>TODO: use a description from front matter</p>
-            <LinkList
-              links={[
-                { title: 'FAQ', href: '#' },
-                { title: 'Contribute', href: '#' },
-                { title: 'Have an issue?', href: '#' },
-              ]}
-            />
-          </section>
-        </header>
         <main>
-          {test.subTests && (
-            <section>
-              <h3>Capabilities & Verification</h3>
-              <p>
-                Below is a list of related features, capabilities and tests to{' '}
-                {test.meta.title}. Each test has a detail page outlining the
-                what, why and how of the test.
-              </p>
-            </section>
-          )}
-
+          <h1>{test.meta.title}</h1>
+          <div dangerouslySetInnerHTML={{ __html: test.html }}></div>
           {test.results && (
-            <article>
+            <section>
               {Object.entries(test.results).map(([subject, result]) => (
                 <div>
                   <h1>
@@ -79,12 +53,11 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                   </a>
                 </div>
               ))}
-              <div dangerouslySetInnerHTML={{ __html: test.html }}></div>
-            </article>
+            </section>
           )}
-
           {test.subTests && (
             <section>
+              <h1>Sub tests:</h1>
               <ul>
                 {Object.entries(test.subTests).map(([path, test]) => (
                   <li>

@@ -81,8 +81,3 @@ interface ToolSummary {
   total: number;
   possible: number;
 }
-
-interface Link {
-  title: string;
-  href: string;
-}

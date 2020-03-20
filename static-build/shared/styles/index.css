@@ -1,14 +1,4 @@
 @import 'colors.css';
 @import 'typography.css';
 @import 'spacing.css';
-
-@import 'body.css';
-@import 'header.css';
-@import 'main.css';
-
 @import 'components/Footer/styles.css';
-@import 'components/LinkList/styles.css';
-
-:root {
-  --section-aside-width: 150px;
-}

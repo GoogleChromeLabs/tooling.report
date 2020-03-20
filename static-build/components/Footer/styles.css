@@ -3,22 +3,6 @@
 .footer {
   background: var(--backpack-blue);
   padding: var(--spacing-6);
-
-  & a {
-    color: var(--ice-blue);
-
-    &:hover {
-      color: white;
-    }
-  }
-
-  & h2 {
-    color: var(--light-blue);
-
-    & > span {
-      color: var(--ice-blue);
-    }
-  }
 }
 
 .container {
@@ -35,4 +19,23 @@
   font-size: var(--font-reading-subdued-size);
   line-height: 2;
   color: var(--ice-blue);
+}
+
+.linkList {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.linkItem {
+  margin-right: var(--spacing-3);
+}
+
+.linkItself {
+  color: var(--ice-blue);
+
+  &:hover {
+    color: white;
+  }
 }
