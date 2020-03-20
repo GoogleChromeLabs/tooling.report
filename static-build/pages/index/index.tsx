@@ -17,6 +17,7 @@ import { renderIssueLinksForTest } from '../../utils.js';
 import config from 'consts:config';
 import sharedStyles from 'css-bundle:static-build/shared/styles/index.css';
 import pageStyles from 'css-bundle:./styles.css';
+import { $topSticky, $comparedTools, $sidebarLayout } from './styles.css';
 import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
 import { calculateScore, calculateScoreTotals } from 'static-build/utils';
 import Logo from '../../components/Logo/index';
@@ -135,7 +136,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
           </section>
 
           <section id="configure">
-            <div style="display: grid; grid-template-columns: var(--section-aside-width) 1fr;">
+            <div class={$sidebarLayout}>
               <aside>
                 <h3>Configure</h3>
                 <small>Which build tools do you want to compare?</small>
@@ -162,25 +163,25 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
             </div>
           </section>
 
-          <div style="position: sticky; top: 0; display:flex; margin-left: var(--section-aside-width);">
+          <div className={`${$comparedTools} ${$topSticky}`}>
             <figure>
-              <img src="" style="display: none;" />
+              <img />
               <figcaption>Webpack v4</figcaption>
             </figure>
             <figure>
-              <img src="" style="display: none;" />
+              <img />
               <figcaption>Webpack v4</figcaption>
             </figure>
             <figure>
-              <img src="" style="display: none;" />
+              <img />
               <figcaption>Webpack v4</figcaption>
             </figure>
           </div>
 
           <section id="summary">
-            <div style="display: grid; grid-template-columns: var(--section-aside-width) 1fr;">
+            <div class={$sidebarLayout}>
               <aside>
-                <h3 style="position: sticky; top: 0;">Summary</h3>
+                <h3 class={$topSticky}>Summary</h3>
                 <small>Results at the highest level</small>
               </aside>
               <div>{renderSummary(tests)}</div>
@@ -188,9 +189,9 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
           </section>
 
           <section id="overview">
-            <div style="display: grid; grid-template-columns: var(--section-aside-width) 1fr;">
+            <div class={$sidebarLayout}>
               <aside>
-                <h3 style="position: sticky; top: 0;">Overview</h3>
+                <h3 class={$topSticky}>Overview</h3>
                 <ul>
                   <li>section 1</li>
                   <li>section 2</li>
@@ -202,9 +203,9 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
           </section>
 
           <section id="configuration">
-            <div style="display: grid; grid-template-columns: var(--section-aside-width) 1fr;">
+            <div class={$sidebarLayout}>
               <aside>
-                <h3 style="position: sticky; top: 0;">Configuration</h3>
+                <h3 class={$topSticky}>Configuration</h3>
                 <ul>
                   <li>section 1</li>
                   <li>section 2</li>
@@ -216,9 +217,9 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
           </section>
 
           <section id="todo:next-in-array">
-            <div style="display: grid; grid-template-columns: var(--section-aside-width) 1fr;">
+            <div class={$sidebarLayout}>
               <aside>
-                <h3 style="position: sticky; top: 0;">Configuration</h3>
+                <h3 class={$topSticky}>Configuration</h3>
                 <ul>
                   <li>section 1</li>
                   <li>section 2</li>

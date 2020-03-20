@@ -1,4 +1,18 @@
-/*
-  specify the components on the page you need styles for
-  note: should closely match the component list in the ./index.tsx file near here
-*/
+.topSticky {
+  position: sticky;
+  top: 0;
+}
+
+.comparedTools {
+  display: flex;
+  margin-left: var(--section-aside-width);
+
+  & img {
+    display: none;
+  }
+}
+
+.sidebarLayout {
+  display: grid;
+  grid-template-columns: var(--section-aside-width) 1fr;
+}
