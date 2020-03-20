@@ -1,4 +1,4 @@
-@import 'Logo/styles.css';
+@import '../Logo/styles.css';
 
 .footer {
   background: var(--backpack-blue);

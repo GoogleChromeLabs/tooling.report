@@ -11,11 +11,10 @@
  * limitations under the License.
  */
 
-import { h, FunctionalComponent, JSX } from 'preact';
-import { default as sharedStyles } from 'static-build/shared/styles/index.css';
+import { h, FunctionalComponent } from 'preact';
+import sharedStyles from 'css-bundle:static-build/shared/styles/index.css';
 import { githubLink } from '../../utils.js';
-
-import { default as pageStyles } from './styles.css';
+import pageStyles from 'css-bundle:./styles.css';
 import Footer from '../../components/Footer/index';
 
 interface Props {

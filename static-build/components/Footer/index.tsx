@@ -1,7 +1,6 @@
 import { h } from 'preact';
 import Logo from '../../components/Logo/index';
 import {
-  inline,
   $container,
   $footer,
   $rule,
@@ -14,8 +13,6 @@ import {
 function Footer() {
   return (
     <footer class={$footer}>
-      {/* Is there a cleaner way to include the styles? */}
-      <style>{inline}</style>
       <div class={$container}>
         <Logo />
         <p class={$desc}>

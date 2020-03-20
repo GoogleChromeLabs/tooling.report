@@ -14,12 +14,11 @@ import { h, FunctionalComponent, JSX } from 'preact';
 
 import { renderIssueLinksForTest } from '../../utils.js';
 
-import { default as sharedStyles } from 'static-build/shared/styles/index.css';
-import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
 import config from 'consts:config';
+import sharedStyles from 'css-bundle:static-build/shared/styles/index.css';
+import pageStyles from 'css-bundle:./styles.css';
+import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
 import { calculateScore, calculateScoreTotals } from 'static-build/utils';
-
-import { default as pageStyles } from './styles.css';
 import Footer from '../../components/Footer/index';
 
 interface Props {
