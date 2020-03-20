@@ -1,0 +1,10 @@
+.linkList {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.linkItem {
+  margin-right: var(--spacing-3);
+}
