@@ -11,5 +11,5 @@
  * limitations under the License.
  */
 
-const { logExclaim } = require('./utils/utils.js');
-logExclaim('This is profile');
+const { bar } = require('./objects.js');
+console.log(bar, '!');

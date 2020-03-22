@@ -11,6 +11,19 @@
  * limitations under the License.
  */
 
-const logCaps = require('./util/utils.js');
-const exclaim = require('./util/exclaim.js');
-logCaps(exclaim('This is index'));
+const { dest } = require('gulp');
+const browserify = require('browserify');
+const source = require('vinyl-source-stream');
+
+function factorbundle() {
+  const files = ['./src/component-1.js', './src/component-2.js'];
+  return browserify(files)
+    .plugin('factor-bundle', {
+      outputs: ['./build/component-1.js', './build/component-2.js'],
+    })
+    .bundle()
+    .pipe(source('common.js'))
+    .pipe(dest('build/'));
+}
+
+exports.default = factorbundle;

@@ -11,5 +11,7 @@
  * limitations under the License.
  */
 
-const { logCaps } = require('./utils/utils.js');
-logCaps('This is index');
+const { foo } = require('./utils/objects.js');
+console.log(foo);
+
+require('./lazy.js');

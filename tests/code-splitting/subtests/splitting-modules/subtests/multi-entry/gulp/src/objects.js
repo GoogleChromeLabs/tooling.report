@@ -11,13 +11,8 @@
  * limitations under the License.
  */
 
-function logCaps(msg) {
-  console.log(msg.toUpperCase());
-}
+const foo = { name: 'foo' };
+const bar = { name: 'bar' };
 
-function logExclaim(msg) {
-  console.log(msg + '!');
-}
-
-exports.logCaps = logCaps;
-exports.logExclaim = logExclaim;
+exports.bar = bar;
+exports.foo = foo;

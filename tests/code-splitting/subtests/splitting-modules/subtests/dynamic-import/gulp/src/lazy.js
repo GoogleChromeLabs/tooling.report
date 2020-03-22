@@ -10,7 +10,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+const { bar } = require('./utils/objects.js');
 
-const logCaps = require('./util/utils.js');
-const exclaim = require('./util/exclaim.js');
-logCaps(exclaim('This is index'));
+exports.lazy = () => {
+  console.log(bar);
+};

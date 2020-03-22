@@ -11,6 +11,5 @@
  * limitations under the License.
  */
 
-const logCaps = require('./util/utils.js');
-const exclaim = require('./util/exclaim.js');
-logCaps(exclaim('This is index'));
+const { foo } = require('./objects.js');
+console.log(foo);
