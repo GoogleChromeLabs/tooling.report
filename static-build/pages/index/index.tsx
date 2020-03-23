@@ -17,7 +17,12 @@ import { renderIssueLinksForTest } from '../../utils.js';
 import config from 'consts:config';
 import sharedStyles from 'css-bundle:static-build/shared/styles/index.css';
 import pageStyles from 'css-bundle:./styles.css';
-import { $topSticky, $comparedTools, $sidebarLayout } from './styles.css';
+import {
+  $topSticky,
+  $comparedTools,
+  $sidebarLayout,
+  $header,
+} from './styles.css';
 import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
 import { calculateScore, calculateScoreTotals } from 'static-build/utils';
 import Logo from '../../components/Logo/index';
@@ -107,7 +112,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
       <body>
         <header>
           <Logo />
-          <section>
+          <section class={$header}>
             <h2>What is Tooling Report?</h2>
             <p>
               A quick and easy way to figure out what the best tool for your

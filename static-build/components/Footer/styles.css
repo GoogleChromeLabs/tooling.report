@@ -32,7 +32,7 @@
 }
 
 .desc {
-  font-size: var(--font-reading-subdued-size);
-  line-height: 2;
+  font-size: var(--font-size--detail);
+  line-height: var(--font-lineheight--extended);
   color: var(--ice-blue);
 }
