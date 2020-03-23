@@ -5,14 +5,15 @@
   --font-lineheight--body: 1.5;
   --font-lineheight--extended: 2;
 
-  --font-size--logo: 2.5rem;
-  --font-size--h2: 1.25rem;
-  --font-size--body: 1rem;
-  --font-size--detail: 0.875rem;
+  --font-size--logo: 2.5rem; /* 40px */
+  --font-size--h2: 1.25rem; /* 20px */
+  --font-size--body: 1rem; /* 16px */
+  --font-size--detail: 0.875rem; /* 14px */
 
   --font-weight--thin: 100;
   --font-weight--light: 300;
-  --font-weight--bold: 500;
+  --font-weight--normal: 500;
+  --font-weight--bold: 600;
 }
 
 html {

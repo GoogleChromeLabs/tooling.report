@@ -3,3 +3,10 @@ main {
   display: grid;
   gap: var(--spacing-6);
 }
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

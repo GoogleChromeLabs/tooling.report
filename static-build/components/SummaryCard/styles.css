@@ -13,17 +13,17 @@
   color: var(--vivid-blue);
   margin: 0.5rem;
   display: block;
-  line-height: 1.5;
-  font-weight: 500;
+  line-height: var(--font-lineheight--body);
+  font-weight: var(--font-weight--normal);
 }
 
 .cardTotal {
-  font-size: 36px;
+  font-size: var(--font-size--h2);
   color: var(--dim-teal);
 }
 
 .cardTotalCount {
-  font-weight: 600;
+  font-weight: var(--font-weight--bold);
 }
 
 .cardTestsPassedContainer {
@@ -31,7 +31,7 @@
 }
 
 .cardTestsPassedContainer a {
-  font-size: 14px;
+  font-size: var(--font-size--detail);
   text-decoration: none;
   color: var(--vivid-blue);
 }

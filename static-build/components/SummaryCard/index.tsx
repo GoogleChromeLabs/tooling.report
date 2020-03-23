@@ -21,7 +21,7 @@ const SummaryCard: FunctionalComponent<Props> = ({
   total,
   possible,
 }: Props) => {
-  const percent = total / possible;
+  const percent = 50; //total / possible;
 
   return (
     <div class={$summaryCard}>
@@ -35,8 +35,7 @@ const SummaryCard: FunctionalComponent<Props> = ({
         {name}
       </a>
       <progress class={$summaryProgress} value={percent} max="100">
-        {' '}
-        {percent}{' '}
+        {percent}
       </progress>
       <div class={$cardTestsPassedContainer}>
         <div class={$cardTotal}>
