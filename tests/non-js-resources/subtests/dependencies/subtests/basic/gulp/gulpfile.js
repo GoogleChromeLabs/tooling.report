@@ -12,21 +12,12 @@
  */
 
 const { src, dest } = require('gulp');
-const browserify = require('browserify');
-const tap = require('gulp-tap');
-const buffer = require('gulp-buffer');
+const RevAll = require('gulp-rev-all');
 
-function brfsTransfrom() {
-  return src('src/*.js', { read: false })
-    .pipe(
-      tap(function(file) {
-        file.contents = browserify(file.path)
-          .transform('brfs')
-          .bundle();
-      }),
-    )
-    .pipe(buffer())
-    .pipe(dest('build'));
+function replace() {
+  return src('src/**')
+    .pipe(RevAll.revision())
+    .pipe(dest('build/'));
 }
 
-exports.default = brfsTransfrom;
+exports.default = replace;

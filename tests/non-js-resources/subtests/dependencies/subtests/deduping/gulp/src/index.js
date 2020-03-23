@@ -11,22 +11,6 @@
  * limitations under the License.
  */
 
-const { src, dest } = require('gulp');
-const browserify = require('browserify');
-const tap = require('gulp-tap');
-const buffer = require('gulp-buffer');
-
-function brfsTransfrom() {
-  return src('src/*.js', { read: false })
-    .pipe(
-      tap(function(file) {
-        file.contents = browserify(file.path)
-          .transform('brfs')
-          .bundle();
-      }),
-    )
-    .pipe(buffer())
-    .pipe(dest('build'));
-}
-
-exports.default = brfsTransfrom;
+const datauri = require('datauri');
+const filePath = datauri(__dirname + '/image.png');
+console.log(filePath);

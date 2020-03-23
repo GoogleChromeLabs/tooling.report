@@ -11,17 +11,18 @@
  * limitations under the License.
  */
 
-const { src, dest } = require('gulp');
+const { src, dest, series } = require('gulp');
+const RevAll = require('gulp-rev-all');
 const browserify = require('browserify');
 const tap = require('gulp-tap');
 const buffer = require('gulp-buffer');
 
-function brfsTransfrom() {
-  return src('src/*.js', { read: false })
+function filePath() {
+  return src('build/*.js', { read: false })
     .pipe(
       tap(function(file) {
         file.contents = browserify(file.path)
-          .transform('brfs')
+          .plugin('urify-emitter', { output: 'build', base: '.' })
           .bundle();
       }),
     )
@@ -29,4 +30,10 @@ function brfsTransfrom() {
     .pipe(dest('build'));
 }
 
-exports.default = brfsTransfrom;
+function replace() {
+  return src('src/**')
+    .pipe(RevAll.revision())
+    .pipe(dest('build/'));
+}
+
+exports.default = series(replace, filePath);
