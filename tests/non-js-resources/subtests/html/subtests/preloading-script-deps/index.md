@@ -30,6 +30,13 @@ import { em } from './more-utils.js';
 console.log(em('This is profile'));
 ```
 
+**help.js**
+
+```js
+import { logCaps, strongEm } from './utils.js';
+logCaps(strongEm('This is help'));
+```
+
 **utils.js**
 
 ```js
@@ -52,4 +59,6 @@ export function em(msg) {
 }
 ```
 
-Can HTML be generated that loads 'index', plus a preload for scripts it immediately needs ('utils', 'more-utils'), but not for lazily loaded dependencies ('index-exclaim').
+Generate (or use as entry points) 3 HTML pages: `index.html`, `profile.html`, `help.html`, which load `index.js`, `profile.js`, and `html.js` respectively.
+
+Each page should include preloads for the scripts it immediately needs, but not lazy-loaded dependencies.
