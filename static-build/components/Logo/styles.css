@@ -1,10 +1,11 @@
 .logo {
-  font-weight: var(--weight--light);
+  font-weight: var(--font-weight--light);
   color: var(--vivid-blue);
-  font-size: var(--heading-3);
+  font-size: var(--font-size--logo);
   margin: 0;
 }
 
 .report {
   color: var(--backpack-blue);
+  font-weight: var(--font-weight--thin);
 }

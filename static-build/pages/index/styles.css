@@ -16,3 +16,7 @@
   display: grid;
   grid-template-columns: var(--section-aside-width) 1fr;
 }
+
+.header p {
+  max-width: 42ch;
+}
