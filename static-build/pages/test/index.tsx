@@ -13,7 +13,6 @@
 
 import { h, FunctionalComponent } from 'preact';
 import sharedStyles from 'css-bundle:static-build/shared/styles/index.css';
-import prismStyles from 'css-bundle:static-build/libraries/prism/prism.css';
 import { githubLink } from '../../utils.js';
 import pageStyles from 'css-bundle:./styles.css';
 import Footer from '../../components/Footer/index';
@@ -31,7 +30,6 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
         <link rel="stylesheet" href={sharedStyles} />
         <link rel="stylesheet" href={pageStyles} />
         {/* TODO: favicon */}
-        <link rel="stylesheet" href={prismStyles} />
       </head>
       <body>
         <main>
