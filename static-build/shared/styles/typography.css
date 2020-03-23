@@ -1,14 +1,14 @@
 :root {
-  --font-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
-  --font-lineheight--base: 1.5;
+  --font-lineheight--body: 1.5;
   --font-lineheight--extended: 2;
 
-  --font-size--logo: 40px;
-  --font-size--h2: 20px;
-  --font-size--base: 16px;
-  --font-size--body: 14px;
+  --font-size--logo: 2.5rem;
+  --font-size--h2: 1.25rem;
+  --font-size--body: 1rem;
+  --font-size--detail: 0.875rem;
 
   --font-weight--thin: 100;
   --font-weight--light: 300;
@@ -16,11 +16,11 @@
 }
 
 html {
-  font-family: var(--font-base);
+  font-family: var(--font-body);
   color: var(--backpack-blue);
-  font-size: var(--font-size--base);
+  font-size: var(--font-size--body);
   font-weight: var(--font-weight--light);
-  line-height: var(--font-lineheight--base);
+  line-height: var(--font-lineheight--body);
 }
 
 h2 {
@@ -29,7 +29,7 @@ h2 {
 
 p {
   max-width: 50ch;
-  line-height: var(--font-line-height--extended);
+  line-height: var(--font-lineheight--extended);
 }
 
 a {
