@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "gulp"
+  },
+  "devDependencies": {
+    "brfs": "^2.0.2",
+    "browserify": "^16.5.0",
+    "gulp": "^4.0.2",
+    "gulp-buffer": "0.0.2",
+    "gulp-tap": "^2.0.0"
+  },
+  "dependencies": {
+    "base64-arraybuffer": "^0.2.0"
+  }
+}

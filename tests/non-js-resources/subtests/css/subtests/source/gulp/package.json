@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "gulp"
+  },
+  "devDependencies": {
+    "browserify": "^16.5.0",
+    "browserify-css": "^0.15.0",
+    "gulp": "^4.0.2",
+    "gulp-buffer": "0.0.2",
+    "gulp-tap": "^2.0.0"
+  }
+}

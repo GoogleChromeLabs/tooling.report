@@ -1,5 +1,6 @@
 ---
 result: fail
+issue: ''
 ---
 
 Although it is not impossible, It requires significant effort to write a gulp task that builds comprehensive asset graph.

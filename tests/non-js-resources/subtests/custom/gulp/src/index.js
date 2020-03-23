@@ -11,13 +11,9 @@
  * limitations under the License.
  */
 
-function logCaps(msg) {
-  console.log(msg.toUpperCase());
-}
+const fs = require('fs');
+const { decode } = require('base64-arraybuffer');
 
-function logExclaim(msg) {
-  console.log(msg + '!');
-}
-
-exports.logCaps = logCaps;
-exports.logExclaim = logExclaim;
+const filePath = fs.readFileSync(__dirname + '/binary.bin', 'base64');
+const arrayBuffer = decode(filePath);
+console.log(arrayBuffer.byteLength);
