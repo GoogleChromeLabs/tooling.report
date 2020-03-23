@@ -21,13 +21,13 @@ const SummaryCard: FunctionalComponent<Props> = ({
   total,
   possible,
 }: Props) => {
-  const percent = 50; //total / possible;
+  const percent = 50; //TODO, should be: total / possible;
 
   return (
     <li class={$summaryCard}>
       <figure class={$summaryCardIcon}>
         <img
-          src="https://raw.githubusercontent.com/webpack/media/master/logo/icon.png"
+          src={`img/${name}.svg`} //TODO: Image asset pipeline
           alt=""
         />
       </figure>
