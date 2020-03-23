@@ -1,3 +1,5 @@
+@import 'components/SummaryCard/styles.css';
+
 .topSticky {
   position: sticky;
   top: 0;

@@ -23,6 +23,7 @@ import { calculateScore, calculateScoreTotals } from 'static-build/utils';
 import Logo from '../../components/Logo/index';
 import Footer from '../../components/Footer/index';
 import LinkList from '../../components/LinkList/index.js';
+import SummaryCard from '../../components/SummaryCard/index';
 
 interface Props {
   tests: Tests;
@@ -82,7 +83,7 @@ function renderSummary(tests: Tests): JSX.Element {
     <ul>
       {tools.map(t => (
         <li>
-          {t.tool}: {t.total}/{t.possible}
+          <SummaryCard name={t.tool} total={t.total} possible={t.possible} />
         </li>
       ))}
     </ul>
