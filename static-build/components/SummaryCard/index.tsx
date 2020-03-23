@@ -24,7 +24,7 @@ const SummaryCard: FunctionalComponent<Props> = ({
   const percent = 50; //total / possible;
 
   return (
-    <div class={$summaryCard}>
+    <li class={$summaryCard}>
       <figure class={$summaryCardIcon}>
         <img
           src="https://raw.githubusercontent.com/webpack/media/master/logo/icon.png"
@@ -45,7 +45,7 @@ const SummaryCard: FunctionalComponent<Props> = ({
         </div>
         <a href="#">Tests Passed</a>
       </div>
-    </div>
+    </li>
   );
 };
 

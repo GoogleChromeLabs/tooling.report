@@ -22,6 +22,7 @@ import {
   $comparedTools,
   $sidebarLayout,
   $header,
+  $summaryList,
 } from './styles.css';
 import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
 import { calculateScore, calculateScoreTotals } from 'static-build/utils';
@@ -85,11 +86,9 @@ function renderSummary(tests: Tests): JSX.Element {
   const tools = calculateScoreTotals(tests);
 
   return (
-    <ul>
+    <ul class={$summaryList}>
       {tools.map(t => (
-        <li>
-          <SummaryCard name={t.tool} total={t.total} possible={t.possible} />
-        </li>
+        <SummaryCard name={t.tool} total={t.total} possible={t.possible} />
       ))}
     </ul>
   );

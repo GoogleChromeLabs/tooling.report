@@ -22,3 +22,9 @@
 .header p {
   max-width: 42ch;
 }
+
+.summaryList {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}

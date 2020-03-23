@@ -3,7 +3,6 @@
   border: 1px solid var(--light-border-blue);
   display: block;
   border-radius: 10px;
-  width: 180px;
   box-shadow: 10px 10px 30px -15px rgba(0, 0, 0, 0.45);
   padding: 2rem;
   text-align: center;
@@ -39,7 +38,7 @@
 /* Summary Cards */
 
 .summaryCardIcon {
-  background: var(--background-gray);
+  background: var(--light-blue);
   border-radius: 50%;
   width: var(--touch-icon-size);
   height: var(--touch-icon-size);
