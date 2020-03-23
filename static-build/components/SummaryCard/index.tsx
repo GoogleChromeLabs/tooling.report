@@ -11,9 +11,9 @@ import {
 } from './styles.css';
 
 interface Props {
-  name: String;
-  total: Number;
-  possible: Number;
+  name: string;
+  total: number;
+  possible: number;
 }
 
 const SummaryCard: FunctionalComponent<Props> = ({
@@ -21,8 +21,7 @@ const SummaryCard: FunctionalComponent<Props> = ({
   total,
   possible,
 }: Props) => {
-  const percent = 50; //TODO, should be: total / possible;
-
+  const percent = Math.floor((total / possible) * 100);
   return (
     <li class={$summaryCard}>
       <figure class={$summaryCardIcon}>
@@ -35,7 +34,7 @@ const SummaryCard: FunctionalComponent<Props> = ({
         {name}
       </a>
       <progress class={$summaryProgress} value={percent} max="100">
-        {percent}
+        {percent}%
       </progress>
       <div class={$cardTestsPassedContainer}>
         <div class={$cardTotal}>
