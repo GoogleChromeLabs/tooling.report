@@ -1,6 +1,5 @@
 ---
-result: fail
-issue: 'N/A'
+result: pass
 ---
 
-The underling concept of the browserify is to require a function or JSON object. To get contents of the required file, you can apply `brfs` transform, but there are eno obvious transform to get file path.
+First, text file path is hashed with `urify-emitter` then put thru `gul-rev-all` to add hash to JS file.

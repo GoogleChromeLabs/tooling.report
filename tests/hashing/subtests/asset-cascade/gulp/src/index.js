@@ -11,5 +11,6 @@
  * limitations under the License.
  */
 
-const textPath = require('./test.txt');
-console.log(textPath);
+const datauri = require('datauri');
+const filePath = datauri(__dirname + '/test.txt');
+console.log(filePath);
