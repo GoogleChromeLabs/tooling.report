@@ -1,14 +1,16 @@
 import { h } from 'preact';
 import Logo from '../../components/Logo/index';
-import {
-  $container,
-  $footer,
-  $rule,
-  $linkList,
-  $linkItem,
-  $linkItself,
-  $desc,
-} from './styles.css';
+import LinkList from '../../components/LinkList/index';
+import { $container, $footer, $rule, $desc } from './styles.css';
+
+const links = [
+  { title: 'Privacy Policy', href: '#' },
+  { title: 'Terms and Conditions', href: '#' },
+  {
+    title: 'Source on Github',
+    href: 'https://github.com/GoogleChromeLabs/tooling.report',
+  },
+];
 
 function Footer() {
   return (
@@ -23,26 +25,7 @@ function Footer() {
           workplace diversity and empowerment.
         </p>
         <hr class={$rule} />
-        <ul class={$linkList}>
-          <li class={$linkItem}>
-            <a href="#" class={$linkItself}>
-              Privacy Policy
-            </a>
-          </li>
-          <li class={$linkItem}>
-            <a href="#" class={$linkItself}>
-              Terms and Conditions
-            </a>
-          </li>
-          <li class={$linkItem}>
-            <a
-              href="https://github.com/GoogleChromeLabs/tooling.report"
-              class={$linkItself}
-            >
-              Source on Github
-            </a>
-          </li>
-        </ul>
+        <LinkList links={links} />
       </div>
     </footer>
   );
