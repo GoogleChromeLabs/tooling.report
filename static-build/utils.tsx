@@ -21,7 +21,7 @@ import { VNode } from 'preact';
 import config from 'consts:config';
 
 export function githubLink(filePath: string, ref: string = 'master') {
-  return joinPath(config.githubRepository, 'tree', ref, filePath);
+  return `${config.githubRepository}tree/${ref}/${filePath}`;
 }
 
 export function renderPage(vnode: VNode) {
