@@ -11,4 +11,7 @@
   /* Gra|eys */
   --background-gray: #edf0f2;
   --text-gray: hsl(0 0% 10%);
+
+  /* Shadows */
+  --card-shadow: 0 10px 45px -25px hsl(206 36% 51% / 70%);
 }

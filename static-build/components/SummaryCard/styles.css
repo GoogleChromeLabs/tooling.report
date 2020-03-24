@@ -3,7 +3,7 @@
   border: 1px solid var(--light-blue);
   display: block;
   border-radius: 20px;
-  box-shadow: 10px 10px 30px -15px rgba(0, 0, 0, 0.45);
+  box-shadow: var(--card-shadow);
   padding: 2rem;
   text-align: center;
 }
