@@ -1,6 +1,6 @@
 import { h } from 'preact';
 
-function Home() {
+function Lamp() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="90" height="214">
       <path
@@ -95,4 +95,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Lamp;
