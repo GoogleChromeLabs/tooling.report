@@ -8,6 +8,7 @@
 
 @import 'components/Footer/styles.css';
 @import 'components/LinkList/styles.css';
+@import 'components/IconHome/styles.css';
 
 :root {
   --section-aside-width: 150px;
