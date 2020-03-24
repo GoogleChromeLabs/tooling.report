@@ -53,7 +53,8 @@ export default async function({ watch }) {
       assetFileNames: staticPath,
       exports: 'named',
     },
-    watch: { clearScreen: false },
+    // Don't watch the ts files. Instead we watch the output from the ts compiler.
+    watch: { clearScreen: false, exclude: ['**/*.ts', '**/*.tsx'] },
     preserveModules: true,
     plugins: [
       { resolveFileUrl },
