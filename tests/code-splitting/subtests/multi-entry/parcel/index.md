@@ -7,4 +7,4 @@ fixed-issue:
     url: https://github.com/parcel-bundler/parcel/issues/4303
 ---
 
-Parcel tries to code split here, but generates invalid HTML in the process.
+When multiple HTML files are passed to Parcel for processing, the scripts in each page have their common dependency modules extracted into shared bundles.
