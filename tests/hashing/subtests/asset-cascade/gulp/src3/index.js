@@ -10,27 +10,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-const { src, dest } = require('gulp');
-const browserify = require('browserify');
-const tap = require('gulp-tap');
-const buffer = require('gulp-buffer');
-const RevAll = require('gulp-rev-all');
-
-const BUILD = 'build/' + (process.env.NUM || '');
-
-function filePath() {
-  return src('src/*.js', { read: false })
-    .pipe(
-      tap(function(file) {
-        file.contents = browserify(file.path)
-          .plugin('urify-emitter', { output: BUILD, base: '.' })
-          .bundle();
-      }),
-    )
-    .pipe(buffer())
-    .pipe(RevAll.revision())
-    .pipe(dest(BUILD));
-}
-
-exports.default = filePath;
+const datauri = require('datauri');
+const txtUrl = datauri(__dirname + '/some-asset.txt');
+console.log(txtUrl);

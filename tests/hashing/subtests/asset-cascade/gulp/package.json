@@ -1,7 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "build": "gulp"
+    "build": "NUM=1 npm run -s build:one && NUM=2 npm run -s build:one && NUM=3 npm run -s build:one",
+    "build:one": "cp -rf src$NUM src && gulp && rm -rf src"
   },
   "devDependencies": {
     "browserify": "^16.5.0",
