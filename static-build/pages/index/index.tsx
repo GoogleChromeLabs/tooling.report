@@ -21,13 +21,16 @@ import {
   $topSticky,
   $comparedTools,
   $sidebarLayout,
-  $header,
+  $connect,
 } from './styles.css';
 import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
 import { calculateScore, calculateScoreTotals } from 'static-build/utils';
-import Logo from '../../components/Logo/index';
-import Footer from '../../components/Footer/index';
-import LinkList from '../../components/LinkList/index.js';
+import Logo from '../../components/Logo';
+import GithubFAB from '../../components/GithubFAB';
+import Footer from '../../components/Footer';
+import LinkList from '../../components/LinkList';
+import Lamp from '../../components/Lamp';
+import { BenchHero } from '../../components/Heroes';
 
 interface Props {
   tests: Tests;
@@ -110,25 +113,33 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
       </head>
       <body>
         <header>
-          <Logo />
-          <section class={$header}>
-            <h2>What is Tooling Report?</h2>
-            <p>
-              A quick and easy way to figure out what the best tool for your
-              next project is, if it’s worth your time to migrate from one tool
-              to another and how to adopt a best practice into your existing
-              code base.
-            </p>
-            <LinkList
-              links={[
-                { title: 'FAQ', href: '#' },
-                { title: 'Contribute', href: '#' },
-                { title: 'Have an issue?', href: '#' },
-              ]}
-            />
+          <section>
+            <Logo />
+            <div>
+              <div>
+                <BenchHero />
+              </div>
+              <div>
+                <h2>What is Tooling Report?</h2>
+                <p>
+                  A quick and easy way to figure out what the best tool for your
+                  next project is, if it’s worth your time to migrate from one
+                  tool to another and how to adopt a best practice into your
+                  existing code base.
+                </p>
+                <LinkList
+                  links={[
+                    { title: 'FAQ', href: '#' },
+                    { title: 'Contribute', href: '#' },
+                    { title: 'Have an issue?', href: '#' },
+                  ]}
+                />
+              </div>
+            </div>
           </section>
         </header>
         <main>
+          <GithubFAB />
           <section id="getting-started">
             <h3>Getting Started</h3>
             <p>
@@ -235,7 +246,10 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
             </div>
           </section>
 
-          <section>
+          <section class={$connect}>
+            <div>
+              <Lamp />
+            </div>
             <div>
               <h2>Questions or Concerns?</h2>
               <p>
