@@ -9,26 +9,29 @@ import {
   $cardTotalCount,
   $dash,
 } from './styles.css';
+import gulp from 'asset-url:../../img/gulp.svg';
+import rollup from 'asset-url:../../img/rollup.svg';
+import webpack from 'asset-url:../../img/webpack.svg';
+import parcel from 'asset-url:../../img/parcel.svg';
 
 interface Props {
   name: string;
   total: number;
   possible: number;
+  image: string;
 }
 
 const SummaryCard: FunctionalComponent<Props> = ({
   name,
   total,
   possible,
+  image,
 }: Props) => {
   const percent = Math.floor((total / possible) * 100);
   return (
     <li class={$summaryCard}>
       <figure class={$summaryCardIcon}>
-        <img
-          src={`img/${name}.svg`} //TODO: Image asset pipeline
-          alt=""
-        />
+        <img src={image} alt="" />
       </figure>
       <a href="#" class={$cardTitle}>
         {name}

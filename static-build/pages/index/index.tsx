@@ -30,6 +30,11 @@ import Logo from '../../components/Logo/index';
 import Footer from '../../components/Footer/index';
 import LinkList from '../../components/LinkList/index.js';
 import SummaryCard from '../../components/SummaryCard/index';
+import gulp from 'asset-url:../../img/gulp.svg';
+import rollup from 'asset-url:../../img/rollup.svg';
+import webpack from 'asset-url:../../img/webpack.svg';
+import parcel from 'asset-url:../../img/parcel.svg';
+const toolImages = { gulp, rollup, webpack, parcel };
 
 interface Props {
   tests: Tests;
@@ -88,7 +93,12 @@ function renderSummary(tests: Tests): JSX.Element {
   return (
     <ul class={$summaryList}>
       {tools.map(t => (
-        <SummaryCard name={t.tool} total={t.total} possible={t.possible} />
+        <SummaryCard
+          name={t.tool}
+          total={t.total}
+          possible={t.possible}
+          image={toolImages[t.tool]}
+        />
       ))}
     </ul>
   );
