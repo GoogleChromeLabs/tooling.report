@@ -21,6 +21,7 @@ import {
   $topSticky,
   $comparedTools,
   $sidebarLayout,
+  $summaryList,
   $connect,
 } from './styles.css';
 import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
@@ -31,7 +32,7 @@ import Footer from '../../components/Footer';
 import LinkList from '../../components/LinkList';
 import Lamp from '../../components/Lamp';
 import { BenchHero } from '../../components/Heroes';
-import SummaryCard from '../../components/SummaryCard/index';
+import SummaryCard from '../../components/SummaryCard';
 
 import gulp from 'asset-url:../../img/gulp.svg';
 import rollup from 'asset-url:../../img/rollup.svg';
