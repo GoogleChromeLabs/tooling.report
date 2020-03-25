@@ -7,7 +7,7 @@
 .fabicon {
   background: white;
   border: 1px solid var(--background-gray);
-  box-shadow: 0 5px 10px hsl(206 36% 51% / 20%);
+  box-shadow: var(--fab-shadow);
   height: 55px;
   width: 55px;
   border-radius: 50%;
