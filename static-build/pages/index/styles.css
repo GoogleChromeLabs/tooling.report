@@ -1,3 +1,5 @@
+@import 'components/SummaryCard/styles.css';
+
 .topSticky {
   position: sticky;
   top: 0;
@@ -25,4 +27,13 @@
   background-color: var(--background-gray-offset);
   border: 1px solid var(--background-gray-offset);
   border-radius: 2rem;
+}
+
+.summaryList {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }

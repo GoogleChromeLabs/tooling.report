@@ -2,7 +2,7 @@
   /* Blues */
   --ice-blue: #e6f4ff;
   --light-blue: #cce9ff;
-  --aqua-blue: #66bdff;
+  --sky-blue: #66bdff;
   --vivid-blue: #148ae3;
   --teal-blue: #195380;
   --backpack-blue: #406480;
@@ -12,4 +12,7 @@
   --background-gray: #edf0f2;
   --background-gray-offset: #dae1e6;
   --text-gray: hsl(0 0% 10%);
+
+  /* Shadows */
+  --card-shadow: 0 10px 45px -25px hsl(206 36% 51% / 70%);
 }
