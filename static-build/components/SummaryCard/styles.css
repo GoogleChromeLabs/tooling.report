@@ -61,7 +61,6 @@
 .progressText {
   color: white;
   padding: 0 0.25rem;
-  float: right; /* truly a float */
   font-size: var(--font-size--detail);
 }
 
@@ -79,5 +78,8 @@
   left: 0;
   height: 100%;
   background-color: var(--vivid-blue);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   /* will-change: width; TODO note: in the future have the bars animate out from 0% with an intersection observer */
 }
