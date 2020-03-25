@@ -10,8 +10,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-function logCaps(msg) {
-  console.log(msg.toUpperCase());
-}
-
-exports.logCaps = logCaps;
+console.log('Unhashed chunk');

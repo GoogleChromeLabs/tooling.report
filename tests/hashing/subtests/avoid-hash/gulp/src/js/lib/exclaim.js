@@ -14,4 +14,4 @@ function exclaim(msg) {
   return msg + '!';
 }
 
-module.exclaim = exclaim;
+exports.exclaim = exclaim;
