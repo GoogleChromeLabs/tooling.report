@@ -3,6 +3,8 @@ title: Between new worker type
 importance: 1
 ---
 
+This test is similar to the 'between-workers' test. However, some bundlers solve workers on a case-by-case basis, and take a long time to catch up with new worker types, or new worker arguments. This tests a lower-level capability: If a new worker type comes along, can you use it without having to wait for the a new release of your build tool and still make use of code-splitting?
+
 **index.js**
 
 ```js
@@ -28,4 +30,4 @@ export function logCaps(msg) {
 }
 ```
 
-This is similar to the 'between-workers' test. However, some bundlers solve workers on a case-by-case basis, and take a long time to catch up with new worker types, or new worker arguments. This tests a lower-level capability: Can you make an entry point and get its URL?
+The expected output here is that `utils.js` gets split out into its own chunk.
