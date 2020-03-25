@@ -1,10 +1,10 @@
 import { h } from 'preact';
-import { $legend, $legendCard, $legendRow, $legendHeader } from './styles.css';
+import { $legendCard, $legendRow, $legendHeader } from './styles.css';
 import { $dot } from '../styles.css';
 
 function Legend() {
   return (
-    <div class={$legend}>
+    <div>
       <h2 class={$legendHeader}>Legend</h2>
       <div class={$legendCard}>
         <div class={$legendRow}>
