@@ -22,12 +22,19 @@ import {
   $comparedTools,
   $sidebarLayout,
   $header,
+  $summaryList,
 } from './styles.css';
 import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
 import { calculateScore, calculateScoreTotals } from 'static-build/utils';
 import Logo from '../../components/Logo/index';
 import Footer from '../../components/Footer/index';
 import LinkList from '../../components/LinkList/index.js';
+import SummaryCard from '../../components/SummaryCard/index';
+import gulp from 'asset-url:../../img/gulp.svg';
+import rollup from 'asset-url:../../img/rollup.svg';
+import webpack from 'asset-url:../../img/webpack.svg';
+import parcel from 'asset-url:../../img/parcel.svg';
+const toolImages = { gulp, rollup, webpack, parcel };
 
 interface Props {
   tests: Tests;
@@ -84,11 +91,14 @@ function renderSummary(tests: Tests): JSX.Element {
   const tools = calculateScoreTotals(tests);
 
   return (
-    <ul>
+    <ul class={$summaryList}>
       {tools.map(t => (
-        <li>
-          {t.tool}: {t.total}/{t.possible}
-        </li>
+        <SummaryCard
+          name={t.tool}
+          total={t.total}
+          possible={t.possible}
+          image={toolImages[t.tool]}
+        />
       ))}
     </ul>
   );

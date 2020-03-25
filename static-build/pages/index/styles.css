@@ -1,3 +1,5 @@
+@import 'components/SummaryCard/styles.css';
+
 .topSticky {
   position: sticky;
   top: 0;
@@ -19,4 +21,13 @@
 
 .header p {
   max-width: 42ch;
+}
+
+.summaryList {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }

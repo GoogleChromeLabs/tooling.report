@@ -1,0 +1,62 @@
+.summaryCard {
+  background: white;
+  border: 1px solid var(--light-blue);
+  display: block;
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+  padding: 2rem;
+  text-align: center;
+}
+
+.cardTitle {
+  color: var(--vivid-blue);
+  margin: 0.5rem;
+  display: block;
+  line-height: var(--font-lineheight--body);
+  font-weight: var(--font-weight--normal);
+}
+
+.cardTotal {
+  font-size: var(--font-size--logo);
+  color: var(--dim-teal);
+}
+
+.cardTotalCount {
+  font-weight: var(--font-weight--bold);
+}
+
+.cardTestsPassedContainer {
+  margin-top: 2rem;
+}
+
+.cardTestsPassedContainer a {
+  font-size: var(--font-size--detail);
+  text-decoration: none;
+  color: var(--vivid-blue);
+}
+
+/* Summary Cards */
+
+.summaryCardIcon {
+  background: var(--light-blue);
+  border-radius: 50%;
+  width: var(--touch-icon-size);
+  height: var(--touch-icon-size);
+  margin: 0 auto;
+}
+
+.summaryCardIcon img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  margin: 15% auto;
+}
+
+.summaryProgress {
+  height: 0.5rem;
+  transition-duration: 1s;
+}
+
+.dash {
+  color: var(--sky-blue);
+}
