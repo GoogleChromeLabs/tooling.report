@@ -9,10 +9,6 @@ import {
   $cardTotalCount,
   $dash,
 } from './styles.css';
-import gulp from 'asset-url:../../img/gulp.svg';
-import rollup from 'asset-url:../../img/rollup.svg';
-import webpack from 'asset-url:../../img/webpack.svg';
-import parcel from 'asset-url:../../img/parcel.svg';
 
 interface Props {
   name: string;
