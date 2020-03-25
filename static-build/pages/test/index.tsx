@@ -18,7 +18,7 @@ import pageStyles from 'css-bundle:./styles.css';
 import Logo from '../../components/Logo';
 import Footer from '../../components/Footer';
 import LinkList from '../../components/LinkList';
-import { LabcoatHero } from '../../components/Heroes';
+import { LabcoatHero, WalkerHero } from '../../components/Heroes';
 
 interface Props {
   test: Test;
@@ -51,9 +51,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                   ]}
                 />
               </div>
-              <div>
-                <LabcoatHero />
-              </div>
+              <div>{test.subTests ? <LabcoatHero /> : <WalkerHero />}</div>
             </div>
           </section>
         </header>
