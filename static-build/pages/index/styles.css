@@ -1,4 +1,5 @@
 @import 'components/SummaryCard/styles.css';
+@import 'components/DataGrid/styles.css';
 
 .topSticky {
   position: sticky;

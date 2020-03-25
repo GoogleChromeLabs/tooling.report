@@ -30,6 +30,8 @@ import Logo from '../../components/Logo/index';
 import Footer from '../../components/Footer/index';
 import LinkList from '../../components/LinkList/index.js';
 import SummaryCard from '../../components/SummaryCard/index';
+import DataGrid from '../../components/DataGrid/index';
+import Legend from '../../components/DataGrid/Legend/index';
 import gulp from 'asset-url:../../img/gulp.svg';
 import rollup from 'asset-url:../../img/rollup.svg';
 import webpack from 'asset-url:../../img/webpack.svg';
@@ -203,6 +205,10 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
             </div>
           </section>
 
+          <section id="legend">
+            <Legend />
+          </section>
+
           <section id="overview">
             <div class={$sidebarLayout}>
               <aside>
@@ -213,7 +219,9 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
                   <li>...</li>
                 </ul>
               </aside>
-              <div>{renderSummary(tests)}</div>
+              <div>
+                <DataGrid />
+              </div>
             </div>
           </section>
 

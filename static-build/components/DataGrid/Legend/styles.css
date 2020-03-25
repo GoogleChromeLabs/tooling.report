@@ -1,0 +1,22 @@
+.legend {
+}
+
+.legendHeader {
+  margin-bottom: var(--spacing-2);
+}
+
+.legendCard {
+  background: white;
+  display: inline-block;
+  padding: var(--spacing-3);
+  border-radius: var(--spacing-1);
+}
+
+.legendRow {
+  display: flex;
+  align-items: center;
+
+  & > span {
+    margin-right: var(--spacing-3);
+  }
+}

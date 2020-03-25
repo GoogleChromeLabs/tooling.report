@@ -8,6 +8,11 @@
   --backpack-blue: #406480;
   --denim-blue: #5689b0;
 
+  --test-pass: #7fcc71;
+  --test-partial: #ffa91f;
+  --test-fail: #f26969;
+  --test-skip: #dedede;
+
   /* Gra|eys */
   --background-gray: #edf0f2;
   --text-gray: hsl(0 0% 10%);
