@@ -10,7 +10,7 @@
 
 .cardTitle {
   color: var(--vivid-blue);
-  margin: 0.25rem;
+  margin: var(--spacing-1);
   display: block;
   line-height: var(--font-lineheight--body);
   font-weight: var(--font-weight--normal);
@@ -60,7 +60,7 @@
 
 .progressText {
   color: white;
-  padding: 0 0.25rem;
+  padding: 0 var(--spacing-1);
   font-size: var(--font-size--detail);
 }
 
