@@ -1,6 +1,7 @@
 .toolNav {
   position: sticky;
   top: var(--spacing-3);
+  z-index: 2;
 
   background: white;
   display: flex;
@@ -24,7 +25,7 @@
   }
 
   & > img {
-    max-height: 40px;
+    object-fit: contain;
     margin-right: var(--spacing-3);
   }
 }
