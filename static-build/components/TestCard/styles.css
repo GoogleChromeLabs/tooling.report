@@ -1,7 +1,9 @@
 .testCard {
   background: white;
   border: 1px solid var(--light-blue);
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border-radius: 20px;
   box-shadow: var(--card-shadow);
   padding: 2rem;
