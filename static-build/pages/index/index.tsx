@@ -156,34 +156,6 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
             </div>
           </section>
 
-          {/* <section id="configure">
-            <div class={$sidebarLayout}>
-              <aside>
-                <h3>Configure</h3>
-                <small>Which build tools do you want to compare?</small>
-                <div>
-                  x/<b>5</b>
-                </div>
-              </aside>
-              <div>
-                <ul>
-                  <li>
-                    <label for="webpackv4">Webpack v4</label>
-                    <input type="checkbox" name="webpackv4" id="webpackv4" />
-                  </li>
-                  <li>
-                    <label for="webpackv4">Webpack v4</label>
-                    <input type="checkbox" name="webpackv4" id="webpackv4" />
-                  </li>
-                  <li>
-                    <label for="webpackv4">Webpack v4</label>
-                    <input type="checkbox" name="webpackv4" id="webpackv4" />
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </section> */}
-
           <section id="summary">
             <div class={$sidebarLayout}>
               <aside>
