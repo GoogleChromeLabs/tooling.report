@@ -1,0 +1,37 @@
+:root {
+  --test-pass: #7fcc71; /* remove when merging #75 */
+  --test-partial: #ffa91f;
+  --test-fail: #f26969;
+  --test-skip: #dedede;
+}
+
+.resultItem {
+  width: 50px;
+  height: 50px;
+  background: red;
+}
+
+.toolIcon {
+  display: block;
+}
+
+.toolName {
+  display: block;
+}
+
+.toolBadge {
+  border: 1px solid gray;
+  padding: var(--spacing-3);
+
+  &[data-result='pass'] {
+    border-color: var(--test-pass);
+  }
+
+  &[data-result='partial'] {
+    border-color: var(--test-partial);
+  }
+
+  &[data-result='fail'] {
+    border-color: var(--test-fail);
+  }
+}

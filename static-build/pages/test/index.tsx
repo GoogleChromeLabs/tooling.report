@@ -18,6 +18,15 @@ import pageStyles from 'css-bundle:./styles.css';
 import Logo from '../../components/Logo/index';
 import Footer from '../../components/Footer/index';
 import LinkList from '../../components/LinkList/index';
+import TestResultSnippet from '../../components/TestResultSnippet';
+
+import gulp from 'asset-url:../../img/gulp.svg';
+import rollup from 'asset-url:../../img/rollup.svg';
+import webpack from 'asset-url:../../img/webpack.svg';
+import parcel from 'asset-url:../../img/parcel.svg';
+const toolImages = { gulp, rollup, webpack, parcel };
+
+import { $testResultList } from './styles.css';
 
 interface Props {
   test: Test;
@@ -64,20 +73,15 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
           {test.results && (
             <article>
               {Object.entries(test.results).map(([subject, result]) => (
-                <div>
-                  <h1>
-                    {subject}:{' '}
-                    {result.meta.result === 'pass'
-                      ? 'Pass'
-                      : result.meta.result === 'fail'
-                      ? 'Fail'
-                      : 'So-so'}
-                  </h1>
-                  <div dangerouslySetInnerHTML={{ __html: result.html }}></div>
-                  <a href={githubLink(result.repositoryPath)}>
-                    Inspect the test
-                  </a>
-                </div>
+                <ul class={$testResultList}>
+                  <TestResultSnippet
+                    name={subject}
+                    result={result.meta.result}
+                    image={toolImages['gulp']}
+                    details={result.html}
+                    link={githubLink(result.repositoryPath)}
+                  />
+                </ul>
               ))}
               <div dangerouslySetInnerHTML={{ __html: test.html }}></div>
             </article>

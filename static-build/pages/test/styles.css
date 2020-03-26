@@ -1,5 +1,12 @@
 @import './article.css';
 
+.testResultList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
 /*
   specify the components on the page you need styles for
   note: should closely match the component list in the ./index.tsx file near here
