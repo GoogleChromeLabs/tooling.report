@@ -1,10 +1,17 @@
 {
   "scripts": {
-    "build": "mkdir -p build && NUM=1 npm run -s build:one && NUM=2 npm run -s build:one && NUM=3 npm run -s build:one",
-    "build:one": "rm -rf src dist && cp -r \"src$NUM\" src && parcel build --no-source-maps --cache-dir .parcel-cache/$NUM src/index.html && mv dist build/$NUM && rm -rf src"
+    "build": "npm-run-all before build:* after",
+    "before": "rm -rf build dist src && mkdir build",
+    "build:1": "cp -r src1 src && parcel build src/index.html && mv dist build/1; rm -rf src dist",
+    "build:2": "cp -r src2 src && parcel build src/index.html && mv dist build/2; rm -rf src dist",
+    "build:3": "cp -r src3 src && parcel build src/index.html && mv dist build/3; rm -rf src dist",
+    "after": "rm -rf .parcel-cache"
   },
   "dependencies": {
     "@parcel/transformer-raw": "2.0.0-alpha.3",
     "parcel": "2.0.0-alpha.3.2"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
   }
 }
