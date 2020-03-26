@@ -2,7 +2,7 @@
 
 .datagrid {
   display: grid;
-  gap: var(--spacing-2);
+  gap: var(--spacing-1);
   filter: drop-shadow(0 15px 10px hsl(206 36% 51% / 20%));
 }
 
