@@ -6,7 +6,7 @@
   background: white;
   display: flex;
   margin-left: var(--section-aside-width);
-  padding: var(--spacing-3) 0;
+  padding: var(--spacing-3) var(--spacing-3) var(--spacing-3) 0;
   border: 1px solid var(--ice-blue);
   border-radius: var(--spacing-2);
   box-shadow: var(--card-shadow);
@@ -26,6 +26,6 @@
 
   & > img {
     object-fit: contain;
-    margin-right: var(--spacing-3);
+    margin-right: var(--spacing-2);
   }
 }
