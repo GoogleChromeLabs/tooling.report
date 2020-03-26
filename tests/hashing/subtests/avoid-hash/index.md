@@ -3,7 +3,7 @@ title: Avoiding hashing for a particular resource
 importance: 1
 ---
 
-Including content hashes in URLs is beneficial for effective caching, however there are certain resources that should not have hashed URLs. Files like `robots.txt`, `index.html` and service Workers can't have hashes in their URLs, because their URLs must always remain the same.
+Including content hashes in URLs is beneficial for effective caching, however there are certain resources that should not have hashed URLs. Files like `robots.txt`, `index.html` and Service Workers can't have hashes in their URLs, because their URLs must always remain the same.
 
 This test assesses whether a build tool can enable or disable URL hashing for specific assets, entry bundles and code-splitted bundles.
 
