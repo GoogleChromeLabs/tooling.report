@@ -18,7 +18,9 @@ const TestResultSnippet: FunctionalComponent<Props> = ({
 }: Props) => {
   return (
     <li class={$resultItem}>
-      <h3 class={$toolName}>{name}</h3>
+      <a href="#" class={$toolName}>
+        {name}
+      </a>
       <figure class={$toolIcon}>
         <img src={image} alt="" />
       </figure>

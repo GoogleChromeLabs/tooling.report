@@ -1,10 +1,14 @@
 @import './article.css';
+@import 'components/TestResultSnippet/styles.css';
 
 .testResultList {
   list-style: none;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
-  display: flex;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(var(--numTools), 1fr);
+  max-width: var(--pageMax);
 }
 
 /*

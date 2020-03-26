@@ -6,22 +6,37 @@
 }
 
 .resultItem {
-  width: 50px;
-  height: 50px;
-  background: red;
+  text-align: center;
 }
 
 .toolIcon {
-  display: block;
+  background: white;
+  margin: 0 auto;
+  border-radius: 50%;
+  width: calc(var(--touch-icon-size) * 2);
+  height: calc(var(--touch-icon-size) * 2);
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  border: 1px solid var(--light-blue);
+  margin: var(--spacing-3) auto;
+}
+
+.toolIcon img {
+  height: 50%;
 }
 
 .toolName {
-  display: block;
+  font-weight: var(--font-weight--bold);
 }
 
 .toolBadge {
   border: 1px solid gray;
-  padding: var(--spacing-3);
+  padding: var(--spacing-1) var(--spacing-3);
+  background: white;
+  display: inline-block;
+  border-radius: 10px;
+  text-transform: capitalize;
 
   &[data-result='pass'] {
     border-color: var(--test-pass);

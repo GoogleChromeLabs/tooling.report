@@ -72,17 +72,18 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
 
           {test.results && (
             <article>
-              {Object.entries(test.results).map(([subject, result]) => (
-                <ul class={$testResultList}>
+              <ul class={$testResultList}>
+                {Object.entries(test.results).map(([subject, result]) => (
                   <TestResultSnippet
                     name={subject}
                     result={result.meta.result}
-                    image={toolImages['gulp']}
+                    image={webpack}
+                    // image={toolImages[subject]} why this no work?
                     details={result.html}
                     link={githubLink(result.repositoryPath)}
                   />
-                </ul>
-              ))}
+                ))}
+              </ul>
               <div dangerouslySetInnerHTML={{ __html: test.html }}></div>
             </article>
           )}

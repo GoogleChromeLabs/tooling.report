@@ -8,4 +8,7 @@
 
   --touch-icon-size: 48px;
   --section-aside-width: 150px;
+  --pageMax: 720px;
+
+  --numTools: 4;
 }
