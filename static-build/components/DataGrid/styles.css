@@ -9,7 +9,7 @@
   display: flex;
 }
 
-.resultsRow {
+.results {
   display: flex;
   flex: 1;
   background: white;
@@ -20,7 +20,7 @@
   }
 }
 
-.rowside {
+.aside {
   width: calc(var(--section-aside-width) + var(--spacing-3));
   padding-top: var(--spacing-2);
 }
