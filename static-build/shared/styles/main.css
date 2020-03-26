@@ -1,5 +1,5 @@
 main {
   padding: var(--spacing-6);
   display: grid;
-  gap: var(--spacing-6);
+  gap: 10rem;
 }
