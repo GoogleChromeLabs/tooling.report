@@ -5,7 +5,7 @@
     "build": "rollup -c && node lib/move-output.js",
     "debug": "node --inspect-brk node_modules/.bin/rollup -c",
     "dev": "rollup -cw & npm run serve",
-    "serve": "http-server -s -c-1 .tmp/build/static",
+    "serve": "http-server -c-1 .tmp/build/static | head -5",
     "linktests": "ln -s '../../../tests' .tmp/build/static/tests",
     "atest": "cd \"tests/$TEST\" && npm i --ignore-scripts --no-progress --no-fund --no-audit --prefer-offline --cache-min 9999999 --no-package-lock && npm run -s build"
   },
