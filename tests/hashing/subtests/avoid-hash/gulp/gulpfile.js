@@ -11,40 +11,36 @@
  * limitations under the License.
  */
 
-const { src, dest, series } = require('gulp');
+const { src, dest } = require('gulp');
 const rev = require('gulp-rev');
-const revCollector = require('gulp-rev-collector');
+const revRewrite = require('gulp-rev-rewrite');
 const browserify = require('browserify');
 const tap = require('gulp-tap');
 const buffer = require('gulp-buffer');
+const gulpif = require('gulp-if');
+
+function bundle(file) {
+  file.contents = browserify(file.path)
+    .plugin('tinyify')
+    .plugin('urify-emitter', {
+      output: 'build',
+      base: '.',
+    })
+    .bundle();
+}
 
 function buildScripts() {
-  return src('src/js/*.js')
-    .pipe(
-      tap(function(file) {
-        file.contents = browserify(file.path)
-          .plugin('tinyify')
-          .bundle();
-      }),
-    )
-    .pipe(buffer())
-    .pipe(rev())
-    .pipe(dest('build/js'))
-    .pipe(rev.manifest())
-    .pipe(dest('build/js'));
+  return (
+    src('src/{*.html,*-entry.js}')
+      // bundle JS files:
+      .pipe(gulpif(file => /\.js$/.test(file.basename), tap(bundle)))
+      .pipe(buffer())
+      // hash URLs of JS files that start with "hashed":
+      .pipe(gulpif(file => /^hashed.*\.js$/.test(file.basename), rev()))
+      // update URL references with hashes:
+      .pipe(revRewrite())
+      .pipe(dest('build'))
+  );
 }
 
-function replaceHTML() {
-  return src(['build/*/*.json', 'src/*.html'])
-    .pipe(
-      revCollector({
-        replaceReved: true,
-        dirReplacements: {
-          '/js/': '/js',
-        },
-      }),
-    )
-    .pipe(dest('build/'));
-}
-
-exports.default = series(buildScripts, replaceHTML);
+exports.default = buildScripts;

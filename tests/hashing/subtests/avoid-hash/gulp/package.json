@@ -4,12 +4,14 @@
     "build": "gulp"
   },
   "devDependencies": {
-    "browserify": "^16.5.0",
-    "gulp": "^4.0.2",
+    "browserify": "16.5.0",
+    "gulp": "4.0.2",
     "gulp-buffer": "0.0.2",
-    "gulp-rev": "^9.0.0",
-    "gulp-rev-collector": "^1.3.1",
-    "gulp-tap": "^2.0.0",
-    "tinyify": "^2.5.2"
+    "gulp-if": "3.0.0",
+    "gulp-rev": "9.0.0",
+    "gulp-rev-rewrite": "3.0.2",
+    "gulp-tap": "2.0.0",
+    "tinyify": "2.5.2",
+    "urify-emitter": "1.1.2"
   }
 }
