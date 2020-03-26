@@ -18,6 +18,9 @@ import pageStyles from 'css-bundle:./styles.css';
 import Logo from '../../components/Logo/index';
 import Footer from '../../components/Footer/index';
 import LinkList from '../../components/LinkList/index';
+import TestCard from '../../components/TestCard';
+
+import { $testCardList } from './styles.css';
 
 interface Props {
   test: Test;
@@ -85,11 +88,14 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
 
           {test.subTests && (
             <section>
-              <ul>
+              <ul class={$testCardList}>
                 {Object.entries(test.subTests).map(([path, test]) => (
-                  <li>
-                    <a href={path + '/'}>{test.meta.title}</a>
-                  </li>
+                  <TestCard
+                    link={path + '/'}
+                    name={test.meta.title}
+                    total={3} // placeholder data
+                    possible={5} // placeholder data
+                  />
                 ))}
               </ul>
             </section>

@@ -1,0 +1,46 @@
+.testCard {
+  background: white;
+  border: 1px solid var(--light-blue);
+  display: block;
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+  padding: 2rem;
+  text-align: center;
+}
+
+.cardTitle {
+  color: var(--vivid-blue);
+  margin: var(--spacing-1);
+  display: block;
+  line-height: var(--font-lineheight--body);
+  font-weight: var(--font-weight--normal);
+}
+
+.cardTotal {
+  font-size: var(--font-size--logo);
+  color: var(--dim-teal);
+}
+
+.cardTotalCount {
+  font-weight: var(--font-weight--bold);
+}
+
+.cardTestsPassedContainer {
+  margin-top: 2rem;
+}
+
+.cardTestsPassedContainer a {
+  font-size: var(--font-size--detail);
+  text-decoration: none;
+  color: var(--vivid-blue);
+}
+
+.dash {
+  color: var(--sky-blue);
+}
+
+.testCardDesc {
+  color: var(--vivid-blue);
+  font-size: var(--font-size--detail);
+  line-height: 0.25;
+}

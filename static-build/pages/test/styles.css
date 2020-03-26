@@ -1,4 +1,14 @@
 @import './article.css';
+@import '../../components/TestCard/styles.css';
+
+.testCardList {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
 /*
   specify the components on the page you need styles for
