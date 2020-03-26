@@ -189,14 +189,20 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
             <DataGrid />
           </section>
 
-          {/* TODO: replace with a loop for each collection, pass data to <DataGrid/> */}
-          <section id="configuration">
-            <a class={$topSticky} href="#configuration">
-              <h3 class={$sectionHeader}>Configuration</h3>
-            </a>
-            <div>{renderTests(tests)}</div>
-          </section>
-          {/* end loop TODO */}
+          {Object.entries(tests).map(([test]) => {
+            const formatted_test = test.split('-').join(' ');
+
+            return (
+              <section id={test}>
+                <a class={$topSticky} href={test}>
+                  <h3 class={$sectionHeader}>{formatted_test}</h3>
+                </a>
+                <DataGrid />
+              </section>
+            );
+          })}
+
+          {/* {renderTests(tests)} */}
 
           <section>
             <div>
