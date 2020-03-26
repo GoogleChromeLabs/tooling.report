@@ -19,11 +19,12 @@
   justify-items: center;
   align-items: center;
   border: 1px solid var(--light-blue);
-  margin: var(--spacing-3) auto;
+  margin: var(--spacing-2) auto;
 }
 
 .toolIcon img {
-  height: 50%;
+  max-width: 40%;
+  max-height: 40%;
 }
 
 .toolName {

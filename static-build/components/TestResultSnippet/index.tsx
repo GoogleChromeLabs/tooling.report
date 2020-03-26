@@ -25,7 +25,7 @@ const TestResultSnippet: FunctionalComponent<Props> = ({
         {name}
       </a>
       <figure class={$toolIcon}>
-        <img /*src={toolImages[name]}*/ src={webpack} alt="" />
+        <img src={toolImages[name as BuildTool]} alt="" />
       </figure>
       <div data-result={result} class={$toolBadge}>
         {result}
