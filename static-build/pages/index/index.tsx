@@ -22,6 +22,7 @@ import {
   $sidebarLayout,
   $header,
   $summaryList,
+  $sectionHeader,
 } from './styles.css';
 import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
 import { calculateScore, calculateScoreTotals } from 'static-build/utils';
@@ -159,9 +160,11 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
           </section>
 
           <section id="summary">
+            <a class={$topSticky} href="#summary">
+              <h3 class={$sectionHeader}>Summary</h3>
+            </a>
             <div class={$sidebarLayout}>
               <aside>
-                <h3>Summary</h3>
                 <small>Results at the highest level</small>
               </aside>
               <div>{renderSummary(tests)}</div>
@@ -180,48 +183,20 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
           </section>
 
           <section id="overview">
-            <div class={$sidebarLayout}>
-              <aside>
-                <h3>Overview</h3>
-                <ul>
-                  <li>section 1</li>
-                  <li>section 2</li>
-                  <li>...</li>
-                </ul>
-              </aside>
-              <div>
-                <DataGrid />
-              </div>
-            </div>
+            <a class={$topSticky} href="#overview">
+              <h3 class={$sectionHeader}>Overview</h3>
+            </a>
+            <DataGrid />
           </section>
 
+          {/* TODO: replace with a loop for each collection, pass data to <DataGrid/> */}
           <section id="configuration">
-            <div class={$sidebarLayout}>
-              <aside>
-                <h3 class={$topSticky}>Configuration</h3>
-                <ul>
-                  <li>section 1</li>
-                  <li>section 2</li>
-                  <li>...</li>
-                </ul>
-              </aside>
-              <div>{renderTests(tests)}</div>
-            </div>
+            <a class={$topSticky} href="#configuration">
+              <h3 class={$sectionHeader}>Configuration</h3>
+            </a>
+            <div>{renderTests(tests)}</div>
           </section>
-
-          <section id="todo:next-in-array">
-            <div class={$sidebarLayout}>
-              <aside>
-                <h3 class={$topSticky}>Configuration</h3>
-                <ul>
-                  <li>section 1</li>
-                  <li>section 2</li>
-                  <li>...</li>
-                </ul>
-              </aside>
-              <div>{renderTests(tests)}</div>
-            </div>
-          </section>
+          {/* end loop TODO */}
 
           <section>
             <div>

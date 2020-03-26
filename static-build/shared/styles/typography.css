@@ -18,6 +18,7 @@
 
 html {
   font-family: var(--font-body);
+  background-color: var(--background-gray);
   color: var(--backpack-blue);
   font-size: var(--font-size--body);
   font-weight: var(--font-weight--light);

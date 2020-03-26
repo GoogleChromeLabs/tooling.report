@@ -1,5 +1,12 @@
 import { h } from 'preact';
-import { $datagrid, $row, $column, $dot } from './styles.css';
+import {
+  $datagrid,
+  $row,
+  $column,
+  $dot,
+  $rowside,
+  $resultsRow,
+} from './styles.css';
 
 const mockdata = [
   [[9], [12], [7], [8]],
@@ -22,13 +29,18 @@ function DataGrid() {
     <div class={$datagrid}>
       {mockdata.map(row => (
         <div class={$row}>
-          {row.map(column => (
-            <span class={$column}>
-              {Array.apply(null, Array(column[0])).map(dots => (
-                <span data-result={randomResult()} class={$dot}></span>
-              ))}
-            </span>
-          ))}
+          <div class={$rowside}>
+            <a href="#">Section</a>
+          </div>
+          <div class={$resultsRow}>
+            {row.map(column => (
+              <span class={$column}>
+                {Array.apply(null, Array(column[0])).map(dots => (
+                  <span data-result={randomResult()} class={$dot}></span>
+                ))}
+              </span>
+            ))}
+          </div>
         </div>
       ))}
     </div>

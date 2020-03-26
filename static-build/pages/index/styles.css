@@ -4,12 +4,33 @@
 
 .topSticky {
   position: sticky;
-  top: 0;
+  top: var(--spacing-6);
+  background-color: var(--background-gray);
 }
 
 .sidebarLayout {
   display: grid;
+  gap: var(--spacing-3);
   grid-template-columns: var(--section-aside-width) 1fr;
+}
+
+.sectionHeader {
+  display: inline-block;
+  margin-bottom: var(--spacing-3);
+  position: relative;
+  color: var(--backpack-blue);
+
+  &:before {
+    content: '#';
+    position: absolute;
+    top: 0;
+    left: -1.5ch;
+    color: var(--denim-blue);
+  }
+
+  &:hover:before {
+    color: var(--backpack-blue);
+  }
 }
 
 .header p {

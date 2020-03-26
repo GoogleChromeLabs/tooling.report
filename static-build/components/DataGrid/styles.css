@@ -3,17 +3,26 @@
 .datagrid {
   display: grid;
   gap: var(--spacing-1);
-  filter: drop-shadow(0 15px 10px hsl(206 36% 51% / 20%));
 }
 
 .row {
   display: flex;
+}
+
+.resultsRow {
+  display: flex;
+  flex: 1;
   background: white;
   padding: var(--spacing-3);
 
   & > * + * {
     padding-left: var(--spacing-3);
   }
+}
+
+.rowside {
+  width: calc(var(--section-aside-width) + var(--spacing-3));
+  padding-top: var(--spacing-2);
 }
 
 .column {
