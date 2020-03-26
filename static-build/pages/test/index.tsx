@@ -12,9 +12,9 @@
  */
 
 import { h, FunctionalComponent } from 'preact';
-import sharedStyles from 'css-bundle:static-build/shared/styles/index.css';
 import { githubLink } from '../../utils.js';
 import pageStyles from 'css-bundle:./styles.css';
+import HeadMeta from '../../components/HeadMeta/index';
 import Logo from '../../components/Logo/index';
 import Footer from '../../components/Footer/index';
 import LinkList from '../../components/LinkList/index';
@@ -26,13 +26,11 @@ interface Props {
 const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
   return (
     <html>
-      <head>
-        <title>Tooling.Report: {test.meta.title}</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <link rel="stylesheet" href={sharedStyles} />
-        <link rel="stylesheet" href={pageStyles} />
-        {/* TODO: favicon */}
-      </head>
+      <HeadMeta
+        title={`Tooling.Report: ${test.meta.title}`}
+        pageStyles={pageStyles}
+        pageScripts=""
+      />
       <body>
         <header>
           <Logo />

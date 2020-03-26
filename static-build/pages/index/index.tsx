@@ -15,7 +15,6 @@ import { h, FunctionalComponent, JSX } from 'preact';
 import { renderIssueLinksForTest } from '../../utils.js';
 
 import config from 'consts:config';
-import sharedStyles from 'css-bundle:static-build/shared/styles/index.css';
 import pageStyles from 'css-bundle:./styles.css';
 import {
   $topSticky,
@@ -23,8 +22,9 @@ import {
   $header,
   $summaryList,
 } from './styles.css';
-import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
+import bundleURL from 'client-bundle:client/home/index.ts';
 import { calculateScore, calculateScoreTotals } from 'static-build/utils';
+import HeadMeta from '../../components/HeadMeta/index';
 import Logo from '../../components/Logo/index';
 import Footer from '../../components/Footer/index';
 import LinkList from '../../components/LinkList/index';
@@ -108,17 +108,11 @@ function renderSummary(tests: Tests): JSX.Element {
 const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
   return (
     <html>
-      <head>
-        <title>Tooling.Report</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        {/* TODO: favicon */}
-        <link rel="stylesheet" href={sharedStyles} />
-        <link rel="stylesheet" href={pageStyles} />
-        <script type="module" src={bundleURL} />
-        {imports.map(v => (
-          <link rel="preload" as="script" href={v} crossOrigin="" />
-        ))}
-      </head>
+      <HeadMeta
+        title="Tooling.Report"
+        pageStyles={pageStyles}
+        pageScripts={bundleURL}
+      />
       <body>
         <header>
           <Logo />
