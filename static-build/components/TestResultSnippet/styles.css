@@ -27,6 +27,7 @@
 }
 
 .toolName {
+  text-transform: capitalize;
   font-weight: var(--font-weight--bold);
 }
 
@@ -37,6 +38,7 @@
   display: inline-block;
   border-radius: 10px;
   text-transform: capitalize;
+  font-weight: var(--font-weight--normal);
 
   &[data-result='pass'] {
     border-color: var(--test-pass);
