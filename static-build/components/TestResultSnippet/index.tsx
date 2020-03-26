@@ -1,10 +1,14 @@
 import { h, FunctionalComponent } from 'preact';
 import { $resultItem, $toolIcon, $toolName, $toolBadge } from './styles.css';
+import gulp from 'asset-url:../../img/gulp.svg';
+import rollup from 'asset-url:../../img/rollup.svg';
+import webpack from 'asset-url:../../img/webpack.svg';
+import parcel from 'asset-url:../../img/parcel.svg';
+const toolImages = { gulp, rollup, webpack, parcel };
 
 interface Props {
   name: string;
   result: string;
-  image: string;
   details: string;
   link: string;
 }
@@ -12,7 +16,6 @@ interface Props {
 const TestResultSnippet: FunctionalComponent<Props> = ({
   name,
   result,
-  image,
   details,
   link,
 }: Props) => {
@@ -22,7 +25,7 @@ const TestResultSnippet: FunctionalComponent<Props> = ({
         {name}
       </a>
       <figure class={$toolIcon}>
-        <img src={image} alt="" />
+        <img /*src={toolImages[name]}*/ src={webpack} alt="" />
       </figure>
       <div data-result={result} class={$toolBadge}>
         {result}

@@ -20,12 +20,6 @@ import Footer from '../../components/Footer/index';
 import LinkList from '../../components/LinkList/index';
 import TestResultSnippet from '../../components/TestResultSnippet';
 
-import gulp from 'asset-url:../../img/gulp.svg';
-import rollup from 'asset-url:../../img/rollup.svg';
-import webpack from 'asset-url:../../img/webpack.svg';
-import parcel from 'asset-url:../../img/parcel.svg';
-const toolImages = { gulp, rollup, webpack, parcel };
-
 import { $testResultList } from './styles.css';
 
 interface Props {
@@ -77,8 +71,6 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                   <TestResultSnippet
                     name={subject}
                     result={result.meta.result}
-                    image={webpack}
-                    // image={toolImages[subject]} why this no work?
                     details={result.html}
                     link={githubLink(result.repositoryPath)}
                   />
