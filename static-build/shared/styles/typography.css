@@ -53,3 +53,7 @@ p,
 figure {
   margin: 0;
 }
+
+small {
+  color: var(--denim-blue);
+}
