@@ -3,3 +3,4 @@ build
 node_modules
 .github/actions/*/package-lock.json
 *.css.d.ts
+.parcel-cache
