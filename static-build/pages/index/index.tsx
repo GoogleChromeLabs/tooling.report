@@ -143,22 +143,6 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
           </section>
         </header>
         <main>
-          <section id="getting-started">
-            <div class={$sidebarLayout}>
-              <aside></aside>
-              <div>
-                <h3>Getting Started</h3>
-                <p>
-                  Expand or reduce the scope of your comparison using the below
-                  checklist. You can always come back and reconfigure it later.{' '}
-                </p>
-                <div>
-                  <p>Use the (+) button to submit or request a build tool!</p>
-                </div>
-              </div>
-            </div>
-          </section>
-
           <section id="summary">
             <a class={$topSticky} href="#summary">
               <h3 class={$sectionHeader}>Summary</h3>
