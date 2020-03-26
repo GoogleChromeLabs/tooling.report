@@ -10,8 +10,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-function logCaps(msg) {
-  console.log(msg.toUpperCase());
-}
+const datauri = require('datauri');
+const hashedUrl = datauri(__dirname + '/hashed-asset.txt');
+const unhashedUrl = datauri(__dirname + '/unhashed-asset.txt');
 
-exports.logCaps = logCaps;
+console.log('Hashed entry');
+console.log(hashedUrl, unhashedUrl);
