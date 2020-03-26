@@ -6,7 +6,7 @@
   justify-content: space-between;
   border-radius: 20px;
   box-shadow: var(--card-shadow);
-  padding: 2rem;
+  padding: var(--spacing-5);
   text-align: center;
 }
 
@@ -28,7 +28,7 @@
 }
 
 .cardTestsPassedContainer {
-  margin-top: 2rem;
+  margin-top: var(--spacing-5);
 }
 
 .cardTestsPassedContainer a {

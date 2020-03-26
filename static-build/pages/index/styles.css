@@ -17,7 +17,7 @@
 
 .summaryList {
   display: grid;
-  gap: 2rem;
+  gap: var(--spacing-5);
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   margin: 0;
   padding: 0;
