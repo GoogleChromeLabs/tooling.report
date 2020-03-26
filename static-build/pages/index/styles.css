@@ -1,18 +1,10 @@
 @import 'components/SummaryCard/styles.css';
 @import 'components/DataGrid/styles.css';
+@import 'components/ToolNav/styles.css';
 
 .topSticky {
   position: sticky;
   top: 0;
-}
-
-.comparedTools {
-  display: flex;
-  margin-left: var(--section-aside-width);
-
-  & img {
-    display: none;
-  }
 }
 
 .sidebarLayout {
