@@ -11,10 +11,8 @@
  * limitations under the License.
  */
 import { h, FunctionalComponent, JSX } from 'preact';
+import { calculateScoreTotals } from 'static-build/utils';
 
-import { renderIssueLinksForTest } from '../../utils.js';
-
-import config from 'consts:config';
 import sharedStyles from 'css-bundle:static-build/shared/styles/index.css';
 import pageStyles from 'css-bundle:./styles.css';
 import {
@@ -25,7 +23,6 @@ import {
   $sectionHeader,
 } from './styles.css';
 import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
-import { calculateScore, calculateScoreTotals } from 'static-build/utils';
 import Logo from '../../components/Logo/index';
 import Footer from '../../components/Footer/index';
 import LinkList from '../../components/LinkList/index';
@@ -42,53 +39,6 @@ const toolImages = { gulp, rollup, webpack, parcel };
 
 interface Props {
   tests: Tests;
-}
-
-function renderTest(test: Test, basePath: string): JSX.Element {
-  let results: JSX.Element[] | undefined;
-
-  if (test.results) {
-    results = Object.entries(test.results).map(([subject, result]) => (
-      <li>
-        {subject}:{' '}
-        {result.meta.result === 'pass'
-          ? 'Pass'
-          : result.meta.result === 'fail'
-          ? 'Fail'
-          : 'So-so'}
-      </li>
-    ));
-  }
-
-  return (
-    <div>
-      <h4>{test.meta.title}</h4>
-      <ul>
-        {config.testSubjects.map(subject => {
-          const { score, possible } = calculateScore(test, subject);
-          return (
-            <li>
-              {subject}: {score}/{possible}
-              {renderIssueLinksForTest(test, subject)}
-            </li>
-          );
-        })}
-      </ul>
-      <p>
-        <a href={basePath}>More details</a>
-      </p>
-      {results && <ul>{results}</ul>}
-      {test.subTests && (
-        <section>{renderTests(test.subTests, basePath)}</section>
-      )}
-    </div>
-  );
-}
-
-function renderTests(tests: Tests, basePath = '/'): JSX.Element[] {
-  return Object.entries(tests).map(([testDir, test]) =>
-    renderTest(test, `${basePath}${testDir}/`),
-  );
 }
 
 function renderSummary(tests: Tests): JSX.Element {
@@ -109,6 +59,7 @@ function renderSummary(tests: Tests): JSX.Element {
 }
 
 const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
+  console.log(tests);
   return (
     <html>
       <head>
@@ -170,23 +121,19 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
             <a class={$topSticky} href="#overview">
               <h3 class={$sectionHeader}>Overview</h3>
             </a>
-            <DataGrid />
+            {/* <DataGrid tests={tests['code splitting'][0]} /> */}
           </section>
 
-          {Object.entries(tests).map(([test]) => {
-            const formatted_test = test.split('-').join(' ');
-
+          {Object.entries(tests).map(([testDir, collection]) => {
             return (
-              <section id={test}>
-                <a class={$topSticky} href={test}>
-                  <h3 class={$sectionHeader}>{formatted_test}</h3>
+              <section id={collection.meta.title}>
+                <a class={$topSticky} href={collection.meta.title}>
+                  <h3 class={$sectionHeader}>{collection.meta.title}</h3>
                 </a>
-                <DataGrid />
+                <DataGrid collection={collection} />
               </section>
             );
           })}
-
-          {/* {renderTests(tests)} */}
 
           <section>
             <div>

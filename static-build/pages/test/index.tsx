@@ -11,7 +11,7 @@
  * limitations under the License.
  */
 
-import { h, FunctionalComponent } from 'preact';
+import { h, FunctionalComponent, JSX } from 'preact';
 import sharedStyles from 'css-bundle:static-build/shared/styles/index.css';
 import { githubLink } from '../../utils.js';
 import pageStyles from 'css-bundle:./styles.css';

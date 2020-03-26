@@ -1,39 +1,70 @@
-import { h } from 'preact';
-import {
-  $datagrid,
-  $row,
-  $column,
-  $dot,
-  $rowside,
-  $resultsRow,
-} from './styles.css';
+import { h, FunctionalComponent, JSX } from 'preact';
+import config from 'consts:config';
+import { renderIssueLinksForTest } from '../../utils.js';
+import { calculateScore } from 'static-build/utils';
+import { $datagrid, $row, $column, $dot, $aside, $results } from './styles.css';
 
-const mockdata = [
-  [[9], [12], [7], [8]],
-  [[8], [15], [5], [4]],
-  [[7], [8], [3], [7]],
-  [[12], [4], [11], [12]],
-];
+interface Props {
+  collection: Test;
+}
 
-const randomResult = () => {
-  const results = ['pass', 'fail', 'partial', 'skip'];
+function renderTest(test: Test, basePath: string): JSX.Element {
+  let results: JSX.Element[] | undefined;
 
-  const max = results.length;
-  const seed = Math.floor(Math.random() * Math.floor(max));
+  if (test.results) {
+    results = Object.entries(test.results).map(([subject, result]) => (
+      <li>
+        {subject}:{' '}
+        {result.meta.result === 'pass'
+          ? 'Pass'
+          : result.meta.result === 'fail'
+          ? 'Fail'
+          : 'So-so'}
+      </li>
+    ));
+  }
 
-  return results[seed];
-};
+  return (
+    <div>
+      <h4>{test.meta.title}</h4>
+      <ul>
+        {config.testSubjects.map(subject => {
+          const { score, possible } = calculateScore(test, subject);
+          return (
+            <li>
+              {subject}: {score}/{possible}
+              {renderIssueLinksForTest(test, subject)}
+            </li>
+          );
+        })}
+      </ul>
+      <p>
+        <a href={basePath}>More details</a>
+      </p>
+      {results && <ul>{results}</ul>}
+      {test.subTests && (
+        <section>{renderTests(test.subTests, basePath)}</section>
+      )}
+    </div>
+  );
+}
 
-function DataGrid() {
+function renderTests(tests: Tests, basePath = '/'): JSX.Element[] {
+  return Object.entries(tests).map(([testDir, test]) =>
+    renderTest(test, `${basePath}${testDir}/`),
+  );
+}
+
+const DataGrid: FunctionalComponent<Props> = (collection: Props) => {
   return (
     <div class={$datagrid}>
-      {mockdata.map(row => (
+      {collection.subTests.map((test: Test) => (
         <div class={$row}>
-          <div class={$rowside}>
+          <div class={$aside}>
             <a href="#">Section</a>
           </div>
-          <div class={$resultsRow}>
-            {row.map(column => (
+          <div class={$results}>
+            {test.results.map(column => (
               <span class={$column}>
                 {Array.apply(null, Array(column[0])).map(dots => (
                   <span data-result={randomResult()} class={$dot}></span>
@@ -45,6 +76,6 @@ function DataGrid() {
       ))}
     </div>
   );
-}
+};
 
 export default DataGrid;
