@@ -19,8 +19,8 @@ import Logo from '../../components/Logo/index';
 import Footer from '../../components/Footer/index';
 import LinkList from '../../components/LinkList/index';
 import TestCard from '../../components/TestCard';
-
 import { $testCardList } from './styles.css';
+import { LabcoatHero, WalkerHero } from '../../components/Heroes';
 
 interface Props {
   test: Test;
@@ -38,18 +38,23 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
       </head>
       <body>
         <header>
-          <Logo />
           <section>
-            <small>feature</small>
-            <h2>{test.meta.title}</h2>
-            <p>TODO: use a description from front matter</p>
-            <LinkList
-              links={[
-                { title: 'FAQ', href: '#' },
-                { title: 'Contribute', href: '#' },
-                { title: 'Have an issue?', href: '#' },
-              ]}
-            />
+            <Logo />
+            <div>
+              <div>
+                <small>feature</small>
+                <h2>{test.meta.title}</h2>
+                <p>TODO: use a description from front matter</p>
+                <LinkList
+                  links={[
+                    { title: 'FAQ', href: '#' },
+                    { title: 'Contribute', href: '#' },
+                    { title: 'Have an issue?', href: '#' },
+                  ]}
+                />
+              </div>
+              <div>{test.subTests ? <LabcoatHero /> : <WalkerHero />}</div>
+            </div>
           </section>
         </header>
         <main>

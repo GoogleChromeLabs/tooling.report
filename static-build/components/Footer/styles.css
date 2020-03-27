@@ -26,6 +26,11 @@
   margin: 0 auto;
 }
 
+.messaging {
+  display: flex;
+  justify-content: space-between;
+}
+
 .rule {
   border: 0;
   border-top: 1px solid var(--denim-blue);
