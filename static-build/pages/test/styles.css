@@ -1,8 +1,2 @@
 @import './article.css';
-
-/*
-  specify the components on the page you need styles for
-  note: should closely match the component list in the ./index.tsx file near here
-*/
-
 @import '../../libraries/prism/prism.css';
