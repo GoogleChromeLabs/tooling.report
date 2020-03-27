@@ -98,8 +98,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                   <TestCard
                     link={path + '/'}
                     name={test.meta.title}
-                    total={3} // placeholder data
-                    possible={5} // placeholder data
+                    results={test.results}
                   />
                 ))}
               </ul>
