@@ -11,22 +11,4 @@
  * limitations under the License.
  */
 
-const { src, dest } = require('gulp');
-const browserify = require('browserify');
-const tap = require('gulp-tap');
-const buffer = require('gulp-buffer');
-const hash = require('gulp-hash');
-
-function basicHash() {
-  return src('src/*.js', { read: false })
-    .pipe(
-      tap(function(file) {
-        file.contents = browserify(file.path).bundle();
-      }),
-    )
-    .pipe(buffer())
-    .pipe(hash())
-    .pipe(dest('dist'));
-}
-
-exports.default = basicHash;
+console.log('bar');
