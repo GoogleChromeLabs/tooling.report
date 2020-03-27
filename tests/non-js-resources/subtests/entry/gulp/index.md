@@ -2,8 +2,8 @@
 result: pass
 ---
 
-Pros of using Gulp is that you can define the input, output, and order of which tasks will run. Which prevents being locked to specific entry point.
+One of the pros of using Gulp is that you can define the input and output files and order in which tasks will run. This prevents you from ever being locked in to any specific entry point.
 
-This test runs `gulp-rav` to hash CSS and JS, then use `gulp-rav-collector` to replace asset links in index.html file.
+This test uses `gulp-rev` to hash CSS and JS files, then uses `gulp-rev-collector` to replace the references in the index.html file.
 
-(Note: if you are using Browserify to build your JavaScirpt, you would run it before `rav()` call in scriptHash function.)
+(Note: If you are using Browserify to bundle your JavaScirpt, you would run it before `rev()` in the `scriptHash` function.)
