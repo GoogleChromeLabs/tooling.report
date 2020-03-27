@@ -51,6 +51,7 @@ const DataGrid: FunctionalComponent<Props> = ({
                     ([subject, test]) => (
                       <span
                         data-result={test.results[tool].meta.result}
+                        title={test.html}
                         class={$dot}
                       ></span>
                     ),
