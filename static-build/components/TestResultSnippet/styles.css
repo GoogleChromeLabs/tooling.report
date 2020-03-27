@@ -13,8 +13,8 @@
   background: white;
   margin: 0 auto;
   border-radius: 50%;
-  width: calc(var(--touch-icon-size) * 2);
-  height: calc(var(--touch-icon-size) * 2);
+  width: calc(var(--touch-icon-size) * 2.5);
+  height: calc(var(--touch-icon-size) * 2.5);
   display: grid;
   justify-items: center;
   align-items: center;

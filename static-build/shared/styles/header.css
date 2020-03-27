@@ -6,4 +6,15 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  & > section {
+    max-width: 1024px;
+    margin: auto;
+
+    & > div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
 }
