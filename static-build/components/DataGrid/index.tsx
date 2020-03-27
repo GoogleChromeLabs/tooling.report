@@ -5,7 +5,8 @@ import { calculateScore } from 'static-build/utils';
 import { $datagrid, $row, $column, $dot, $aside, $results } from './styles.css';
 
 interface Props {
-  collection: Test;
+  tests?: Tests;
+  basePath: string;
 }
 
 function renderTest(test: Test, basePath: string): JSX.Element {
@@ -55,22 +56,24 @@ function renderTests(tests: Tests, basePath = '/'): JSX.Element[] {
   );
 }
 
-const DataGrid: FunctionalComponent<Props> = (collection: Props) => {
+const DataGrid: FunctionalComponent<Props> = ({
+  tests = {},
+  basePath,
+}: Props) => {
   return (
     <div class={$datagrid}>
-      {collection.subTests.map((test: Test) => (
+      {Object.entries(tests).map(([testDir, test]) => (
         <div class={$row}>
           <div class={$aside}>
-            <a href="#">Section</a>
+            <a href="#">{test.meta && test.meta.title}</a>
           </div>
           <div class={$results}>
-            {test.results.map(column => (
-              <span class={$column}>
-                {Array.apply(null, Array(column[0])).map(dots => (
-                  <span data-result={randomResult()} class={$dot}></span>
-                ))}
-              </span>
-            ))}
+            {test.results &&
+              Object.entries(test.results).map(([subject, result]) => (
+                <span class={$column}>
+                  <span data-result={result.meta.result} class={$dot}></span>
+                </span>
+              ))}
           </div>
         </div>
       ))}

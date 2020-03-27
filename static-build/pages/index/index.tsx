@@ -59,7 +59,6 @@ function renderSummary(tests: Tests): JSX.Element {
 }
 
 const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
-  console.log(tests);
   return (
     <html>
       <head>
@@ -124,16 +123,14 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
             {/* <DataGrid tests={tests['code splitting'][0]} /> */}
           </section>
 
-          {Object.entries(tests).map(([testDir, collection]) => {
-            return (
-              <section id={collection.meta.title}>
-                <a class={$topSticky} href={collection.meta.title}>
-                  <h3 class={$sectionHeader}>{collection.meta.title}</h3>
-                </a>
-                <DataGrid collection={collection} />
-              </section>
-            );
-          })}
+          {Object.entries(tests).map(([testDir, collection]) => (
+            <section id={collection.meta.title}>
+              <a class={$topSticky} href={collection.meta.title}>
+                <h3 class={$sectionHeader}>{collection.meta.title}</h3>
+              </a>
+              <DataGrid tests={collection.subTests} basePath={testDir} />
+            </section>
+          ))}
 
           <section>
             <div>
