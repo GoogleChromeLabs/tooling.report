@@ -1,7 +1,6 @@
 import { h, FunctionalComponent, JSX } from 'preact';
 import config from 'consts:config';
 import { renderIssueLinksForTest } from '../../utils.js';
-import { calculateScore } from 'static-build/utils';
 import { $datagrid, $row, $column, $dot, $aside, $results } from './styles.css';
 
 interface Props {
@@ -9,51 +8,22 @@ interface Props {
   basePath: string;
 }
 
-function renderTest(test: Test, basePath: string): JSX.Element {
-  let results: JSX.Element[] | undefined;
-
-  if (test.results) {
-    results = Object.entries(test.results).map(([subject, result]) => (
-      <li>
-        {subject}:{' '}
-        {result.meta.result === 'pass'
-          ? 'Pass'
-          : result.meta.result === 'fail'
-          ? 'Fail'
-          : 'So-so'}
-      </li>
-    ));
+function gatherSubtestResults(
+  test: Test,
+  tool: BuildTool,
+  tests: Tests,
+): Tests {
+  if (test.results[tool]) {
+    tests[test.meta.title] = test;
   }
 
-  return (
-    <div>
-      <h4>{test.meta.title}</h4>
-      <ul>
-        {config.testSubjects.map(subject => {
-          const { score, possible } = calculateScore(test, subject);
-          return (
-            <li>
-              {subject}: {score}/{possible}
-              {renderIssueLinksForTest(test, subject)}
-            </li>
-          );
-        })}
-      </ul>
-      <p>
-        <a href={basePath}>More details</a>
-      </p>
-      {results && <ul>{results}</ul>}
-      {test.subTests && (
-        <section>{renderTests(test.subTests, basePath)}</section>
-      )}
-    </div>
-  );
-}
+  if (test.subTests) {
+    Object.entries(test.subTests).map(([testDir, t]) =>
+      gatherSubtestResults(t, tool, tests),
+    );
+  }
 
-function renderTests(tests: Tests, basePath = '/'): JSX.Element[] {
-  return Object.entries(tests).map(([testDir, test]) =>
-    renderTest(test, `${basePath}${testDir}/`),
-  );
+  return tests;
 }
 
 const DataGrid: FunctionalComponent<Props> = ({
@@ -72,6 +42,19 @@ const DataGrid: FunctionalComponent<Props> = ({
               Object.entries(test.results).map(([subject, result]) => (
                 <span class={$column}>
                   <span data-result={result.meta.result} class={$dot}></span>
+                </span>
+              ))}
+            {test.subTests &&
+              config.testSubjects.map(tool => (
+                <span class={$column}>
+                  {Object.entries(gatherSubtestResults(test, tool, {})).map(
+                    ([subject, test]) => (
+                      <span
+                        data-result={test.results[tool].meta.result}
+                        class={$dot}
+                      ></span>
+                    ),
+                  )}
                 </span>
               ))}
           </div>
