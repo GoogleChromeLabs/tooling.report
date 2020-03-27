@@ -6,5 +6,6 @@
 @import 'header.css';
 @import 'main.css';
 
+@import 'components/GithubFAB/styles.css';
 @import 'components/Footer/styles.css';
 @import 'components/LinkList/styles.css';
