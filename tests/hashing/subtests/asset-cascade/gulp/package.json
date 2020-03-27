@@ -1,8 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "build": "NUM=1 npm run -s build:one && NUM=2 npm run -s build:one && NUM=3 npm run -s build:one",
-    "build:one": "cp -rf src$NUM src && gulp && rm -rf src"
+    "build": "rm -rf build dist src && npm-run-all build:*",
+    "build:1": "cp -r src1 src && gulp && mv dist build/1; rm -rf src dist",
+    "build:2": "cp -r src2 src && gulp && mv dist build/2; rm -rf src dist",
+    "build:3": "cp -r src3 src && gulp && mv dist build/3; rm -rf src dist"
   },
   "devDependencies": {
     "browserify": "^16.5.0",
