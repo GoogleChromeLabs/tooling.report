@@ -10,8 +10,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-function logCaps(msg) {
-  console.log(msg.toUpperCase());
-}
+import hashedUrl from 'url:./hashed-asset.txt';
+import unhashedUrl from 'url:./unhashed-asset.txt';
 
-module.logCaps = logCaps;
+console.log('Hashed entry');
+console.log(hashedUrl, unhashedUrl);
+import('./hashed-chunk.js');
+import('./unhashed-chunk.js');
+
+navigator.serviceWorker.register('sw.js');

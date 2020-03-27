@@ -10,6 +10,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const { logCaps } = require('./lib/utils.js');
-const { exclaim } = require('./lib/exclaim.js');
-logCaps(exclaim('This is index'));
+const datauri = require('datauri');
+const hashedUrl = datauri(__dirname + '/hashed-asset.txt');
+const unhashedUrl = datauri(__dirname + '/unhashed-asset.txt');
+
+console.log('Hashed entry');
+console.log(hashedUrl, unhashedUrl);

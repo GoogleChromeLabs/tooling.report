@@ -15,9 +15,10 @@ import { h, FunctionalComponent, JSX } from 'preact';
 import sharedStyles from 'css-bundle:static-build/shared/styles/index.css';
 import { githubLink } from '../../utils.js';
 import pageStyles from 'css-bundle:./styles.css';
-import Logo from '../../components/Logo/index';
-import Footer from '../../components/Footer/index';
-import LinkList from '../../components/LinkList/index';
+import Logo from '../../components/Logo';
+import Footer from '../../components/Footer';
+import LinkList from '../../components/LinkList';
+import { LabcoatHero, WalkerHero } from '../../components/Heroes';
 
 interface Props {
   test: Test;
@@ -35,18 +36,23 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
       </head>
       <body>
         <header>
-          <Logo />
           <section>
-            <small>feature</small>
-            <h2>{test.meta.title}</h2>
-            <p>TODO: use a description from front matter</p>
-            <LinkList
-              links={[
-                { title: 'FAQ', href: '#' },
-                { title: 'Contribute', href: '#' },
-                { title: 'Have an issue?', href: '#' },
-              ]}
-            />
+            <Logo />
+            <div>
+              <div>
+                <small>feature</small>
+                <h2>{test.meta.title}</h2>
+                <p>TODO: use a description from front matter</p>
+                <LinkList
+                  links={[
+                    { title: 'FAQ', href: '#' },
+                    { title: 'Contribute', href: '#' },
+                    { title: 'Have an issue?', href: '#' },
+                  ]}
+                />
+              </div>
+              <div>{test.subTests ? <LabcoatHero /> : <WalkerHero />}</div>
+            </div>
           </section>
         </header>
         <main>

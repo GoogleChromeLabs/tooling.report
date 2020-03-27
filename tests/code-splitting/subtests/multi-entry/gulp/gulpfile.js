@@ -10,22 +10,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-const { src, dest } = require('gulp');
+const path = require('path');
+const { dest } = require('gulp');
 const browserify = require('browserify');
-const tap = require('gulp-tap');
-const buffer = require('gulp-buffer');
 const source = require('vinyl-source-stream');
+const merge = require('merge-stream');
+const globby = require('globby');
 
 function multiBundles() {
-  const files = ['./src/index.js', './src/profile.js'];
-  return browserify(files)
-    .plugin('factor-bundle', {
-      outputs: ['./build/index.js', './build/profile.js'],
-    })
-    .bundle()
-    .pipe(source('shared.js'))
-    .pipe(dest('build/'));
+  return globby('./src/*.js').then(entries => {
+    // create output streams for each entry bundle
+    const outputs = entries.map(entry => source(path.basename(entry)));
+    const b = browserify(entries)
+      .plugin('factor-bundle', { outputs })
+      .bundle()
+      .pipe(source('common.js'));
+    return merge(b, outputs).pipe(dest('build/'));
+  });
 }
 
 exports.default = multiBundles;

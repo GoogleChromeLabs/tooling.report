@@ -36,8 +36,14 @@
   }
 }
 
-.header p {
-  max-width: 42ch;
+.connect {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 700px;
+  background-color: var(--background-gray-offset);
+  border: 1px solid var(--background-gray-offset);
+  border-radius: 2rem;
 }
 
 .summaryList {

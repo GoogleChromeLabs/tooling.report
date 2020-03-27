@@ -2,4 +2,5 @@ main {
   padding: var(--spacing-6);
   display: grid;
   gap: 10rem;
+  position: relative;
 }

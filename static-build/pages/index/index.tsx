@@ -18,18 +18,22 @@ import pageStyles from 'css-bundle:./styles.css';
 import {
   $topSticky,
   $sidebarLayout,
-  $header,
   $summaryList,
   $sectionHeader,
+  $connect,
 } from './styles.css';
+
 import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
-import Logo from '../../components/Logo/index';
-import Footer from '../../components/Footer/index';
-import LinkList from '../../components/LinkList/index';
-import SummaryCard from '../../components/SummaryCard/index';
-import DataGrid from '../../components/DataGrid/index';
-import Legend from '../../components/DataGrid/Legend/index';
-import ToolNav from '../../components/ToolNav/index';
+import Logo from '../../components/Logo';
+import GithubFAB from '../../components/GithubFAB';
+import Footer from '../../components/Footer';
+import LinkList from '../../components/LinkList';
+import Lamp from '../../components/Lamp';
+import { BenchHero } from '../../components/Heroes';
+import SummaryCard from '../../components/SummaryCard';
+import ToolNav from '../../components/ToolNav';
+import DataGrid from '../../components/DataGrid';
+import Legend from '../../components/DataGrid/Legend';
 
 import gulp from 'asset-url:../../img/gulp.svg';
 import rollup from 'asset-url:../../img/rollup.svg';
@@ -74,25 +78,33 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
       </head>
       <body>
         <header>
-          <Logo />
-          <section class={$header}>
-            <h2>What is Tooling Report?</h2>
-            <p>
-              A quick and easy way to figure out what the best tool for your
-              next project is, if it’s worth your time to migrate from one tool
-              to another and how to adopt a best practice into your existing
-              code base.
-            </p>
-            <LinkList
-              links={[
-                { title: 'FAQ', href: '#' },
-                { title: 'Contribute', href: '#' },
-                { title: 'Have an issue?', href: '#' },
-              ]}
-            />
+          <section>
+            <Logo />
+            <div>
+              <div>
+                <BenchHero />
+              </div>
+              <div>
+                <h2>What is Tooling Report?</h2>
+                <p>
+                  A quick and easy way to figure out what the best tool for your
+                  next project is, if it’s worth your time to migrate from one
+                  tool to another and how to adopt a best practice into your
+                  existing code base.
+                </p>
+                <LinkList
+                  links={[
+                    { title: 'FAQ', href: '#' },
+                    { title: 'Contribute', href: '#' },
+                    { title: 'Have an issue?', href: '#' },
+                  ]}
+                />
+              </div>
+            </div>
           </section>
         </header>
         <main>
+          <GithubFAB />
           <section id="summary">
             <a class={$topSticky} href="#summary">
               <h3 class={$sectionHeader}>Summary</h3>
@@ -132,7 +144,10 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
             </section>
           ))}
 
-          <section>
+          <section class={$connect}>
+            <div>
+              <Lamp />
+            </div>
             <div>
               <h2>Questions or Concerns?</h2>
               <p>

@@ -15,8 +15,11 @@
 
   /* Gra|eys */
   --background-gray: #edf0f2;
+  --background-gray-offset: #dae1e6;
   --text-gray: hsl(0 0% 10%);
 
   /* Shadows */
-  --card-shadow: 0 10px 45px -25px hsl(206 36% 51% / 70%);
+  --denim-blue-hsl: 206 36% 51%;
+  --card-shadow: 0 10px 45px -25px hsl(var(--denim-blue-hsl) / 70%);
+  --fab-shadow: 0 5px 10px hsl(var(--denim-blue-hsl) / 20%);
 }

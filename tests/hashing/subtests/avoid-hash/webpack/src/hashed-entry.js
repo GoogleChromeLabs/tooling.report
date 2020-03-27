@@ -15,5 +15,5 @@ import unhashedUrl from './unhashed-asset.txt';
 
 console.log('Hashed entry');
 console.log(hashedUrl, unhashedUrl);
-import('./hashed-chunk.js');
-import('./unhashed-chunk.js');
+import('./hashed-chunk.js' /* webpackChunkName: "hashed-dep" */);
+import('./unhashed-chunk.js' /* webpackChunkName: "unhashed-dep" */);

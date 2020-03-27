@@ -23,7 +23,7 @@ module.exports = {
     },
     // In Webpack 4, this cannot be a function.
     // That means we can't hash splitted bundles conditionally.
-    chunkFilename: '[name].[contenthash:5].chunk.js',
+    chunkFilename: '[name].[contenthash:5].js',
   },
   module: {
     rules: [
