@@ -35,7 +35,7 @@ const DataGrid: FunctionalComponent<Props> = ({
       {Object.entries(tests).map(([testDir, test]) => (
         <div class={$row}>
           <div class={$aside}>
-            <a href="#">{test.meta && test.meta.title}</a>
+            <a href={`${basePath}${testDir}`}>{test.meta && test.meta.title}</a>
           </div>
           <div class={$results}>
             {test.results &&
