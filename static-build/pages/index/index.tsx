@@ -120,7 +120,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
             <a class={$topSticky} href="#overview">
               <h3 class={$sectionHeader}>Overview</h3>
             </a>
-            {/* <DataGrid tests={tests['code splitting'][0]} /> */}
+            <DataGrid tests={tests} basePath="/" />
           </section>
 
           {Object.entries(tests).map(([testDir, collection]) => (
