@@ -10,11 +10,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export default [1, 2].map(idx => ({
-  input: `src${idx}/index.js`,
-  output: {
-    entryFileNames: '[name]-[hash].js',
-    dir: `build/${idx}`,
-    format: 'esm',
-  },
-}));
+(async function() {
+  const { logCaps } = await import('./utils.js');
+  logCaps('This is index');
+})();
