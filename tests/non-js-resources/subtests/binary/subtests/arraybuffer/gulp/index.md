@@ -2,4 +2,4 @@
 result: pass
 ---
 
-In this test, binary file is first imported as base 64 using `brfs` transfrom on browserify, then converted to Array Buffer using `base64-arraybuffer` decoder.
+You can use browserify’s `brfs` to convert a binary to base64, then convert to Array Buffer using the `base64-arraybuffer` decoder.
