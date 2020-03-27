@@ -30,6 +30,7 @@ import Footer from '../../components/Footer/index';
 import LinkList from '../../components/LinkList/index';
 import SummaryCard from '../../components/SummaryCard/index';
 import ToolNav from '../../components/ToolNav/index';
+import Tooltip from '../../components/Tooltip/index';
 
 import gulp from 'asset-url:../../img/gulp.svg';
 import rollup from 'asset-url:../../img/rollup.svg';
@@ -129,6 +130,17 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
               next project is, if it’s worth your time to migrate from one tool
               to another and how to adopt a best practice into your existing
               code base.
+              {/* TODO: Will Remove -- just for testing
+              Trigger will look unique for this reusable component and it will likely only be pulled in within other components to match an encapsulated pattern */}
+              <div style="position: relative">
+                {' '}
+                {/* Temp, just noting this style on parent*/}
+                <button aria-describedby="test-tooltip">⁉️</button>
+                <Tooltip
+                  id="test-tooltip"
+                  content="<h2>Title</h2><p>Test Paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit, and a <a href='#'>link</a> in the paragraph.</p>"
+                />
+              </div>
             </p>
             <LinkList
               links={[

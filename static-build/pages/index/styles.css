@@ -1,5 +1,6 @@
 @import 'components/SummaryCard/styles.css';
 @import 'components/ToolNav/styles.css';
+@import 'components/Tooltip/styles.css';
 
 .topSticky {
   position: sticky;
