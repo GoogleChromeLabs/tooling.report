@@ -17,20 +17,18 @@ const tap = require('gulp-tap');
 const buffer = require('gulp-buffer');
 const RevAll = require('gulp-rev-all');
 
-const BUILD = 'build/' + (process.env.NUM || '');
-
 function filePath() {
   return src('src/*.js', { read: false })
     .pipe(
       tap(function(file) {
         file.contents = browserify(file.path)
-          .plugin('urify-emitter', { output: BUILD, base: '.' })
+          .plugin('urify-emitter', { output: 'dist/', base: '.' })
           .bundle();
       }),
     )
     .pipe(buffer())
     .pipe(RevAll.revision())
-    .pipe(dest(BUILD));
+    .pipe(dest('dist/'));
 }
 
 exports.default = filePath;
