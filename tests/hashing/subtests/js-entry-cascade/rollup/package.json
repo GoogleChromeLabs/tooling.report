@@ -1,7 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "build": "rm -rf build && rollup -c"
+    "build": "rm -rf build && npm run -s build:1 && npm run -s build:2",
+    "build:1": "cp -r src1 src && rollup -c -d build/1 && rm -rf src",
+    "build:2": "cp -r src2 src && rollup -c -d build/2 && rm -rf src"
   },
   "devDependencies": {
     "rollup": "^2.0.2"
