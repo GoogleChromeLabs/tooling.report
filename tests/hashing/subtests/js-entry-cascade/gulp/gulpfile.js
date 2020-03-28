@@ -11,22 +11,28 @@
  * limitations under the License.
  */
 
-const { src, dest } = require('gulp');
+const path = require('path');
+const { dest } = require('gulp');
 const browserify = require('browserify');
-const tap = require('gulp-tap');
 const buffer = require('gulp-buffer');
 const hash = require('gulp-hash');
+const source = require('vinyl-source-stream');
+const merge = require('merge-stream');
+const globby = require('globby');
 
 function entryCascade() {
-  return src('src/*.js', { read: false })
-    .pipe(
-      tap(function(file) {
-        file.contents = browserify(file.path).bundle();
-      }),
-    )
-    .pipe(buffer())
-    .pipe(hash())
-    .pipe(dest('dist/'));
+  return globby('./src/*.js').then(entries => {
+    // create output streams for each entry bundle
+    const outputs = entries.map(entry => source(path.basename(entry)));
+    const b = browserify(entries)
+      .plugin('factor-bundle', { outputs })
+      .bundle()
+      .pipe(source('common.js'));
+    return merge(b, outputs)
+      .pipe(buffer())
+      .pipe(hash())
+      .pipe(dest('dist/'));
+  });
 }
 
 exports.default = entryCascade;
