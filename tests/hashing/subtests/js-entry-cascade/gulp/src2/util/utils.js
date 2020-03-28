@@ -12,8 +12,7 @@
  */
 
 function logCaps(msg) {
-  const message = msg;
-  console.log(message.toUpperCase());
+  console.log(msg.toUpperCase() + '!');
 }
 
 exports.logCaps = logCaps;

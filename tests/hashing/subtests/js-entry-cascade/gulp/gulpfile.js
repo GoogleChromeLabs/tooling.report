@@ -11,14 +11,14 @@
  * limitations under the License.
  */
 
-const { src, dest, series } = require('gulp');
+const { src, dest } = require('gulp');
 const browserify = require('browserify');
 const tap = require('gulp-tap');
 const buffer = require('gulp-buffer');
 const hash = require('gulp-hash');
 
-function entryCascade1() {
-  return src('src1/*.js', { read: false })
+function entryCascade() {
+  return src('src/*.js', { read: false })
     .pipe(
       tap(function(file) {
         file.contents = browserify(file.path).bundle();
@@ -26,19 +26,7 @@ function entryCascade1() {
     )
     .pipe(buffer())
     .pipe(hash())
-    .pipe(dest('build/src1'));
+    .pipe(dest('dist/'));
 }
 
-function entryCascade2() {
-  return src('src2/*.js', { read: false })
-    .pipe(
-      tap(function(file) {
-        file.contents = browserify(file.path).bundle();
-      }),
-    )
-    .pipe(buffer())
-    .pipe(hash())
-    .pipe(dest('build/src2'));
-}
-
-exports.default = series(entryCascade1, entryCascade2);
+exports.default = entryCascade;
