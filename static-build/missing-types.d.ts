@@ -70,9 +70,13 @@ interface TestResult {
 interface ResultMeta {
   result: 'pass' | 'fail' | 'partial';
   issue?: Array<{
-    title: string;
-    status: string;
+    status: 'open' | 'closed';
     url: string;
+    fixedSince?: string;
+    githubData?: {
+      status: string;
+      title: string;
+    };
   }>;
 }
 
