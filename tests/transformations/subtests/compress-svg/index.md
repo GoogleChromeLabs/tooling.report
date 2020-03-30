@@ -3,4 +3,4 @@ title: Compress SVG
 importance: 1
 ---
 
-Compress SVG either during import time or a post-process.
+SVGs should be minified during import time or during post-processing.

@@ -2,4 +2,4 @@
 result: pass
 ---
 
-This test has been written with `gulp-svgmin` which is built based on SVGO.
+Using the `gulp-svgmin` plugin, SVGs can be minified using SVGO.
