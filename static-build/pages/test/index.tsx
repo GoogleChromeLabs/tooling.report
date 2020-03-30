@@ -13,7 +13,7 @@
 
 import { h, FunctionalComponent, JSX } from 'preact';
 import sharedStyles from 'css-bundle:static-build/shared/styles/index.css';
-import { githubLink } from '../../utils.js';
+import { githubLink, renderIssueLinksForTest } from '../../utils.js';
 import pageStyles from 'css-bundle:./styles.css';
 import Logo from '../../components/Logo';
 import Footer from '../../components/Footer';
@@ -83,6 +83,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                   <a href={githubLink(result.repositoryPath)}>
                     Inspect the test
                   </a>
+                  {/* {renderIssueLinksForTest(test, subject as BuildTool)} */}
                 </div>
               ))}
               <div dangerouslySetInnerHTML={{ __html: test.html }}></div>

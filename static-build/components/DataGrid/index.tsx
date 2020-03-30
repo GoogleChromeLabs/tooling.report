@@ -1,6 +1,5 @@
 import { h, FunctionalComponent, JSX } from 'preact';
 import config from 'consts:config';
-import { renderIssueLinksForTest } from '../../utils.js';
 import { $datagrid, $row, $column, $dot, $aside, $results } from './styles.css';
 
 interface Props {
