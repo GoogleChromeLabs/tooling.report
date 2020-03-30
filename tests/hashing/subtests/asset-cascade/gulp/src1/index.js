@@ -10,7 +10,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 const datauri = require('datauri');
-const filePath = datauri(__dirname + '/test.txt');
-console.log(filePath);
+const txtUrl = datauri(__dirname + '/some-asset.txt');
+console.log(txtUrl);

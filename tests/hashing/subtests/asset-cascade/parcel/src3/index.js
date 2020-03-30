@@ -10,25 +10,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-const { src, dest } = require('gulp');
-const browserify = require('browserify');
-const tap = require('gulp-tap');
-const buffer = require('gulp-buffer');
-const RevAll = require('gulp-rev-all');
-
-function filePath() {
-  return src('src/*.js', { read: false })
-    .pipe(
-      tap(function(file) {
-        file.contents = browserify(file.path)
-          .plugin('urify-emitter', { output: 'dist/', base: '.' })
-          .bundle();
-      }),
-    )
-    .pipe(buffer())
-    .pipe(RevAll.revision())
-    .pipe(dest('dist/'));
-}
-
-exports.default = filePath;
+import txtURL from './some-asset.txt';
+fetch(txtURL).then(async response => console.log(await response.text()));
