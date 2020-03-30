@@ -12,15 +12,19 @@
 
 .cardTitle {
   color: var(--vivid-blue);
-  margin: var(--spacing-1);
   display: block;
   line-height: var(--font-lineheight--body);
   font-weight: var(--font-weight--normal);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .cardTotal {
   font-size: var(--font-size--logo);
   color: var(--dim-teal);
+  line-height: 1;
 }
 
 .cardTotalCount {
@@ -28,7 +32,7 @@
 }
 
 .cardTestsPassedContainer {
-  margin-top: var(--spacing-5);
+  margin-top: var(--spacing-3);
 }
 
 .cardTestsPassedContainer a {
@@ -44,5 +48,4 @@
 .testCardDesc {
   color: var(--vivid-blue);
   font-size: var(--font-size--detail);
-  line-height: 0.25;
 }
