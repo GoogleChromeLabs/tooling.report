@@ -2,23 +2,25 @@ import { h, FunctionalComponent } from 'preact';
 import {
   $testCard,
   $cardTitle,
-  $cardTestsPassedContainer,
   $cardTotal,
   $cardTotalCount,
   $dash,
-  $testCardDesc,
+  $subText,
+  $testDesc,
 } from './styles.css';
 
 interface Props {
   name: string;
   link: string;
   results: object;
+  desc: string;
 }
 
 const TestCard: FunctionalComponent<Props> = ({
   name,
   link,
   results,
+  desc,
 }: Props) => {
   const totalPassing = () => {
     let total = 0;
@@ -40,13 +42,22 @@ const TestCard: FunctionalComponent<Props> = ({
   const renderPassing = () => {
     if (totalTested() > 0) {
       return (
-        <div class={$cardTestsPassedContainer}>
+        <div>
           <div class={$cardTotal}>
             <span>{totalPassing()}</span>
             <span class={$dash}>/</span>
             <span class={$cardTotalCount}>{totalTested()}</span>
           </div>
-          <p class={$testCardDesc}>Bundlers Passing</p>
+          <p class={$subText}>Bundlers Passing</p>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <div class={$cardTotal}>
+            <span class={$cardTotalCount}>X</span>
+          </div>
+          <p class={$subText}>Sub Tests</p>
         </div>
       );
     }
@@ -54,9 +65,12 @@ const TestCard: FunctionalComponent<Props> = ({
 
   return (
     <li class={$testCard}>
-      <a href={link} class={$cardTitle}>
-        {name}
-      </a>
+      <div>
+        <a href={link} class={$cardTitle}>
+          {name}
+        </a>
+        <p class={$testDesc}>{desc}</p>
+      </div>
       {renderPassing()}
     </li>
   );

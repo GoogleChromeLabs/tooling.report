@@ -10,4 +10,23 @@
   list-style: none;
 }
 
+.contribCard {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 120px;
+  text-decoration: none;
+  background: white;
+  border: 1px solid var(--light-blue);
+  color: var(--light-blue);
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+
+  &:hover {
+    color: var(--sky-blue);
+  }
+}
+
 @import '../../libraries/prism/prism.css';

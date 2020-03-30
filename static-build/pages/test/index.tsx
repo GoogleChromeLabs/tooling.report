@@ -19,7 +19,7 @@ import Logo from '../../components/Logo';
 import Footer from '../../components/Footer';
 import LinkList from '../../components/LinkList';
 import TestCard from '../../components/TestCard';
-import { $testCardList } from './styles.css';
+import { $testCardList, $contribCard } from './styles.css';
 import { LabcoatHero, WalkerHero } from '../../components/Heroes';
 
 interface Props {
@@ -97,10 +97,16 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                 {Object.entries(test.subTests).map(([path, test]) => (
                   <TestCard
                     link={path + '/'}
+                    desc="Placeholder description for what the test does" // bc {test.html} is inconsistent for now until we get headlines
                     name={test.meta.title}
                     results={test.results}
                   />
                 ))}
+                <li>
+                  <a class={$contribCard} href="#">
+                    +
+                  </a>
+                </li>
               </ul>
             </section>
           )}

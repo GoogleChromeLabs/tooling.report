@@ -31,21 +31,17 @@
   font-weight: var(--font-weight--bold);
 }
 
-.cardTestsPassedContainer {
-  margin-top: var(--spacing-3);
-}
-
-.cardTestsPassedContainer a {
-  font-size: var(--font-size--detail);
-  text-decoration: none;
-  color: var(--vivid-blue);
-}
-
 .dash {
   color: var(--sky-blue);
 }
 
-.testCardDesc {
+.subText {
   color: var(--vivid-blue);
   font-size: var(--font-size--detail);
+}
+
+.testDesc {
+  font-size: var(--font-size--detail);
+  margin: var(--spacing-3);
+  line-height: 1.5;
 }
