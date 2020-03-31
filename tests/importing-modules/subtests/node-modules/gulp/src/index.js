@@ -10,6 +10,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 const { openDB } = require('idb');
 console.log(openDB('lol', 1));
