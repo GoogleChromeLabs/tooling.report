@@ -1,12 +1,15 @@
 {
   "scripts": {
-    "start": "parcel build src/index.js"
+    "build": "NODE_ENV=production parcel build src/index.js"
   },
   "main": "dist/index.js",
   "targets": {
     "main": {
-      "outputFormat": "commonjs"
+      "context": "node"
     }
+  },
+  "engines": {
+    "node": ">=12"
   },
   "dependencies": {
     "parcel": "^2.0.0-alpha.3.2"
