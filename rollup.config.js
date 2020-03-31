@@ -39,6 +39,7 @@ export default async function({ watch }) {
     tsPluginInstance,
     resolveDirsPlugin(['static-build', 'client', 'tests']),
     assetPlugin(),
+    testDataPlugin(),
     constsPlugin({ config }),
     markdownPlugin({ metadataProcessor }),
   ];
@@ -78,7 +79,6 @@ export default async function({ watch }) {
       ...commonPlugins(),
       cssPlugin(),
       nodeExternalPlugin(),
-      testDataPlugin(),
       runScript(dir + '/index.js'),
     ],
   };
