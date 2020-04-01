@@ -1,0 +1,25 @@
+name: Master Deploy
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  master-deploy:
+    name: Master Deploy
+    runs-on: ubuntu-latest
+    env:
+      CI: true
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Install Dependencies
+        run: npm install
+      - name: Production Build
+        run: npm run build
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
