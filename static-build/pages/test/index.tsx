@@ -14,6 +14,7 @@
 import { h, FunctionalComponent } from 'preact';
 import { githubLink } from '../../utils.js';
 import pageStyles from 'css-bundle:./styles.css';
+import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
 import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
 import Footer from '../../components/Footer';
@@ -27,11 +28,15 @@ interface Props {
 const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
   return (
     <html>
-      <HeadMeta
-        title={`Tooling.Report: ${test.meta.title}`}
-        pageStyles={pageStyles}
-        pageScripts=""
-      />
+      <head>
+        <title>{`Tooling.Report: ${test.meta.title}`}</title>
+        <HeadMeta />
+        <link rel="stylesheet" href={pageStyles} />
+        <script type="module" src={bundleURL} />
+        {imports.map(v => (
+          <link rel="preload" as="script" href={v} crossOrigin="" />
+        ))}
+      </head>
       <body>
         <header>
           <section>

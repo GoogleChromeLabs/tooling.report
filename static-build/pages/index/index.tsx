@@ -22,7 +22,7 @@ import {
   $summaryList,
   $connect,
 } from './styles.css';
-import bundleURL from 'client-bundle:client/home/index.ts';
+import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
 import { calculateScore, calculateScoreTotals } from 'static-build/utils';
 import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
@@ -111,11 +111,15 @@ function renderSummary(tests: Tests): JSX.Element {
 const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
   return (
     <html>
-      <HeadMeta
-        title="Tooling.Report"
-        pageStyles={pageStyles}
-        pageScripts={bundleURL}
-      />
+      <head>
+        <title>Tooling.Report</title>
+        <HeadMeta />
+        <link rel="stylesheet" href={pageStyles} />
+        <script type="module" src={bundleURL} />
+        {imports.map(v => (
+          <link rel="preload" as="script" href={v} crossOrigin="" />
+        ))}
+      </head>
       <body>
         <header>
           <section>
