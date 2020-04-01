@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - add-production-deploy
 
 jobs:
   master-deploy:
@@ -12,7 +13,7 @@ jobs:
       CI: true
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@master
+        uses: actions/checkout
       - name: Install Dependencies
         run: npm install
       - name: Production Build
