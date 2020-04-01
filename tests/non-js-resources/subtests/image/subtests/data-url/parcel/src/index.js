@@ -1,3 +1,3 @@
-import imagePath from './image.png';
+import image from 'data-url:./image.png';
 
-console.log(imagePath);
+document.body.innerHTML += `<img src="${image}">`;
