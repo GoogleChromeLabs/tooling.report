@@ -12,8 +12,6 @@
  */
 import { h, FunctionalComponent, JSX } from 'preact';
 import { calculateScoreTotals } from 'static-build/utils';
-
-import sharedStyles from 'css-bundle:static-build/shared/styles/index.css';
 import pageStyles from 'css-bundle:./styles.css';
 import {
   $topSticky,
@@ -24,6 +22,7 @@ import {
 } from './styles.css';
 
 import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
+import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
 import GithubFAB from '../../components/GithubFAB';
 import Footer from '../../components/Footer';
@@ -67,9 +66,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
     <html>
       <head>
         <title>Tooling.Report</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        {/* TODO: favicon */}
-        <link rel="stylesheet" href={sharedStyles} />
+        <HeadMeta />
         <link rel="stylesheet" href={pageStyles} />
         <script type="module" src={bundleURL} />
         {imports.map(v => (
