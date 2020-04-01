@@ -3,6 +3,8 @@ title: Between workers
 importance: 1
 ---
 
+Workers are a great way to avoid janking the UI. However, your worker will often share bits of code with the main thread, and other workers. Can the build tool manage this?
+
 **index.js**
 
 ```js
