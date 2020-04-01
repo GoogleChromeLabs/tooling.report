@@ -13,7 +13,7 @@ jobs:
       CI: true
     steps:
       - name: Checkout Repo
-        uses: actions/checkout
+        uses: actions/checkout@v2
       - name: Install Dependencies
         run: npm install
       - name: Production Build
