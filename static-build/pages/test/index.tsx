@@ -86,6 +86,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                   <a href={githubLink(result.repositoryPath)}>
                     Inspect the test
                   </a>
+                  {/* {renderIssueLinksForTest(test, subject as BuildTool)} */}
                 </div>
               ))}
               <div dangerouslySetInnerHTML={{ __html: test.html }}></div>

@@ -11,19 +11,17 @@
  * limitations under the License.
  */
 import { h, FunctionalComponent, JSX } from 'preact';
-
-import { renderIssueLinksForTest } from '../../utils.js';
-
-import config from 'consts:config';
+import { calculateScoreTotals } from 'static-build/utils';
 import pageStyles from 'css-bundle:./styles.css';
 import {
   $topSticky,
   $sidebarLayout,
   $summaryList,
+  $sectionHeader,
   $connect,
 } from './styles.css';
+
 import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
-import { calculateScore, calculateScoreTotals } from 'static-build/utils';
 import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
 import GithubFAB from '../../components/GithubFAB';
@@ -33,6 +31,8 @@ import Lamp from '../../components/Lamp';
 import { BenchHero } from '../../components/Heroes';
 import SummaryCard from '../../components/SummaryCard';
 import ToolNav from '../../components/ToolNav';
+import DataGrid from '../../components/DataGrid';
+import Legend from '../../components/DataGrid/Legend';
 
 import gulp from 'asset-url:../../img/gulp.svg';
 import rollup from 'asset-url:../../img/rollup.svg';
@@ -42,53 +42,6 @@ const toolImages = { gulp, rollup, webpack, parcel };
 
 interface Props {
   tests: Tests;
-}
-
-function renderTest(test: Test, basePath: string): JSX.Element {
-  let results: JSX.Element[] | undefined;
-
-  if (test.results) {
-    results = Object.entries(test.results).map(([subject, result]) => (
-      <li>
-        {subject}:{' '}
-        {result.meta.result === 'pass'
-          ? 'Pass'
-          : result.meta.result === 'fail'
-          ? 'Fail'
-          : 'So-so'}
-      </li>
-    ));
-  }
-
-  return (
-    <div>
-      <h4>{test.meta.title}</h4>
-      <ul>
-        {config.testSubjects.map(subject => {
-          const { score, possible } = calculateScore(test, subject);
-          return (
-            <li>
-              {subject}: {score}/{possible}
-              {renderIssueLinksForTest(test, subject)}
-            </li>
-          );
-        })}
-      </ul>
-      <p>
-        <a href={basePath}>More details</a>
-      </p>
-      {results && <ul>{results}</ul>}
-      {test.subTests && (
-        <section>{renderTests(test.subTests, basePath)}</section>
-      )}
-    </div>
-  );
-}
-
-function renderTests(tests: Tests, basePath = '/'): JSX.Element[] {
-  return Object.entries(tests).map(([testDir, test]) =>
-    renderTest(test, `${basePath}${testDir}/`),
-  );
 }
 
 function renderSummary(tests: Tests): JSX.Element {
@@ -149,41 +102,13 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
         </header>
         <main>
           <GithubFAB />
-          <section id="getting-started">
-            <div class={$sidebarLayout}>
-              <aside></aside>
-              <div>
-                <h3>Getting Started</h3>
-                <p>
-                  Expand or reduce the scope of your comparison using the below
-                  checklist. You can always come back and reconfigure it later.{' '}
-                </p>
-                <div>
-                  <p>Use the (+) button to submit or request a build tool!</p>
-                </div>
-              </div>
-            </div>
-          </section>
-
           <section id="summary">
+            <a class={$topSticky} href="#summary">
+              <h3 class={$sectionHeader}>Summary</h3>
+            </a>
             <div class={$sidebarLayout}>
               <aside>
-                <h3>Summary</h3>
                 <small>Results at the highest level</small>
-              </aside>
-              <div>{renderSummary(tests)}</div>
-            </div>
-          </section>
-
-          <section id="overview">
-            <div class={$sidebarLayout}>
-              <aside>
-                <h3>Overview</h3>
-                <ul>
-                  <li>section 1</li>
-                  <li>section 2</li>
-                  <li>...</li>
-                </ul>
               </aside>
               <div>{renderSummary(tests)}</div>
             </div>
@@ -191,33 +116,30 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
 
           <ToolNav />
 
-          <section id="configuration">
+          <section id="legend">
             <div class={$sidebarLayout}>
-              <aside>
-                <h3 class={$topSticky}>Configuration</h3>
-                <ul>
-                  <li>section 1</li>
-                  <li>section 2</li>
-                  <li>...</li>
-                </ul>
-              </aside>
-              <div>{renderTests(tests)}</div>
+              <aside></aside>
+              <div>
+                <Legend />
+              </div>
             </div>
           </section>
 
-          <section id="todo:next-in-array">
-            <div class={$sidebarLayout}>
-              <aside>
-                <h3 class={$topSticky}>Configuration</h3>
-                <ul>
-                  <li>section 1</li>
-                  <li>section 2</li>
-                  <li>...</li>
-                </ul>
-              </aside>
-              <div>{renderTests(tests)}</div>
-            </div>
+          <section id="overview">
+            <a class={$topSticky} href="#overview">
+              <h3 class={$sectionHeader}>Overview</h3>
+            </a>
+            <DataGrid tests={tests} basePath="/" />
           </section>
+
+          {Object.entries(tests).map(([testDir, collection]) => (
+            <section id={collection.meta.title}>
+              <a class={$topSticky} href={collection.meta.title}>
+                <h3 class={$sectionHeader}>{collection.meta.title}</h3>
+              </a>
+              <DataGrid tests={collection.subTests} basePath={`${testDir}/`} />
+            </section>
+          ))}
 
           <section class={$connect}>
             <div>

@@ -1,14 +1,39 @@
 @import 'components/SummaryCard/styles.css';
+@import 'components/DataGrid/styles.css';
 @import 'components/ToolNav/styles.css';
 
 .topSticky {
   position: sticky;
-  top: 0;
+  top: var(--spacing-6);
 }
 
 .sidebarLayout {
   display: grid;
+  gap: var(--spacing-3);
   grid-template-columns: var(--section-aside-width) 1fr;
+}
+
+.sectionHeader {
+  display: inline-block;
+  text-transform: capitalize;
+  margin-bottom: var(--spacing-4);
+  position: relative;
+  color: var(--backpack-blue);
+  background-color: var(--background-gray);
+  max-width: var(--section-aside-width);
+  line-height: var(--font-lineheight--tight);
+
+  &:before {
+    content: '#';
+    position: absolute;
+    top: 0;
+    left: -1.5ch;
+    color: var(--denim-blue);
+  }
+
+  &:hover:before {
+    color: var(--backpack-blue);
+  }
 }
 
 .connect {
