@@ -15,7 +15,7 @@ function executeModule(source, publicPath) {
   return mod.exports;
 }
 
-module.exports = function svgLoader(content) {
+module.exports = function htmlLoader(content) {
   this.cacheable(true);
   const callback = this.async();
 
