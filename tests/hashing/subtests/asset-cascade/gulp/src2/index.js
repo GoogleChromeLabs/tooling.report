@@ -10,5 +10,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { openDB } from 'idb';
-console.log(openDB('lol', 1));
+const datauri = require('datauri');
+const txtUrl = datauri(__dirname + '/some-asset.txt');
+console.log(txtUrl);
