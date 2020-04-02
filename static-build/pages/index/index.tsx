@@ -139,9 +139,8 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
               <DataGrid tests={collection.subTests} basePath={`${testDir}/`} />
             </section>
           ))}
-
-          <Connect />
         </main>
+        <Connect />
         <Footer />
       </body>
     </html>

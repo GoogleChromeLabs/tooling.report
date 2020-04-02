@@ -17,7 +17,9 @@ function Connect() {
           We want to hear from you, let us know how to make this better. Open up
           a Github issue and we’ll track it there. Thanks!
         </p>
-        <LinkList links={[{ title: 'Open a Github Issue', href: '#' }]} />
+        <a href="https://github.com/GoogleChromeLabs/tooling.report/issues/new">
+          Open a Github Issue
+        </a>
       </div>
     </section>
   );

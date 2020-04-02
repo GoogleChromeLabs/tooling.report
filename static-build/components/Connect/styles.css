@@ -1,13 +1,13 @@
 .connect {
   display: flex;
-  margin: auto;
+  margin: var(--spacing-8) auto;
   justify-content: space-between;
   align-items: center;
-  max-width: 700px;
+  max-width: 55ch;
   background-color: var(--background-gray-offset);
   border: 1px solid var(--background-gray-offset);
   border-radius: 2rem;
-  padding: var(--spacing-5);
+  padding: var(--spacing-6) var(--spacing-7) var(--spacing-6) var(--spacing-6);
   overflow: hidden;
   position: relative;
 
@@ -20,18 +20,19 @@
 }
 
 .decoration {
-  flex: 1;
+  flex: 2;
 
   & img {
     position: relative;
+    transform: scale(1.2);
   }
 
   &:before {
     content: ' ';
     display: block;
     position: absolute;
-    top: -40%;
-    left: -45%;
+    top: -28%;
+    left: -40%;
     bottom: 0;
     width: 500px;
     background: #fff;
@@ -42,10 +43,11 @@
 }
 
 .message {
-  flex: 2;
+  flex: 3;
   margin-left: var(--spacing-3);
 
-  & > ul {
-    margin-bottom: 0;
+  & > a {
+    display: inline-block;
+    margin-top: var(--spacing-4);
   }
 }
