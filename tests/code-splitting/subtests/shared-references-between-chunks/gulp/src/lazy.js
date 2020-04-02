@@ -10,12 +10,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const path = require('path');
-
-module.exports = {
-  stats: 'minimal',
-  entry: './src/index.js',
-  output: {
-    path: path.resolve(__dirname, 'build'),
-  },
-};
+import { num, incrementNum } from './num.js';
+incrementNum();
+console.log(num);
