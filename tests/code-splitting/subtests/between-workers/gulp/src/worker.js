@@ -10,6 +10,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-const { logCaps } = require('./util/utils.js');
+importScripts('./common.js');
+const { logCaps } = require('./utils.js');
 logCaps('This is worker');
