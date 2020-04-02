@@ -1,0 +1,51 @@
+.connect {
+  display: flex;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 700px;
+  background-color: var(--background-gray-offset);
+  border: 1px solid var(--background-gray-offset);
+  border-radius: 2rem;
+  padding: var(--spacing-5);
+  overflow: hidden;
+  position: relative;
+
+  & h2 {
+    font-weight: bold;
+    & > span {
+      font-weight: 300;
+    }
+  }
+}
+
+.decoration {
+  flex: 1;
+
+  & img {
+    position: relative;
+  }
+
+  &:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    top: -40%;
+    left: -45%;
+    bottom: 0;
+    width: 500px;
+    background: #fff;
+    border-radius: 50%;
+    height: 500px;
+    z-index: 0;
+  }
+}
+
+.message {
+  flex: 2;
+  margin-left: var(--spacing-3);
+
+  & > ul {
+    margin-bottom: 0;
+  }
+}

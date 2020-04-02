@@ -18,7 +18,6 @@ import {
   $sidebarLayout,
   $summaryList,
   $sectionHeader,
-  $connect,
 } from './styles.css';
 
 import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
@@ -27,12 +26,12 @@ import Logo from '../../components/Logo';
 import GithubFAB from '../../components/GithubFAB';
 import Footer from '../../components/Footer';
 import LinkList from '../../components/LinkList';
-import Lamp from '../../components/Lamp';
 import { BenchHero } from '../../components/Heroes';
 import SummaryCard from '../../components/SummaryCard';
 import ToolNav from '../../components/ToolNav';
 import DataGrid from '../../components/DataGrid';
 import Legend from '../../components/DataGrid/Legend';
+import Connect from '../../components/Connect';
 
 import gulp from 'asset-url:../../img/gulp.svg';
 import rollup from 'asset-url:../../img/rollup.svg';
@@ -141,19 +140,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
             </section>
           ))}
 
-          <section class={$connect}>
-            <div>
-              <Lamp />
-            </div>
-            <div>
-              <h2>Questions or Concerns?</h2>
-              <p>
-                We want to hear from you, let us know how to make this better.
-                Open up a Github issue and we’ll track it there. Thanks!
-              </p>
-              <LinkList links={[{ title: 'Open a Github Issue', href: '#' }]} />
-            </div>
-          </section>
+          <Connect />
         </main>
         <Footer />
       </body>
