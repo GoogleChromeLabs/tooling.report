@@ -103,7 +103,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                     link={path + '/'}
                     desc="Placeholder description for what the test does" // bc {test.html} is inconsistent for now until we get headlines
                     name={test.meta.title}
-                    results={test.results}
+                    test={test}
                   />
                 ))}
                 <li>

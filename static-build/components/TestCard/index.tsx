@@ -12,19 +12,19 @@ import {
 interface Props {
   name: string;
   link: string;
-  results: object;
+  test: Test;
   desc: string;
 }
 
 const TestCard: FunctionalComponent<Props> = ({
   name,
   link,
-  results,
+  test,
   desc,
 }: Props) => {
   const totalPassing = () => {
     let total = 0;
-    Object.entries(results).forEach(tool => {
+    Object.entries(test.results).forEach(tool => {
       if (tool[1].meta.result === 'pass') {
         total += 1;
       } else if (tool[1].meta.result === 'partial') {
@@ -35,12 +35,23 @@ const TestCard: FunctionalComponent<Props> = ({
   };
 
   const totalTested = () => {
-    return Object.entries(results).length;
+    return Object.entries(test.results).length;
   };
 
   // Testing if this isn't another subtest that links through (i.e. code-splitting/splitting-modules)
   const renderPassing = () => {
-    if (totalTested() > 0) {
+    if (test.subTests) {
+      return (
+        <div>
+          <div class={$cardTotal}>
+            <span class={$cardTotalCount}>
+              {Object.entries(test.subTests).length}
+            </span>
+          </div>
+          <p class={$subText}>Sub Tests</p>
+        </div>
+      );
+    } else {
       return (
         <div>
           <div class={$cardTotal}>
@@ -49,15 +60,6 @@ const TestCard: FunctionalComponent<Props> = ({
             <span class={$cardTotalCount}>{totalTested()}</span>
           </div>
           <p class={$subText}>Bundlers Passing</p>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <div class={$cardTotal}>
-            <span class={$cardTotalCount}>X</span>
-          </div>
-          <p class={$subText}>Sub Tests</p>
         </div>
       );
     }
