@@ -1,4 +1,6 @@
 import { h, FunctionalComponent } from 'preact';
+import { useState, useEffect } from 'preact/hooks';
+import { renderOnClient } from '../../libraries/isomorph';
 import {
   $summaryCard,
   $summaryCardIcon,
@@ -27,6 +29,17 @@ const SummaryCard: FunctionalComponent<Props> = ({
 }: Props) => {
   const percent = Math.floor((total / possible) * 100);
 
+  const [currentPercent, setPercent] = useState(0);
+
+  useEffect(() => {
+    if (currentPercent !== percent) {
+      const dir = percent > currentPercent ? 1 : -1;
+      requestAnimationFrame(() => {
+        setPercent(p => p + dir);
+      });
+    }
+  }, [currentPercent]);
+
   return (
     <li class={$summaryCard}>
       <figure class={$summaryCardIcon}>
@@ -36,8 +49,8 @@ const SummaryCard: FunctionalComponent<Props> = ({
         {name}
       </a>
       <div class={$progressSummary}>
-        <div class={$progressBar} style={'width:' + percent + '%'}>
-          <div class={$progressText}>{percent}%</div>
+        <div class={$progressBar} style={{ width: currentPercent + '%' }}>
+          <div class={$progressText}>{currentPercent}%</div>
         </div>
       </div>
       <div class={$cardTestsPassedContainer}>
@@ -52,4 +65,4 @@ const SummaryCard: FunctionalComponent<Props> = ({
   );
 };
 
-export default SummaryCard;
+export default renderOnClient(SummaryCard);
