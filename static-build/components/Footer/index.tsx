@@ -2,7 +2,14 @@ import { h } from 'preact';
 import Logo from '../../components/Logo';
 import LinkList from '../../components/LinkList';
 import Plant from '../../components/Plant';
-import { $container, $footer, $rule, $desc, $messaging } from './styles.css';
+import {
+  $container,
+  $footer,
+  $rule,
+  $desc,
+  $messaging,
+  $plant,
+} from './styles.css';
 
 const links = [
   { title: 'Privacy Policy', href: '#' },
@@ -28,7 +35,7 @@ function Footer() {
               via workplace diversity and empowerment.
             </p>
           </div>
-          <div>
+          <div class={$plant}>
             <Plant />
           </div>
         </div>

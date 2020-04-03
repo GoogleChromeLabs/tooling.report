@@ -40,4 +40,22 @@
   font-size: var(--font-size--detail);
   line-height: var(--font-lineheight--extended);
   color: var(--ice-blue);
+  padding-bottom: var(--spacing-6);
+}
+
+.plant {
+  position: absolute;
+  right: 0;
+  opacity: 0.3;
+}
+
+@media only screen and (min-width: 550px) {
+  .desc {
+    padding-bottom: 0;
+  }
+
+  .plant {
+    position: relative;
+    opacity: 1;
+  }
 }
