@@ -4,5 +4,5 @@
     "lib": ["esnext", "dom", "dom.iterable"],
     "types": []
   },
-  "include": ["./**/*"]
+  "include": ["./**/*", "../static-build/components/**/*.ts"]
 }

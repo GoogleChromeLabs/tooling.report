@@ -15,7 +15,7 @@ interface Props {
 
 const Breadcrumbs: FunctionalComponent<Props> = ({ test }: Props) => {
   return (
-    <nav class={$breadcrumbs}>
+    <nav class={$breadcrumbs} id="breadcrumbs">
       <a href="/" class={$home}>
         <HomeIcon />
       </a>

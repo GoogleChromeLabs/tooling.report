@@ -14,7 +14,7 @@
 import { h, FunctionalComponent } from 'preact';
 import { githubLink } from '../../utils.js';
 import pageStyles from 'css-bundle:./styles.css';
-import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
+import bundleURL, { imports } from 'client-bundle:client/test/index.ts';
 import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
 import Footer from '../../components/Footer';
