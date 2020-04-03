@@ -18,4 +18,37 @@
 
 .collection {
   text-transform: capitalize;
+  display: inline-grid;
+  grid-auto-flow: column;
+  gap: 1ch;
+  align-items: center;
+
+  &:hover > .dropdown {
+    border-color: var(--denim-blue);
+    & > svg {
+      --light-blue: var(--denim-blue);
+    }
+  }
+}
+
+.dropdown {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  border: 1px solid var(--light-blue);
+  background: white;
+  position: relative;
+
+  & > select {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.01;
+    z-index: 1;
+  }
 }

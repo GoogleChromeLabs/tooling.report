@@ -1,7 +1,13 @@
 import { h, FunctionalComponent } from 'preact';
 import testData from 'test-data:';
 import { HomeIcon } from '../Icons/';
-import { $breadcrumbs, $home, $divider, $collection } from './styles.css';
+import {
+  $breadcrumbs,
+  $home,
+  $divider,
+  $collection,
+  $dropdown,
+} from './styles.css';
 
 interface Props {
   test: Test;
@@ -15,16 +21,24 @@ const Breadcrumbs: FunctionalComponent<Props> = ({ test }: Props) => {
       </a>
       <a href="/">Home</a>
       <span class={$divider}>//</span>
-      <a href="#" class={$collection}>
+      <a class={$collection}>
         {test.meta.title} {test?.subTests?.length}
+        <span class={$dropdown}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="9" height="5">
+            <path
+              d="M4.6 2.7L9 0v2.1L4.7 5.3h-.2L0 2.1V0z"
+              fill="var(--light-blue)"
+            />
+          </svg>
+          <select>
+            {Object.entries(testData)
+              .filter(([, t]) => t !== test)
+              .map(([path, test]) => (
+                <option value={path + '/'}>{test.meta.title}</option>
+              ))}
+          </select>
+        </span>
       </a>
-      <select>
-        {Object.entries(testData)
-          .filter(([, t]) => t !== test)
-          .map(([path, test]) => (
-            <option value={path + '/'}>{test.meta.title}</option>
-          ))}
-      </select>
     </nav>
   );
 };
