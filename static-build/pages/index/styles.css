@@ -1,6 +1,7 @@
 @import 'components/SummaryCard/styles.css';
 @import 'components/DataGrid/styles.css';
 @import 'components/ToolNav/styles.css';
+@import 'components/Connect/styles.css';
 
 .topSticky {
   position: sticky;
@@ -34,16 +35,6 @@
   &:hover:before {
     color: var(--backpack-blue);
   }
-}
-
-.connect {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 700px;
-  background-color: var(--background-gray-offset);
-  border: 1px solid var(--background-gray-offset);
-  border-radius: 2rem;
 }
 
 .summaryList {
