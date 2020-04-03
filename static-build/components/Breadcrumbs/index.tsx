@@ -28,9 +28,9 @@ for (const test of Object.values(testData)) {
   recurseTestData(test, parentMap);
 }
 
-const Crumb = (test: Test): JSX.Element => {
+const Crumb = (test: Test, index: number): JSX.Element => {
   const parentTest = parentMap.get(test);
-  const siblingTests = parentTest?.subTests || Object.values(testData);
+  const siblingTests = parentTest?.subTests || testData;
 
   return (
     <Fragment>
@@ -44,7 +44,7 @@ const Crumb = (test: Test): JSX.Element => {
               fill="var(--light-blue)"
             />
           </svg>
-          <select>
+          <select data-depth={index}>
             {siblingTests &&
               Object.entries(siblingTests).map(([path, t]) =>
                 t === test ? (
@@ -77,7 +77,7 @@ const Breadcrumbs: FunctionalComponent<Props> = ({ test }: Props) => {
         <HomeIcon />
       </a>
       <a href="/">Home</a>
-      {ancestors.map(ancestor => Crumb(ancestor))}
+      {ancestors.map(Crumb)}
     </nav>
   );
 };
