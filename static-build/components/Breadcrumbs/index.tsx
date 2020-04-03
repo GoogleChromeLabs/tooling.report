@@ -31,11 +31,15 @@ const Breadcrumbs: FunctionalComponent<Props> = ({ test }: Props) => {
             />
           </svg>
           <select>
-            {Object.entries(testData)
-              .filter(([, t]) => t !== test)
-              .map(([path, test]) => (
-                <option value={path + '/'}>{test.meta.title}</option>
-              ))}
+            {Object.entries(testData).map(([path, t]) =>
+              t === test ? (
+                <option selected value={path + '/'}>
+                  {t.meta.title}
+                </option>
+              ) : (
+                <option value={path + '/'}>{t.meta.title}</option>
+              ),
+            )}
           </select>
         </span>
       </a>
