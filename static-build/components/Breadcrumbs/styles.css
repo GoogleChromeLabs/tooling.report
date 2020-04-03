@@ -11,16 +11,16 @@
 }
 
 .divider {
-  padding: 0 var(--spacing-2);
-  color: var(--sky-blue);
-  font-weight: 500;
+  padding: 0 var(--spacing-3);
+  color: var(--light-blue);
+  font-weight: var(--font-weight--normal);
 }
 
 .collection {
   text-transform: capitalize;
   display: inline-grid;
   grid-auto-flow: column;
-  gap: 1ch;
+  gap: var(--spacing-2);
   align-items: center;
 
   &:hover > .dropdown,

@@ -1,4 +1,4 @@
-import { h, FunctionalComponent } from 'preact';
+import { h, FunctionalComponent, JSX, Fragment } from 'preact';
 import testData from 'test-data:';
 import { HomeIcon } from '../Icons/';
 import {
@@ -13,16 +13,30 @@ interface Props {
   test: Test;
 }
 
-const Breadcrumbs: FunctionalComponent<Props> = ({ test }: Props) => {
+const parentMap = new WeakMap<Test, Test>();
+
+const recurseTestData = (test: Test, map: WeakMap<Test, Test>) => {
+  if (test.subTests) {
+    for (const subtest of Object.values(test.subTests)) {
+      map.set(subtest, test);
+      recurseTestData(subtest, map);
+    }
+  }
+};
+
+for (const test of Object.values(testData)) {
+  recurseTestData(test, parentMap);
+}
+
+const Crumb = (test: Test): JSX.Element => {
+  const parentTest = parentMap.get(test);
+  const siblingTests = parentTest?.subTests || Object.values(testData);
+
   return (
-    <nav class={$breadcrumbs} id="breadcrumbs">
-      <a href="/" class={$home}>
-        <HomeIcon />
-      </a>
-      <a href="/">Home</a>
+    <Fragment>
       <span class={$divider}>//</span>
       <a class={$collection}>
-        {test.meta.title} {test?.subTests?.length}
+        {test.meta.title}
         <span class={$dropdown}>
           <svg xmlns="http://www.w3.org/2000/svg" width="9" height="5">
             <path
@@ -31,18 +45,39 @@ const Breadcrumbs: FunctionalComponent<Props> = ({ test }: Props) => {
             />
           </svg>
           <select>
-            {Object.entries(testData).map(([path, t]) =>
-              t === test ? (
-                <option selected value={path + '/'}>
-                  {t.meta.title}
-                </option>
-              ) : (
-                <option value={path + '/'}>{t.meta.title}</option>
-              ),
-            )}
+            {siblingTests &&
+              Object.entries(siblingTests).map(([path, t]) =>
+                t === test ? (
+                  <option selected value={path + '/'}>
+                    {t.meta.title}
+                  </option>
+                ) : (
+                  <option value={path + '/'}>{t.meta.title}</option>
+                ),
+              )}
           </select>
         </span>
       </a>
+    </Fragment>
+  );
+};
+
+const Breadcrumbs: FunctionalComponent<Props> = ({ test }: Props) => {
+  const ancestors = new Array<Test>(test);
+  let ancestor = parentMap.get(test);
+
+  while (ancestor) {
+    ancestors.unshift(ancestor);
+    ancestor = parentMap.get(ancestor);
+  }
+
+  return (
+    <nav class={$breadcrumbs} id="breadcrumbs">
+      <a href="/" class={$home}>
+        <HomeIcon />
+      </a>
+      <a href="/">Home</a>
+      {ancestors.map(ancestor => Crumb(ancestor))}
     </nav>
   );
 };
