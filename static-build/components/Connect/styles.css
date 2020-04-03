@@ -17,7 +17,7 @@
   box-sizing: border-box;
   background-color: var(--background-gray-offset);
   border: 1px solid var(--background-gray-offset);
-  border-radius: 2rem;
+  border-radius: var(--spacing-5);
   padding: var(--spacing-4);
   overflow: hidden;
   position: relative;
@@ -28,9 +28,9 @@
   }
 
   & h2 {
-    font-weight: bold;
+    font-weight: var(--font-weight--bold);
     & > span {
-      font-weight: 300;
+      font-weight: var(--font-weight--light);
     }
   }
 }
