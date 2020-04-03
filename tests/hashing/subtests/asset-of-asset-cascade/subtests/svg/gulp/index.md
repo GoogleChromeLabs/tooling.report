@@ -2,5 +2,9 @@
 result: pass
 ---
 
-`gulp-rev-all` analyze each revisioned files' references, to calculate a final hash for caching purposes.
-You may also handwrite own gulp task chain to achieve the same using `gulp-rev` but doing so requires knowing dependency of all the assets and would be unrealistic.
+[gulp-rev-all] analyzes each file's references to calculate a final hash.
+
+Note: [gulp-rev] is more popular, but would fail this test.
+
+[gulp-rev-all]: https://www.npmjs.com/package/gulp-rev-all
+[gulp-rev]: https://www.npmjs.com/package/gulp-rev
