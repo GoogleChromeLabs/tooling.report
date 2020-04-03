@@ -35,8 +35,8 @@ const Crumb = (test: Test, index: number): JSX.Element => {
   return (
     <Fragment>
       <span class={$divider}>//</span>
-      <a class={$collection}>
-        {test.meta.title}
+      <span class={$collection}>
+        <a href="#">{test.meta.title}</a>
         <span class={$dropdown}>
           <svg xmlns="http://www.w3.org/2000/svg" width="9" height="5">
             <path
@@ -57,7 +57,7 @@ const Crumb = (test: Test, index: number): JSX.Element => {
               )}
           </select>
         </span>
-      </a>
+      </span>
     </Fragment>
   );
 };
