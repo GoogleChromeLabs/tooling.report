@@ -1,0 +1,21 @@
+.breadcrumbs {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
+.home {
+  --vivid-blue: var(--sky-blue);
+  position: absolute;
+  left: -1rem;
+}
+
+.divider {
+  padding: 0 var(--spacing-2);
+  color: var(--sky-blue);
+  font-weight: 500;
+}
+
+.collection {
+  text-transform: capitalize;
+}

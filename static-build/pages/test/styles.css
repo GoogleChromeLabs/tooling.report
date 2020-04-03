@@ -1,2 +1,3 @@
-@import './article.css';
 @import '../../libraries/prism/prism.css';
+@import './article.css';
+@import 'components/Breadcrumbs/styles.css';

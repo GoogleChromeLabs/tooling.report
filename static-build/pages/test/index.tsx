@@ -19,6 +19,7 @@ import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
 import Footer from '../../components/Footer';
 import LinkList from '../../components/LinkList';
+import Breadcrumbs from '../../components/Breadcrumbs';
 import { LabcoatHero, WalkerHero } from '../../components/Heroes';
 
 interface Props {
@@ -41,6 +42,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
         <header>
           <section>
             <Logo />
+            <Breadcrumbs test={test} />
             <div>
               <div>
                 <small>feature</small>
