@@ -23,7 +23,8 @@
   gap: 1ch;
   align-items: center;
 
-  &:hover > .dropdown {
+  &:hover > .dropdown,
+  &:focus-within > .dropdown {
     border-color: var(--denim-blue);
     & > svg {
       --light-blue: var(--denim-blue);
