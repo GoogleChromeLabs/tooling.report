@@ -17,15 +17,29 @@
   display: flex;
   align-items: center;
   padding-left: var(--spacing-2);
+  place-content: center;
 
   & > figcaption {
     text-transform: capitalize;
     font-weight: var(--font-weight--bold);
     font-size: var(--font-size--detail);
+    visibility: hidden;
+    width: 0;
   }
 
   & > img {
     object-fit: contain;
     margin-right: var(--spacing-2);
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .tool {
+    place-content: left;
+
+    & > figcaption {
+      visibility: visible;
+      width: auto;
+    }
   }
 }
