@@ -2,7 +2,11 @@
   font-weight: var(--font-weight--light);
   color: var(--vivid-blue);
   font-size: var(--font-size--logo);
-  margin: 0;
+
+  & > svg {
+    margin-left: calc(var(--spacing-6) * -1);
+    margin-right: var(--spacing-2);
+  }
 }
 
 .report {

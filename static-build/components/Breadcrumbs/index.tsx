@@ -6,7 +6,7 @@ import {
   $home,
   $divider,
   $collection,
-  $dropdown,
+  $iconbutton,
 } from './styles.css';
 
 interface Props {
@@ -37,7 +37,7 @@ const Crumb = (test: Test, index: number): JSX.Element => {
       <span class={$divider}>//</span>
       <span class={$collection}>
         <a href="#">{test.meta.title}</a>
-        <span class={$dropdown}>
+        <span class={$iconbutton}>
           <svg xmlns="http://www.w3.org/2000/svg" width="9" height="5">
             <path
               d="M4.6 2.7L9 0v2.1L4.7 5.3h-.2L0 2.1V0z"
@@ -73,10 +73,12 @@ const Breadcrumbs: FunctionalComponent<Props> = ({ test }: Props) => {
 
   return (
     <nav class={$breadcrumbs} id="breadcrumbs">
-      <a href="/" class={$home}>
-        <HomeIcon />
+      <a href="/" class={`${$home} ${$collection}`}>
+        <span class={$iconbutton}>
+          <HomeIcon />
+        </span>
+        <span>Home</span>
       </a>
-      <a href="/">Home</a>
       {ancestors.map(Crumb)}
     </nav>
   );
