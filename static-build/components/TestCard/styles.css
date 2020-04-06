@@ -5,14 +5,15 @@
   box-shadow: var(--card-shadow);
   text-align: center;
   display: flex;
+  justify-content: center;
 
   a {
-    padding: var(--spacing-5) var(--spacing-4);
+    padding: var(--spacing-5);
     text-decoration: none;
     color: var(--text-gray);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
   }
 }
 
@@ -22,10 +23,6 @@
   font-size: var(--font-size--body);
   line-height: var(--font-lineheight--body);
   font-weight: var(--font-weight--normal);
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .cardTotal {
@@ -89,4 +86,9 @@
   height: 70%;
   object-fit: contain;
   margin: 15% auto;
+}
+
+.subtestMeta {
+  display: flex;
+  align-items: center;
 }

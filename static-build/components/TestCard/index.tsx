@@ -9,6 +9,7 @@ import {
   $testDesc,
   $testCardIcon,
   $iconList,
+  $subtestMeta,
 } from './styles.css';
 import gulp from 'asset-url:../../img/gulp.svg';
 import rollup from 'asset-url:../../img/rollup.svg';
