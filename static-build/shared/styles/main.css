@@ -5,3 +5,9 @@ main {
   gap: 10rem;
   position: relative;
 }
+
+@media only screen and (min-width: 550px) {
+  main {
+    padding: var(--spacing-6);
+  }
+}

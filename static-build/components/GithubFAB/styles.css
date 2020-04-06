@@ -1,7 +1,7 @@
 .fab {
   position: absolute;
   top: -30px;
-  right: var(--spacing-6);
+  right: var(--spacing-3);
 }
 
 .fabicon {
@@ -14,4 +14,10 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
+}
+
+@media only screen and (min-width: 700px) {
+  .fab {
+    padding: 0 var(--spacing-6);
+  }
 }
