@@ -1,3 +1,38 @@
 @import '../../libraries/prism/prism.css';
 @import './article.css';
 @import 'components/Breadcrumbs/styles.css';
+
+.heroImage {
+  background: var(--ice-blue);
+  border-radius: 50%;
+  /* Relative sizing */
+  min-width: 50vw;
+  height: 50vw;
+  padding: var(--spacing-4);
+  overflow: hidden;
+  margin-left: -25vw;
+  margin-bottom: -30vh;
+}
+
+.heroImage img {
+  object-fit: contain;
+  width: 100%;
+}
+
+.heroText {
+  min-width: 220px;
+  margin-right: var(--spacing-6);
+  z-index: 1;
+}
+
+@media only screen and (min-width: 700px) {
+  .heroImage {
+    /* Absolute sizing */
+    min-width: 400px;
+    height: 400px;
+    padding: var(--spacing-6);
+    margin-left: 0;
+    margin-right: -10vw;
+    margin-bottom: -10vh;
+  }
+}
