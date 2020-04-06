@@ -32,15 +32,17 @@ const TestCard: FunctionalComponent<Props> = ({
   const data = { totalScore: 0, passing: [] as any, partial: [] as any };
 
   const transformData = () => {
-    Object.entries(test.results).forEach(tool => {
-      if (tool[1].meta.result === 'pass') {
-        data.totalScore += 1;
-        data.passing.push(tool[0]);
-      } else if (tool[1].meta.result === 'partial') {
-        data.totalScore += 0.5;
-        data.partial.push(tool[0]);
-      }
-    });
+    (Object.entries(test.results) as [BuildTool, TestResult][]).forEach(
+      (tool: [BuildTool, TestResult]) => {
+        if (tool[1].meta.result === 'pass') {
+          data.totalScore += 1;
+          data.passing.push(tool[0]);
+        } else if (tool[1].meta.result === 'partial') {
+          data.totalScore += 0.5;
+          data.partial.push(tool[0]);
+        }
+      },
+    );
   };
   transformData();
 
@@ -72,14 +74,14 @@ const TestCard: FunctionalComponent<Props> = ({
           <p class={$subText}>Bundlers Passing</p>
           <div class={$iconList}>
             {data.passing &&
-              data.passing.map(tool => (
+              data.passing.map((tool: BuildTool) => (
                 <figure class={$testCardIcon} data-result="pass">
                   <img src={toolImages[tool]} />
                   <figcaption>{tool}</figcaption>
                 </figure>
               ))}
             {data.partial &&
-              data.partial.map(tool => (
+              data.partial.map((tool: BuildTool) => (
                 <figure class={$testCardIcon} data-result="partial">
                   <img src={toolImages[tool]} />
                   <figcaption>{tool}</figcaption>
