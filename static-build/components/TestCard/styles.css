@@ -6,13 +6,19 @@
   justify-content: space-between;
   border-radius: 20px;
   box-shadow: var(--card-shadow);
-  padding: var(--spacing-5);
   text-align: center;
+
+  a {
+    padding: var(--spacing-5) var(--spacing-4);
+    text-decoration: none;
+    color: var(--text-gray);
+  }
 }
 
 .cardTitle {
   color: var(--vivid-blue);
   display: block;
+  font-size: var(--font-size--body);
   line-height: var(--font-lineheight--body);
   font-weight: var(--font-weight--normal);
   display: flex;
@@ -48,12 +54,32 @@
 
 .iconList {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* visually hide bundler names */
+.iconList figcaption {
+  width: 0;
+  height: 0;
+  text-indent: -99999999px;
 }
 
 .testCardIcon {
-  width: var(--touch-icon-size);
-  height: var(--touch-icon-size);
-  margin: 0 auto;
+  width: var(--nontouch-small-icon-size);
+  height: var(--nontouch-small-icon-size);
+  flex-basis: var(--nontouch-small-icon-size);
+  border: 1px solid;
+  border-radius: 50%;
+  margin: var(--spacing-1);
+}
+
+.testCardIcon[data-result='pass'] {
+  border-color: var(--test-pass);
+}
+
+.testCardIcon[data-result='partial'] {
+  border-color: var(--test-partial);
 }
 
 .testCardIcon img {

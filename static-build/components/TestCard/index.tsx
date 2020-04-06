@@ -63,7 +63,6 @@ const TestCard: FunctionalComponent<Props> = ({
         </div>
       );
     } else {
-      console.log(data.passing);
       return (
         <div>
           <div class={$cardTotal}>
@@ -95,13 +94,12 @@ const TestCard: FunctionalComponent<Props> = ({
 
   return (
     <li class={$testCard}>
-      <div>
-        <a href={link} class={$cardTitle}>
-          {name}
-        </a>
+      <a href={link}>
+        <h3 class={$cardTitle}>{name}</h3>
         <p class={$testDesc}>{desc}</p>
-      </div>
-      {renderPassing()}
+
+        {renderPassing()}
+      </a>
     </li>
   );
 };
