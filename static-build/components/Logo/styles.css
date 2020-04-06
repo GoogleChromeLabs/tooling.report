@@ -4,8 +4,11 @@
   font-size: var(--font-size--logo);
 
   & > svg {
-    margin-left: calc(var(--spacing-6) * -1);
     margin-right: var(--spacing-2);
+
+    @media (min-width: 640px) {
+      margin-left: calc(var(--spacing-6) * -1);
+    }
   }
 }
 
