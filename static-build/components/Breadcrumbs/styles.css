@@ -8,7 +8,7 @@
   margin-left: -2.5rem;
 
   & svg {
-    fill: var(--sky-blue);
+    fill: var(--vivid-blue);
   }
 
   &:hover svg {
@@ -34,7 +34,7 @@
   &:focus-within > .iconbutton {
     border-color: var(--denim-blue);
     & > svg {
-      --light-blue: var(--denim-blue);
+      fill: var(--denim-blue);
     }
   }
 }
@@ -49,6 +49,10 @@
   border: 1px solid var(--light-blue);
   background: white;
   position: relative;
+
+  & > svg {
+    fill: var(--vivid-blue);
+  }
 }
 
 .iconbutton > select {
