@@ -1,6 +1,7 @@
 import { h, FunctionalComponent, JSX, Fragment } from 'preact';
 import testData from 'test-data:';
 import { parentMap } from '../../shared/scripts/parentmap';
+import { testURLMap } from '../../shared/scripts/testurl';
 import { HomeIcon } from '../Icons/';
 import {
   $breadcrumbs,
@@ -22,7 +23,7 @@ const Crumb = (test: Test, index: number): JSX.Element => {
     <Fragment>
       <span class={$divider}>//</span>
       <span class={$collection}>
-        <a href="#">{test.meta.title}</a>
+        <a href={testURLMap.get(test)}>{test.meta.title}</a>
         <span class={$iconbutton}>
           <svg xmlns="http://www.w3.org/2000/svg" width="9" height="5">
             <path
