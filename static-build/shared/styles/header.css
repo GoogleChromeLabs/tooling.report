@@ -1,6 +1,6 @@
 header {
   min-height: 80vh;
-  padding: 0 var(--spacing-6);
+  padding: 0 var(--spacing-3);
   background: white;
 
   display: flex;
@@ -15,6 +15,17 @@ header {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-direction: column;
+    }
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  header {
+    padding: 0 var(--spacing-6);
+
+    & > section > div {
+      flex-direction: row;
     }
   }
 }
