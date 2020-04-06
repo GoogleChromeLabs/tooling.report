@@ -1,5 +1,6 @@
 import { h, FunctionalComponent, JSX, Fragment } from 'preact';
 import testData from 'test-data:';
+import { parentMap } from '../../shared/scripts/parentmap';
 import { HomeIcon } from '../Icons/';
 import {
   $breadcrumbs,
@@ -11,21 +12,6 @@ import {
 
 interface Props {
   test: Test;
-}
-
-const parentMap = new WeakMap<Test, Test>();
-
-const recurseTestData = (test: Test, map: WeakMap<Test, Test>) => {
-  if (test.subTests) {
-    for (const subtest of Object.values(test.subTests)) {
-      map.set(subtest, test);
-      recurseTestData(subtest, map);
-    }
-  }
-};
-
-for (const test of Object.values(testData)) {
-  recurseTestData(test, parentMap);
 }
 
 const Crumb = (test: Test, index: number): JSX.Element => {
