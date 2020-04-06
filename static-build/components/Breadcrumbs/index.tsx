@@ -15,7 +15,7 @@ interface Props {
   test: Test;
 }
 
-const Crumb = (test: Test, index: number): JSX.Element => {
+const Crumb = (test: Test, index: number, current: Test): JSX.Element => {
   const parentTest = parentMap.get(test);
   const siblingTests = parentTest?.subTests || testData;
 
@@ -23,7 +23,11 @@ const Crumb = (test: Test, index: number): JSX.Element => {
     <Fragment>
       <span class={$divider}>//</span>
       <span class={$collection}>
-        <a href={testURLMap.get(test)}>{test.meta.title}</a>
+        {test === current ? (
+          <span>{test.meta.title}</span>
+        ) : (
+          <a href={testURLMap.get(test)}>{test.meta.title}</a>
+        )}
         <span class={$iconbutton}>
           <svg xmlns="http://www.w3.org/2000/svg" width="9" height="5">
             <path
@@ -66,7 +70,7 @@ const Breadcrumbs: FunctionalComponent<Props> = ({ test }: Props) => {
         </span>
         <span>Home</span>
       </a>
-      {ancestors.map(Crumb)}
+      {ancestors.map((ancestor, index) => Crumb(ancestor, index, test))}
     </nav>
   );
 };
