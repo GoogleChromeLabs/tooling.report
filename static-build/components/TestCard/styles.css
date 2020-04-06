@@ -1,17 +1,18 @@
 .testCard {
   background: white;
   border: 1px solid var(--light-blue);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   border-radius: 20px;
   box-shadow: var(--card-shadow);
   text-align: center;
+  display: flex;
 
   a {
     padding: var(--spacing-5) var(--spacing-4);
     text-decoration: none;
     color: var(--text-gray);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 }
 
@@ -56,6 +57,7 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: var(--spacing-3);
 }
 
 /* visually hide bundler names */
