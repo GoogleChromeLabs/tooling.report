@@ -11,11 +11,13 @@ import {
   $iconbutton,
 } from './styles.css';
 
-interface Props {
+interface CrumbProps {
   test: Test;
+  index: number;
+  current: Test;
 }
 
-const Crumb = (test: Test, index: number, current: Test): JSX.Element => {
+const Crumb: FunctionalComponent<CrumbProps> = ({ test, index, current }) => {
   const parentTest = parentMap.get(test);
   const siblingTests = parentTest?.subTests || testData;
 
@@ -55,7 +57,11 @@ const Crumb = (test: Test, index: number, current: Test): JSX.Element => {
   );
 };
 
-const Breadcrumbs: FunctionalComponent<Props> = ({ test }: Props) => {
+interface BreadcrumbProps {
+  test: Test;
+}
+
+const Breadcrumbs: FunctionalComponent<BreadcrumbProps> = ({ test }) => {
   const ancestors = new Array<Test>(test);
   let ancestor = parentMap.get(test);
 
@@ -72,7 +78,9 @@ const Breadcrumbs: FunctionalComponent<Props> = ({ test }: Props) => {
         </span>
         <span>Home</span>
       </a>
-      {ancestors.map((ancestor, index) => Crumb(ancestor, index, test))}
+      {ancestors.map((ancestor, index) => (
+        <Crumb test={ancestor} index={index} current={test} />
+      ))}
     </nav>
   );
 };
