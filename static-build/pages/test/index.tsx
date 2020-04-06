@@ -20,6 +20,7 @@ import Logo from '../../components/Logo';
 import Footer from '../../components/Footer';
 import LinkList from '../../components/LinkList';
 import { LabcoatHero, WalkerHero } from '../../components/Heroes';
+import { $heroImage, $heroText } from './styles.css';
 
 interface Props {
   test: Test;
@@ -42,7 +43,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
           <section>
             <Logo />
             <div>
-              <div>
+              <div class={$heroText}>
                 <small>feature</small>
                 <h2>{test.meta.title}</h2>
                 <p>TODO: use a description from front matter</p>
@@ -54,7 +55,9 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                   ]}
                 />
               </div>
-              <div>{test.subTests ? <LabcoatHero /> : <WalkerHero />}</div>
+              <div class={$heroImage}>
+                {test.subTests ? <LabcoatHero /> : <WalkerHero />}
+              </div>
             </div>
           </section>
         </header>

@@ -1,7 +1,8 @@
 header {
-  min-height: 80vh;
+  min-height: 60vh;
   padding: 0 var(--spacing-3);
   background: white;
+  overflow-x: hidden;
 
   display: flex;
   flex-direction: column;
@@ -27,5 +28,12 @@ header {
     & > section > div {
       flex-direction: row;
     }
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  header {
+    min-height: 80vh;
+    padding: 0 var(--spacing-6);
   }
 }

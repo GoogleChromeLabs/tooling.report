@@ -1,5 +1,6 @@
 main {
-  padding: var(--spacing-6) var(--spacing-3);
+  padding: var(--spacing-6);
+  background: var(--background-gray);
   display: grid;
   gap: 10rem;
   position: relative;
