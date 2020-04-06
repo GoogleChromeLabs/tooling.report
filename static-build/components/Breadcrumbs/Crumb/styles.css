@@ -1,0 +1,48 @@
+.divider {
+  padding: 0 var(--spacing-3);
+  color: var(--light-blue);
+  font-weight: var(--font-weight--normal);
+}
+
+.collection {
+  flex-shrink: 0;
+  text-transform: capitalize;
+  display: inline-grid;
+  grid-auto-flow: column;
+  gap: var(--spacing-2);
+  align-items: center;
+
+  &:hover > .iconbutton,
+  &:focus-within > .iconbutton {
+    border-color: var(--denim-blue);
+    & > svg {
+      fill: var(--denim-blue);
+    }
+  }
+}
+
+.iconbutton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  border: 1px solid var(--light-blue);
+  background: white;
+  position: relative;
+
+  & > svg {
+    fill: var(--vivid-blue);
+  }
+}
+
+.iconbutton > select {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.01;
+  z-index: 1;
+}
