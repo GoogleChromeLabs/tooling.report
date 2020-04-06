@@ -10,6 +10,7 @@ import {
   $testCardIcon,
   $iconList,
   $subtestMeta,
+  $subTestCard,
 } from './styles.css';
 import gulp from 'asset-url:../../img/gulp.svg';
 import rollup from 'asset-url:../../img/rollup.svg';
@@ -54,55 +55,54 @@ const TestCard: FunctionalComponent<Props> = ({
   const renderPassing = () => {
     if (test.subTests) {
       return (
-        <div>
-          <div class={$cardTotal}>
-            <span class={$cardTotalCount}>
-              {Object.entries(test.subTests).length}
-            </span>
-          </div>
-          <p class={$subText}>Sub Tests</p>
-        </div>
+        <li class={$subTestCard}>
+          <a href={link}>
+            <h3 class={$cardTitle}>{name}</h3>
+            <p class={$testDesc}>{desc}</p>
+            <div class={$cardTotal}>
+              <span class={$cardTotalCount}>
+                {Object.entries(test.subTests).length}
+              </span>
+            </div>
+            <p class={$subText}>Sub Tests</p>
+          </a>
+        </li>
       );
     } else {
       return (
-        <div>
-          <div class={$cardTotal}>
-            <span>{data.totalScore}</span>
-            <span class={$dash}>/</span>
-            <span class={$cardTotalCount}>{totalTested()}</span>
-          </div>
-          <p class={$subText}>Bundlers Passing</p>
-          <div class={$iconList}>
-            {data.passing &&
-              data.passing.map((tool: BuildTool) => (
-                <figure class={$testCardIcon} data-result="pass">
-                  <img src={toolImages[tool]} />
-                  <figcaption>{tool}</figcaption>
-                </figure>
-              ))}
-            {data.partial &&
-              data.partial.map((tool: BuildTool) => (
-                <figure class={$testCardIcon} data-result="partial">
-                  <img src={toolImages[tool]} />
-                  <figcaption>{tool}</figcaption>
-                </figure>
-              ))}
-          </div>
-        </div>
+        <li class={$testCard}>
+          <a href={link}>
+            <h3 class={$cardTitle}>{name}</h3>
+            <p class={$testDesc}>{desc}</p>
+            <div class={$cardTotal}>
+              <span>{data.totalScore}</span>
+              <span class={$dash}>/</span>
+              <span class={$cardTotalCount}>{totalTested()}</span>
+            </div>
+            <p class={$subText}>Bundlers Passing</p>
+            <div class={$iconList}>
+              {data.passing &&
+                data.passing.map((tool: BuildTool) => (
+                  <figure class={$testCardIcon} data-result="pass">
+                    <img src={toolImages[tool]} />
+                    <figcaption>{tool}</figcaption>
+                  </figure>
+                ))}
+              {data.partial &&
+                data.partial.map((tool: BuildTool) => (
+                  <figure class={$testCardIcon} data-result="partial">
+                    <img src={toolImages[tool]} />
+                    <figcaption>{tool}</figcaption>
+                  </figure>
+                ))}
+            </div>
+          </a>
+        </li>
       );
     }
   };
 
-  return (
-    <li class={$testCard}>
-      <a href={link}>
-        <h3 class={$cardTitle}>{name}</h3>
-        <p class={$testDesc}>{desc}</p>
-
-        {renderPassing()}
-      </a>
-    </li>
-  );
+  return renderPassing();
 };
 
 export default TestCard;

@@ -1,19 +1,56 @@
-.testCard {
-  background: white;
-  border: 1px solid var(--light-blue);
-  border-radius: 20px;
-  box-shadow: var(--card-shadow);
+.testCard,
+.subTestCard {
   text-align: center;
   display: flex;
   justify-content: center;
 
   a {
+    background: white;
+    border: 1px solid var(--light-blue);
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
     padding: var(--spacing-5);
     text-decoration: none;
     color: var(--text-gray);
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+}
+
+.subTestCard {
+  transform: translateY(-5px);
+  position: relative;
+  margin: 0 auto;
+  max-width: max-content;
+
+  a {
+    background: var(--background-blue);
+    border-color: var(--light-blue);
+  }
+
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: var(--background-blue);
+    border: 1px solid var(--light-blue);
+    border-radius: var(--card-radius);
+  }
+
+  &::after {
+    transform: translateY(5px);
+    filter: brightness(0.85) saturate(2);
+  }
+
+  &::before {
+    transform: translateY(10px);
+    filter: brightness(0.7) saturate(2.5);
   }
 }
 

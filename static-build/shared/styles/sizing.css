@@ -10,5 +10,6 @@
 
   --touch-icon-size: 48px;
   --nontouch-small-icon-size: 36px;
+  --card-radius: 20px;
   --section-aside-width: 125px;
 }
