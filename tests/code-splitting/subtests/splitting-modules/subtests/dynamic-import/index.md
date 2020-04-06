@@ -1,6 +1,7 @@
 ---
 title: Splitting modules between dynamic imports
 importance: 1
+shortdesc: 'Can the tool split single module subsets?'
 ---
 
 Can the build tool split a single module subsets of its exports are used in code-splitted bundles?

@@ -1,6 +1,7 @@
 ---
 title: Between workers
 importance: 1
+shortDesc: 'One for ‘index’, one for ‘worker’, and one for shared.'
 ---
 
 **index.js**

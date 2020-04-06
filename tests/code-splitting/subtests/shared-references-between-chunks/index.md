@@ -1,6 +1,7 @@
 ---
 title: Shared references between chunks
 importance: 1
+shortDesc: 'Do module references get updated?'
 ---
 
 When you import a value in ES modules, you have a reference to it. If that value is updated, the value is updated across modules that import it.

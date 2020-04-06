@@ -1,6 +1,7 @@
 ---
 title: Dynamic import
 importance: 1
+shortDesc: 'Can you force a code split using dynamic import?'
 ---
 
 Can you force a code split using dynamic import? This puts the developer in control over the split point, and load time. This can be used to prioritise 'first interaction' script over other script.

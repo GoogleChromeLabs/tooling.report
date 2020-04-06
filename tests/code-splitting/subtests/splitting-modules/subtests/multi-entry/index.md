@@ -1,6 +1,7 @@
 ---
 title: Splitting modules between multiple entries
 importance: 1
+shortDesc: 'Can you split single modules for multiple entries?'
 ---
 
 Can the build tool split a single module when subsets of its exports are used by multiple entries?
