@@ -45,3 +45,20 @@
   margin: var(--spacing-3);
   line-height: 1.5;
 }
+
+.iconList {
+  display: flex;
+}
+
+.testCardIcon {
+  width: var(--touch-icon-size);
+  height: var(--touch-icon-size);
+  margin: 0 auto;
+}
+
+.testCardIcon img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  margin: 15% auto;
+}

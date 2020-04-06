@@ -7,7 +7,14 @@ import {
   $dash,
   $subText,
   $testDesc,
+  $testCardIcon,
+  $iconList,
 } from './styles.css';
+import gulp from 'asset-url:../../img/gulp.svg';
+import rollup from 'asset-url:../../img/rollup.svg';
+import webpack from 'asset-url:../../img/webpack.svg';
+import parcel from 'asset-url:../../img/parcel.svg';
+const toolImages = { gulp, rollup, webpack, parcel };
 
 interface Props {
   name: string;
@@ -22,23 +29,25 @@ const TestCard: FunctionalComponent<Props> = ({
   test,
   desc,
 }: Props) => {
-  const totalPassing = () => {
-    let total = 0;
+  const data = { totalScore: 0, passing: [] as any, partial: [] as any };
+
+  const transformData = () => {
     Object.entries(test.results).forEach(tool => {
       if (tool[1].meta.result === 'pass') {
-        total += 1;
+        data.totalScore += 1;
+        data.passing.push(tool[0]);
       } else if (tool[1].meta.result === 'partial') {
-        total += 0.5;
+        data.totalScore += 0.5;
+        data.partial.push(tool[0]);
       }
     });
-    return total;
   };
+  transformData();
 
   const totalTested = () => {
     return Object.entries(test.results).length;
   };
 
-  // Testing if this isn't another subtest that links through (i.e. code-splitting/splitting-modules)
   const renderPassing = () => {
     if (test.subTests) {
       return (
@@ -52,14 +61,31 @@ const TestCard: FunctionalComponent<Props> = ({
         </div>
       );
     } else {
+      console.log(data.passing);
       return (
         <div>
           <div class={$cardTotal}>
-            <span>{totalPassing()}</span>
+            <span>{data.totalScore}</span>
             <span class={$dash}>/</span>
             <span class={$cardTotalCount}>{totalTested()}</span>
           </div>
           <p class={$subText}>Bundlers Passing</p>
+          <div class={$iconList}>
+            {data.passing &&
+              data.passing.map(tool => (
+                <figure class={$testCardIcon} data-result="pass">
+                  <img src={toolImages[tool]} />
+                  <figcaption>{tool}</figcaption>
+                </figure>
+              ))}
+            {data.partial &&
+              data.partial.map(tool => (
+                <figure class={$testCardIcon} data-result="partial">
+                  <img src={toolImages[tool]} />
+                  <figcaption>{tool}</figcaption>
+                </figure>
+              ))}
+          </div>
         </div>
       );
     }
