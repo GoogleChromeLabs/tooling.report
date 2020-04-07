@@ -3,7 +3,7 @@ title: JS entry-point hashing cascade
 importance: 1
 ---
 
-When bundling a multi-page application, pages often have different "entry" modules - `/` loads an `index.js` module, `/profile` loads a `profile.js` module, etc. Dependency modules that are shared by these entries can be extracted into shared bundles via [Code Splitting](/code-splitting). When adopting hashed URLs for effective caching, it's important that any changes to shared bundles update the entry bundles to reference the newly hashed URLs.
+When bundling a multi-page application, pages often have different "entry" modules - `/` loads an `index.js` module, `/profile` loads a `profile.js` module, etc. Dependency modules that are shared by these entries can be extracted into shared bundles via [Code Splitting](/code-splitting/). When adopting hashed URLs for effective caching, it's important that any changes to shared bundles update the entry bundles to reference the newly hashed URLs.
 
 **index.js**
 
