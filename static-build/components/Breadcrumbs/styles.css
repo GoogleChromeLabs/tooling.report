@@ -14,8 +14,6 @@
 }
 
 .home {
-  margin-left: var(--spacing-2);
-
   @media (min-width: 640px) {
     margin-left: -2.5rem;
   }

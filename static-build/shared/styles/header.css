@@ -6,7 +6,6 @@ header {
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
 
   & > section {
     & > div {
@@ -26,6 +25,7 @@ header {
 @media only screen and (min-width: 700px) {
   header {
     padding: 0 var(--spacing-6);
+    justify-content: center;
 
     & > section > div {
       flex-direction: row;
