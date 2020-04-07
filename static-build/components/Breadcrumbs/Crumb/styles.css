@@ -21,12 +21,16 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2em;
-  height: 2em;
+  width: var(--touch-icon-size);
+  height: var(--touch-icon-size);
   border-radius: 50%;
   border: 1px solid var(--light-blue);
   background: white;
   position: relative;
+
+  @media (min-width: 720px) {
+    --touch-icon-size: 32px;
+  }
 
   &:focus-within,
   &:hover {
