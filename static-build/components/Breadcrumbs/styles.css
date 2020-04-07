@@ -21,6 +21,7 @@
   }
 
   & svg {
+    width: 55%;
     fill: var(--vivid-blue);
   }
 

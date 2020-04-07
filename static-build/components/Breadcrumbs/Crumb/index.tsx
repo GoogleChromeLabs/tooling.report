@@ -24,12 +24,7 @@ const Crumb: FunctionalComponent<CrumbProps> = ({ test, index, current }) => {
           <a href={testURLMap.get(test)}>{test.meta.title}</a>
         )}
         <span class={$iconbutton}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 9 5"
-            width="16px"
-            height="6px"
-          >
+          <svg viewBox="0 0 9 5">
             <path d="M4.6 2.7L9 0v2.1L4.7 5.3h-.2L0 2.1V0z" />
           </svg>
           <select data-depth={index}>
