@@ -10,7 +10,7 @@ interface BreadcrumbProps {
 }
 
 const Breadcrumbs: FunctionalComponent<BreadcrumbProps> = ({ test }) => {
-  const ancestors = new Array<Test>(test);
+  const ancestors = [test];
   let ancestor = parentMap.get(test);
 
   while (ancestor) {
