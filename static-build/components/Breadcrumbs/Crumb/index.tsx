@@ -1,7 +1,6 @@
 import { h, FunctionalComponent, Fragment } from 'preact';
 import testData from 'test-data:';
-import { testURLMap } from '../../../shared/scripts/testurl';
-import { parentMap } from '../../../shared/scripts/parentmap';
+import { parentMap, testURLMap } from '../../../testdata';
 import { $divider, $collection, $iconbutton } from './styles.css';
 
 interface CrumbProps {

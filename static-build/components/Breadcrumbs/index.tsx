@@ -1,5 +1,5 @@
 import { h, FunctionalComponent } from 'preact';
-import { parentMap } from '../../shared/scripts/parentmap';
+import { parentMap } from '../../testdata';
 import { $breadcrumbs, $home } from './styles.css';
 import Crumb from './Crumb';
 import { $collection, $iconbutton } from './Crumb/styles.css';
