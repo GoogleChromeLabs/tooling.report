@@ -11,7 +11,7 @@
  * limitations under the License.
  */
 export function logCaps(msg) {
-  console.log(msg.toUpperCase() + '!');
+  console.log(msg.toUpperCase() + ' (src2)');
 }
 
 // ~50KiB

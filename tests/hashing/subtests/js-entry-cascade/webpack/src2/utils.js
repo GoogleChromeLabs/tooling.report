@@ -11,5 +11,5 @@
  * limitations under the License.
  */
 export function logCaps(msg) {
-  console.info(msg.toUpperCase());
+  console.log(msg.toUpperCase() + ' (src2)');
 }
