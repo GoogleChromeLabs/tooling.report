@@ -1,7 +1,7 @@
 ---
 title: Multiple entry points
 importance: 1
-shortDesc: 'Does the library split out a shared bundle?'
+shortDesc: 'Are common entry dependencies extracted into a shared bundle?'
 ---
 
 Imagine you had an "index" page and a "profile" page, each with their own script. Both scripts happen to make use of a large common library. Instead of being bundled into each page's script, the library should be split out into a bundle shared by both.
