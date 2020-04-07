@@ -3,7 +3,7 @@ title: Flags
 importance: 1
 ---
 
-Applications often make use of flags, which are essentially values that are inlined into code at build-time. In many cases, it's important that these value are inlined prior to bundling. This is particularly important for conditional flags that affect control flow, since these can determine which modules end up being bundled.
+Applications often make use of flags, which are values set at build-time. Evaluating these values prior to bundling enables many useful optimizations. For example, flags can make certain code paths unreachable, allowing modules to be pruned from the dependency tree.
 
 **index.js**
 
