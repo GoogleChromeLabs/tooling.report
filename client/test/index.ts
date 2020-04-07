@@ -11,4 +11,4 @@
  * limitations under the License.
  */
 
-import '../../static-build/components/Breadcrumbs/client';
+import './breadcrumbs';
