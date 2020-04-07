@@ -1,7 +1,7 @@
 ---
 title: Shared objects between entry points
 importance: 1
-shortDesc: 'Can multiple entry points be safely used on a single page?'
+shortDesc: 'Can multiple entry points be used without duplicating modules?'
 ---
 
 Can multiple entry points be safely used on a single page?
