@@ -1,8 +1,8 @@
 const navs = document.querySelectorAll('#breadcrumbs select');
-const urlPath = window.location.pathname.split('/');
+const urlPaths = window.location.pathname.split('/');
 
-urlPath.pop();
-urlPath.shift();
+urlPaths.pop();
+urlPaths.shift();
 
 navs.forEach(nav => {
   nav.addEventListener('input', event => {
@@ -15,11 +15,11 @@ navs.forEach(nav => {
     }
 
     if (index !== -1) {
-      urlPath[index] = target?.value.slice(0, -1);
+      urlPaths[index] = target?.value.slice(0, -1);
 
-      window.location.pathname = urlPath
+      window.location.pathname = urlPaths
         .slice(0, index + 1)
-        .reduce((paths, path) => `${paths}/${path}`, '');
+        .reduce((urls, url) => `${urls}/${url}`, '');
     }
   });
 });
