@@ -2,4 +2,4 @@
 result: pass
 ---
 
-Parcel minifies code by default.
+Parcel minifies JavaScript using [terser](https://terser.org/) by default.
