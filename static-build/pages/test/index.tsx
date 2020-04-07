@@ -102,12 +102,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
             <section>
               <ul class={$testCardList}>
                 {Object.entries(test.subTests).map(([path, test]) => (
-                  <TestCard
-                    link={path + '/'}
-                    desc="Placeholder description for what the test does" // bc {test.html} is inconsistent for now until we get headlines
-                    name={test.meta.title}
-                    test={test}
-                  />
+                  <TestCard link={path + '/'} test={test} />
                 ))}
                 <li>
                   <a class={$contribCard} href="#">

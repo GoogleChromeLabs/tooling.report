@@ -19,18 +19,11 @@ import parcel from 'asset-url:../../img/parcel.svg';
 const toolImages = { gulp, rollup, webpack, parcel };
 
 interface Props {
-  name: string;
   link: string;
   test: Test;
-  desc: string;
 }
 
-const TestCard: FunctionalComponent<Props> = ({
-  name,
-  link,
-  test,
-  desc,
-}: Props) => {
+const TestCard: FunctionalComponent<Props> = ({ link, test }: Props) => {
   const data = { totalScore: 0, passing: [] as any, partial: [] as any };
 
   const transformData = () => {
@@ -53,12 +46,15 @@ const TestCard: FunctionalComponent<Props> = ({
   };
 
   const renderPassing = () => {
+    console.log(test);
     if (test.subTests) {
       return (
         <li class={$subTestCard}>
           <a href={link}>
-            <h3 class={$cardTitle}>{name}</h3>
-            <p class={$testDesc}>{desc}</p>
+            <h3 class={$cardTitle}>{test.meta.title}</h3>
+            {test.meta.shortDesc && (
+              <p class={$testDesc}>{test.meta.shortDesc}</p>
+            )}
             <div class={$cardTotal}>
               <span class={$cardTotalCount}>
                 {Object.entries(test.subTests).length}
@@ -72,8 +68,10 @@ const TestCard: FunctionalComponent<Props> = ({
       return (
         <li class={$testCard}>
           <a href={link}>
-            <h3 class={$cardTitle}>{name}</h3>
-            <p class={$testDesc}>{desc}</p>
+            <h3 class={$cardTitle}>{test.meta.title}</h3>
+            {test.meta.shortDesc && (
+              <p class={$testDesc}>{test.meta.shortDesc}</p>
+            )}
             <div class={$cardTotal}>
               <span>{data.totalScore}</span>
               <span class={$dash}>/</span>
