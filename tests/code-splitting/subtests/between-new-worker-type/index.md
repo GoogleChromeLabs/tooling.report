@@ -1,6 +1,7 @@
 ---
 title: Between new worker type
 importance: 1
+shortDesc: 'Can you make an entry point and get its URL?'
 ---
 
 **index.js**

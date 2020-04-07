@@ -26,10 +26,8 @@
 
   &:before {
     content: '#';
-    position: absolute;
-    top: 0;
-    left: -1.5ch;
     color: var(--denim-blue);
+    margin-right: var(--spacing-1);
   }
 
   &:hover:before {
@@ -44,4 +42,13 @@
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+@media only screen and (min-width: 550px) {
+  .sectionHeader:before {
+    margin-right: 0;
+    position: absolute;
+    top: 0;
+    left: -1.5ch;
+  }
 }
