@@ -8,11 +8,7 @@ navs.forEach(nav => {
   nav.addEventListener('input', event => {
     const target = <HTMLInputElement>event.target;
     const data = target.dataset;
-    let index = -1;
-
-    if (data) {
-      index = parseInt(data.depth!);
-    }
+    let index = data.depth ? parseInt(data.depth!) : -1;
 
     if (index !== -1) {
       urlPaths[index] = target?.value.slice(0, -1);
