@@ -11,7 +11,7 @@ navs.forEach(nav => {
 
     if (index === -1) return;
 
-    urlPaths[index] = target?.value.slice(0, -1);
+    urlPaths[index] = target.value.slice(0, -1);
 
     window.location.pathname = urlPaths
       .slice(0, index + 1)
