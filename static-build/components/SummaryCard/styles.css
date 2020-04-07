@@ -10,7 +10,7 @@
 
 .cardTitle {
   color: var(--vivid-blue);
-  margin: 0.5rem;
+  margin: var(--spacing-1);
   display: block;
   line-height: var(--font-lineheight--body);
   font-weight: var(--font-weight--normal);
@@ -38,7 +38,7 @@
 /* Summary Cards */
 
 .summaryCardIcon {
-  background: var(--light-blue);
+  background: var(--ice-blue);
   border-radius: 50%;
   width: var(--touch-icon-size);
   height: var(--touch-icon-size);
@@ -52,11 +52,34 @@
   margin: 15% auto;
 }
 
-.summaryProgress {
-  height: 0.5rem;
-  transition-duration: 1s;
-}
-
 .dash {
   color: var(--sky-blue);
+}
+
+/* Progress */
+
+.progressText {
+  color: white;
+  padding: 0 var(--spacing-1);
+  font-size: var(--font-size--detail);
+}
+
+.progressSummary {
+  height: 20px;
+  background-color: var(--ice-blue);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progressBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: var(--vivid-blue);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  /* will-change: width; TODO note: in the future have the bars animate out from 0% with an intersection observer */
 }

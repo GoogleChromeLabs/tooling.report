@@ -3,7 +3,9 @@ import {
   $summaryCard,
   $summaryCardIcon,
   $cardTitle,
-  $summaryProgress,
+  $progressSummary,
+  $progressBar,
+  $progressText,
   $cardTestsPassedContainer,
   $cardTotal,
   $cardTotalCount,
@@ -24,6 +26,7 @@ const SummaryCard: FunctionalComponent<Props> = ({
   image,
 }: Props) => {
   const percent = Math.floor((total / possible) * 100);
+
   return (
     <li class={$summaryCard}>
       <figure class={$summaryCardIcon}>
@@ -32,9 +35,11 @@ const SummaryCard: FunctionalComponent<Props> = ({
       <a href="#" class={$cardTitle}>
         {name}
       </a>
-      <progress class={$summaryProgress} value={percent} max="100">
-        {percent}%
-      </progress>
+      <div class={$progressSummary}>
+        <div class={$progressBar} style={'width:' + percent + '%'}>
+          <div class={$progressText}>{percent}%</div>
+        </div>
+      </div>
       <div class={$cardTestsPassedContainer}>
         <div class={$cardTotal}>
           <span>{total}</span>

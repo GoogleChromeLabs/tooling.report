@@ -10,10 +10,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-// An alternative (and more popular) configuration is commented out here:
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
 module.exports = [1, 2, 3].map(src => ({
   entry: `./src${src}/index.js`,
   output: {
@@ -32,7 +28,6 @@ module.exports = [1, 2, 3].map(src => ({
               name: 'assets/[name].[contenthash:5].[ext]',
             },
           },
-          // 'extract-loader',
           './lib/svg-loader',
         ],
       },

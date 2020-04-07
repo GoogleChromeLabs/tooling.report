@@ -1,5 +1,13 @@
 main {
   padding: var(--spacing-6);
+  background: var(--background-gray);
   display: grid;
-  gap: var(--spacing-6);
+  gap: 10rem;
+  position: relative;
+}
+
+@media only screen and (min-width: 550px) {
+  main {
+    padding: var(--spacing-6);
+  }
 }

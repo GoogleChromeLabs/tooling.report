@@ -1,0 +1,23 @@
+.fab {
+  position: absolute;
+  top: -30px;
+  right: var(--spacing-3);
+}
+
+.fabicon {
+  background: white;
+  border: 1px solid var(--background-gray);
+  box-shadow: var(--fab-shadow);
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (min-width: 700px) {
+  .fab {
+    padding: 0 var(--spacing-6);
+  }
+}

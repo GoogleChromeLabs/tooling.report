@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "parcel build src/index.js"
+    "build": "parcel build src/index.js"
   },
   "dependencies": {
     "idb": "^5.0.1",

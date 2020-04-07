@@ -10,8 +10,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-const { src, dest, series } = require('gulp');
+const { src, dest, parallel } = require('gulp');
 const RevAll = require('gulp-rev-all');
 
 function test1() {
@@ -26,4 +25,4 @@ function test2() {
     .pipe(dest('build/svg2'));
 }
 
-exports.default = series(test1, test2);
+exports.default = parallel(test1, test2);

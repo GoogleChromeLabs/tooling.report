@@ -5,9 +5,9 @@
     "build": "rollup -c && node lib/move-output.js",
     "debug": "node --inspect-brk node_modules/.bin/rollup -c",
     "dev": "rollup -cw & npm run serve",
-    "serve": "http-server -s -c-1 .tmp/build/static",
+    "serve": "http-server -c-1 .tmp/build/static | head -5",
     "linktests": "ln -s '../../../tests' .tmp/build/static/tests",
-    "atest": "cd \"tests/$TEST\" && npm i --ignore-scripts --no-progress --no-fund --no-audit --prefer-offline --cache-min 9999999 --no-package-lock && npm run -s build"
+    "atest": "cd \"tests/$TEST\" && npm i --no-progress --no-fund --no-audit --prefer-offline --cache-min 9999999 --no-package-lock && npm run -s build"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^7.0.0",
@@ -23,7 +23,6 @@
     "lint-staged": "^10.0.1",
     "lodash.camelcase": "^4.3.0",
     "marked": "^0.8.0",
-    "pnpm": "^4.10.0",
     "postcss": "^7.0.26",
     "postcss-import": "^12.0.1",
     "postcss-modules": "^1.5.0",
@@ -46,5 +45,8 @@
     "*.{js,css,json,md,ts,tsx}": [
       "prettier --write"
     ]
+  },
+  "engines": {
+    "node": ">=12"
   }
 }

@@ -11,7 +11,7 @@
  * limitations under the License.
  */
 import assetPlugin from './lib/asset-plugin';
-import unhasedChunkPlugin from './lib/unhashed-chunk-plugin';
+import unhashedChunkPlugin from './lib/unhashed-chunk-plugin';
 
 export default {
   input: ['src/hashed-entry.js', 'src/unhashed-entry.js'],
@@ -25,6 +25,6 @@ export default {
         return !path.endsWith('unhashed-asset.txt');
       },
     }),
-    unhasedChunkPlugin(),
+    unhashedChunkPlugin(),
   ],
 };
