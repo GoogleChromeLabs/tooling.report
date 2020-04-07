@@ -13,8 +13,6 @@ navs.forEach(nav => {
 
     urlPaths[index] = target.value.slice(0, -1);
 
-    window.location.pathname = urlPaths
-      .slice(0, index + 1)
-      .reduce((urls, url) => `${urls}/${url}`, '');
+    window.location.pathname = urlPaths.slice(0, index + 1).join('/');
   });
 });
