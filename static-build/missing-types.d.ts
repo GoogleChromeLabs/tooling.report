@@ -43,7 +43,6 @@ interface Tests {
 
 interface Test {
   /** Front-matter data from the index.md in the test. */
-  shortDesc: string;
   meta: TestMeta;
   /** HTML from the index.md in the test. */
   html: string;
@@ -53,6 +52,7 @@ interface Test {
 
 interface TestMeta {
   title: string;
+  shortDesc: string;
   importance: number;
 }
 

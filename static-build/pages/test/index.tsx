@@ -19,6 +19,8 @@ import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
 import Footer from '../../components/Footer';
 import LinkList from '../../components/LinkList';
+import TestCard from '../../components/TestCard';
+import { $testCardList, $contribCard } from './styles.css';
 import { LabcoatHero, WalkerHero } from '../../components/Heroes';
 import { $heroImage, $heroText } from './styles.css';
 
@@ -98,12 +100,18 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
 
           {test.subTests && (
             <section>
-              <ul>
+              <ul class={$testCardList}>
                 {Object.entries(test.subTests).map(([path, test]) => (
-                  <li>
-                    <a href={path + '/'}>{test.meta.title}</a>
-                  </li>
+                  <TestCard link={path + '/'} test={test} />
                 ))}
+                <li>
+                  <a
+                    class={$contribCard}
+                    href="https://github.com/GoogleChromeLabs/tooling.report/blob/master/CONTRIBUTING.md"
+                  >
+                    +
+                  </a>
+                </li>
               </ul>
             </section>
           )}
