@@ -1,6 +1,5 @@
 header {
-  min-height: 60vh;
-  padding: 0 var(--spacing-3);
+  min-height: 75vh;
   background: white;
   overflow-x: hidden;
 
@@ -13,6 +12,7 @@ header {
       justify-content: space-between;
       align-items: center;
       flex-direction: column;
+      padding: 0 var(--spacing-3);
     }
 
     @media (min-width: 640px) {
@@ -24,11 +24,13 @@ header {
 
 @media only screen and (min-width: 700px) {
   header {
+    min-height: 60vh;
     padding: 0 var(--spacing-6);
     justify-content: center;
 
     & > section > div {
       flex-direction: row;
+      padding: 0;
     }
   }
 }

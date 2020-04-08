@@ -1,14 +1,19 @@
 .logo {
+  display: flex;
+  align-items: center;
   font-weight: var(--font-weight--light);
   color: var(--vivid-blue);
   font-size: var(--font-size--logo);
+  margin-left: var(--spacing-3);
+  margin-top: var(--spacing-5);
+
+  @media (min-width: 640px) {
+    margin-left: calc(var(--spacing-6) * -1);
+    margin-top: 0;
+  }
 
   & > svg {
     margin-right: var(--spacing-2);
-
-    @media (min-width: 640px) {
-      margin-left: calc(var(--spacing-6) * -1);
-    }
   }
 }
 

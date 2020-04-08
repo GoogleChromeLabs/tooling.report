@@ -1,15 +1,24 @@
 @import './Crumb/styles.css';
 
 .breadcrumbs {
+  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   position: relative;
   overscroll-behavior: contain;
+  margin-bottom: var(--spacing-6);
 
   @media (max-width: 640px) {
     max-width: 100%;
     overflow-x: auto;
-    padding-bottom: 1ch;
+    padding: 0 var(--spacing-3) var(--spacing-3);
+    margin-bottom: 0;
+
+    & > *:last-child::after {
+      content: '';
+      display: inline-block;
+      width: var(--spacing-2);
+    }
   }
 }
 
@@ -25,5 +34,13 @@
 
   &:hover svg {
     fill: var(--denim-blue);
+  }
+
+  & > :first-child {
+    display: none;
+
+    @media (min-width: 640px) {
+      display: inline-flex;
+    }
   }
 }
