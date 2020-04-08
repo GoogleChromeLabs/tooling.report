@@ -1,0 +1,99 @@
+.testCard,
+.subTestCard {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+
+  a {
+    background: white;
+    border: 1px solid var(--light-blue);
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+    padding: var(--spacing-5);
+    text-decoration: none;
+    color: var(--teal-blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+.subTestCard {
+  /* tbd */
+}
+
+.cardTitle {
+  color: var(--vivid-blue);
+  display: block;
+  font-size: var(--font-size--body);
+  line-height: var(--font-lineheight--body);
+  font-weight: var(--font-weight--normal);
+}
+
+.cardTotal {
+  font-size: var(--font-size--logo);
+  color: var(--dim-teal);
+  line-height: 1;
+}
+
+.cardTotalCount {
+  font-weight: var(--font-weight--bold);
+}
+
+.dash {
+  color: var(--sky-blue);
+}
+
+.subText {
+  color: var(--vivid-blue);
+  font-size: var(--font-size--detail);
+}
+
+.testDesc {
+  font-size: var(--font-size--detail);
+  margin: var(--spacing-3);
+  line-height: 1.5;
+}
+
+.iconList {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* visually hide bundler names */
+.iconList figcaption {
+  width: 0;
+  height: 0;
+  text-indent: -99999999px;
+}
+
+.testCardIcon {
+  width: var(--nontouch-small-icon-size);
+  height: var(--nontouch-small-icon-size);
+  flex-basis: var(--nontouch-small-icon-size);
+  border: 1px solid;
+  border-radius: 50%;
+  margin: var(--spacing-1);
+}
+
+.testCardIcon[data-result='pass'] {
+  border-color: var(--test-pass);
+}
+
+.testCardIcon[data-result='partial'] {
+  border-color: var(--test-partial);
+}
+
+.testCardIcon img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  margin: 15% auto;
+}
+
+.subtestMeta {
+  display: flex;
+  align-items: center;
+}

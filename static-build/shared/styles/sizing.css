@@ -9,5 +9,7 @@
   --spacing-8: 10rem;
 
   --touch-icon-size: 48px;
+  --nontouch-small-icon-size: 32px;
+  --card-radius: 20px;
   --section-aside-width: 125px;
 }

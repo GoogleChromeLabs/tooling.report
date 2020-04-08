@@ -1,5 +1,6 @@
 @import '../../libraries/prism/prism.css';
 @import './article.css';
+@import 'components/TestCard/styles.css';
 @import 'components/Breadcrumbs/styles.css';
 
 .heroImage {
@@ -34,5 +35,34 @@
     margin-left: 0;
     margin-right: -10vw;
     margin-bottom: -10vh;
+  }
+}
+
+.testCardList {
+  display: grid;
+  gap: var(--spacing-5);
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contribCard {
+  font-family: monospace;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 120px;
+  text-decoration: none;
+  background: white;
+  border: 1px solid var(--light-blue);
+  color: var(--light-blue);
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+
+  &:hover {
+    color: var(--sky-blue);
   }
 }

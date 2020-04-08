@@ -20,8 +20,14 @@ import Logo from '../../components/Logo';
 import Footer from '../../components/Footer';
 import LinkList from '../../components/LinkList';
 import Breadcrumbs from '../../components/Breadcrumbs';
+import TestCard from '../../components/TestCard';
 import { LabcoatHero, WalkerHero } from '../../components/Heroes';
-import { $heroImage, $heroText } from './styles.css';
+import {
+  $heroImage,
+  $heroText,
+  $testCardList,
+  $contribCard,
+} from './styles.css';
 
 interface Props {
   test: Test;
@@ -100,12 +106,18 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
 
           {test.subTests && (
             <section>
-              <ul>
+              <ul class={$testCardList}>
                 {Object.entries(test.subTests).map(([path, test]) => (
-                  <li>
-                    <a href={path + '/'}>{test.meta.title}</a>
-                  </li>
+                  <TestCard link={path + '/'} test={test} />
                 ))}
+                <li>
+                  <a
+                    class={$contribCard}
+                    href="https://github.com/GoogleChromeLabs/tooling.report/blob/master/CONTRIBUTING.md"
+                  >
+                    +
+                  </a>
+                </li>
               </ul>
             </section>
           )}
