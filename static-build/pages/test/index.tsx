@@ -105,7 +105,10 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                   <TestCard link={path + '/'} test={test} />
                 ))}
                 <li>
-                  <a class={$contribCard} href="#">
+                  <a
+                    class={$contribCard}
+                    href="https://github.com/GoogleChromeLabs/tooling.report/blob/master/CONTRIBUTING.md"
+                  >
                     +
                   </a>
                 </li>
