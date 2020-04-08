@@ -20,17 +20,7 @@
 }
 
 .subTestCard {
-  position: relative;
-
-  &::after {
-    content: 'See More Tests';
-    position: absolute;
-    padding: var(--spacing-1) var(--spacing-3);
-    bottom: calc(-1 * var(--spacing-3));
-    background: var(--background-blue);
-    border: 1px solid var(--light-blue);
-    border-radius: var(--card-radius);
-  }
+  /* tbd */
 }
 
 .cardTitle {
