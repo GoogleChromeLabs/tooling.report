@@ -19,7 +19,6 @@
     "gray-matter": "^4.0.2",
     "http-server": "^0.12.1",
     "husky": "^4.0.7",
-    "jsdom": "^16.2.1",
     "lint-staged": "^10.0.1",
     "lodash.camelcase": "^4.3.0",
     "marked": "^0.8.0",
