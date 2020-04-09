@@ -124,12 +124,14 @@ export function renderIssueLinksForTest(test: Test, tool: BuildTool) {
   return (
     <ul class="issues">
       {issues.map(issue => (
-        <li>
+        <li
+          style={issue.status === 'open' ? '' : 'text-decoration: line-through'}
+        >
           {issue.url === 'N/A' ? (
             'N/A'
           ) : (
             <a href={issue.url}>
-              {issue.title} ({issue.status})
+              {issue.githubData ? issue.githubData.title : issue.url}
             </a>
           )}
         </li>
