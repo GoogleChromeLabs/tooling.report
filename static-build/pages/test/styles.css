@@ -1,2 +1,68 @@
 @import './article.css';
+@import '../../components/TestCard/styles.css';
+
+.testCardList {
+  display: grid;
+  gap: var(--spacing-5);
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contribCard {
+  font-family: monospace;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 120px;
+  text-decoration: none;
+  background: white;
+  border: 1px solid var(--light-blue);
+  color: var(--light-blue);
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+
+  &:hover {
+    color: var(--sky-blue);
+  }
+}
+
 @import '../../libraries/prism/prism.css';
+
+.heroImage {
+  background: var(--ice-blue);
+  border-radius: 50%;
+  /* Relative sizing */
+  min-width: 50vw;
+  height: 50vw;
+  padding: var(--spacing-4);
+  overflow: hidden;
+  margin-left: -25vw;
+  margin-bottom: -30vh;
+}
+
+.heroImage img {
+  object-fit: contain;
+  width: 100%;
+}
+
+.heroText {
+  min-width: 220px;
+  margin-right: var(--spacing-6);
+  z-index: 1;
+}
+
+@media only screen and (min-width: 700px) {
+  .heroImage {
+    /* Absolute sizing */
+    min-width: 400px;
+    height: 400px;
+    padding: var(--spacing-6);
+    margin-left: 0;
+    margin-right: -10vw;
+    margin-bottom: -10vh;
+  }
+}

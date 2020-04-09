@@ -1,6 +1,7 @@
 ---
 title: Between workers
 importance: 1
+shortDesc: 'Can bundles be shared between the main thread and workers?'
 ---
 
 **index.js**

@@ -52,6 +52,7 @@ interface Test {
 
 interface TestMeta {
   title: string;
+  shortDesc: string;
   importance: number;
 }
 

@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "build": "gulp"
+    "build": "rm -rf build && gulp"
   },
   "devDependencies": {
     "gulp": "^4.0.2",

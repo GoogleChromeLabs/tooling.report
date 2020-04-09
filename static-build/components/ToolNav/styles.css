@@ -1,11 +1,12 @@
 .toolNav {
   position: sticky;
   top: var(--spacing-3);
+  z-index: 2;
 
   background: white;
   display: flex;
-  margin-left: var(--section-aside-width);
-  padding: var(--spacing-3) 0;
+  margin-left: calc(var(--section-aside-width) + var(--spacing-3));
+  padding: var(--spacing-3) var(--spacing-3) var(--spacing-3) 0;
   border: 1px solid var(--ice-blue);
   border-radius: var(--spacing-2);
   box-shadow: var(--card-shadow);
@@ -15,16 +16,30 @@
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: center;
+  padding-left: var(--spacing-2);
+  place-content: center;
 
   & > figcaption {
     text-transform: capitalize;
     font-weight: var(--font-weight--bold);
     font-size: var(--font-size--detail);
+    visibility: hidden;
+    width: 0;
   }
 
   & > img {
-    max-height: 40px;
-    margin-right: var(--spacing-3);
+    object-fit: contain;
+    margin-right: var(--spacing-2);
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .tool {
+    place-content: left;
+
+    & > figcaption {
+      visibility: visible;
+      width: auto;
+    }
   }
 }

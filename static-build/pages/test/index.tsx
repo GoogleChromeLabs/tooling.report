@@ -12,13 +12,17 @@
  */
 
 import { h, FunctionalComponent } from 'preact';
-import sharedStyles from 'css-bundle:static-build/shared/styles/index.css';
 import { githubLink } from '../../utils.js';
 import pageStyles from 'css-bundle:./styles.css';
+import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
+import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
 import Footer from '../../components/Footer';
 import LinkList from '../../components/LinkList';
+import TestCard from '../../components/TestCard';
+import { $testCardList, $contribCard } from './styles.css';
 import { LabcoatHero, WalkerHero } from '../../components/Heroes';
+import { $heroImage, $heroText } from './styles.css';
 
 interface Props {
   test: Test;
@@ -28,18 +32,20 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
   return (
     <html>
       <head>
-        <title>Tooling.Report: {test.meta.title}</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <link rel="stylesheet" href={sharedStyles} />
+        <title>{`Tooling.Report: ${test.meta.title}`}</title>
+        <HeadMeta />
         <link rel="stylesheet" href={pageStyles} />
-        {/* TODO: favicon */}
+        <script type="module" src={bundleURL} />
+        {imports.map(v => (
+          <link rel="preload" as="script" href={v} crossOrigin="" />
+        ))}
       </head>
       <body>
         <header>
           <section>
             <Logo />
             <div>
-              <div>
+              <div class={$heroText}>
                 <small>feature</small>
                 <h2>{test.meta.title}</h2>
                 <p>TODO: use a description from front matter</p>
@@ -51,7 +57,9 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                   ]}
                 />
               </div>
-              <div>{test.subTests ? <LabcoatHero /> : <WalkerHero />}</div>
+              <div class={$heroImage}>
+                {test.subTests ? <LabcoatHero /> : <WalkerHero />}
+              </div>
             </div>
           </section>
         </header>
@@ -83,6 +91,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                   <a href={githubLink(result.repositoryPath)}>
                     Inspect the test
                   </a>
+                  {/* {renderIssueLinksForTest(test, subject as BuildTool)} */}
                 </div>
               ))}
               <div dangerouslySetInnerHTML={{ __html: test.html }}></div>
@@ -91,12 +100,18 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
 
           {test.subTests && (
             <section>
-              <ul>
+              <ul class={$testCardList}>
                 {Object.entries(test.subTests).map(([path, test]) => (
-                  <li>
-                    <a href={path + '/'}>{test.meta.title}</a>
-                  </li>
+                  <TestCard link={path + '/'} test={test} />
                 ))}
+                <li>
+                  <a
+                    class={$contribCard}
+                    href="https://github.com/GoogleChromeLabs/tooling.report/blob/master/CONTRIBUTING.md"
+                  >
+                    +
+                  </a>
+                </li>
               </ul>
             </section>
           )}

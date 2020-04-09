@@ -1,31 +1,54 @@
 @import 'components/SummaryCard/styles.css';
+@import 'components/DataGrid/styles.css';
 @import 'components/ToolNav/styles.css';
+@import 'components/Connect/styles.css';
 
 .topSticky {
   position: sticky;
-  top: 0;
+  top: var(--spacing-6);
 }
 
 .sidebarLayout {
   display: grid;
+  gap: var(--spacing-3);
   grid-template-columns: var(--section-aside-width) 1fr;
 }
 
-.connect {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 700px;
-  background-color: var(--background-gray-offset);
-  border: 1px solid var(--background-gray-offset);
-  border-radius: 2rem;
+.sectionHeader {
+  display: inline-block;
+  text-transform: capitalize;
+  margin-bottom: var(--spacing-4);
+  position: relative;
+  color: var(--backpack-blue);
+  background-color: var(--background-gray);
+  max-width: var(--section-aside-width);
+  line-height: var(--font-lineheight--tight);
+
+  &:before {
+    content: '#';
+    color: var(--denim-blue);
+    margin-right: var(--spacing-1);
+  }
+
+  &:hover:before {
+    color: var(--backpack-blue);
+  }
 }
 
 .summaryList {
   display: grid;
-  gap: 2rem;
+  gap: var(--spacing-5);
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+@media only screen and (min-width: 550px) {
+  .sectionHeader:before {
+    margin-right: 0;
+    position: absolute;
+    top: 0;
+    left: -1.5ch;
+  }
 }
