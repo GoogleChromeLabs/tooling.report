@@ -46,7 +46,6 @@ const TestCard: FunctionalComponent<Props> = ({ link, test }: Props) => {
   };
 
   const renderPassing = () => {
-    console.log(test);
     if (test.subTests) {
       return (
         <li class={$subTestCard}>
