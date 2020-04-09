@@ -2,7 +2,7 @@
 result: pass
 ---
 
-One of the pros of using Gulp is that you can define the input and output files and order in which tasks will run. This prevents you from ever being locked in to any specific entry point.
+Gulp does not differentiate between the file formats used as entry points in a build. Any set of files can be used as the "source" of a build, and stream processing can be applied to any type of file.
 
 This test uses `gulp-rev` to hash CSS and JS files, then uses `gulp-rev-collector` to replace the references in the index.html file.
 
