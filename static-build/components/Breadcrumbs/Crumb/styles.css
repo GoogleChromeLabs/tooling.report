@@ -43,6 +43,7 @@
   }
 
   & > select {
+    font-size: 16px; /* prevents iOS from zooming on interaction */
     cursor: pointer;
     position: absolute;
     top: 0;
