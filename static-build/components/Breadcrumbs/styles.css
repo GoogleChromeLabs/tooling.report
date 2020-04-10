@@ -5,6 +5,7 @@
   display: flex;
   align-items: center;
   position: relative;
+  font-size: var(--font-size--detail);
   margin-bottom: var(--spacing-6);
   margin-left: calc(var(--spacing-6) * -1);
   padding-left: var(--spacing-6);
