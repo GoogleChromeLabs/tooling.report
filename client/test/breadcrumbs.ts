@@ -1,8 +1,16 @@
+const breadcrumbs = document.querySelector('#breadcrumbs');
 const navs = document.querySelectorAll('#breadcrumbs select');
 const urlPaths = window.location.pathname.split('/');
 
 urlPaths.pop();
 urlPaths.shift();
+
+window.onload = () => {
+  breadcrumbs?.lastElementChild?.scrollIntoView({
+    block: 'nearest',
+    inline: 'end',
+  });
+};
 
 navs.forEach(nav => {
   nav.addEventListener('input', event => {
