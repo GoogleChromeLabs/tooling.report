@@ -7,6 +7,30 @@ header {
   flex-direction: column;
 
   & > section {
+    position: relative;
+
+    @media (orientation: portrait) {
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        z-index: 1;
+        width: var(--spacing-3);
+        height: 100%;
+      }
+
+      &::before {
+        left: 0;
+        background-image: linear-gradient(to right, white, 75%, transparent);
+      }
+
+      &::after {
+        right: 0;
+        background-image: linear-gradient(to left, white, 75%, transparent);
+      }
+    }
+
     & > div {
       display: flex;
       justify-content: space-between;
