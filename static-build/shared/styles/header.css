@@ -1,7 +1,7 @@
 header {
   min-height: 60vh;
   background: white;
-  overflow-x: hidden;
+  overflow: hidden;
 
   display: flex;
   flex-direction: column;
