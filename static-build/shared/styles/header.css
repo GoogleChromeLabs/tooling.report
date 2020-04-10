@@ -1,5 +1,5 @@
 header {
-  min-height: 75vh;
+  min-height: 60vh;
   background: white;
   overflow-x: hidden;
 
@@ -15,16 +15,16 @@ header {
       padding: 0 var(--spacing-3);
     }
 
-    @media (min-width: 640px) {
+    @media (orientation: landscape) {
       max-width: 1024px;
       margin: auto;
     }
   }
 }
 
-@media only screen and (min-width: 700px) {
+@media only screen and (orientation: landscape) {
   header {
-    min-height: 60vh;
+    min-height: 80vh;
     padding: 0 var(--spacing-6);
     justify-content: center;
 
@@ -32,12 +32,5 @@ header {
       flex-direction: row;
       padding: 0;
     }
-  }
-}
-
-@media only screen and (min-width: 700px) {
-  header {
-    min-height: 80vh;
-    padding: 0 var(--spacing-6);
   }
 }

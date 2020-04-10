@@ -28,7 +28,7 @@
   background: white;
   position: relative;
 
-  @media (min-width: 720px) {
+  @media (orientation: landscape) {
     --touch-icon-size: 32px;
   }
 
