@@ -13,7 +13,6 @@
   text-transform: capitalize;
   display: inline-grid;
   grid-auto-flow: column;
-  gap: var(--spacing-2);
   align-items: center;
 
   @media (orientation: landscape) {
@@ -31,26 +30,30 @@
   justify-content: center;
   width: var(--touch-icon-size);
   height: var(--touch-icon-size);
-  border-radius: 50%;
-  border: 1px solid var(--light-blue);
-  background: white;
   position: relative;
 
-  @media (orientation: landscape) {
-    --touch-icon-size: 32px;
+  & > span:first-of-type {
+    border-radius: 50%;
+    border: 1px solid var(--light-blue);
+    background: white;
+    width: var(--spacing-5);
+    height: var(--spacing-5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  &:focus-within,
-  &:hover {
+  &:focus-within > span,
+  &:hover > span {
     border-color: var(--denim-blue);
   }
 
-  & > svg {
+  & svg {
     width: 30%;
     fill: var(--vivid-blue);
   }
 
-  & > select {
+  & select {
     font-size: 16px; /* prevents iOS from zooming on interaction */
     cursor: pointer;
     position: absolute;

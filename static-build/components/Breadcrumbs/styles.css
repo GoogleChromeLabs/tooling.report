@@ -40,10 +40,6 @@
     fill: var(--vivid-blue);
   }
 
-  &:hover svg {
-    fill: var(--denim-blue);
-  }
-
   & > :first-child {
     display: none;
 

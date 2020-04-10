@@ -21,9 +21,11 @@ const Breadcrumbs: FunctionalComponent<BreadcrumbProps> = ({ test }) => {
     <nav class={$breadcrumbs} id="breadcrumbs">
       <a href="/" class={`${$home} ${$collection}`}>
         <span class={$iconbutton}>
-          <svg viewBox="0 0 10 10">
-            <path d="M4 8.5v-3h2v3h2.5v-4H10L5 0 0 4.5h1.5v4z" />
-          </svg>
+          <span>
+            <svg viewBox="0 0 10 10">
+              <path d="M4 8.5v-3h2v3h2.5v-4H10L5 0 0 4.5h1.5v4z" />
+            </svg>
+          </span>
         </span>
         <span>Home</span>
       </a>
