@@ -42,7 +42,7 @@
     align-self: initial;
 
     & > img {
-      height: inherit;
+      height: 100%;
     }
   }
 
