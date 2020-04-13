@@ -1,4 +1,5 @@
 main {
+  box-sizing: border-box;
   padding: var(--spacing-6);
   background: var(--background-gray);
   display: grid;
