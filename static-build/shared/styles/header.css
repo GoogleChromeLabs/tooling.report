@@ -22,12 +22,22 @@ header {
 
       &::before {
         left: 0;
-        background-image: linear-gradient(to right, white, 75%, transparent);
+        background-image: linear-gradient(
+          to right,
+          white,
+          75%,
+          hsl(0 0% 100% / 0%)
+        );
       }
 
       &::after {
         right: 0;
-        background-image: linear-gradient(to left, white, 75%, transparent);
+        background-image: linear-gradient(
+          to left,
+          white,
+          75%,
+          hsl(0 0% 100% / 0%)
+        );
       }
     }
 
