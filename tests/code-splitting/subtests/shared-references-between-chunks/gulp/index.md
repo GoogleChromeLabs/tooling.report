@@ -2,7 +2,7 @@
 result: pass
 ---
 
-This uses [esmify] to add support for EcmaScript modules, and [factor-bundle] for code-splitting.
+This uses [esmify] to add support for JavaScript modules, and [factor-bundle] for code-splitting.
 
 [esmify] doesn't support dynamic import, so two entry points are used for this test.
 
