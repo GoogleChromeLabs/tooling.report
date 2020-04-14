@@ -11,6 +11,7 @@
  * limitations under the License.
  */
 import css from './styles.css';
+
 const style = document.createElement('style');
 style.textContent = css;
 document.head.append(style);
