@@ -1,6 +1,7 @@
-.class-name-1 {
-  color: green;
-}
-.class-name-2 {
+html {
   background: green;
+}
+
+h1 {
+  color: white;
 }

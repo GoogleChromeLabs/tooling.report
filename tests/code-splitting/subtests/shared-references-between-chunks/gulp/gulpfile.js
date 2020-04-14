@@ -14,26 +14,22 @@
 const { dest } = require('gulp');
 const path = require('path');
 const browserify = require('browserify');
-const buffer = require('gulp-buffer');
 const source = require('vinyl-source-stream');
 const mkdirp = require('mkdirp');
-const revAll = require('gulp-rev-all');
 const Combine = require('ordered-read-streams');
 
 async function betweenWorkers() {
   await mkdirp('build');
 
-  const files = ['./src/index.js', './src/worker.js'];
+  const files = ['./src/index.js', './src/lazy.js'];
   const entryStreams = files.map(filePath => source(path.basename(filePath)));
   const common = browserify(files)
-    .plugin('factor-bundle', { outputs: entryStreams })
+    .plugin(require('esmify'))
+    .plugin(require('factor-bundle'), { outputs: entryStreams })
     .bundle()
     .pipe(source('common.js'));
 
-  return new Combine([...entryStreams, common])
-    .pipe(buffer())
-    .pipe(revAll.revision())
-    .pipe(dest('build/'));
+  return new Combine([...entryStreams, common]).pipe(dest('build/'));
 }
 
 exports.default = betweenWorkers;

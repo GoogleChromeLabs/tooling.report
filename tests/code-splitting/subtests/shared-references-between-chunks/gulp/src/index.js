@@ -10,8 +10,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import css from 'css:./styles.css';
-
-const style = document.createElement('style');
-style.textContent = css;
-document.head.append(style);
+// If the contents of index.js and lazy.js are identical, it seems to trigger a bug in
+// factor-bundle. This very comment makes them non-identical.
+import { num, incrementNum } from './num.js';
+incrementNum();
+console.log(num);

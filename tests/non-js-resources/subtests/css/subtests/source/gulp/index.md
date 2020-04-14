@@ -2,5 +2,6 @@
 result: pass
 ---
 
-(This test uses Browserify) `browserify-css` inject `require`-ed CSS into the page.
-Optionally you can set autoinect option to false and get CSS content as string in your JS.
+Browserify can be configured to allow requiring `.css` files from JavaScript using [browserify-css]. In cases where the raw CSS is needed, setting `autoIjnect` to `false` will return the minified stylesheet as a String.
+
+[browserify-css]: https://github.com/cheton/browserify-css
