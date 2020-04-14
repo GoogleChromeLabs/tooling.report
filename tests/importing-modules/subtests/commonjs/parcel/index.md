@@ -2,4 +2,4 @@
 result: pass
 ---
 
-`require()` can be used to import CommonJS dependecies.
+`require()` can be used to import CommonJS dependencies.
