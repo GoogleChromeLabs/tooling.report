@@ -22,7 +22,6 @@ module.exports = function(file, opts) {
         const readable = new Readable();
         readable._read = () => {};
         const filePath = path.resolve(path.dirname(file), customFilePath);
-        console.log(filePath);
 
         fs.promises
           .readFile(filePath)
