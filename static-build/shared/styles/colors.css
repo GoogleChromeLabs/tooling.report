@@ -21,6 +21,11 @@
 
   /* Shadows */
   --denim-blue-hsl: 206 36% 51%;
-  --card-shadow: 0 10px 45px -25px hsl(var(--denim-blue-hsl) / 70%);
+  --card-shadow: 0 9.4px 2.2px hsl(var(--denim-blue-hsl) / 2.8%),
+    0 22.5px 5.3px hsl(var(--denim-blue-hsl) / 4%),
+    0 42.3px 10px hsl(var(--denim-blue-hsl) / 5%),
+    0 75.5px 17.9px hsl(var(--denim-blue-hsl) / 6%),
+    0 141.2px 33.4px hsl(var(--denim-blue-hsl) / 7.2%),
+    0 338px 80px hsl(var(--denim-blue-hsl) / 1%);
   --fab-shadow: 0 5px 10px hsl(var(--denim-blue-hsl) / 20%);
 }
