@@ -10,11 +10,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export default {
-  input: 'src/index.js',
-  output: {
-    entryFileNames: '[name]-[hash].js',
-    dir: 'dist',
-    format: 'esm',
-  },
-};
+export function logCaps(msg) {
+  console.info(msg.toUpperCase());
+}
