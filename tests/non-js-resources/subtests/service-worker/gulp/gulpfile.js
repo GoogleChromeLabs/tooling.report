@@ -12,10 +12,13 @@
  */
 
 const { src, dest, series } = require('gulp');
+const browserify = require('browserify');
 const RevAll = require('gulp-rev-all');
+const tap = require('gulp-tap');
+const buffer = require('gulp-buffer');
 
 function hashAssets() {
-  return src('src/**')
+  return src('src/**', { ignore: 'src/sw.js' })
     .pipe(
       RevAll.revision({
         includeFilesInManifest: ['.js', '.css', '.png'],
@@ -26,10 +29,14 @@ function hashAssets() {
     .pipe(dest('build/'));
 }
 
-function log(cb) {
-  const manifest = require('./build/rev-manifest.json');
-  console.log(Object.values(manifest));
-  return cb();
+function sw() {
+  return src('src/sw.js', { read: false })
+    .pipe(
+      tap(function(file) {
+        file.contents = browserify(file.path).bundle();
+      }),
+    )
+    .pipe(buffer())
+    .pipe(dest('build'));
 }
-
-exports.default = series(hashAssets, log);
+exports.default = series(hashAssets, sw);

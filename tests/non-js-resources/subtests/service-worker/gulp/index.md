@@ -1,7 +1,5 @@
 ---
-result: fail
-issue: ''
+result: pass
 ---
 
-Although it is not impossible, It requires significant effort to write a gulp task that builds comprehensive asset graph.
-The test example shows how you might get a list of static assets you hashed using `gulp-rev-all`. For this you would need to know file extentions of all the assets in order to build comprehensive manifest.
+Via Browserify’s, we can include any file from the output folder as required. For example, we can bundle the `rev-manifest.json` into the ServiceWorker to have access to all hashed file names.
