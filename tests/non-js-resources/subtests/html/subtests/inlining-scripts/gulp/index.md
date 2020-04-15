@@ -3,4 +3,4 @@ result: fail
 issue: 'N/A'
 ---
 
-Although Browserify have `factor-bundle` plug in it is not build for complex deps splitting like this usecase
+Although Browserify has the [factor-bundle](https://github.com/browserify/factor-bundle) plug-in, it is not built for complex dependency splitting.
