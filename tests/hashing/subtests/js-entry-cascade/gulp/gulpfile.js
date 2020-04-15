@@ -11,34 +11,28 @@
  * limitations under the License.
  */
 
-const { src, dest, series } = require('gulp');
+const path = require('path');
+const { dest } = require('gulp');
 const browserify = require('browserify');
-const tap = require('gulp-tap');
 const buffer = require('gulp-buffer');
 const hash = require('gulp-hash');
+const source = require('vinyl-source-stream');
+const merge = require('merge-stream');
+const globby = require('globby');
 
-function entryCascade1() {
-  return src('src1/*.js', { read: false })
-    .pipe(
-      tap(function(file) {
-        file.contents = browserify(file.path).bundle();
-      }),
-    )
-    .pipe(buffer())
-    .pipe(hash())
-    .pipe(dest('build/src1'));
+function entryCascade() {
+  return globby('./src/*.js').then(entries => {
+    // create output streams for each entry bundle
+    const outputs = entries.map(entry => source(path.basename(entry)));
+    const b = browserify(entries)
+      .plugin('factor-bundle', { outputs })
+      .bundle()
+      .pipe(source('common.js'));
+    return merge(b, outputs)
+      .pipe(buffer())
+      .pipe(hash())
+      .pipe(dest('dist/'));
+  });
 }
 
-function entryCascade2() {
-  return src('src2/*.js', { read: false })
-    .pipe(
-      tap(function(file) {
-        file.contents = browserify(file.path).bundle();
-      }),
-    )
-    .pipe(buffer())
-    .pipe(hash())
-    .pipe(dest('build/src2'));
-}
-
-exports.default = series(entryCascade1, entryCascade2);
+exports.default = entryCascade;

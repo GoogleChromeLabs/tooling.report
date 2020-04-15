@@ -9,7 +9,7 @@
   padding: var(--spacing-3) var(--spacing-3) var(--spacing-3) 0;
   border: 1px solid var(--ice-blue);
   border-radius: var(--spacing-2);
-  box-shadow: var(--card-shadow);
+  box-shadow: 0 10px 45px -25px hsl(var(--denim-blue-hsl) / 70%);
 }
 
 .tool {
