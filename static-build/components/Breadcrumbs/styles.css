@@ -22,7 +22,7 @@
     width: var(--spacing-2);
   }
 
-  @media (orientation: portrait) {
+  @media (max-width: 822px) {
     padding: 0 var(--spacing-3) var(--spacing-3);
     margin-bottom: 0;
     margin-left: 0;
@@ -32,7 +32,7 @@
 }
 
 .home {
-  @media (orientation: landscape) {
+  @media (min-width: 822px) {
     margin-left: -2.5rem;
     gap: 0;
   }
@@ -45,7 +45,7 @@
   & > :first-child {
     display: none;
 
-    @media (orientation: landscape) {
+    @media (min-width: 822px) {
       display: inline-flex;
     }
   }

@@ -5,11 +5,9 @@
   color: var(--vivid-blue);
   font-size: var(--font-size--logo);
   margin-left: var(--spacing-3);
-  margin-top: var(--spacing-5);
 
-  @media (orientation: landscape) {
+  @media (min-width: 822px) {
     margin-left: calc(var(--spacing-6) * -1);
-    margin-top: 0;
   }
 
   & > svg {

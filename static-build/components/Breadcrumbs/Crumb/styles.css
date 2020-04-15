@@ -3,7 +3,7 @@
   color: var(--light-blue);
   font-weight: var(--font-weight--normal);
 
-  @media (orientation: landscape) {
+  @media (min-width: 822px) {
     padding: 0 var(--spacing-3);
   }
 }
@@ -15,7 +15,7 @@
   grid-auto-flow: column;
   align-items: center;
 
-  @media (orientation: landscape) {
+  @media (min-width: 822px) {
     gap: var(--spacing-2);
   }
 
