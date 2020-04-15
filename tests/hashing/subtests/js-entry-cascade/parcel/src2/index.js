@@ -10,9 +10,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-function logCaps(msg) {
-  console.log(msg.toUpperCase() + ' (src2)');
-}
-
-exports.logCaps = logCaps;
+import { logCaps } from './utils.js';
+logCaps('This is index');
