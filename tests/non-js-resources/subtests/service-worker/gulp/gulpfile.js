@@ -10,12 +10,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+const fs = require('fs');
+const path = require('path');
+const { createHash } = require('crypto');
 const { src, dest, series } = require('gulp');
 const browserify = require('browserify');
 const RevAll = require('gulp-rev-all');
 const tap = require('gulp-tap');
 const buffer = require('gulp-buffer');
+const through2 = require('through2');
 
 function hashAssets() {
   return src('src/**', { ignore: 'src/sw.js' })
@@ -29,7 +32,19 @@ function hashAssets() {
     .pipe(dest('build/'));
 }
 
-function sw() {
+async function sw() {
+  const manifest = JSON.parse(
+    fs.readFileSync('build/rev-manifest.json', { encoding: 'utf8' }),
+  );
+  const versionHash = createHash('md5');
+
+  await Promise.all(
+    Object.values(manifest).map(async filePath => {
+      const file = await fs.promises.readFile(path.join('build', filePath));
+      versionHash.update(file);
+    }),
+  );
+
   return src('src/sw.js', { read: false })
     .pipe(
       tap(function(file) {
@@ -37,6 +52,22 @@ function sw() {
       }),
     )
     .pipe(buffer())
+    .pipe(
+      through2.obj(function(file, enc, callback) {
+        versionHash.update(file.contents);
+        file.contents = Buffer.from(
+          file.contents
+            .toString('utf8')
+            .replace(
+              /CACHE_VERSION/g,
+              JSON.stringify(versionHash.digest('hex')),
+            )
+            .replace(/ASSETS_TO_CACHE/g, JSON.stringify(manifest)),
+        );
+        this.push(file);
+        callback();
+      }),
+    )
     .pipe(dest('build'));
 }
 exports.default = series(hashAssets, sw);

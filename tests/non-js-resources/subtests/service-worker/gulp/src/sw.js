@@ -10,18 +10,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-const version = require('../package.json').version;
-const assetsToCache = [...Object.values(require('../build/rev-manifest.json'))];
-
-const staticCache = `static-${version}`;
+const staticCache = `static-${CACHE_VERSION}`;
 const preserveCaches = [staticCache];
 
 addEventListener('install', event => {
   event.waitUntil(
     (async () => {
       const cache = await caches.open(staticCache);
-      await cache.addAll(assetsToCache);
+      await cache.addAll(ASSETS_TO_CACHE);
     })(),
   );
 });

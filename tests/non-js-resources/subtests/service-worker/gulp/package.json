@@ -6,11 +6,10 @@
   },
   "devDependencies": {
     "gulp": "^4.0.2",
-    "gulp-rev-all": "^2.0.2"
-  },
-  "dependencies": {
-    "browserify": "^16.5.1",
     "gulp-buffer": "0.0.2",
+    "gulp-rev-all": "^2.0.2",
+    "through2": "^3.0.1",
+    "browserify": "^16.5.1",
     "gulp-tap": "^2.0.0"
   }
 }
