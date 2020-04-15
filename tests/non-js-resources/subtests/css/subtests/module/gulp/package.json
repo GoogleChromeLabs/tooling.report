@@ -6,8 +6,9 @@
   "devDependencies": {
     "browserify": "^16.5.0",
     "css-modulesify": "^0.28.0",
+    "cssnano": "^4.1.10",
     "gulp": "^4.0.2",
-    "gulp-buffer": "0.0.2",
-    "gulp-tap": "^2.0.0"
+    "gulp-tap": "^2.0.0",
+    "mkdirp": "^1.0.4"
   }
 }
