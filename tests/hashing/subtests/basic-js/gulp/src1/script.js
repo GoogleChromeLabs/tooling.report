@@ -11,8 +11,4 @@
  * limitations under the License.
  */
 
-function test() {
-  return 'hi';
-}
-
-test();
+console.log('foo');
