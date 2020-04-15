@@ -14,8 +14,6 @@ export function logCaps(msg) {
   console.log(msg.toUpperCase());
 }
 
-export function unusedExport() {
-  console.log('unusedExport was included');
+export function thisIsNeverCalled(msg) {
+  return msg + '!';
 }
-
-console.log('utils.js was included');
