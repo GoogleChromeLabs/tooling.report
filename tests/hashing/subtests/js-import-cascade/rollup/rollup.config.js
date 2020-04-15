@@ -10,11 +10,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export default [1, 2].map(idx => ({
-  input: `src${idx}/index.js`,
+export default {
+  input: 'src/index.js',
   output: {
     entryFileNames: '[name]-[hash].js',
-    dir: `build/${idx}`,
+    dir: 'dist',
     format: 'esm',
   },
-}));
+};
