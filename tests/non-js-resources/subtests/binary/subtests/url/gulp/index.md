@@ -2,4 +2,6 @@
 result: pass
 ---
 
-(This test uses Browserify) `urify-emitter` plugin emits file into a specified directory and replaces file loading call with name of the emitted file.
+The Browserify plugin [urify-emitter] allows you to bring files into the build and returns the URL of the emitted file.
+
+[urify-emitter]: https://www.npmjs.com/package/urify-emitter

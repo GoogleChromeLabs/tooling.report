@@ -28,6 +28,7 @@ export default function assetPlugin() {
       if (!id.startsWith(prefix)) return;
       const realId = id.slice(prefix.length);
       const source = await fs.readFile(realId);
+      this.addWatchFile(realId);
 
       return `export default import.meta.ROLLUP_FILE_URL_${this.emitFile({
         type: 'asset',
