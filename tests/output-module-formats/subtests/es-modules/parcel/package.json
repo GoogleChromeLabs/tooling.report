@@ -1,8 +1,7 @@
 {
   "scripts": {
-    "start": "parcel build src/index.js"
+    "build": "parcel build src/index.js src/profile.js"
   },
-  "main": "dist/index.js",
   "targets": {
     "main": {
       "outputFormat": "esmodule"
