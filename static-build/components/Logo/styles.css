@@ -1,8 +1,18 @@
 .logo {
+  display: flex;
+  align-items: center;
   font-weight: var(--font-weight--light);
   color: var(--vivid-blue);
   font-size: var(--font-size--logo);
-  margin: 0;
+  margin-left: var(--spacing-3);
+
+  @media (min-width: 822px) {
+    margin-left: calc(var(--spacing-6) * -1);
+  }
+
+  & > svg {
+    margin-right: var(--spacing-2);
+  }
 }
 
 .report {

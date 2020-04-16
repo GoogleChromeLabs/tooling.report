@@ -14,15 +14,20 @@
 import { h, FunctionalComponent } from 'preact';
 import { githubLink } from '../../utils.js';
 import pageStyles from 'css-bundle:./styles.css';
-import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
+import bundleURL, { imports } from 'client-bundle:client/test/index.ts';
 import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
 import Footer from '../../components/Footer';
 import LinkList from '../../components/LinkList';
+import TestCrumbs from '../../components/TestCrumbs';
 import TestCard from '../../components/TestCard';
-import { $testCardList, $contribCard } from './styles.css';
 import { LabcoatHero, WalkerHero } from '../../components/Heroes';
-import { $heroImage, $heroText } from './styles.css';
+import {
+  $heroImage,
+  $heroText,
+  $testCardList,
+  $contribCard,
+} from './styles.css';
 
 interface Props {
   test: Test;
@@ -44,6 +49,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
         <header>
           <section>
             <Logo />
+            <TestCrumbs test={test} />
             <div>
               <div class={$heroText}>
                 <small>feature</small>
