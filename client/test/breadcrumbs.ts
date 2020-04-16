@@ -9,13 +9,6 @@ let ignoreChange = false;
 const allowedKeys = new Set(['Tab', 'Enter', ' ']);
 const preventedKeys = new Set(['ArrowUp', 'ArrowDown']);
 
-window.onload = () => {
-  breadcrumbs?.lastElementChild?.scrollIntoView({
-    block: 'nearest',
-    inline: 'end',
-  });
-};
-
 for (const nav of navs) {
   nav.addEventListener('change', event => {
     const target = event.target as HTMLSelectElement;
