@@ -30,7 +30,8 @@
     margin-right: var(--spacing-1);
   }
 
-  &:hover:before {
+  &:hover:before,
+  &:focus:before {
     color: var(--backpack-blue);
   }
 }

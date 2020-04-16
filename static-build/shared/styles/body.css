@@ -6,3 +6,8 @@ body {
 *:focus-visible {
   outline: 3px solid var(--sky-blue);
 }
+
+::selection {
+  color: white;
+  background: var(--vivid-blue);
+}
