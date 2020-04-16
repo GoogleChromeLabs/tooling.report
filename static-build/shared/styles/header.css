@@ -26,6 +26,10 @@ header {
       margin: auto;
     }
   }
+
+  & small {
+    color: var(--grape);
+  }
 }
 
 @media (min-width: 822px) {
