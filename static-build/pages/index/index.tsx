@@ -13,12 +13,7 @@
 import { h, FunctionalComponent, JSX } from 'preact';
 import { calculateScoreTotals } from 'static-build/utils';
 import pageStyles from 'css-bundle:./styles.css';
-import {
-  $topSticky,
-  $sidebarLayout,
-  $summaryList,
-  $sectionHeader,
-} from './styles.css';
+import { $sidebarLayout, $summaryList, $sectionHeader } from './styles.css';
 
 import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
 import HeadMeta from '../../components/HeadMeta';
@@ -102,7 +97,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
         <main>
           <GithubFAB />
           <section id="summary">
-            <a class={$topSticky} href="#summary">
+            <a href="#summary">
               <h3 class={$sectionHeader}>Summary</h3>
             </a>
             <div class={$sidebarLayout}>
@@ -125,7 +120,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
           </section>
 
           <section id="overview">
-            <a class={$topSticky} href="#overview">
+            <a href="#overview">
               <h3 class={$sectionHeader}>Overview</h3>
             </a>
             <DataGrid tests={tests} basePath="/" />
@@ -133,7 +128,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
 
           {Object.entries(tests).map(([testDir, collection]) => (
             <section id={collection.meta.title}>
-              <a class={$topSticky} href={testDir}>
+              <a href={testDir}>
                 <h3 class={$sectionHeader}>{collection.meta.title}</h3>
               </a>
               <DataGrid tests={collection.subTests} basePath={`${testDir}/`} />
