@@ -30,11 +30,11 @@ const Crumb: FunctionalComponent<CrumbProps> = ({ test, index, current }) => {
           </span>
           <select data-depth={index}>
             {siblingTests &&
-              Object.entries(siblingTests).map(([path, siblingTest]) =>
-                <option selected={siblingTest === test} value={path}>
-                  {t.meta.title}
+              Object.entries(siblingTests).map(([path, siblingTest]) => (
+                <option selected={siblingTest === test} value={path + '/'}>
+                  {siblingTest.meta.title}
                 </option>
-              )}
+              ))}
           </select>
         </span>
       </span>
