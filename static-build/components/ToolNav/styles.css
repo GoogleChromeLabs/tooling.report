@@ -6,7 +6,7 @@
   background: white;
   display: flex;
   margin-left: calc(var(--section-aside-width) + var(--spacing-3));
-  padding: var(--spacing-3) var(--spacing-3) var(--spacing-3) 0;
+  padding: var(--spacing-3) 0;
   border: 1px solid var(--ice-blue);
   border-radius: var(--spacing-2);
   box-shadow: 0 10px 45px -25px hsl(var(--denim-blue-hsl) / 70%);
@@ -34,6 +34,10 @@
 }
 
 @media only screen and (min-width: 700px) {
+  .toolNav {
+    padding: var(--spacing-3) var(--spacing-3) var(--spacing-3) 0;
+  }
+
   .tool {
     place-content: left;
 
