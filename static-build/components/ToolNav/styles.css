@@ -32,10 +32,15 @@
   }
 }
 
+@media only screen and (min-width: 480px) {
+  .toolNav {
+    margin-left: calc(var(--section-aside-width) + var(--spacing-3));
+  }
+}
+
 @media only screen and (min-width: 700px) {
   .toolNav {
     padding: var(--spacing-3) var(--spacing-3) var(--spacing-3) 0;
-    margin-left: calc(var(--section-aside-width) + var(--spacing-3));
   }
 
   .tool {
