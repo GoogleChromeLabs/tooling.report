@@ -18,7 +18,9 @@ for (const nav of navs) {
 
     urlPaths[index] = target.value.slice(0, -1);
 
-    window.location.pathname = urlPaths.slice(0, index + 1).join('/');
+    window.location.pathname = [...urlPaths.slice(0, index), target.value].join(
+      '/',
+    );
   });
 
   nav.addEventListener('keydown', ({ key }) => {
