@@ -1,22 +1,13 @@
 const breadcrumbs = document.querySelector('#breadcrumbs');
-const navs = document.querySelectorAll('#breadcrumbs select');
-const urlPaths = window.location.pathname.split('/');
+const navs = document.querySelectorAll('#breadcrumbs select') as NodeListOf<
+  HTMLSelectElement
+>;
+const urlPaths = window.location.pathname.split('/').slice(1, -1);
 
-urlPaths.pop();
-urlPaths.shift();
+let ignoreChange = false;
 
-const state = {
-  prevent: false,
-};
-
-const keyTab = 9;
-const keyEnter = 13;
-const keySpace = 32;
-const keyUpArrow = 38;
-const keyDownArrow = 40;
-
-const allowedKeys = [keyTab, keyEnter, keySpace];
-const preventedKeys = [keyUpArrow, keyDownArrow];
+const allowedKeys = new Set(['Tab', 'Enter', ' ']);
+const preventedKeys = new Set(['ArrowUp', 'ArrowDown']);
 
 window.onload = () => {
   breadcrumbs?.lastElementChild?.scrollIntoView({
@@ -25,25 +16,23 @@ window.onload = () => {
   });
 };
 
-navs.forEach(nav => {
+for (const nav of navs) {
   nav.addEventListener('change', event => {
-    const target = <HTMLInputElement>event.target;
-    const index = target.dataset?.depth ? parseInt(target.dataset.depth!) : -1;
+    const target = event.target as HTMLSelectElement;
+    const index = target.dataset.depth ? parseInt(target.dataset.depth) : -1;
 
-    if (index === -1 || state.prevent) return;
+    if (index === -1 || ignoreChange) return;
 
     urlPaths[index] = target.value.slice(0, -1);
 
     window.location.pathname = urlPaths.slice(0, index + 1).join('/');
   });
 
-  nav.addEventListener('keydown', event => {
-    const { keyCode } = event as KeyboardEvent;
-
-    if (preventedKeys.includes(keyCode)) {
-      state.prevent = true;
-    } else if (allowedKeys.includes(keyCode)) {
-      state.prevent = false;
+  nav.addEventListener('keydown', ({ key }) => {
+    if (preventedKeys.has(key)) {
+      ignoreChange = true;
+    } else if (allowedKeys.has(key)) {
+      ignoreChange = false;
     }
   });
-});
+}
