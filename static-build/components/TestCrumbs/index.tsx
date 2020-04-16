@@ -4,11 +4,11 @@ import { $breadcrumbs, $home } from './styles.css';
 import Crumb from './Crumb';
 import { $collection, $iconbutton } from './Crumb/styles.css';
 
-interface BreadcrumbProps {
+interface TestCrumbProps {
   test: Test;
 }
 
-const Breadcrumbs: FunctionalComponent<BreadcrumbProps> = ({ test }) => {
+const TestCrumbs: FunctionalComponent<TestCrumbProps> = ({ test }) => {
   const ancestors = [test];
   let ancestor = parentMap.get(test);
 
@@ -42,4 +42,4 @@ const Breadcrumbs: FunctionalComponent<BreadcrumbProps> = ({ test }) => {
   );
 };
 
-export default Breadcrumbs;
+export default TestCrumbs;

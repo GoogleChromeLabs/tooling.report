@@ -19,7 +19,7 @@ import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
 import Footer from '../../components/Footer';
 import LinkList from '../../components/LinkList';
-import Breadcrumbs from '../../components/Breadcrumbs';
+import TestCrumbs from '../../components/TestCrumbs';
 import TestCard from '../../components/TestCard';
 import { LabcoatHero, WalkerHero } from '../../components/Heroes';
 import {
@@ -49,7 +49,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
         <header>
           <section>
             <Logo />
-            <Breadcrumbs test={test} />
+            <TestCrumbs test={test} />
             <div>
               <div class={$heroText}>
                 <small>feature</small>
