@@ -2,4 +2,4 @@
 result: pass
 ---
 
-Dynamic imports are split out by default.
+Rollup treats Dynamic Imports as code splitting boundaries by default, creating bundles for each.
