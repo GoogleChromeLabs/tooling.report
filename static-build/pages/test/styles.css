@@ -96,7 +96,6 @@ main {
   border-radius: 20px;
   box-shadow: var(--card-shadow);
   will-change: box-shadow;
-  transition-duration: 0.25s;
   transform-style: preserve-3d;
 
   &:hover,

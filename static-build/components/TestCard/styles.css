@@ -17,7 +17,6 @@
     justify-content: center;
     width: 100%;
     will-change: box-shadow;
-    transition-duration: 0.25s;
     transform-style: preserve-3d;
 
     &:hover,
