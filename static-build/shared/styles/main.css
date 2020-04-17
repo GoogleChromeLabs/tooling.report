@@ -1,6 +1,6 @@
 main {
   box-sizing: border-box;
-  padding: var(--spacing-3);
+  padding: var(--spacing-5) var(--spacing-3);
   background: var(--background-gray);
   display: grid;
   gap: 10rem;

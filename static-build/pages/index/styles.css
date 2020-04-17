@@ -3,15 +3,13 @@
 @import 'components/ToolNav/styles.css';
 @import 'components/Connect/styles.css';
 
-.topSticky {
-  position: sticky;
-  top: var(--spacing-6);
-}
-
 .sidebarLayout {
   display: grid;
   gap: var(--spacing-3);
-  grid-template-columns: var(--section-aside-width) 1fr;
+
+  @media (min-width: 700px) {
+    grid-template-columns: var(--section-aside-width) 1fr;
+  }
 }
 
 .sectionHeader {
@@ -21,7 +19,6 @@
   position: relative;
   color: var(--backpack-blue);
   background-color: var(--background-gray);
-  max-width: var(--section-aside-width);
   line-height: var(--font-lineheight--tight);
 
   &:before {
