@@ -55,7 +55,7 @@ export default function() {
 
       const exports = Object.entries(moduleJSON).map(
         ([key, val]) =>
-          `export const ${camelCase(key)} = ${JSON.stringify(val)};`,
+          `export const $${camelCase(key)} = ${JSON.stringify(val)};`,
       );
 
       const fileId = this.emitFile({
@@ -64,9 +64,10 @@ export default function() {
         name: parsedPath.base,
       });
 
-      return `export default import.meta.ROLLUP_FILE_URL_${fileId};\n${exports.join(
-        '\n',
-      )}`;
+      return [
+        `export default import.meta.ROLLUP_FILE_URL_${fileId};`,
+        ...exports,
+      ].join('\n');
     },
   };
 }
