@@ -13,7 +13,14 @@
 import { h, FunctionalComponent, JSX } from 'preact';
 import { calculateScoreTotals } from 'static-build/utils';
 import pageStyles from 'css-bundle:./styles.css';
-import { $sidebarLayout, $summaryList, $sectionHeader } from './styles.css';
+import {
+  $sidebarLayout,
+  $summaryList,
+  $sectionHeader,
+  $hero,
+  $message,
+  $heroImage,
+} from './styles.css';
 
 import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
 import HeadMeta from '../../components/HeadMeta';
@@ -68,15 +75,15 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
         ))}
       </head>
       <body>
-        <header>
+        <header class={$hero}>
           <section>
             <Logo />
             <div>
-              <div>
+              <div class={$heroImage}>
                 <BenchHero />
               </div>
-              <div>
-                <h2>What is Tooling Report?</h2>
+              <div class={$message}>
+                <h3>What is Tooling Report?</h3>
                 <p>
                   A quick and easy way to figure out what the best tool for your
                   next project is, if it’s worth your time to migrate from one
