@@ -19,7 +19,8 @@
     gap: var(--spacing-2);
   }
 
-  &:hover > svg {
+  &:hover > svg,
+  &:focus > svg {
     fill: var(--denim-blue);
   }
 }

@@ -95,8 +95,13 @@ main {
   color: var(--light-blue);
   border-radius: 20px;
   box-shadow: var(--card-shadow);
+  will-change: box-shadow;
+  transform-style: preserve-3d;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: var(--sky-blue);
+    transform: translateY(-5px);
+    box-shadow: var(--card-shadow--active);
   }
 }

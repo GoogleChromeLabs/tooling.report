@@ -16,6 +16,14 @@
     flex-direction: column;
     justify-content: center;
     width: 100%;
+    will-change: box-shadow;
+    transform-style: preserve-3d;
+
+    &:hover,
+    &:focus {
+      transform: translateY(-5px);
+      box-shadow: var(--card-shadow--active);
+    }
   }
 }
 
