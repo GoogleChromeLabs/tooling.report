@@ -7,6 +7,6 @@ main {
   position: relative;
 
   @media (min-width: 550px) {
-    padding: var(--spacing-6);
+    padding: var(--spacing-7) var(--spacing-6) var(--spacing-3);
   }
 }
