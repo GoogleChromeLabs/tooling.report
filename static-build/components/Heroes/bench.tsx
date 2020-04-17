@@ -2,7 +2,7 @@ import { h } from 'preact';
 
 function Hero() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="259" height="284.5">
+    <svg viewBox="0 0 259 285">
       <path
         d="M104 74.5l6.9-31.7a22 22 0 01-6-16c1.2-17.6 26-13.7 30.9-4.8s4.2 31.4-2 33c-2.5.6-7.8-1-13.2-4.2l3.4 23.7z"
         fill="#b28b67"
