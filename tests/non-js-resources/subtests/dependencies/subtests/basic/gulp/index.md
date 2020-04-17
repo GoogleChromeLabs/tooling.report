@@ -2,4 +2,6 @@
 result: pass
 ---
 
-By using `gulp-rev-all`, all the assets URL get relpaced with new file path fro the build (with bonus of hash in filename)
+Using [gulp-rev-all], all assets passed through Gulp are transformed to replace any source file locations with their corresponding hashed final URLs. Assets must be passed through Gulp directly, rather than stylesheet subresources being automatically discovered.
+
+[gulp-rev-all]: https://github.com/smysnk/gulp-rev-all
