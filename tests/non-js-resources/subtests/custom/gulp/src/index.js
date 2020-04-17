@@ -10,10 +10,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-const fs = require('fs');
-const { decode } = require('base64-arraybuffer');
-
-const filePath = fs.readFileSync(__dirname + '/binary.bin', 'base64');
-const arrayBuffer = decode(filePath);
-console.log(arrayBuffer.byteLength);
+const customTypeModule = require('custom-type');
+const customType = customTypeModule.create('./binary.bin');
+console.log(customType);

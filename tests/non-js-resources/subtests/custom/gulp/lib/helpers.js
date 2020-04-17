@@ -10,20 +10,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+exports.base64ToBuffer = function base64ToBuffer(base64) {
+  const binaryString = atob(base64);
+  const bytes = new Uint8Array(binaryString.length);
+  for (const i of bytes.keys()) {
+    bytes[i] = binaryString.charCodeAt(i);
+  }
+  return bytes.buffer;
+};
 
-const { src, dest } = require('gulp');
-const browserify = require('browserify');
-const tap = require('gulp-tap');
-const customTypeTransform = require('./lib/custom-type');
-
-exports.default = function() {
-  return src('src/*.js', { read: false })
-    .pipe(
-      tap(function(file) {
-        file.contents = browserify(file.path)
-          .transform(customTypeTransform)
-          .bundle();
-      }),
-    )
-    .pipe(dest('build'));
+exports.CustomType = class CustomType {
+  constructor(buffer) {
+    this.buffer = buffer;
+  }
 };
