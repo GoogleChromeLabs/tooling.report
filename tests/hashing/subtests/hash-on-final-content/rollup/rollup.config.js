@@ -17,7 +17,7 @@ export default {
   plugins: [terser()],
   output: {
     entryFileNames: '[name]-[hash].js',
-    dir: 'build',
+    dir: 'dist',
     format: 'esm',
   },
 };

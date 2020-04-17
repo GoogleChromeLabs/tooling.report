@@ -4,7 +4,6 @@
     "before": "rm -rf build dist src && mkdir build",
     "build:1": "cp -r src1 src && parcel build src/index.html && mv dist build/1; rm -rf src dist",
     "build:2": "cp -r src2 src && parcel build src/index.html && mv dist build/2; rm -rf src dist",
-    "build:3": "cp -r src3 src && parcel build src/index.html && mv dist build/3; rm -rf src dist",
     "after": "rm -rf .parcel-cache"
   },
   "dependencies": {

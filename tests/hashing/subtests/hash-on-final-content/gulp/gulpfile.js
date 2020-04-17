@@ -11,14 +11,14 @@
  * limitations under the License.
  */
 
-const { src, dest, series } = require('gulp');
+const { src, dest } = require('gulp');
 const browserify = require('browserify');
 const tap = require('gulp-tap');
 const buffer = require('gulp-buffer');
 const hash = require('gulp-hash');
 
-function test1() {
-  return src('src1/*.js', { read: false })
+function build() {
+  return src('src/*.js', { read: false })
     .pipe(
       tap(function(file) {
         file.contents = browserify(file.path)
@@ -28,21 +28,7 @@ function test1() {
     )
     .pipe(buffer())
     .pipe(hash())
-    .pipe(dest('build/1'));
+    .pipe(dest('dist'));
 }
 
-function test2() {
-  return src('src2/*.js', { read: false })
-    .pipe(
-      tap(function(file) {
-        file.contents = browserify(file.path)
-          .plugin('tinyify')
-          .bundle();
-      }),
-    )
-    .pipe(buffer())
-    .pipe(hash())
-    .pipe(dest('build/2'));
-}
-
-exports.default = series(test1, test2);
+exports.default = build;
