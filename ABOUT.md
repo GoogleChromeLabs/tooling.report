@@ -1,14 +1,14 @@
 ## Overview
 
-**tooling.report is a health check-up of the tooling ecosystem for web development.**
+**A health checkup for web build tools**
 
-The web is a complex platform and developing for the web can be challenging at the best of times. Build tools want to make a developer’s life easier by codifying and streamlining knowledge and best practices about the platform. As a developer, the constant stream of changes to browsers, the platform, the underlying protocols can be hard to keep track of, let alone following how these changes affect best practices. Tooling authors have the same struggle, often with more scrutiny and complexity.
+The web is a complex platform and developing for it can be challenging at the best of times. Build tools aim to make our lives easier by streamlining developer workflows and codifying best-practices. A steady stream of platform and browser changes can make it difficult to identify these best practises and follow as they change. Tooling authors experience this same struggle at a large scale, often with more scrutiny and complexity.
 
 ## Goals
 
 We want to help developers _and_ tooling authors. tooling.report is built in collaboration with members of the build tooling teams and hope that we can not only increase the health of the web, but also the quality of life of web developers.
 
-The ultimate goal for tooling.report is to improve all the build tools. If all the tools allow developers to follow the best practices on the web, developers can choose the tool that they are most comfortable with while shipping excellent web apps. While that is the long-term goal for tooling.report, the short-term goal is to give web developers a quick and easy way to figure out what the best tool for your next project is and how to adopt a best practice into your existing code base.
+The long-term goal of tooling.report is to improve all build tools. When all tools help developers follow best practices on the web, we have the freedom choose whichever tool we are comfortable with while being confident in the quality of what we ship. In the shorter term, we hope to provide a straightforward guide for selecting which tool to use for new projects, and a reference for incorporating best practices into existing codebases.
 
 ## Methodology
 
