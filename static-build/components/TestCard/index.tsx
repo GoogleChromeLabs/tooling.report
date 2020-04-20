@@ -52,6 +52,7 @@ const TestCard: FunctionalComponent<Props> = ({ link, test }: Props) => {
       return (
         <li class={$subTestCard}>
           <a href={link}>
+            <img src={checkbox} class={$checkbox} />
             <h3 class={$cardTitle}>{test.meta.title}</h3>
             {test.meta.shortDesc && (
               <p class={$testDesc}>{test.meta.shortDesc}</p>
