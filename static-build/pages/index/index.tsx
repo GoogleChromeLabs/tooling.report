@@ -20,7 +20,7 @@ import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
 import GithubFAB from '../../components/GithubFAB';
 import Footer from '../../components/Footer';
-import HeaderLinkList from '../../components/HeaderLinkList';
+import LinkList from '../../components/LinkList';
 import { BenchHero } from '../../components/Heroes';
 import SummaryCard from '../../components/SummaryCard';
 import ToolNav from '../../components/ToolNav';
@@ -83,7 +83,13 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
                 <div>
                   <FirstParagraphOnly content={README} />
                 </div>
-                <HeaderLinkList />
+                <LinkList
+                  links={[
+                    { title: 'About', href: '/about/' },
+                    { title: 'Contribute', href: '#' },
+                    { title: 'Have an issue?', href: '#' },
+                  ]}
+                />
               </div>
             </div>
           </section>

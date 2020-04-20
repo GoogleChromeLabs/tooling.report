@@ -16,7 +16,7 @@ import pageStyles from 'css-bundle:./styles.css';
 import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
 import Footer from '../../components/Footer';
-import HeaderLinkList from '../../components/HeaderLinkList';
+import LinkList from '../../components/LinkList';
 import { WalkerHero } from '../../components/Heroes';
 import FirstParagraphOnly from 'static-build/components/FirstParagraphOnly';
 
@@ -48,7 +48,15 @@ const AboutPage: FunctionalComponent<Props> = () => {
                 <div>
                   <FirstParagraphOnly content={README} />
                 </div>
-                <HeaderLinkList />
+                <LinkList
+                  links={[
+                    { title: 'FAQ', href: '#' },
+                    {
+                      title: 'Have an issue?',
+                      href: `${config.githubRepository}/issues/new`,
+                    },
+                  ]}
+                />
               </div>
               <div class={$heroImage}>
                 <WalkerHero />
