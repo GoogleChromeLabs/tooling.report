@@ -11,6 +11,8 @@ import {
   $plant,
 } from './styles.css';
 
+import { html as CREDITS } from 'md:../../../CREDITS.md';
+
 const links = [
   { title: 'Privacy Policy', href: '#' },
   { title: 'Terms and Conditions', href: '#' },
@@ -27,13 +29,9 @@ function Footer() {
         <div class={$messaging}>
           <div>
             <Logo />
-            <p class={$desc}>
-              Leverage agile frameworks to provide a robust synopsis for high
-              level overviews. Iterative approaches to corporate strategy foster
-              collaborative thinking to further the overall value proposition.
-              Organically grow the holistic world view of disruptive innovation
-              via workplace diversity and empowerment.
-            </p>
+            <div class={$desc}>
+              <span dangerouslySetInnerHTML={{ __html: CREDITS }} />
+            </div>
           </div>
           <div class={$plant}>
             <Plant />

@@ -56,7 +56,7 @@ const AboutPage: FunctionalComponent<Props> = () => {
             </div>
           </section>
         </header>
-        <main dangerouslySetInnerHTML={{ __html: ABOUT }}></main>
+        <main dangerouslySetInnerHTML={{ __html: ABOUT }} />
         <Footer />
       </body>
     </html>
