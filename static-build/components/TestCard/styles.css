@@ -18,13 +18,41 @@
     width: 100%;
     will-change: box-shadow;
     transform-style: preserve-3d;
+    position: relative;
 
     &:hover,
     &:focus {
       transform: translateY(-5px);
       box-shadow: var(--card-shadow--active);
     }
+
+    &:not(:visited) {
+      .checkbox {
+        background: white;
+      }
+    }
+
+    &:visited {
+      .checkbox {
+        background: var(--sky-blue);
+      }
+    }
+
+    &:visited {
+      background-color: var(--ice-blue);
+    }
   }
+}
+
+.checkbox {
+  position: absolute;
+  top: var(--spacing-2);
+  right: var(--spacing-2);
+  width: var(--nontouch-small-icon-size);
+  height: var(--nontouch-small-icon-size);
+  z-index: 1;
+  border-radius: 50%;
+  border: 2px solid white;
 }
 
 .subTestCard {
