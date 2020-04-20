@@ -50,3 +50,55 @@
     left: -1.5ch;
   }
 }
+
+.hero {
+  & > section > h2 {
+    margin-bottom: var(--spacing-4);
+  }
+
+  & > section > div {
+    @media (max-width: 822px) {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+    }
+  }
+}
+
+.heroImage {
+  width: 400px;
+  height: 400px;
+  background: var(--ice-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin: -60px 0px -87px -115px;
+
+  @media (min-width: 480px) {
+    width: 600px;
+    height: 600px;
+    margin: -70px 50px -120px -175px;
+  }
+
+  @media (min-width: 822px) {
+    margin: 0 50px -100px -225px;
+  }
+
+  & svg {
+    width: 65%;
+    height: 65%;
+    object-fit: contain;
+  }
+}
+
+.message {
+  & > h3 {
+    font-weight: var(--font-weight--bold);
+    font-size: var(--font-size--h2);
+  }
+
+  & > p {
+    margin: var(--spacing-3) 0;
+  }
+}
