@@ -12,11 +12,11 @@
  */
 
 const { src, dest } = require('gulp');
-const smushit = require('gulp-smushit');
+const imagemin = require('gulp-imagemin');
 
 function compressImages() {
   return src('src/*.{jpg,png}')
-    .pipe(smushit())
+    .pipe(imagemin())
     .pipe(dest('build/'));
 }
 
