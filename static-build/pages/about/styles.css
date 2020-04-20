@@ -3,7 +3,7 @@
 @import 'components/TestCrumbs/styles.css';
 
 main {
-  gap: var(--spacing-5);
+  gap: var(--spacing-2);
   padding: var(--spacing-5) var(--spacing-3);
   max-width: 1024px;
   margin: 0 auto;
@@ -13,7 +13,32 @@ main {
   }
 
   @media (min-width: 822px) {
-    padding: var(--spacing-7) var(--spacing-6) var(--spacing-8);
+    grid-template-columns: max-content 1fr;
+    gap: var(--spacing-5) var(--spacing-7);
+    padding: var(--spacing-7) var(--spacing-6) var(--spacing-8) 3.5rem;
+
+    & > * {
+      grid-column: 2;
+    }
+
+    & > h2 {
+      grid-column: 1;
+    }
+  }
+
+  & > ul {
+    margin: 0;
+    padding-left: var(--spacing-3);
+    max-width: calc(50ch - var(--spacing-3));
+
+    & > li {
+      list-style-type: '»';
+      padding-left: var(--spacing-3);
+
+      &::marker {
+        color: red;
+      }
+    }
   }
 }
 
