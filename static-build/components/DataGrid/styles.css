@@ -33,6 +33,10 @@
     flex-basis: auto;
     width: calc(var(--section-aside-width) + var(--spacing-3));
   }
+
+  @media (min-width: 1200px) {
+    padding-right: var(--spacing-4);
+  }
 }
 
 .column {

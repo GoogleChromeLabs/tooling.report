@@ -1,9 +1,11 @@
 main {
-  box-sizing: border-box;
-  padding: var(--spacing-5) var(--spacing-3);
-  background: var(--background-gray);
+  max-width: 1400px;
   display: grid;
   gap: 10rem;
+  padding: var(--spacing-5) var(--spacing-3);
+  margin: 0 auto;
+  box-sizing: border-box;
+  background: var(--background-gray);
   position: relative;
 
   @media (min-width: 550px) {
