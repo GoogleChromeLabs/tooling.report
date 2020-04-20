@@ -1,6 +1,6 @@
 # A health checkup for web build tools.
 
-The web is a complex platform and developing for the web can be challenging at the best of times. Build tools want to make a developer’s life easier by codifying and streamlining knowledge and best practices about the platform. As a developer, the constant stream of changes to browsers, the platform, the underlying protocols can be hard to keep track of, let alone following how these changes affect best practices. Tooling authors have the same struggle, often with more scrutiny and complexity.
+The web is a complex platform and developing for it can be challenging at the best of times. Build tools aim to make our lives easier by streamlining developer workflows and codifying best-practices. A steady stream of platform and browser changes can make it difficult to identify these best practises and follow as they change. Tooling authors experience this same struggle at a large scale, often with more scrutiny and complexity.
 
 ## Goals
 
