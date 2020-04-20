@@ -15,7 +15,7 @@ main {
   @media (min-width: 822px) {
     grid-template-columns: max-content 1fr;
     gap: var(--spacing-5) var(--spacing-7);
-    padding: var(--spacing-7) var(--spacing-6) var(--spacing-8) 3.5rem;
+    padding: var(--spacing-7) var(--spacing-6) var(--spacing-8);
 
     & > * {
       grid-column: 2;
