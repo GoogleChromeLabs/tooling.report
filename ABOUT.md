@@ -16,7 +16,7 @@ The main part of our work consisted of collecting a list of best practices that 
 
 The requirements to pass a test are usually outline in the test’s `index.md`. However, there are some overall rules that apply to all tests:
 
-- Tests must be user-centric. This is the reason why DX features like hot-module reloading are currently completely unrepresented.
-- Plugins are allowed, regardless of who wrote them.
-- Configuration and self-written plugins must use documented APIs only. If undocumented APIs are used, the test can score a partial pass at best.
-- If a self-written plugin was necessary to pass a test, the result description should contain a link to the best possible 3rd party plugin with an explanation of where it falls short.
+- **Tests should be user-centric.** The production impact of <abbr title="Developer Experience">DX</abbr> (build times, hot reloading, etc) is indirect and often subjective, so these are not currently represented.
+- **Plugins are allowed.** Regardless of who wrote them, including custom one-off plugins.
+- **Only documented APIs.** Configuration and custom plugins should use documented APIs. If undocumented usage is required to pass a test, it receives a partial pass.
+- **Community standard plugins are preferred.** If a custom plugin is required to pass a test, the result description should link to the best available community plugin and explain why it was not used.
