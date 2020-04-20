@@ -6,7 +6,7 @@ The web is a complex platform and developing for it can be challenging at the be
 
 We want to help developers _and_ tooling authors. tooling.report is built in collaboration with members of the build tooling teams and hope that we can not only increase the health of the web, but also the quality of life of web developers.
 
-The ultimate goal for tooling.report is to improve all the build tools. If all the tools allow developers to follow the best practices on the web, developers can choose the tool that they are most comfortable with while shipping excellent web apps. While that is the long-term goal for tooling.report, the short-term goal is to give web developers a quick and easy way to figure out what the best tool for your next project is and how to adopt a best practice into your existing code base.
+The long-term goal of tooling.report is to improve all build tools. When all tools help developers follow best practices on the web, we have the freedom choose whichever tool we are comfortable with while being confident in the quality of what we ship. In the shorter term, we hope to provide a straightforward guide for selecting which tool to use for new projects, and a reference for incorporating best practices into existing codebases.
 
 ## Methodology
 
