@@ -13,25 +13,23 @@
 
 import { h, FunctionalComponent } from 'preact';
 
-import LinkList from '../LinkList';
+function extractFirstParagraph(md: string): string {
+  return md
+    .split('<h1', 3)
+    .slice(0, 2)
+    .join('<h1');
+}
 
-import config from 'consts:config';
+interface Props {
+  content: string;
+}
 
-interface Props {}
-
-const HeaderLinkList: FunctionalComponent<Props> = () => {
+const FirstParagraphOnly: FunctionalComponent<Props> = ({ content }) => {
   return (
-    <LinkList
-      links={[
-        { title: 'Read more…', href: '/about/' },
-        { title: 'FAQ', href: '#' },
-        {
-          title: 'Have an issue?',
-          href: `${config.githubRepository}/issues/new`,
-        },
-      ]}
-    />
+    <span
+      dangerouslySetInnerHTML={{ __html: extractFirstParagraph(content) }}
+    ></span>
   );
 };
 
-export default HeaderLinkList;
+export default FirstParagraphOnly;

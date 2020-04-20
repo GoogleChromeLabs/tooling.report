@@ -27,6 +27,7 @@ import ToolNav from '../../components/ToolNav';
 import DataGrid from '../../components/DataGrid';
 import Legend from '../../components/DataGrid/Legend';
 import Connect from '../../components/Connect';
+import FirstParagraphOnly from 'static-build/components/FirstParagraphOnly';
 
 import gulp from 'asset-url:../../img/gulp.svg';
 import rollup from 'asset-url:../../img/rollup.svg';
@@ -58,13 +59,6 @@ function renderSummary(tests: Tests): JSX.Element {
   );
 }
 
-function extractFirstParagraph(md: string): string {
-  return md
-    .split('<h1', 3)
-    .slice(0, 2)
-    .join('<h1');
-}
-
 const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
   return (
     <html>
@@ -86,11 +80,9 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
                 <BenchHero />
               </div>
               <div>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: extractFirstParagraph(README),
-                  }}
-                ></div>
+                <div>
+                  <FirstParagraphOnly content={README} />
+                </div>
                 <HeaderLinkList />
               </div>
             </div>
