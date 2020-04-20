@@ -1,4 +1,4 @@
-**tooling.report is a health check-up of the tooling ecosystem for web development.**
+# A health checkup for web build tools.
 
 The web is a complex platform and developing for the web can be challenging at the best of times. Build tools want to make a developer’s life easier by codifying and streamlining knowledge and best practices about the platform. As a developer, the constant stream of changes to browsers, the platform, the underlying protocols can be hard to keep track of, let alone following how these changes affect best practices. Tooling authors have the same struggle, often with more scrutiny and complexity.
 
