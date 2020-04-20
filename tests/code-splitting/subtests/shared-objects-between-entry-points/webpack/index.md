@@ -4,8 +4,10 @@ result: partial
 
 Webpack supports sharing code-splitted modules between entry points, with two important caveats.
 
-Common dependencies are moved into a shared bundle based on [heuristics], and modules that don't satisfy the heurstic are duplicated in the entry bundles that use them. Concretely, Webpack can pass this test when `optimization.splitChunks.minSize` is set to `0`, but not when the value is left at its default. In practise many modules _do_ trigger the heuristic, however it's often difficult to know whether this is happening.
+When using multiple entry points, always set [`optimization.runtimeChunk`][runtimechunk] to `"single"`. This moves Webpack's runtime module loader into its own bundle rather than being inlined into each entry, creating a global registry that allows code-splitted modules to be shared between entries.
 
-Configuring `splitChunks` can avoid duplicated modules in entry bundles, however those modules can still be instantiated separately for each entry on the client. To avoid this, always configure Webpack to produce a dedicated "runtime" bootstrapping bundle by setting `optimization.runtimeChunk` to `"single"`.
+Common dependencies are moved into shared bundles based on [heuristics], and those that don't meet the criteria are inlined into their entry bundles. Webpack's default code splitting configuration is a reasonable starting point, and it's worth experimenting based on your own application. In this minimal test, we used [`minSize:0`][minsize] to prevent duplication.
 
 [heuristics]: https://webpack.js.org/plugins/split-chunks-plugin/#defaults
+[runtimechunk]: https://webpack.js.org/configuration/optimization/#optimizationruntimechunk
+[minsize]: https://webpack.js.org/plugins/split-chunks-plugin/#splitchunksminsize
