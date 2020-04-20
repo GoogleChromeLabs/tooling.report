@@ -11,3 +11,7 @@ body {
   color: white;
   background: var(--vivid-blue);
 }
+
+pre {
+  display: inline-block;
+}
