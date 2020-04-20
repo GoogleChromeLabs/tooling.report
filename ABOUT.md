@@ -10,7 +10,7 @@ The long-term goal of tooling.report is to improve all build tools. When all too
 
 ## Methodology
 
-The main part of our work consisted of collecting an extensive list of best practices that we think are crucial for high-quality web development and turning them into _tests_. Each best practice was turned into a self-contained for each build tool. The tests are minimal setups that document not only how we came to our conclusion whether or not a build tool supports a certain best practice. We also used the tests are reproduction cases for the bugs we filed whenever a tool did pass a test. At the same time, we made sure the tests are simple and readable, so they can double-function as documentation for web developers who want to see _how_ a specific best practices can be followed with a given build tool
+The main part of our work consisted of collecting a list of best practices that were identified as being critical for high-quality web development. These were then turned into minimal self-contained tests and reproduced in each build tool. These tests document whether a given tool supports the best-practise, as well as the process by which we arrived at that conclusion. Non-passing tests are also used as reproduction cases in issues filed with the associated tool. We have attempted to ensure the tests are simple and readable so they can be used a concise reference for developers wishing to see _how_ a specific best-practice can be followed each tool.
 
 ## Rules
 
