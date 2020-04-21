@@ -11,13 +11,13 @@
  * limitations under the License.
  */
 
-const { src, dest } = require('gulp');
+const { src, dest, parallel } = require('gulp');
 const browserify = require('browserify');
 const tap = require('gulp-tap');
 const buffer = require('gulp-buffer');
-const hash = require('gulp-hash');
+const RevAll = require('gulp-rev-all');
 
-function build() {
+exports.default = function() {
   return src('src/*.js', { read: false })
     .pipe(
       tap(function(file) {
@@ -27,8 +27,6 @@ function build() {
       }),
     )
     .pipe(buffer())
-    .pipe(hash())
+    .pipe(RevAll.revision())
     .pipe(dest('dist'));
-}
-
-exports.default = build;
+};
