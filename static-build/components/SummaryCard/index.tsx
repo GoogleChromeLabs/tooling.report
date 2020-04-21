@@ -32,9 +32,7 @@ const SummaryCard: FunctionalComponent<Props> = ({
       <figure class={$summaryCardIcon}>
         <img src={image} alt="" />
       </figure>
-      <a href="#" class={$cardTitle}>
-        {name}
-      </a>
+      <p class={$cardTitle}>{name}</p>
       <div class={$progressSummary}>
         <div class={$progressBar} style={'width:' + percent + '%'}>
           <div class={$progressText}>{percent}%</div>
