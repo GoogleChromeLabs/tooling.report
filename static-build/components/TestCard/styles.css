@@ -25,23 +25,25 @@
       transform: translateY(-5px);
       box-shadow: var(--card-shadow--active);
     }
+  }
+}
 
-    &:not(:visited) {
-      .checkbox {
-        background: white;
-      }
+.testCard a {
+  &:not(:visited) {
+    .checkbox {
+      background: white;
     }
+  }
 
-    &:visited {
-      .checkbox {
-        background: var(--sky-blue);
-      }
+  &:visited {
+    .checkbox {
+      background: var(--sky-blue);
     }
+  }
 
-    &:visited {
-      background-color: var(--ice-blue);
-      box-shadow: none;
-    }
+  &:visited {
+    background-color: var(--background-blue);
+    box-shadow: none;
   }
 }
 
@@ -49,8 +51,8 @@
   position: absolute;
   top: var(--spacing-2);
   right: var(--spacing-2);
-  width: var(--nontouch-small-icon-size);
-  height: var(--nontouch-small-icon-size);
+  width: 24px;
+  height: 24px;
   z-index: 1;
   border-radius: 50%;
   border: 2px solid white;
