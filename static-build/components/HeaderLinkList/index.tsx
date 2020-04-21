@@ -24,7 +24,7 @@ const HeaderLinkList: FunctionalComponent<Props> = () => {
     <LinkList
       links={[
         { title: 'Read more…', href: '/about/' },
-        { title: 'FAQ', href: '#' },
+        { title: 'FAQ', href: '/faqs/' },
         {
           title: 'Have an issue?',
           href: `${config.githubRepository}/issues/new`,
