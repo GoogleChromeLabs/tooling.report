@@ -1,4 +1,6 @@
-# A health checkup for web build tools.
+## Overview
+
+### A health checkup for web build tools.
 
 The web is a complex platform and developing for it can be challenging at the best of times. Build tools aim to make our lives easier by streamlining developer workflows and codifying best-practices. A steady stream of platform and browser changes can make it difficult to identify these best practises and follow as they change. Tooling authors experience this same struggle at a large scale, often with more scrutiny and complexity.
 
