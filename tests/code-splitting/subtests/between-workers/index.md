@@ -4,7 +4,9 @@ importance: 1
 shortDesc: 'Can bundles be shared between the main thread and workers?'
 ---
 
-Workers are a great way to avoid janking the UI. However, your worker will often share bits of code with the main thread, and other workers. Can the build tool manage this?
+[Web Workers] are great for moving long blocking work and large modules [off the main thread], keeping UI updates fast and smooth. In many cases, code running in a worker will need to rely on some of the same modules as code used on the main thread or in other workers.
+
+This test checks to see if it's possible to share modules between Web Workers and the main thread, or between multiple workers. Since few browsers support [ECMAScript modules in workers][module-workers], a custom module format or runtime module loader is necessary in order to pass this test.
 
 **index.js**
 
@@ -31,8 +33,8 @@ export function logCaps(msg) {
 }
 ```
 
-The result should be three scripts: One for 'index', one for 'worker', and one for shared things.
+The result should be three scripts: one for the main thread containing `index.js`, one for the worker containing `worker.js`, and one for the dependencies shared by both (`logCaps()`). As with other bundle URL tests, the worker's URL must be hashed.
 
-Since few browsers support ECMAScript modules in workers, and no browsers support ECMAScript modules in service workers, a custom module format or loader must be used to pass this test.
-
-Additionally, the worker URL must be hashed.
+[web workers]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API
+[off the main thread]: https://web.dev/off-main-thread/
+[module-workers]: https://web.dev/module-workers/
