@@ -18,7 +18,7 @@ import bundleURL, { imports } from 'client-bundle:client/test/index.ts';
 import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
 import Footer from '../../components/Footer';
-import LinkList from '../../components/LinkList';
+import HeaderLinkList from '../../components/HeaderLinkList';
 import TestCrumbs from '../../components/TestCrumbs';
 import TestCard from '../../components/TestCard';
 import { LabcoatHero, WalkerHero } from '../../components/Heroes';
@@ -55,13 +55,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                 <small>feature</small>
                 <h2>{test.meta.title}</h2>
                 <p>TODO: use a description from front matter</p>
-                <LinkList
-                  links={[
-                    { title: 'FAQ', href: '#' },
-                    { title: 'Contribute', href: '#' },
-                    { title: 'Have an issue?', href: '#' },
-                  ]}
-                />
+                <HeaderLinkList />
               </div>
               <div class={$heroImage}>
                 {test.subTests ? <LabcoatHero /> : <WalkerHero />}

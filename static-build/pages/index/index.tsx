@@ -27,18 +27,22 @@ import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
 import GithubFAB from '../../components/GithubFAB';
 import Footer from '../../components/Footer';
-import LinkList from '../../components/LinkList';
+import HeaderLinkList from '../../components/HeaderLinkList';
 import { BenchHero } from '../../components/Heroes';
 import SummaryCard from '../../components/SummaryCard';
 import ToolNav from '../../components/ToolNav';
 import DataGrid from '../../components/DataGrid';
 import Legend from '../../components/DataGrid/Legend';
 import Connect from '../../components/Connect';
+import FirstParagraphOnly from 'static-build/components/FirstParagraphOnly';
 
 import gulp from 'asset-url:../../img/gulp.svg';
 import rollup from 'asset-url:../../img/rollup.svg';
 import webpack from 'asset-url:../../img/webpack.svg';
 import parcel from 'asset-url:../../img/parcel.svg';
+
+import { html as README } from 'md:../../../README.md';
+
 const toolImages = { gulp, rollup, webpack, parcel };
 
 interface Props {
@@ -66,7 +70,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
   return (
     <html>
       <head>
-        <title>Tooling.Report</title>
+        <title>tooling.report</title>
         <HeadMeta />
         <link rel="stylesheet" href={pageStyles} />
         <script type="module" src={bundleURL} />
@@ -82,21 +86,11 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
               <div class={$heroImage}>
                 <BenchHero />
               </div>
-              <div class={$message}>
-                <h3>What is Tooling Report?</h3>
-                <p>
-                  A quick and easy way to figure out what the best tool for your
-                  next project is, if it’s worth your time to migrate from one
-                  tool to another and how to adopt a best practice into your
-                  existing code base.
-                </p>
-                <LinkList
-                  links={[
-                    { title: 'FAQ', href: '#' },
-                    { title: 'Contribute', href: '#' },
-                    { title: 'Have an issue?', href: '#' },
-                  ]}
-                />
+              <div>
+                <div>
+                  <FirstParagraphOnly content={README} />
+                </div>
+                <HeaderLinkList />
               </div>
             </div>
           </section>

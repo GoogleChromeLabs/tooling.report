@@ -15,6 +15,7 @@ import { h } from 'preact';
 import { renderPage, writeFiles } from './utils';
 import IndexPage from './pages/index';
 import TestPage from './pages/test';
+import AboutPage from './pages/about';
 import testData from 'test-data:';
 
 interface Output {
@@ -23,6 +24,7 @@ interface Output {
 
 const toOutput: Output = {
   'index.html': renderPage(<IndexPage tests={testData} />),
+  'about/index.html': renderPage(<AboutPage />),
 };
 
 function addTestPages(tests: Tests, basePath = '') {

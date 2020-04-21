@@ -12,6 +12,11 @@
  */
 /// <reference path="../missing-types.d.ts" />
 
+declare module 'md:*' {
+  export const html: string;
+  export const meta: string;
+}
+
 declare module 'client-bundle:*' {
   const url: string;
   export default url;
