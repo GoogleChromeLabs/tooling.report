@@ -17,11 +17,13 @@ import IndexPage from './pages/index';
 import TestPage from './pages/test';
 import AboutPage from './pages/about';
 import testData from 'test-data:';
+import faqs from 'faqs:./faqs/';
+
+console.log(faqs);
 
 interface Output {
   [outputPath: string]: string;
 }
-
 const toOutput: Output = {
   'index.html': renderPage(<IndexPage tests={testData} />),
   'about/index.html': renderPage(<AboutPage />),

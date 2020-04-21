@@ -12,6 +12,16 @@
  */
 /// <reference path="../missing-types.d.ts" />
 
+declare module 'faqs:*' {
+  const faqs: Array<{
+    html: string;
+    meta: {
+      question: string;
+      order: number;
+    };
+  }>;
+  export default faqs;
+}
 declare module 'md:*' {
   export const html: string;
   export const meta: string;
