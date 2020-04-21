@@ -22,13 +22,52 @@
     &:hover,
     &:focus {
       transform: translateY(-5px);
-      box-shadow: var(--card-shadow--active);
     }
   }
 }
 
 .subTestCard {
-  /* tbd */
+  position: relative;
+
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background: white;
+    border: 1px solid var(--light-blue);
+    border-radius: var(--card-radius);
+    top: 0;
+    left: 0;
+    transition-duration: 0.5s;
+  }
+
+  &::after {
+    transform: rotate(-5deg);
+  }
+
+  &::before {
+    transform: rotate(2deg);
+  }
+
+  &:hover,
+  &:focus-within {
+    &::after {
+      transform: rotate(-8deg);
+      box-shadow: var(--card-shadow--active);
+    }
+
+    &::before {
+      transform: rotate(5deg) translateX(2px);
+    }
+  }
+
+  a {
+    position: relative;
+    z-index: 1;
+  }
 }
 
 .cardTitle {
