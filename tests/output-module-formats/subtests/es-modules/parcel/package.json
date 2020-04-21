@@ -2,6 +2,11 @@
   "scripts": {
     "build": "parcel build src/index.js src/profile.js"
   },
+  "engines": {
+    "browsers": [
+      "Chrome >= 63"
+    ]
+  },
   "targets": {
     "main": {
       "outputFormat": "esmodule"
