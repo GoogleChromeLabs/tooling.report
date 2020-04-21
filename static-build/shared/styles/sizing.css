@@ -12,4 +12,8 @@
   --nontouch-small-icon-size: 32px;
   --card-radius: 20px;
   --section-aside-width: 125px;
+
+  @media (min-width: 1200px) {
+    --section-aside-width: 250px;
+  }
 }
