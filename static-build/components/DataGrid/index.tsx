@@ -40,7 +40,12 @@ const DataGrid: FunctionalComponent<Props> = ({
             {test.results &&
               Object.entries(test.results).map(([subject, result]) => (
                 <span class={$column}>
-                  <span data-result={result.meta.result} class={$dot}></span>
+                  <span
+                    data-tool={subject}
+                    title={test.html}
+                    data-result={result.meta.result}
+                    class={$dot}
+                  ></span>
                 </span>
               ))}
             {test.subTests &&
@@ -49,6 +54,7 @@ const DataGrid: FunctionalComponent<Props> = ({
                   {Object.entries(gatherSubtestResults(test, tool, {})).map(
                     ([subject, test]) => (
                       <span
+                        data-tool={tool}
                         data-result={test.results[tool].meta.result}
                         title={test.html}
                         class={$dot}

@@ -55,7 +55,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                 <small>feature</small>
                 <h2>{test.meta.title}</h2>
                 <p>TODO: use a description from front matter</p>
-                <HeaderLinkList />
+                <HeaderLinkList home={false} />
               </div>
               <div class={$heroImage}>
                 {test.subTests ? <LabcoatHero /> : <WalkerHero />}

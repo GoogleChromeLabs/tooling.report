@@ -21,6 +21,15 @@ import { WalkerHero } from '../../components/Heroes';
 import FirstParagraphOnly from 'static-build/components/FirstParagraphOnly';
 
 import { $heroText, $heroImage } from './styles.css';
+import {
+  $breadcrumbs,
+  $home,
+} from 'static-build/components/TestCrumbs/styles.css';
+import {
+  $collection,
+  $iconbutton,
+  $divider,
+} from 'static-build/components/TestCrumbs/Crumb/styles.css';
 
 import { html as README } from 'md:../../../README.md';
 import { html as ABOUT } from 'md:../../../ABOUT.md';
@@ -39,16 +48,26 @@ const AboutPage: FunctionalComponent<Props> = () => {
         <header>
           <section>
             <Logo />
-            {/* 
-              TODO: Refactor TestCrumbs to work with non-test pages
-              <TestCrumbs test={test} /> 
-            */}
+            <nav class={$breadcrumbs} id="breadcrumbs">
+              <a href="/" class={`${$home} ${$collection}`}>
+                <span class={$iconbutton}>
+                  <span>
+                    <svg viewBox="0 0 10 10">
+                      <path d="M4 8.5v-3h2v3h2.5v-4H10L5 0 0 4.5h1.5v4z" />
+                    </svg>
+                  </span>
+                </span>
+                <span>Home</span>
+              </a>
+              <span class={$divider}>//</span>
+              <span class={$collection}>About</span>
+            </nav>
             <div>
               <div class={$heroText}>
                 <div>
                   <FirstParagraphOnly content={README} />
                 </div>
-                <HeaderLinkList />
+                <HeaderLinkList home={false} />
               </div>
               <div class={$heroImage}>
                 <WalkerHero />

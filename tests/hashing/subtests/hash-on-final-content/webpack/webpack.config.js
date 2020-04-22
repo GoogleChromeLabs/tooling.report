@@ -10,10 +10,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-module.exports = [1, 2].map(src => ({
-  entry: `./src${src}/index.js`,
+module.exports = {
+  entry: `./src/index.js`,
   output: {
-    path: require('path').resolve(__dirname, 'dist', src + ''),
     filename: 'index.[contenthash:5].js',
   },
-}));
+};

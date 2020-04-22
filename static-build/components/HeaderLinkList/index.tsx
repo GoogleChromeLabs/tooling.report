@@ -17,19 +17,27 @@ import LinkList from '../LinkList';
 
 import config from 'consts:config';
 
-interface Props {}
+interface Props {
+  home: Boolean;
+}
 
-const HeaderLinkList: FunctionalComponent<Props> = () => {
+const HeaderLinkList: FunctionalComponent<Props> = ({ home }) => {
   return (
     <LinkList
-      links={[
-        { title: 'Read more…', href: '/about/' },
-        { title: 'FAQ', href: '/faqs/' },
-        {
-          title: 'Have an issue?',
-          href: `${config.githubRepository}/issues/new`,
-        },
-      ]}
+      links={
+        home
+          ? [
+              { title: 'About', href: '/about/' },
+              { title: 'FAQ', href: '/faqs/' },
+            ]
+          : [
+              { title: 'Contribute', href: '#' },
+              {
+                title: 'Have an issue?',
+                href: `${config.githubRepository}/issues/new`,
+              },
+            ]
+      }
     />
   );
 };
