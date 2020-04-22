@@ -18,7 +18,7 @@ import LinkList from '../LinkList';
 import config from 'consts:config';
 
 interface Props {
-  home: Boolean;
+  home?: Boolean;
 }
 
 const HeaderLinkList: FunctionalComponent<Props> = ({ home }) => {
