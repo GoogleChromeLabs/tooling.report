@@ -3,4 +3,4 @@ result: fail
 issue: ''
 ---
 
-Although each plugin and transfrom can handle this. Chaining them to create sufficient gulp task might be too cumbersome.
+In theory, a combination of Browserify and Gulp plugins can be used to achieve this. However, it is difficult to produce a result without duplicating files used from CSS and JavaScript, because hashing for each resource type is controlled by different tools.
