@@ -18,7 +18,7 @@ import LinkList from '../LinkList';
 import config from 'consts:config';
 
 interface Props {
-  home: Boolean;
+  home?: Boolean;
 }
 
 const HeaderLinkList: FunctionalComponent<Props> = ({ home }) => {
@@ -28,7 +28,7 @@ const HeaderLinkList: FunctionalComponent<Props> = ({ home }) => {
         home
           ? [
               { title: 'About', href: '/about/' },
-              { title: 'FAQ', href: '#' },
+              { title: 'FAQ', href: '/faqs/' },
             ]
           : [
               { title: 'Contribute', href: '#' },
