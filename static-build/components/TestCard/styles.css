@@ -59,6 +59,8 @@
 
 .subTestCard {
   position: relative;
+  will-change: box-shadow;
+  transform-style: preserve-3d;
 
   &::after,
   &::before {
