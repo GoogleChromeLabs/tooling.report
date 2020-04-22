@@ -1,10 +1,3 @@
-:root {
-  --test-pass: #7fcc71; /* remove when merging #75 */
-  --test-partial: #ffa91f;
-  --test-fail: #f26969;
-  --test-skip: #dedede;
-}
-
 .resultItem {
   text-align: center;
 }
@@ -43,14 +36,17 @@
 
   &[data-result='pass'] {
     border-color: var(--test-pass);
+    color: var(--test-pass--text);
   }
 
   &[data-result='partial'] {
     border-color: var(--test-partial);
+    color: var(--test-partial--text);
   }
 
   &[data-result='fail'] {
     border-color: var(--test-fail);
+    color: var(--test-fail--text);
   }
 }
 
