@@ -13,8 +13,8 @@
   background: white;
   margin: 0 auto;
   border-radius: 50%;
-  width: calc(var(--touch-icon-size) * 2.5);
-  height: calc(var(--touch-icon-size) * 2.5);
+  width: calc(var(--touch-icon-size) * 1.5);
+  height: calc(var(--touch-icon-size) * 1.5);
   display: grid;
   justify-items: center;
   align-items: center;
@@ -51,5 +51,19 @@
 
   &[data-result='fail'] {
     border-color: var(--test-fail);
+  }
+}
+
+@media (min-width: 600px) {
+  .toolIcon {
+    width: calc(var(--touch-icon-size) * 2);
+    height: calc(var(--touch-icon-size) * 2);
+  }
+}
+
+@media (min-width: 822px) {
+  .toolIcon {
+    width: calc(var(--touch-icon-size) * 2.5);
+    height: calc(var(--touch-icon-size) * 2.5);
   }
 }

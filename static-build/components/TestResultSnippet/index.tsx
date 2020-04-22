@@ -9,19 +9,17 @@ const toolImages = { gulp, rollup, webpack, parcel };
 interface Props {
   name: string;
   result: string;
-  details: string;
   link: string;
 }
 
 const TestResultSnippet: FunctionalComponent<Props> = ({
   name,
   result,
-  details,
   link,
 }: Props) => {
   return (
     <li class={$resultItem}>
-      <a href="#" class={$toolName}>
+      <a href={link} class={$toolName}>
         {name}
       </a>
       <figure class={$toolIcon}>
@@ -30,10 +28,6 @@ const TestResultSnippet: FunctionalComponent<Props> = ({
       <div data-result={result} class={$toolBadge}>
         {result}
       </div>
-      <div>
-        <div dangerouslySetInnerHTML={{ __html: details }}></div>
-      </div>
-      <a href={link}>Inspect the Test</a>
     </li>
   );
 };
