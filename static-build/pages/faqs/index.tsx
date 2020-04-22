@@ -20,6 +20,15 @@ import HeaderLinkList from '../../components/HeaderLinkList';
 import { WalkerHero } from '../../components/Heroes';
 
 import { $heroText, $heroImage } from './styles.css';
+import {
+  $breadcrumbs,
+  $home,
+} from 'static-build/components/TestCrumbs/styles.css';
+import {
+  $collection,
+  $iconbutton,
+  $divider,
+} from 'static-build/components/TestCrumbs/Crumb/styles.css';
 
 interface Props {
   faqs: FAQItem[];
@@ -37,10 +46,20 @@ const FAQPage: FunctionalComponent<Props> = ({ faqs }) => {
         <header>
           <section>
             <Logo />
-            {/* 
-              TODO: Refactor TestCrumbs to work with non-test pages
-              <TestCrumbs test={test} /> 
-            */}
+            <nav class={$breadcrumbs} id="breadcrumbs">
+              <a href="/" class={`${$home} ${$collection}`}>
+                <span class={$iconbutton}>
+                  <span>
+                    <svg viewBox="0 0 10 10">
+                      <path d="M4 8.5v-3h2v3h2.5v-4H10L5 0 0 4.5h1.5v4z" />
+                    </svg>
+                  </span>
+                </span>
+                <span>Home</span>
+              </a>
+              <span class={$divider}>//</span>
+              <span class={$collection}>FAQs</span>
+            </nav>
             <div>
               <div class={$heroText}>
                 <HeaderLinkList />
