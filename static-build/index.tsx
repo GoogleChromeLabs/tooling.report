@@ -19,6 +19,7 @@ import AboutPage from './pages/about';
 import FAQPage from './pages/faqs';
 import testData from 'test-data:';
 import faqs from 'faqs:./faqs/';
+import config from 'consts:config';
 
 interface Output {
   [outputPath: string]: string;
@@ -40,5 +41,39 @@ function addTestPages(tests: Tests, basePath = '') {
   }
 }
 
+type SubjectFilter = (s: BuildTool) => boolean;
+
+function filterTest(test: Test, subjectFilter: SubjectFilter): Test {
+  const copy = { ...test };
+  if (copy.subTests) {
+    copy.subTests = filterTests(copy.subTests, subjectFilter);
+  }
+  copy.results = Object.fromEntries(
+    Object.entries(copy.results).filter(([subject]) =>
+      subjectFilter(subject as BuildTool),
+    ),
+  ) as Record<BuildTool, TestResult>;
+  return copy;
+}
+
+function filterTests(tests: Tests, subjectFilter: SubjectFilter): Tests {
+  return Object.fromEntries(
+    Object.entries(tests).map(([name, test]) => [
+      name,
+      filterTest(test, subjectFilter),
+    ]),
+  );
+}
+
+function addToolPages(tests: Tests) {
+  for (const subject of config.testSubjects) {
+    const mangledTestData = filterTests(tests, v => v === subject);
+    toOutput[subject + '/index.html'] = renderPage(
+      <IndexPage tests={mangledTestData} />,
+    );
+  }
+}
+
 addTestPages(testData);
+addToolPages(testData);
 writeFiles(toOutput);
