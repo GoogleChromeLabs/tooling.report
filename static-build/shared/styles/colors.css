@@ -1,5 +1,6 @@
 :root {
   /* Blues */
+  --background-blue: #f0f7ff;
   --ice-blue: #e6f4ff;
   --light-blue: #cce9ff;
   --sky-blue: #66bdff;
@@ -8,6 +9,11 @@
   --backpack-blue: #406480;
   --denim-blue: #5689b0;
 
+  --test-pass: #7fcc71;
+  --test-partial: #ffa91f;
+  --test-fail: #f26969;
+  --test-skip: #dedede;
+
   /* Gra|eys */
   --background-gray: #edf0f2;
   --background-gray-offset: #dae1e6;
@@ -15,6 +21,13 @@
 
   /* Shadows */
   --denim-blue-hsl: 206 36% 51%;
-  --card-shadow: 0 10px 45px -25px hsl(var(--denim-blue-hsl) / 70%);
+  --card-shadow: 0 8px 2px hsl(var(--denim-blue-hsl) / 2%),
+    0 25px 10px hsl(var(--denim-blue-hsl) / 7%),
+    0 50px 10px hsl(var(--denim-blue-hsl) / 5%),
+    0 80px 20px hsl(var(--denim-blue-hsl) / 8%);
+  --card-shadow--active: 0 8px 2px hsl(var(--denim-blue-hsl) / 1%),
+    0 25px 10px hsl(var(--denim-blue-hsl) / 5%),
+    0 60px 10px hsl(var(--denim-blue-hsl) / 5%),
+    0 100px 20px hsl(var(--denim-blue-hsl) / 6%);
   --fab-shadow: 0 5px 10px hsl(var(--denim-blue-hsl) / 20%);
 }

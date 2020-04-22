@@ -10,7 +10,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+const cssURL = require('./styles.css');
 const datauri = require('datauri');
-const filePath = datauri(__dirname + '/image.png');
-console.log(filePath);
+const imgURL = datauri(__dirname + '/image.png');
+const fontURL = datauri(__dirname + '/font.ttf');
+
+console.log({ cssURL, imgURL, fontURL });

@@ -17,23 +17,44 @@ const browserify = require('browserify');
 const tap = require('gulp-tap');
 const buffer = require('gulp-buffer');
 
-function filePath() {
-  return src('build/*.js', { read: false })
+function bundle() {
+  return src('src/index.js', { read: false })
     .pipe(
       tap(function(file) {
         file.contents = browserify(file.path)
-          .plugin('urify-emitter', { output: 'build', base: '.' })
+          .plugin('urify-emitter', {
+            output: 'build',
+            base: '.',
+          })
+          .transform('browserify-css', {
+            output: 'build/styles.css',
+            rootDir: 'src',
+            processRelativeUrl(url) {
+              return './' + url;
+            },
+            autoInject: false,
+          })
           .bundle();
       }),
     )
     .pipe(buffer())
-    .pipe(dest('build'));
-}
-
-function replace() {
-  return src('src/**')
-    .pipe(RevAll.revision())
     .pipe(dest('build/'));
 }
 
-exports.default = series(replace, filePath);
+function hash() {
+  return src('build/**')
+    .pipe(
+      // can't seem to get this to pick up the `styles.css` file from build, so never never gets versioned assets.
+      RevAll.revision({
+        hashLength: 32,
+        dontRenameFile: ['index.js', 'styles.css'],
+        dontUpdateReference: ['index.js', 'styles.css'],
+        transformFilename(file, hash) {
+          return hash + require('path').extname(file.basename);
+        },
+      }),
+    )
+    .pipe(dest('build/'));
+}
+
+exports.default = series(bundle, hash);

@@ -10,10 +10,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const message = 'This is index';
-
-if (process.env.NODE_ENV !== 'production') {
-  import('./utils.js').then(({ logCaps }) => {
-    logCaps(message + ' (development)');
-  });
-}
+(async function() {
+  const { logCaps } = await import('./utils.js');
+  logCaps('This is index');
+})();

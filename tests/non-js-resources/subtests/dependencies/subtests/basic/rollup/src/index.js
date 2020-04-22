@@ -11,7 +11,7 @@
  * limitations under the License.
  */
 import cssURL from 'css:./styles.css';
-document.head.insertAdjacentElement(
+document.head.insertAdjacentHTML(
   'afterend',
   `<link rel="stylesheet" href="${cssURL}">`,
 );

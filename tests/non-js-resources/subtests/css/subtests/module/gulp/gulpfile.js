@@ -14,21 +14,24 @@
 const { src, dest } = require('gulp');
 const browserify = require('browserify');
 const tap = require('gulp-tap');
-const buffer = require('gulp-buffer');
+const mkdirp = require('mkdirp');
+const cssnano = require('cssnano');
 
 function dataURL() {
+  mkdirp.sync('build');
+
   return src('src/*.js', { read: false })
     .pipe(
       tap(function(file) {
         file.contents = browserify(file.path)
-          .plugin('css-modulesify', {
+          .plugin(require('css-modulesify'), {
             rootDir: __dirname,
             output: './build/styles.css',
+            after: [cssnano()],
           })
           .bundle();
       }),
     )
-    .pipe(buffer())
     .pipe(dest('build'));
 }
 

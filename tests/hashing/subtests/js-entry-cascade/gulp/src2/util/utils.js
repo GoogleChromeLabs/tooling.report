@@ -12,8 +12,7 @@
  */
 
 function logCaps(msg) {
-  const message = msg;
-  console.log(message.toUpperCase());
+  console.log(msg.toUpperCase() + ' (src2)');
 }
 
 exports.logCaps = logCaps;

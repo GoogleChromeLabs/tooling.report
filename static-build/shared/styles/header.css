@@ -1,20 +1,48 @@
 header {
-  min-height: 80vh;
-  padding: 0 var(--spacing-6);
   background: white;
+  overflow: hidden;
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  padding: var(--spacing-3) 0;
+
+  @media (min-width: 480px) {
+    padding: var(--spacing-3);
+  }
 
   & > section {
-    max-width: 1024px;
-    margin: auto;
+    position: relative;
 
     & > div {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-direction: column;
+      padding: 0 var(--spacing-3);
     }
+
+    @media (min-width: 822px) {
+      max-width: 1024px;
+      margin: auto;
+    }
+  }
+}
+
+@media (min-width: 822px) {
+  header {
+    height: 650px;
+    padding: var(--spacing-3) var(--spacing-7) 0 var(--spacing-7);
+    justify-content: center;
+
+    & > section > div {
+      flex-direction: row;
+      padding: 0;
+    }
+  }
+}
+
+@media (max-height: 640px) {
+  header {
+    max-height: initial;
   }
 }

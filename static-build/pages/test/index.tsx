@@ -12,16 +12,22 @@
  */
 
 import { h, FunctionalComponent } from 'preact';
-import sharedStyles from 'css-bundle:static-build/shared/styles/index.css';
-import { githubLink } from '../../utils.js';
+import { githubLink, renderIssueLinksForTest } from '../../utils.js';
 import pageStyles from 'css-bundle:./styles.css';
-import Logo from '../../components/Logo/index';
-import Footer from '../../components/Footer/index';
-import LinkList from '../../components/LinkList/index';
-import TestResultSnippet from '../../components/TestResultSnippet';
-
-import { $testResultList } from './styles.css';
+import bundleURL, { imports } from 'client-bundle:client/test/index.ts';
+import HeadMeta from '../../components/HeadMeta';
+import Logo from '../../components/Logo';
+import Footer from '../../components/Footer';
+import HeaderLinkList from '../../components/HeaderLinkList';
+import TestCrumbs from '../../components/TestCrumbs';
+import TestCard from '../../components/TestCard';
 import { LabcoatHero, WalkerHero } from '../../components/Heroes';
+import {
+  $heroImage,
+  $heroText,
+  $testCardList,
+  $contribCard,
+} from './styles.css';
 
 interface Props {
   test: Test;
@@ -31,30 +37,29 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
   return (
     <html>
       <head>
-        <title>Tooling.Report: {test.meta.title}</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <link rel="stylesheet" href={sharedStyles} />
+        <title>{`Tooling.Report: ${test.meta.title}`}</title>
+        <HeadMeta />
         <link rel="stylesheet" href={pageStyles} />
-        {/* TODO: favicon */}
+        <script type="module" src={bundleURL} />
+        {imports.map(v => (
+          <link rel="preload" as="script" href={v} crossOrigin="" />
+        ))}
       </head>
       <body>
         <header>
           <section>
             <Logo />
+            <TestCrumbs test={test} />
             <div>
-              <div>
+              <div class={$heroText}>
                 <small>feature</small>
                 <h2>{test.meta.title}</h2>
                 <p>TODO: use a description from front matter</p>
-                <LinkList
-                  links={[
-                    { title: 'FAQ', href: '#' },
-                    { title: 'Contribute', href: '#' },
-                    { title: 'Have an issue?', href: '#' },
-                  ]}
-                />
+                <HeaderLinkList home={false} />
               </div>
-              <div>{test.subTests ? <LabcoatHero /> : <WalkerHero />}</div>
+              <div class={$heroImage}>
+                {test.subTests ? <LabcoatHero /> : <WalkerHero />}
+              </div>
             </div>
           </section>
         </header>
@@ -70,30 +75,44 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
             </section>
           )}
 
+          <div dangerouslySetInnerHTML={{ __html: test.html }}></div>
+
           {test.results && (
             <article>
-              <ul class={$testResultList}>
-                {Object.entries(test.results).map(([subject, result]) => (
-                  <TestResultSnippet
-                    name={subject}
-                    result={result.meta.result}
-                    details={result.html}
-                    link={githubLink(result.repositoryPath)}
-                  />
-                ))}
-              </ul>
-              <div dangerouslySetInnerHTML={{ __html: test.html }}></div>
+              {Object.entries(test.results).map(([subject, result]) => (
+                <div>
+                  <h1>
+                    {subject}:{' '}
+                    {result.meta.result === 'pass'
+                      ? 'Pass'
+                      : result.meta.result === 'fail'
+                      ? 'Fail'
+                      : 'So-so'}
+                  </h1>
+                  <div dangerouslySetInnerHTML={{ __html: result.html }}></div>
+                  <a href={githubLink(result.repositoryPath)}>
+                    Inspect the test
+                  </a>
+                  {renderIssueLinksForTest(test, subject as BuildTool)}
+                </div>
+              ))}
             </article>
           )}
 
           {test.subTests && (
             <section>
-              <ul>
+              <ul class={$testCardList}>
                 {Object.entries(test.subTests).map(([path, test]) => (
-                  <li>
-                    <a href={path + '/'}>{test.meta.title}</a>
-                  </li>
+                  <TestCard link={path + '/'} test={test} />
                 ))}
+                <li>
+                  <a
+                    class={$contribCard}
+                    href="https://github.com/GoogleChromeLabs/tooling.report/blob/master/CONTRIBUTING.md"
+                  >
+                    +
+                  </a>
+                </li>
               </ul>
             </section>
           )}

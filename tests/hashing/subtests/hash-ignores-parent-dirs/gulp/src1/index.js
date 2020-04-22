@@ -11,5 +11,5 @@
  * limitations under the License.
  */
 
-const { logCaps } = require('./utils/utils.js');
+const { logCaps } = require('./utils.js');
 logCaps('This is index');

@@ -1,31 +1,104 @@
 @import 'components/SummaryCard/styles.css';
+@import 'components/DataGrid/styles.css';
 @import 'components/ToolNav/styles.css';
-
-.topSticky {
-  position: sticky;
-  top: 0;
-}
+@import 'components/Connect/styles.css';
 
 .sidebarLayout {
   display: grid;
-  grid-template-columns: var(--section-aside-width) 1fr;
+  gap: var(--spacing-3);
+
+  @media (min-width: 700px) {
+    grid-template-columns: var(--section-aside-width) 1fr;
+  }
 }
 
-.connect {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 700px;
-  background-color: var(--background-gray-offset);
-  border: 1px solid var(--background-gray-offset);
-  border-radius: 2rem;
+.sectionHeader {
+  display: inline-block;
+  text-transform: capitalize;
+  margin-bottom: var(--spacing-4);
+  position: relative;
+  color: var(--backpack-blue);
+  background-color: var(--background-gray);
+  line-height: var(--font-lineheight--tight);
+
+  &:before {
+    content: '#';
+    color: var(--denim-blue);
+    margin-right: var(--spacing-1);
+  }
+
+  &:hover:before,
+  &:focus:before {
+    color: var(--backpack-blue);
+  }
 }
 
 .summaryList {
   display: grid;
-  gap: 2rem;
+  gap: var(--spacing-5);
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+@media only screen and (min-width: 550px) {
+  .sectionHeader:before {
+    margin-right: 0;
+    position: absolute;
+    top: 0;
+    left: -1.5ch;
+  }
+}
+
+.hero {
+  & > section > h2 {
+    margin-bottom: var(--spacing-4);
+  }
+
+  & > section > div {
+    @media (max-width: 822px) {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+    }
+  }
+}
+
+.heroImage {
+  width: 400px;
+  height: 400px;
+  background: var(--ice-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin: -60px 0px -87px -115px;
+
+  @media (min-width: 480px) {
+    width: 600px;
+    height: 600px;
+    margin: -70px 50px -120px -175px;
+  }
+
+  @media (min-width: 822px) {
+    margin: 0 50px -100px -225px;
+  }
+
+  & svg {
+    width: 65%;
+    height: 65%;
+    object-fit: contain;
+  }
+}
+
+.message {
+  & > h3 {
+    font-weight: var(--font-weight--bold);
+    font-size: var(--font-size--h2);
+  }
+
+  & > p {
+    margin: var(--spacing-3) 0;
+  }
 }

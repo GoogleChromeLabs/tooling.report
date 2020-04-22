@@ -3,6 +3,4 @@ result: fail
 issue: 'N/A'
 ---
 
-Browserify is designed to write javascript useing `require` for browser code. It does not support ES2015 import/export out of the box. In addition, dynamic require is not supported.
-
-TODO: show Babelify option as example of what to do with old codebase?
+Browserify bundles CommnonJS code by statically analyzing synchronous `require()` calls to import modules. Since dynamic require usage and ECMAScript modules are both unsupported, neither can be used to create split points.

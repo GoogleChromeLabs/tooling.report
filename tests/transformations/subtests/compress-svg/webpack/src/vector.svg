@@ -1,7 +1,7 @@
 <svg
   xmlns="http://www.w3.org/2000/svg"
   xmlns:xlink="http://www.w3.org/1999/xlink"
-  viewPort="0 0 1000 1000"
+  viewBox="0 0 1000 1000"
 >
   <text x="50" y="50">Ohai</text>
 </svg>

@@ -6,7 +6,7 @@ function Logo() {
   return (
     <h2 class={$logo}>
       <ReportIcon />
-      Tooling.<span class={$report}>Report</span>
+      tooling.<span class={$report}>report</span>
     </h2>
   );
 }

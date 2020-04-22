@@ -2,4 +2,6 @@
 result: pass
 ---
 
-You can pipe Browserify result to gulp-hash in order to add hash to the filename.
+The [gulp-hash] plugin lets you add hashes to filenames.
+
+[gulp-hash]: http://npm.im/gulp-hash

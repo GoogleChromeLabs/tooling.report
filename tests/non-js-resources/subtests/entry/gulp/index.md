@@ -2,8 +2,8 @@
 result: pass
 ---
 
-Pros of using Gulp is that you can define the input, output, and order of which tasks will run. Which prevents being locked to specific entry point.
+Gulp does not differentiate between the file formats used as entry points in a build. Any set of files can be used as the "source" of a build, and stream processing can be applied to any type of file.
 
-This test runs `gulp-rav` to hash CSS and JS, then use `gulp-rav-collector` to replace asset links in index.html file.
+This test uses [gulp-rev](https://github.com/sindresorhus/gulp-rev) to hash CSS and JS files, then uses [gulp-rev-collector](https://github.com/shonny-ua/gulp-rev-collector) to replace references to those files in the HTML entry file.
 
-(Note: if you are using Browserify to build your JavaScirpt, you would run it before `rav()` call in scriptHash function.)
+(Note: If you are using Browserify to bundle your JavaScirpt, you would run it before `rev()` in the `scriptHash` function.)

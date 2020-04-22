@@ -11,17 +11,33 @@
  * limitations under the License.
  */
 
-const { src, dest } = require('gulp');
-const preProc = require('gulp-pre-proc');
+const { src, dest, parallel } = require('gulp');
+const envify = require('gulp-envify');
+const terser = require('gulp-terser');
+const rename = require('gulp-rename');
 
-function flags() {
+function client() {
   return src('src/*.js')
     .pipe(
-      preProc({
-        removeTag: { tag: 'DEBUG', pathTest: ['src', /\.js$/] },
+      envify({
+        ENVIRONMENT: 'CLIENT',
       }),
     )
-    .pipe(dest('build/'));
+    .pipe(rename('client.js'))
+    .pipe(terser())
+    .pipe(dest('build'));
 }
 
-exports.default = flags;
+function server() {
+  return src('src/*.js')
+    .pipe(
+      envify({
+        ENVIRONMENT: 'SERVER',
+      }),
+    )
+    .pipe(rename('server.js'))
+    .pipe(terser())
+    .pipe(dest('build'));
+}
+
+exports.default = parallel(server, client);

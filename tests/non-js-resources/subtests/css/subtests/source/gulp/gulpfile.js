@@ -23,7 +23,7 @@ function dataURL() {
         file.contents = browserify(file.path)
           .transform('browserify-css', {
             minify: true,
-            autoInject: true,
+            autoInject: false,
           })
           .bundle();
       }),

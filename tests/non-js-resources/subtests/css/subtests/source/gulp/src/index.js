@@ -12,4 +12,7 @@
  */
 
 const css = require('./styles.css');
-console.log(css);
+
+const style = document.createElement('style');
+style.textContent = css;
+document.head.append(style);

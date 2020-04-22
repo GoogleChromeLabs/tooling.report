@@ -2,18 +2,29 @@
 
 .footer {
   background: var(--backpack-blue);
-  padding: var(--spacing-6);
+  padding: var(--spacing-5) var(--spacing-3) var(--spacing-3);
+
+  @media (min-width: 700px) {
+    padding: var(--spacing-6);
+  }
 
   & a {
     color: var(--ice-blue);
 
-    &:hover {
+    &:hover,
+    &:focus {
       color: white;
     }
   }
 
   & h2 {
     color: var(--light-blue);
+    margin-bottom: var(--spacing-3);
+
+    @media (max-width: 700px) {
+      font-size: var(--font-size--h2);
+      margin-left: 0;
+    }
 
     & > span {
       color: var(--ice-blue);
@@ -40,4 +51,22 @@
   font-size: var(--font-size--detail);
   line-height: var(--font-lineheight--extended);
   color: var(--ice-blue);
+  padding-bottom: var(--spacing-3);
+}
+
+.plant {
+  position: absolute;
+  right: 0;
+  opacity: 0.3;
+}
+
+@media only screen and (min-width: 550px) {
+  .desc {
+    padding-bottom: 0;
+  }
+
+  .plant {
+    position: relative;
+    opacity: 1;
+  }
 }

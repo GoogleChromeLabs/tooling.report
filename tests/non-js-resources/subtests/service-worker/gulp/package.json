@@ -1,10 +1,15 @@
 {
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "gulp"
+    "build": "rm -rf build && gulp"
   },
   "devDependencies": {
     "gulp": "^4.0.2",
-    "gulp-rev-all": "^2.0.2"
+    "gulp-buffer": "0.0.2",
+    "gulp-rev-all": "^2.0.2",
+    "through2": "^3.0.1",
+    "browserify": "^16.5.1",
+    "gulp-tap": "^2.0.0"
   }
 }
