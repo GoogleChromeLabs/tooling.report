@@ -30,7 +30,7 @@
   padding: var(--spacing-1) var(--spacing-3);
   background: white;
   display: inline-block;
-  border-radius: 10px;
+  border-radius: var(--spacing-2);
   text-transform: capitalize;
   font-weight: var(--font-weight--normal);
 
