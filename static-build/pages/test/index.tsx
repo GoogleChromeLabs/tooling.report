@@ -12,7 +12,7 @@
  */
 
 import { h, FunctionalComponent } from 'preact';
-import { githubLink } from '../../utils.js';
+import { githubLink, renderIssueLinksForTest } from '../../utils.js';
 import pageStyles from 'css-bundle:./styles.css';
 import bundleURL, { imports } from 'client-bundle:client/test/index.ts';
 import HeadMeta from '../../components/HeadMeta';
@@ -75,6 +75,8 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
             </section>
           )}
 
+          <div dangerouslySetInnerHTML={{ __html: test.html }}></div>
+
           {test.results && (
             <article>
               {Object.entries(test.results).map(([subject, result]) => (
@@ -91,10 +93,9 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                   <a href={githubLink(result.repositoryPath)}>
                     Inspect the test
                   </a>
-                  {/* {renderIssueLinksForTest(test, subject as BuildTool)} */}
+                  {renderIssueLinksForTest(test, subject as BuildTool)}
                 </div>
               ))}
-              <div dangerouslySetInnerHTML={{ __html: test.html }}></div>
             </article>
           )}
 
