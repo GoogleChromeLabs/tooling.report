@@ -1,0 +1,65 @@
+.resultItem {
+  text-align: center;
+}
+
+.toolIcon {
+  background: white;
+  margin: 0 auto;
+  border-radius: 50%;
+  width: calc(var(--touch-icon-size) * 1.5);
+  height: calc(var(--touch-icon-size) * 1.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--light-blue);
+  margin: var(--spacing-2) auto;
+}
+
+.toolIcon img {
+  max-width: 40%;
+  max-height: 40%;
+}
+
+.toolName {
+  text-transform: capitalize;
+  font-weight: var(--font-weight--bold);
+}
+
+.toolBadge {
+  border: 1px solid gray;
+  padding: var(--spacing-1) var(--spacing-3);
+  background: white;
+  display: inline-block;
+  border-radius: var(--spacing-2);
+  text-transform: capitalize;
+  font-weight: var(--font-weight--normal);
+
+  &[data-result='pass'] {
+    border-color: var(--test-pass);
+    color: var(--test-pass--text);
+  }
+
+  &[data-result='partial'] {
+    border-color: var(--test-partial);
+    color: var(--test-partial--text);
+  }
+
+  &[data-result='fail'] {
+    border-color: var(--test-fail);
+    color: var(--test-fail--text);
+  }
+}
+
+@media (min-width: 600px) {
+  .toolIcon {
+    width: calc(var(--touch-icon-size) * 2);
+    height: calc(var(--touch-icon-size) * 2);
+  }
+}
+
+@media (min-width: 822px) {
+  .toolIcon {
+    width: calc(var(--touch-icon-size) * 2.5);
+    height: calc(var(--touch-icon-size) * 2.5);
+  }
+}

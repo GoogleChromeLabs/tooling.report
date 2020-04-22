@@ -21,12 +21,14 @@ import Footer from '../../components/Footer';
 import HeaderLinkList from '../../components/HeaderLinkList';
 import TestCrumbs from '../../components/TestCrumbs';
 import TestCard from '../../components/TestCard';
+import TestResultSnippet from '../../components/TestResultSnippet';
 import { LabcoatHero, WalkerHero } from '../../components/Heroes';
 import {
   $heroImage,
   $heroText,
   $testCardList,
   $contribCard,
+  $testResultList,
 } from './styles.css';
 
 interface Props {
@@ -74,6 +76,16 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
               </p>
             </section>
           )}
+
+          <ul class={$testResultList}>
+            {Object.entries(test.results).map(([subject, result]) => (
+              <TestResultSnippet
+                name={subject}
+                result={result.meta.result}
+                link={githubLink(result.repositoryPath)}
+              />
+            ))}
+          </ul>
 
           <div dangerouslySetInnerHTML={{ __html: test.html }}></div>
 
