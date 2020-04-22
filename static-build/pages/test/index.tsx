@@ -64,6 +64,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
           </section>
         </header>
         <main>
+          <div dangerouslySetInnerHTML={{ __html: test.html }}></div>
           {test.subTests && (
             <section>
               <h3>Capabilities & Verification</h3>
