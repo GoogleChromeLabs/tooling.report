@@ -67,7 +67,7 @@ const AboutPage: FunctionalComponent<Props> = () => {
                 <div>
                   <FirstParagraphOnly content={README} />
                 </div>
-                <HeaderLinkList />
+                <HeaderLinkList home={false} />
               </div>
               <div class={$heroImage}>
                 <WalkerHero />
