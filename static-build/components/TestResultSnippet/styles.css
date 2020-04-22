@@ -8,8 +8,8 @@
   border-radius: 50%;
   width: calc(var(--touch-icon-size) * 1.5);
   height: calc(var(--touch-icon-size) * 1.5);
-  display: grid;
-  justify-items: center;
+  display: flex;
+  justify-content: center;
   align-items: center;
   border: 1px solid var(--light-blue);
   margin: var(--spacing-2) auto;
