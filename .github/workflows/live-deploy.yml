@@ -1,12 +1,12 @@
-name: Master Deploy
+name: Live Deploy
 on:
   push:
     branches:
-      - master
+      - live
 
 jobs:
-  master-deploy:
-    name: Master Deploy
+  live-deploy:
+    name: Live Deploy
     runs-on: ubuntu-latest
     env:
       CI: true
