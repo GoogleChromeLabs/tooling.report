@@ -11,7 +11,5 @@
  * limitations under the License.
  */
 
-import './breadcrumbs';
-
-// Lazy-load analytics
-import('../shared/analytics.js');
+// This module exports nothing.
+export {};

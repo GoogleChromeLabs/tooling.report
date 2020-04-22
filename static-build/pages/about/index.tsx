@@ -13,6 +13,7 @@
 
 import { h, FunctionalComponent } from 'preact';
 import pageStyles from 'css-bundle:./styles.css';
+import bundleURL, { imports } from 'client-bundle:client/about/index.ts';
 import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
 import Footer from '../../components/Footer';
@@ -43,6 +44,10 @@ const AboutPage: FunctionalComponent<Props> = () => {
         <title>{`tooling.report: About`}</title>
         <HeadMeta />
         <link rel="stylesheet" href={pageStyles} />
+        <script type="module" src={bundleURL} />
+        {imports.map(v => (
+          <link rel="preload" as="script" href={v} crossOrigin="" />
+        ))}
       </head>
       <body>
         <header>

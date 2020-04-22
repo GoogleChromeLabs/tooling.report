@@ -71,7 +71,7 @@ export default async function({ watch }) {
         {
           dir,
           format: 'esm',
-          chunkFileNames: staticPath,
+          chunkFileNames: staticPath.replace('[extname]', '.js'),
           entryFileNames: staticPath.replace('[extname]', '.js'),
         },
         resolveFileUrl,
