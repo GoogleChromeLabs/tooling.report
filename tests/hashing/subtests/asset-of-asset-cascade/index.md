@@ -3,7 +3,7 @@ title: Asset-of-asset hash cascading
 importance: 1
 ---
 
-Some asset types can have their own dependencies. For example CSS & SVGs are usually consideres assets, but can themselves reference, images, fonts or stylesheets:
+Some asset types can have their own dependencies. For example CSS & SVGs are usually considered assets, but can themselves reference, images, fonts or stylesheets:
 
 ```css
 body {
