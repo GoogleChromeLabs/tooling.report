@@ -11,4 +11,4 @@ SVGs can reference stylesheets, scripts and images:
 </svg>
 ```
 
-In this example, if `image.jpg` changes, the hash of `imagee.jpg` needs to change and in consequence, the hash of the SVG file should change as well.
+In this example, if `image.jpg` changes, the hash of `image.jpg` needs to change and in consequence, the hash of the SVG file should change as well.
