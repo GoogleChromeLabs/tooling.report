@@ -2,7 +2,7 @@
 result: pass
 ---
 
-[gulp-rev-all] analyzes each file's references to calculate a final hash.
+The plugin [`gulp-rev-all`][gulp-rev-all] analyzes contained file references, rewrites them and calculates a final hash accordingly.
 
 Note: [gulp-rev] is more popular, but would fail this test.
 
