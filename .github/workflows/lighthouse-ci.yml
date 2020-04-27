@@ -12,6 +12,8 @@ jobs:
           npm run build
       - name: Test ./build
         uses: treosh/lighthouse-ci-action@v2
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{secrets.LHCI_GITHUB_APP_TOKEN}}
         with:
           configPath: './lighthouserc.json'
           uploadArtifacts: true
