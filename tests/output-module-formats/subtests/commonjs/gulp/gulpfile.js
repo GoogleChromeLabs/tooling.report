@@ -10,20 +10,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+const path = require('path');
 const { src, dest } = require('gulp');
-const browserify = require('browserify');
 const tap = require('gulp-tap');
+const buffer = require('gulp-buffer');
+const browserify = require('browserify');
+const merge = require('merge-stream');
+const source = require('vinyl-source-stream');
 
 function buildCommonjs() {
-  return src('src/index.js')
-    .pipe(
-      tap(file => {
-        file.contents = browserify('src/index.js', {
-          node: true,
-        }).bundle();
-      }),
-    )
-    .pipe(dest('build/'));
+  const common = source('common.js');
+  const entries = src('src/index.js', { read: false }).pipe(
+    tap(file => {
+      const name = path.basename(file.path);
+      file.contents = source(name);
+      browserify(file.path, { node: true })
+        .plugin('factor-bundle', { outputs: [file.contents] })
+        .bundle()
+        .pipe(common)
+        .pipe(buffer());
+    }),
+  );
+  return merge(entries, common).pipe(dest('build/'));
 }
 
 exports.default = buildCommonjs;
