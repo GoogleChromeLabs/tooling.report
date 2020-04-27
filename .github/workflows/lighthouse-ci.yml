@@ -15,3 +15,4 @@ jobs:
         with:
           configPath: './lighthouserc.json'
           uploadArtifacts: true
+          temporaryPublicStorage: true
