@@ -39,6 +39,7 @@ const FAQPage: FunctionalComponent<Props> = ({ faqs }) => {
     <html lang="en">
       <head>
         <title>{`tooling.report: About`}</title>
+        <meta name="description" content="FAQs" />
         <HeadMeta />
         <link rel="stylesheet" href={pageStyles} />
       </head>
