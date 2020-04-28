@@ -12,6 +12,7 @@
 
 .results {
   display: flex;
+  align-items: flex-start;
   flex: 1;
   background: white;
   padding: var(--spacing-2) 0;
