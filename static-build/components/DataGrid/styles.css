@@ -67,7 +67,15 @@
   }
 
   &[data-result='partial'] {
-    background: var(--test-partial);
+    background-image: linear-gradient(
+      90deg,
+      var(--test-partial),
+      50%,
+      var(--test-partial),
+      51%,
+      white
+    );
+    border-color: var(--test-partial);
   }
 
   &[data-result='fail'] {
