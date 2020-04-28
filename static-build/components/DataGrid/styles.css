@@ -73,6 +73,8 @@
       50%,
       var(--test-partial),
       51%,
+      white,
+      52%,
       white
     );
     border-color: var(--test-partial);
