@@ -15,6 +15,7 @@ import { h, FunctionalComponent } from 'preact';
 import { githubLink } from '../../utils.js';
 import pageStyles from 'css-bundle:./styles.css';
 import bundleURL, { imports } from 'client-bundle:client/test/index.ts';
+import analyticsBundleURL from 'client-bundle:client/analytics/index.js';
 import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
 import Footer from '../../components/Footer';
@@ -44,6 +45,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
         {imports.map(v => (
           <link rel="preload" as="script" href={v} crossOrigin="" />
         ))}
+        <script type="module" async src={analyticsBundleURL}></script>
       </head>
       <body>
         <header>

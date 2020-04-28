@@ -12,6 +12,3 @@
  */
 
 import './breadcrumbs';
-
-// Lazy-load analytics
-import('../shared/analytics.js');

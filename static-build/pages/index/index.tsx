@@ -22,7 +22,7 @@ import {
   $heroImage,
 } from './styles.css';
 
-import bundleURL, { imports } from 'client-bundle:client/home/index.ts';
+import analyticsBundleURL from 'client-bundle:client/analytics/index.js';
 import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
 import GithubFAB from '../../components/GithubFAB';
@@ -73,10 +73,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
         <title>tooling.report</title>
         <HeadMeta />
         <link rel="stylesheet" href={pageStyles} />
-        <script type="module" src={bundleURL} />
-        {imports.map(v => (
-          <link rel="preload" as="script" href={v} crossOrigin="" />
-        ))}
+        <script type="module" async src={analyticsBundleURL}></script>
       </head>
       <body>
         <header class={$hero}>
