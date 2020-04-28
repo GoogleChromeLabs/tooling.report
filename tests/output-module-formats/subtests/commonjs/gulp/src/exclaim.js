@@ -10,10 +10,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { logCaps } from './utils.js';
-
-async function main() {
-  const { exclaim } = await import('./exclaim.js');
-  logCaps(exclaim('This is index'));
-}
-main();
+exports.exclaim = function(msg) {
+  return msg + '!';
+};
