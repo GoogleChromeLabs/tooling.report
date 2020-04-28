@@ -42,8 +42,8 @@ const DataGrid: FunctionalComponent<Props> = ({
                 <span class={$column}>
                   <span
                     data-tool={subject}
-                    title={test.html}
                     data-result={result.meta.result}
+                    // title={test.html}
                     class={$dot}
                   ></span>
                 </span>
@@ -56,7 +56,7 @@ const DataGrid: FunctionalComponent<Props> = ({
                       <span
                         data-tool={tool}
                         data-result={test.results[tool].meta.result}
-                        title={test.html}
+                        // title={test.html}
                         class={$dot}
                       ></span>
                     ),
