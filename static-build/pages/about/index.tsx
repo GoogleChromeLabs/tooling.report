@@ -38,7 +38,7 @@ interface Props {}
 
 const AboutPage: FunctionalComponent<Props> = () => {
   return (
-    <html>
+    <html lang="en">
       <head>
         <title>{`tooling.report: About`}</title>
         <HeadMeta />
