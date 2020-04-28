@@ -58,6 +58,7 @@
   width: var(--spacing-3);
   height: var(--spacing-3);
   background: var(--test-skip);
+  border: 2px solid var(--test-skip);
   border-radius: 50%;
 
   &[data-result='pass'] {
