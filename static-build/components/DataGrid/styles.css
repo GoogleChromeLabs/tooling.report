@@ -63,6 +63,7 @@
 
   &[data-result='pass'] {
     background: var(--test-pass);
+    border-color: var(--test-pass);
   }
 
   &[data-result='partial'] {
