@@ -79,7 +79,8 @@
   }
 
   &[data-result='fail'] {
-    background: var(--test-fail);
+    background: white;
+    border-color: var(--test-fail);
   }
 }
 
