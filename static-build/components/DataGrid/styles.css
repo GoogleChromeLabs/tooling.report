@@ -38,6 +38,10 @@
   @media (min-width: 1200px) {
     padding-right: var(--spacing-4);
   }
+
+  & > a {
+    color: var(--vivid-darker-blue);
+  }
 }
 
 .column {

@@ -68,9 +68,10 @@ function renderSummary(tests: Tests): JSX.Element {
 
 const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
   return (
-    <html>
+    <html lang="en">
       <head>
         <title>tooling.report</title>
+        <meta name="description" content="TODO: site description" />
         <HeadMeta />
         <link rel="stylesheet" href={pageStyles} />
         <script type="module" async src={analyticsBundleURL}></script>

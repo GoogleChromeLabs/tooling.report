@@ -39,9 +39,10 @@ interface Props {}
 
 const AboutPage: FunctionalComponent<Props> = () => {
   return (
-    <html>
+    <html lang="en">
       <head>
         <title>{`tooling.report: About`}</title>
+        <meta name="description" content="About this site" />
         <HeadMeta />
         <link rel="stylesheet" href={pageStyles} />
         <script type="module" async src={analyticsBundleURL}></script>
