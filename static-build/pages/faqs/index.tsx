@@ -13,6 +13,7 @@
 
 import { h, FunctionalComponent, Fragment } from 'preact';
 import pageStyles from 'css-bundle:./styles.css';
+import analyticsBundleURL from 'client-bundle:client/analytics/index.js';
 import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
 import Footer from '../../components/Footer';
@@ -41,6 +42,7 @@ const FAQPage: FunctionalComponent<Props> = ({ faqs }) => {
         <title>{`tooling.report: About`}</title>
         <HeadMeta />
         <link rel="stylesheet" href={pageStyles} />
+        <script type="module" async src={analyticsBundleURL}></script>
       </head>
       <body>
         <header>
