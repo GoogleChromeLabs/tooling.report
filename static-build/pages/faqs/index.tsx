@@ -20,14 +20,13 @@ import Footer from 'static-build/components/Footer';
 import HeaderLinkList from 'static-build/components/HeaderLinkList';
 import { WalkerHero } from 'static-build/components/Heroes';
 import BreadCrumbs from 'static-build/components/BreadCrumbs';
+import faqs from './faqs';
 
 import { $heroText, $heroImage } from './styles.css';
 
-interface Props {
-  faqs: FAQItem[];
-}
+interface Props {}
 
-const FAQPage: FunctionalComponent<Props> = ({ faqs }) => {
+const FAQPage: FunctionalComponent<Props> = () => {
   return (
     <html lang="en">
       <head>
@@ -53,14 +52,12 @@ const FAQPage: FunctionalComponent<Props> = ({ faqs }) => {
           </section>
         </header>
         <main>
-          {faqs
-            .sort((a, b) => a.meta.order - b.meta.order)
-            .map(item => (
-              <Fragment>
-                <h2>{item.meta.question}</h2>
-                <div dangerouslySetInnerHTML={{ __html: item.html }} />
-              </Fragment>
-            ))}
+          {Object.entries(faqs).map(([title, content]) => (
+            <Fragment>
+              <h2>{title}</h2>
+              {content}
+            </Fragment>
+          ))}
         </main>
         <Footer />
       </body>
