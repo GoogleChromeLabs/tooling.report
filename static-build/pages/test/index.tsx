@@ -82,11 +82,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
 
           <ul class={$testResultList}>
             {Object.entries(test.results).map(([subject, result]) => (
-              <TestResultSnippet
-                name={subject}
-                result={result.meta.result}
-                link={githubLink(result.repositoryPath)}
-              />
+              <TestResultSnippet name={subject} result={result.meta.result} />
             ))}
           </ul>
 
