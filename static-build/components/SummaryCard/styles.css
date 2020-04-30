@@ -1,6 +1,6 @@
 .summaryCard {
-  background: white;
-  border: 1px solid var(--light-blue);
+  background: var(--bg);
+  border: 1px solid var(--card-border);
   display: block;
   border-radius: 20px;
   box-shadow: var(--card-shadow);

@@ -3,10 +3,10 @@
   top: var(--spacing-3);
   z-index: 2;
 
-  background: white;
+  background: var(--bg);
   display: flex;
   padding: var(--spacing-3) 0;
-  border: 1px solid var(--ice-blue);
+  border: 1px solid var(--card-border);
   border-radius: var(--spacing-2);
   box-shadow: 0 10px 45px -25px hsl(var(--denim-blue-hsl) / 70%);
   overflow-x: hidden;

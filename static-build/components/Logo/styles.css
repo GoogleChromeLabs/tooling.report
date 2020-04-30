@@ -19,3 +19,9 @@
   color: var(--backpack-blue);
   font-weight: var(--font-weight--thin);
 }
+
+@media (prefers-color-scheme: dark) {
+  .report {
+    color: var(--sky-blue);
+  }
+}

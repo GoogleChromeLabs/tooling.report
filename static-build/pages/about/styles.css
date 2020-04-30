@@ -100,3 +100,9 @@ main {
     align-self: initial;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .heroImage {
+    background: var(--teal-blue);
+  }
+}

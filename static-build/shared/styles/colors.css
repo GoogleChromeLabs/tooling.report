@@ -23,6 +23,10 @@
   --background-gray-offset: #dae1e6;
   --text-gray: hsl(0 0% 10%);
 
+  /* General Color */
+  --bg: white;
+  --card-border: var(--light-blue);
+
   /* Shadows */
   --denim-blue-hsl: 206 36% 51%;
   --card-shadow: 0 8px 2px hsl(var(--denim-blue-hsl) / 2%),
@@ -34,4 +38,16 @@
     0 60px 10px hsl(var(--denim-blue-hsl) / 5%),
     0 100px 20px hsl(var(--denim-blue-hsl) / 6%);
   --fab-shadow: 0 5px 10px hsl(var(--denim-blue-hsl) / 20%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #254256;
+    --background-gray: #0a2133;
+    --background-gray-offset: #143044;
+    --card-border: var(--vivid-darker-blue);
+
+    /* Shadows */
+    --denim-blue-hsl: 206 36% 0%;
+  }
 }

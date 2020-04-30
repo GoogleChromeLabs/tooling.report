@@ -60,3 +60,13 @@ figure {
 small {
   color: var(--backpack-blue);
 }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: var(--light-blue);
+  }
+
+  a {
+    color: var(--sky-blue);
+  }
+}

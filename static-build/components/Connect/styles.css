@@ -77,3 +77,9 @@
     margin-top: var(--spacing-4);
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .message a {
+    color: var(--sky-blue);
+  }
+}

@@ -92,7 +92,7 @@ main {
   font-size: 120px;
   text-decoration: none;
   background: white;
-  border: 1px solid var(--light-blue);
+  border: 1px solid var(--card-border);
   color: var(--light-blue);
   border-radius: 20px;
   box-shadow: var(--card-shadow);
@@ -123,5 +123,11 @@ main {
     li {
       margin: var(--spacing-3);
     }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .heroImage {
+    background: var(--teal-blue);
   }
 }

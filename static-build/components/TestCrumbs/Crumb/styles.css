@@ -35,7 +35,7 @@
 
   & > span:first-of-type {
     border-radius: 50%;
-    border: 1px solid var(--light-blue);
+    border: 1px solid var(--card-border);
     width: var(--spacing-5);
     height: var(--spacing-5);
     display: flex;

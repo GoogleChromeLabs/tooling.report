@@ -102,3 +102,9 @@
     margin: var(--spacing-3) 0;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .sectionHeader {
+    color: var(--light-blue);
+  }
+}

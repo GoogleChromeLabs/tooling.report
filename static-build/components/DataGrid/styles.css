@@ -14,7 +14,7 @@
   display: flex;
   align-items: flex-start;
   flex: 1;
-  background: white;
+  background: var(--bg);
   padding: var(--spacing-2) 0;
 
   & > * {
@@ -54,7 +54,7 @@
   align-content: center;
 
   &:not(:last-child) {
-    border-right: 1px solid var(--ice-blue);
+    border-right: 1px solid var(--background-gray);
   }
 }
 
@@ -100,5 +100,11 @@
       padding-right: var(--spacing-3);
       justify-content: flex-start;
     }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .aside a {
+    color: var(--sky-blue);
   }
 }

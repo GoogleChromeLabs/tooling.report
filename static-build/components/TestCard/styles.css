@@ -5,8 +5,8 @@
   justify-content: center;
 
   a {
-    background: white;
-    border: 1px solid var(--light-blue);
+    background: var(--bg);
+    border: 1px solid var(--card-border);
     border-radius: var(--card-radius);
     box-shadow: var(--card-shadow);
     padding: var(--spacing-5);
@@ -30,7 +30,7 @@
 .testCard a {
   &:not(:visited) {
     .checkbox {
-      background: white;
+      background: var(--bg);
     }
   }
 
@@ -54,7 +54,7 @@
   height: 24px;
   z-index: 1;
   border-radius: 50%;
-  border: 2px solid white;
+  border: 2px solid var(--bg);
 }
 
 .subTestCard {
@@ -69,8 +69,8 @@
     width: 100%;
     height: 100%;
     z-index: 0;
-    background: white;
-    border: 1px solid var(--light-blue);
+    background: var(--bg);
+    border: 1px solid var(--card-border);
     border-radius: var(--card-radius);
     top: 0;
     left: 0;
@@ -156,7 +156,7 @@
   border: 1px solid;
   border-radius: 50%;
   margin: var(--spacing-1);
-  background: white;
+  background: var(--bg);
 }
 
 .testCardIcon[data-result='pass'] {
@@ -177,4 +177,29 @@
 .subtestMeta {
   display: flex;
   align-items: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  .cardTitle,
+  .subText {
+    color: var(--sky-blue);
+  }
+
+  .cardTotal,
+  .testDesc {
+    color: var(--light-blue);
+  }
+
+  .testCard a {
+    &:visited {
+      .checkbox {
+        background-color: var(--backpack-blue);
+      }
+    }
+
+    &:visited {
+      background-color: var(--backpack-blue);
+      box-shadow: none;
+    }
+  }
 }

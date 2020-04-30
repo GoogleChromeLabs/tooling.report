@@ -1,5 +1,5 @@
 header {
-  background: white;
+  background: var(--bg);
   overflow: hidden;
 
   display: flex;

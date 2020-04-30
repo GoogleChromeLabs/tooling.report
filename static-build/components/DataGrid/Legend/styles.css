@@ -3,7 +3,7 @@
 }
 
 .legendCard {
-  background: white;
+  background: var(--bg);
   display: inline-block;
   padding: var(--spacing-3) var(--spacing-4);
   border-radius: var(--spacing-1);
