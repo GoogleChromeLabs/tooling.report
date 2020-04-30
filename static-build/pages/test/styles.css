@@ -125,7 +125,7 @@ main {
   display: block;
   opacity: 0;
   top: var(--spacing-5);
-  font-weight: 400;
+  font-weight: var(--font-weight--normal);
   transition-duration: 0.5s;
   transform: translateX(var(--spacing-5));
 }
