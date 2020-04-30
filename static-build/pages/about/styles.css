@@ -1,6 +1,6 @@
 @import '../../libraries/prism/prism.css';
 @import 'components/TestCard/styles.css';
-@import 'components/TestCrumbs/styles.css';
+@import 'components/BreadCrumbs/styles.css';
 
 main {
   gap: var(--spacing-3);
