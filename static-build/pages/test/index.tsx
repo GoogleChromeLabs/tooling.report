@@ -24,6 +24,7 @@ import TestCrumbs from '../../components/TestCrumbs';
 import TestCard from '../../components/TestCard';
 import TestResultSnippet from '../../components/TestResultSnippet';
 import { LabcoatHero, WalkerHero } from '../../components/Heroes';
+import { $resultSet } from './article.css';
 import {
   $heroImage,
   $heroText,
@@ -86,13 +87,13 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
             ))}
           </ul>
 
-          <div dangerouslySetInnerHTML={{ __html: test.html }}></div>
+          <article dangerouslySetInnerHTML={{ __html: test.html }}></article>
 
           {test.results && (
-            <article>
+            <article class={$resultSet}>
               {Object.entries(test.results).map(([subject, result]) => (
                 <div>
-                  <h1>
+                  <h1 id={subject}>
                     {subject}:{' '}
                     {result.meta.result === 'pass'
                       ? 'Pass'

@@ -7,7 +7,7 @@
 main {
   gap: var(--spacing-5);
   padding: var(--spacing-5) var(--spacing-3);
-  max-width: 1024px;
+  max-width: var(--pageMax);
   margin: 0 auto;
 
   @media (min-width: 480px) {

@@ -1,4 +1,22 @@
 article {
   display: grid;
+  grid-auto-columns: 1fr;
   gap: var(--spacing-4);
+  place-content: center;
+
+  & p {
+    text-align: justify;
+    max-width: 60ch;
+  }
+
+  & > pre[class*='language-'] {
+    justify-self: flex-start;
+    margin-bottom: var(--spacing-6);
+    margin-top: calc(var(--spacing-3) * -1);
+  }
+}
+
+.resultSet > div {
+  display: grid;
+  gap: var(--spacing-3);
 }
