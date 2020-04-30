@@ -11,7 +11,7 @@ for (const nav of navs) {
   nav.addEventListener('change', event => {
     if (ignoreChange) return;
     const target = event.target as HTMLSelectElement;
-    window.location.pathname = target.value;
+    location.pathname = target.value;
   });
 
   nav.addEventListener('keydown', ({ key }) => {
