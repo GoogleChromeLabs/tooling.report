@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "parcel build src/index.js src/profile.js"
+    "build": "rm -rf .parcel-cache && parcel build src/index.js src/profile.js"
   },
   "engines": {
     "browsers": [
