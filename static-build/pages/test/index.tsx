@@ -24,7 +24,13 @@ import TestCrumbs from '../../components/TestCrumbs';
 import TestCard from '../../components/TestCard';
 import TestResultSnippet from '../../components/TestResultSnippet';
 import { LabcoatHero, WalkerHero } from '../../components/Heroes';
-import { $resultSet, $testResultList, $detailPage } from './detail.css';
+import {
+  $resultSet,
+  $resultCard,
+  $testResultList,
+  $detailPage,
+  $explainerPost,
+} from './detail.css';
 import { $collectionPage, $contribCard, $testCardList } from './collection.css';
 import { $heroImage, $heroText } from './styles.css';
 
@@ -102,7 +108,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
               ))}
             </ul>
 
-            <section>
+            <section class={$explainerPost}>
               <h1>Explainer</h1>
               <article
                 dangerouslySetInnerHTML={{ __html: test.html }}
@@ -113,7 +119,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
               <h1>Results</h1>
               <article>
                 {Object.entries(test.results).map(([subject, result]) => (
-                  <div>
+                  <div class={$resultCard}>
                     <h1 id={subject}>
                       {subject}:{' '}
                       {result.meta.result === 'pass'

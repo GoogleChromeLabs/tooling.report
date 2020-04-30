@@ -12,28 +12,46 @@
     padding: var(--spacing-7) var(--spacing-6) var(--spacing-8);
   }
 
-  & article {
-    display: grid;
-    grid-auto-columns: 1fr;
-    gap: var(--spacing-3);
-    place-content: center;
+  & section > h1 {
+    margin-bottom: var(--spacing-3);
+  }
+}
 
-    & p {
-      text-align: justify;
-      max-width: 60ch;
-    }
+.explainerPost > article {
+  display: grid;
+  grid-auto-columns: 1fr;
+  gap: var(--spacing-3);
+  place-content: center;
 
-    & > pre[class*='language-'] {
-      justify-self: flex-start;
-      margin-bottom: var(--spacing-3);
-      margin-top: calc(var(--spacing-2) * -1);
-    }
+  & p {
+    text-align: justify;
+    max-width: 60ch;
+  }
+
+  & > pre[class*='language-'] {
+    justify-self: flex-start;
+    margin-bottom: var(--spacing-3);
+    margin-top: calc(var(--spacing-2) * -1);
   }
 }
 
 .resultSet > article {
   display: grid;
-  gap: var(--spacing-3);
+  gap: var(--spacing-6);
+
+  & p {
+    max-width: initial;
+  }
+}
+
+.resultCard {
+  display: grid;
+  gap: var(--spacing-2);
+  background: white;
+  border: 1px solid var(--light-blue);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  padding: var(--spacing-5);
 }
 
 .testResultList {
@@ -46,6 +64,10 @@
 }
 
 @media (min-width: 600px) {
+  .resultSet > article {
+    margin: 0 calc(var(--spacing-5) * -1);
+  }
+
   .testResultList {
     justify-content: center;
 
