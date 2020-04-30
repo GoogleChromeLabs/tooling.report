@@ -1,13 +1,21 @@
 import { h, FunctionalComponent, Fragment } from 'preact';
 import { $breadcrumbs, $home } from './styles.css';
-import Crumb, { Crumb as CrumbInterface } from './Crumb';
+import Crumb, { Crumb as CrumbInterface, CrumbOption } from './Crumb';
 import { $collection, $iconbutton } from './Crumb/styles.css';
 
 interface Props {
-  crumbs: CrumbInterface[];
+  crumbs: (CrumbInterface | CrumbOption)[];
 }
 
 const BreadCrumbs: FunctionalComponent<Props> = ({ crumbs }) => {
+  const normalizedCrumbs: CrumbInterface[] = crumbs.map(crumb => {
+    // Convert CrumbOption to CrumbInterface
+    if ('title' in crumb) {
+      return { selected: 0, options: [crumb] };
+    }
+    return crumb;
+  });
+
   return (
     <Fragment>
       <nav class={$breadcrumbs} id="breadcrumbs">
@@ -21,7 +29,7 @@ const BreadCrumbs: FunctionalComponent<Props> = ({ crumbs }) => {
           </span>
           <span>Home</span>
         </a>
-        {crumbs.map((crumb, index) => (
+        {normalizedCrumbs.map((crumb, index) => (
           <Crumb crumb={crumb} isLast={index === crumbs.length - 1} />
         ))}
       </nav>

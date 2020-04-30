@@ -41,9 +41,7 @@ const FAQPage: FunctionalComponent<Props> = ({ faqs }) => {
         <header>
           <section>
             <Logo />
-            <BreadCrumbs
-              crumbs={[{ selected: 0, options: [{ title: 'FAQs' }] }]}
-            />
+            <BreadCrumbs crumbs={[{ title: 'FAQs' }]} />
             <div>
               <div class={$heroText}>
                 <HeaderLinkList />
