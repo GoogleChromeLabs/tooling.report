@@ -2,6 +2,7 @@
 @import './article.css';
 @import 'components/TestCard/styles.css';
 @import 'components/TestCrumbs/styles.css';
+@import 'components/TestResultSnippet/styles.css';
 
 main {
   gap: var(--spacing-5);
@@ -103,5 +104,24 @@ main {
     color: var(--sky-blue);
     transform: translateY(-5px);
     box-shadow: var(--card-shadow--active);
+  }
+}
+
+.testResultList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+@media (min-width: 600px) {
+  .testResultList {
+    justify-content: center;
+
+    li {
+      margin: var(--spacing-3);
+    }
   }
 }

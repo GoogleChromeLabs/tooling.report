@@ -4,14 +4,18 @@
   --ice-blue: #e6f4ff;
   --light-blue: #cce9ff;
   --sky-blue: #66bdff;
-  --vivid-blue: #148ae3;
+  --vivid-blue: #127aca;
+  --vivid-darker-blue: #0f66a9;
   --teal-blue: #195380;
   --backpack-blue: #406480;
   --denim-blue: #5689b0;
 
   --test-pass: #7fcc71;
+  --test-pass--text: #0e3307;
   --test-partial: #ffa91f;
+  --test-partial--text: #6f4902;
   --test-fail: #f26969;
+  --test-fail--text: #801111;
   --test-skip: #dedede;
 
   /* Gra|eys */

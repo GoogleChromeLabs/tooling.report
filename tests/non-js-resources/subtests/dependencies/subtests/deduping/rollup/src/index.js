@@ -12,8 +12,6 @@
  */
 import cssURL from 'css:./styles.css';
 import imgURL from 'asset-url:./image.png';
-document.head.insertAdjacentElement(
-  'afterend',
-  `<link rel="stylesheet" href="${cssURL}">`,
-);
-console.log(imgURL);
+import fontURL from 'asset-url:./font.ttf';
+
+console.log({ cssURL, imgURL, fontURL });

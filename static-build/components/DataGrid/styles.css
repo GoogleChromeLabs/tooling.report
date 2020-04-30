@@ -12,6 +12,7 @@
 
 .results {
   display: flex;
+  align-items: flex-start;
   flex: 1;
   background: white;
   padding: var(--spacing-2) 0;
@@ -37,6 +38,10 @@
   @media (min-width: 1200px) {
     padding-right: var(--spacing-4);
   }
+
+  & > a {
+    color: var(--vivid-darker-blue);
+  }
 }
 
 .column {
@@ -58,18 +63,31 @@
   width: var(--spacing-3);
   height: var(--spacing-3);
   background: var(--test-skip);
+  border: 2px solid var(--test-skip);
   border-radius: 50%;
 
   &[data-result='pass'] {
     background: var(--test-pass);
+    border-color: var(--test-pass);
   }
 
   &[data-result='partial'] {
-    background: var(--test-partial);
+    background-image: linear-gradient(
+      90deg,
+      var(--test-partial),
+      50%,
+      var(--test-partial),
+      51%,
+      white,
+      52%,
+      white
+    );
+    border-color: var(--test-partial);
   }
 
   &[data-result='fail'] {
-    background: var(--test-fail);
+    background: white;
+    border-color: var(--test-fail);
   }
 }
 

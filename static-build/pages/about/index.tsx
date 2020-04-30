@@ -13,6 +13,7 @@
 
 import { h, FunctionalComponent } from 'preact';
 import pageStyles from 'css-bundle:./styles.css';
+import analyticsBundleURL from 'client-bundle:client/analytics/index.js';
 import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
 import Footer from '../../components/Footer';
@@ -38,11 +39,13 @@ interface Props {}
 
 const AboutPage: FunctionalComponent<Props> = () => {
   return (
-    <html>
+    <html lang="en">
       <head>
         <title>{`tooling.report: About`}</title>
+        <meta name="description" content="About this site" />
         <HeadMeta />
         <link rel="stylesheet" href={pageStyles} />
+        <script type="module" async src={analyticsBundleURL}></script>
       </head>
       <body>
         <header>
@@ -67,7 +70,7 @@ const AboutPage: FunctionalComponent<Props> = () => {
                 <div>
                   <FirstParagraphOnly content={README} />
                 </div>
-                <HeaderLinkList />
+                <HeaderLinkList home={false} />
               </div>
               <div class={$heroImage}>
                 <WalkerHero />

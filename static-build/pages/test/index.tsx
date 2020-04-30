@@ -12,21 +12,24 @@
  */
 
 import { h, FunctionalComponent } from 'preact';
-import { githubLink } from '../../utils.js';
+import { githubLink, renderIssueLinksForTest } from '../../utils.js';
 import pageStyles from 'css-bundle:./styles.css';
 import bundleURL, { imports } from 'client-bundle:client/test/index.ts';
+import analyticsBundleURL from 'client-bundle:client/analytics/index.js';
 import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
 import Footer from '../../components/Footer';
 import HeaderLinkList from '../../components/HeaderLinkList';
 import TestCrumbs from '../../components/TestCrumbs';
 import TestCard from '../../components/TestCard';
+import TestResultSnippet from '../../components/TestResultSnippet';
 import { LabcoatHero, WalkerHero } from '../../components/Heroes';
 import {
   $heroImage,
   $heroText,
   $testCardList,
   $contribCard,
+  $testResultList,
 } from './styles.css';
 
 interface Props {
@@ -35,15 +38,17 @@ interface Props {
 
 const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
   return (
-    <html>
+    <html lang="en">
       <head>
         <title>{`Tooling.Report: ${test.meta.title}`}</title>
+        <meta name="description" content="Tests page" />
         <HeadMeta />
         <link rel="stylesheet" href={pageStyles} />
         <script type="module" src={bundleURL} />
         {imports.map(v => (
           <link rel="preload" as="script" href={v} crossOrigin="" />
         ))}
+        <script type="module" async src={analyticsBundleURL}></script>
       </head>
       <body>
         <header>
@@ -55,7 +60,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                 <small>feature</small>
                 <h2>{test.meta.title}</h2>
                 <p>TODO: use a description from front matter</p>
-                <HeaderLinkList />
+                <HeaderLinkList home={false} />
               </div>
               <div class={$heroImage}>
                 {test.subTests ? <LabcoatHero /> : <WalkerHero />}
@@ -75,6 +80,18 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
             </section>
           )}
 
+          <ul class={$testResultList}>
+            {Object.entries(test.results).map(([subject, result]) => (
+              <TestResultSnippet
+                name={subject}
+                result={result.meta.result}
+                link={githubLink(result.repositoryPath)}
+              />
+            ))}
+          </ul>
+
+          <div dangerouslySetInnerHTML={{ __html: test.html }}></div>
+
           {test.results && (
             <article>
               {Object.entries(test.results).map(([subject, result]) => (
@@ -91,10 +108,9 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                   <a href={githubLink(result.repositoryPath)}>
                     Inspect the test
                   </a>
-                  {/* {renderIssueLinksForTest(test, subject as BuildTool)} */}
+                  {renderIssueLinksForTest(test, subject as BuildTool)}
                 </div>
               ))}
-              <div dangerouslySetInnerHTML={{ __html: test.html }}></div>
             </article>
           )}
 
