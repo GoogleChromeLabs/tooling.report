@@ -91,7 +91,7 @@ main {
   align-items: center;
   font-size: 120px;
   text-decoration: none;
-  background: white;
+  background: var(--bg);
   border: 1px solid var(--card-border);
   color: var(--light-blue);
   border-radius: 20px;

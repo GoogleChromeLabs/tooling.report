@@ -66,7 +66,13 @@ small {
     color: var(--light-blue);
   }
 
-  a {
+  a,
+  small {
     color: var(--sky-blue);
+  }
+
+  a:hover,
+  a:focus {
+    color: var(--light-blue);
   }
 }

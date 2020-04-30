@@ -83,3 +83,9 @@
   justify-content: flex-end;
   /* will-change: width; TODO note: in the future have the bars animate out from 0% with an intersection observer */
 }
+
+@media (prefers-color-scheme: dark) {
+  .cardTitle {
+    color: var(--sky-blue);
+  }
+}
