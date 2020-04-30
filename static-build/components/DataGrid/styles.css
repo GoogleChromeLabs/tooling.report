@@ -8,6 +8,10 @@
 .row {
   display: flex;
   flex-wrap: wrap;
+
+  @media (min-width: 700px) {
+    background: var(--background-gray-offset);
+  }
 }
 
 .results {
@@ -33,6 +37,7 @@
   @media (min-width: 700px) {
     flex-basis: auto;
     width: calc(var(--section-aside-width) + var(--spacing-3));
+    padding: var(--spacing-2);
   }
 
   @media (min-width: 1200px) {
