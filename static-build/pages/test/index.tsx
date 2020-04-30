@@ -24,14 +24,9 @@ import TestCrumbs from '../../components/TestCrumbs';
 import TestCard from '../../components/TestCard';
 import TestResultSnippet from '../../components/TestResultSnippet';
 import { LabcoatHero, WalkerHero } from '../../components/Heroes';
-import { $resultSet } from './article.css';
-import {
-  $heroImage,
-  $heroText,
-  $testCardList,
-  $contribCard,
-  $testResultList,
-} from './styles.css';
+import { $resultSet, $testResultList, $detailPage } from './detail.css';
+import { $collectionPage, $contribCard, $testCardList } from './collection.css';
+import { $heroImage, $heroText } from './styles.css';
 
 interface Props {
   test: Test;
@@ -69,8 +64,9 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
             </div>
           </section>
         </header>
-        <main>
-          {test.subTests && (
+
+        {test.subTests && (
+          <main class={$collectionPage}>
             <section>
               <h3>Capabilities & Verification</h3>
               <p>
@@ -79,39 +75,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                 what, why and how of the test.
               </p>
             </section>
-          )}
 
-          <ul class={$testResultList}>
-            {Object.entries(test.results).map(([subject, result]) => (
-              <TestResultSnippet name={subject} result={result.meta.result} />
-            ))}
-          </ul>
-
-          <article dangerouslySetInnerHTML={{ __html: test.html }}></article>
-
-          {test.results && (
-            <article class={$resultSet}>
-              {Object.entries(test.results).map(([subject, result]) => (
-                <div>
-                  <h1 id={subject}>
-                    {subject}:{' '}
-                    {result.meta.result === 'pass'
-                      ? 'Pass'
-                      : result.meta.result === 'fail'
-                      ? 'Fail'
-                      : 'So-so'}
-                  </h1>
-                  <div dangerouslySetInnerHTML={{ __html: result.html }}></div>
-                  <a href={githubLink(result.repositoryPath)}>
-                    Inspect the test
-                  </a>
-                  {renderIssueLinksForTest(test, subject as BuildTool)}
-                </div>
-              ))}
-            </article>
-          )}
-
-          {test.subTests && (
             <section>
               <ul class={$testCardList}>
                 {Object.entries(test.subTests).map(([path, test]) => (
@@ -127,8 +91,50 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                 </li>
               </ul>
             </section>
-          )}
-        </main>
+          </main>
+        )}
+
+        {!test.subTests && (
+          <main class={$detailPage}>
+            <ul class={$testResultList}>
+              {Object.entries(test.results).map(([subject, result]) => (
+                <TestResultSnippet name={subject} result={result.meta.result} />
+              ))}
+            </ul>
+
+            <section>
+              <h1>Explainer</h1>
+              <article
+                dangerouslySetInnerHTML={{ __html: test.html }}
+              ></article>
+            </section>
+
+            <section class={$resultSet}>
+              <h1>Results</h1>
+              <article>
+                {Object.entries(test.results).map(([subject, result]) => (
+                  <div>
+                    <h1 id={subject}>
+                      {subject}:{' '}
+                      {result.meta.result === 'pass'
+                        ? 'Pass'
+                        : result.meta.result === 'fail'
+                        ? 'Fail'
+                        : 'So-so'}
+                    </h1>
+                    <div
+                      dangerouslySetInnerHTML={{ __html: result.html }}
+                    ></div>
+                    <a href={githubLink(result.repositoryPath)}>
+                      Inspect the test
+                    </a>
+                    {renderIssueLinksForTest(test, subject as BuildTool)}
+                  </div>
+                ))}
+              </article>
+            </section>
+          </main>
+        )}
         <Footer />
       </body>
     </html>

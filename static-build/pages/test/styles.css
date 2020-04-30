@@ -1,23 +1,9 @@
 @import '../../libraries/prism/prism.css';
-@import './article.css';
+@import './detail.css';
+@import './collection.css';
 @import 'components/TestCard/styles.css';
 @import 'components/TestCrumbs/styles.css';
 @import 'components/TestResultSnippet/styles.css';
-
-main {
-  gap: var(--spacing-5);
-  padding: var(--spacing-5) var(--spacing-3);
-  max-width: var(--pageMax);
-  margin: 0 auto;
-
-  @media (min-width: 480px) {
-    padding: var(--spacing-5);
-  }
-
-  @media (min-width: 822px) {
-    padding: var(--spacing-7) var(--spacing-6) var(--spacing-8);
-  }
-}
 
 .heroImage {
   background: var(--ice-blue);
@@ -70,58 +56,5 @@ main {
 
   .heroText {
     align-self: initial;
-  }
-}
-
-.testCardList {
-  display: grid;
-  gap: var(--spacing-5);
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.contribCard {
-  font-family: monospace;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 120px;
-  text-decoration: none;
-  background: white;
-  border: 1px solid var(--light-blue);
-  color: var(--light-blue);
-  border-radius: 20px;
-  box-shadow: var(--card-shadow);
-  will-change: box-shadow;
-  transform-style: preserve-3d;
-
-  &:hover,
-  &:focus {
-    color: var(--sky-blue);
-    transform: translateY(-5px);
-    box-shadow: var(--card-shadow--active);
-  }
-}
-
-.testResultList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-@media (min-width: 600px) {
-  .testResultList {
-    justify-content: center;
-
-    li {
-      margin: var(--spacing-3);
-    }
   }
 }
