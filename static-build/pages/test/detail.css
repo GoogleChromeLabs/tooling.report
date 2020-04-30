@@ -32,6 +32,9 @@
     justify-self: flex-start;
     margin-bottom: var(--spacing-3);
     margin-top: calc(var(--spacing-2) * -1);
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
   }
 }
 
