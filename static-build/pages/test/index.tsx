@@ -30,6 +30,8 @@ import {
   $testCardList,
   $contribCard,
   $testResultList,
+  $plus,
+  $desc,
 } from './styles.css';
 
 interface Props {
@@ -125,7 +127,8 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                     class={$contribCard}
                     href="https://github.com/GoogleChromeLabs/tooling.report/blob/master/CONTRIBUTING.md"
                   >
-                    +
+                    <span class={$plus}>+</span>
+                    <span class={$desc}>Contribute Tests</span>
                   </a>
                 </li>
               </ul>

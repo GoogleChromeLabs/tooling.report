@@ -83,17 +83,14 @@ main {
 }
 
 .contribCard {
-  font-family: monospace;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 120px;
   text-decoration: none;
   background: white;
   border: 1px solid var(--light-blue);
-  color: var(--light-blue);
   border-radius: 20px;
   box-shadow: var(--card-shadow);
   will-change: box-shadow;
@@ -101,10 +98,36 @@ main {
 
   &:hover,
   &:focus {
-    color: var(--sky-blue);
     transform: translateY(-5px);
     box-shadow: var(--card-shadow--active);
+
+    .plus {
+      color: var(--sky-blue);
+    }
+
+    .desc {
+      opacity: 1;
+      color: var(--vivid-blue);
+      transform: translateX(0);
+    }
   }
+}
+
+.plus {
+  color: var(--light-blue);
+  font-size: 120px;
+  font-family: monospace;
+}
+
+.desc {
+  color: var(--light-blue);
+  position: absolute;
+  display: block;
+  opacity: 0;
+  top: var(--spacing-5);
+  font-weight: 400;
+  transition-duration: 0.5s;
+  transform: translateX(var(--spacing-5));
 }
 
 .testResultList {
