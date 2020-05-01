@@ -20,7 +20,7 @@ import Footer from 'static-build/components/Footer';
 import HeaderLinkList from 'static-build/components/HeaderLinkList';
 import { WalkerHero } from 'static-build/components/Heroes';
 import BreadCrumbs from 'static-build/components/BreadCrumbs';
-import faqs from './faqs';
+import faqs from 'faqs:';
 
 import { $heroText, $heroImage } from './styles.css';
 
@@ -52,10 +52,10 @@ const FAQPage: FunctionalComponent<Props> = () => {
           </section>
         </header>
         <main>
-          {Object.entries(faqs).map(([title, content]) => (
+          {faqs.map(({ title, html }) => (
             <Fragment>
               <h2>{title}</h2>
-              {content}
+              <div dangerouslySetInnerHTML={{ __html: html }} />
             </Fragment>
           ))}
         </main>
