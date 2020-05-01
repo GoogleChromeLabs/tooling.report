@@ -36,7 +36,7 @@ const BreadCrumbs: FunctionalComponent<Props> = ({ crumbs }) => {
       <script
         dangerouslySetInnerHTML={{
           __html:
-            'document.currentScript.previousElementSibling.scrollLeft = Number.MAX_SAFE_INTEGER;',
+            'breadcrumbs.scrollLeft = Number.MAX_SAFE_INTEGER;',
         }}
       />
     </Fragment>
