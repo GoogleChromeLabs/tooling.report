@@ -24,9 +24,9 @@ import resolveDirsPlugin from './lib/resolve-dirs-plugin';
 import runScript from './lib/run-script';
 import markdownPlugin from './lib/markdown-plugin';
 import testDataPlugin from './lib/test-data-plugin';
+import faqsPlugin from './lib/faqs-plugin';
 import * as config from './config.js';
 import metadataProcessor from './lib/markdown-processor';
-import faqsPlugin from './lib/faqs-plugin';
 
 function resolveFileUrl({ fileName }) {
   return JSON.stringify(fileName.replace(/^static\//, '/'));
