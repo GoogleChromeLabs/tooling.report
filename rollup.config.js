@@ -26,7 +26,7 @@ import markdownPlugin from './lib/markdown-plugin';
 import testDataPlugin from './lib/test-data-plugin';
 import * as config from './config.js';
 import metadataProcessor from './lib/markdown-processor';
-import faqPlugin from './lib/faq-plugin';
+import faqsPlugin from './lib/faqs-plugin';
 
 function resolveFileUrl({ fileName }) {
   return JSON.stringify(fileName.replace(/^static\//, '/'));
@@ -80,7 +80,7 @@ export default async function({ watch }) {
       cssPlugin(),
       nodeExternalPlugin(),
       testDataPlugin(),
-      faqPlugin(),
+      faqsPlugin(),
       runScript(dir + '/index.js'),
     ],
   };
