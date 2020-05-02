@@ -18,7 +18,6 @@ import TestPage from './pages/test';
 import AboutPage from './pages/about';
 import FAQPage from './pages/faqs';
 import testData from 'test-data:';
-import faqs from 'faqs:./faqs/';
 
 interface Output {
   [outputPath: string]: string;
@@ -26,7 +25,7 @@ interface Output {
 const toOutput: Output = {
   'index.html': renderPage(<IndexPage tests={testData} />),
   'about/index.html': renderPage(<AboutPage />),
-  'faqs/index.html': renderPage(<FAQPage faqs={faqs} />),
+  'faqs/index.html': renderPage(<FAQPage />),
   'robots.txt': `User-agent: *
   Disallow: /`,
 };
