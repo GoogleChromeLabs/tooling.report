@@ -10,13 +10,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import importMetaFlagsPlugin from './lib/import-meta-flags-plugin';
-import { terser } from 'rollup-plugin-terser';
+import replace from '@rollup/plugin-replace';
 
 export default [
   {
     input: 'src/index.js',
-    plugins: [importMetaFlagsPlugin({ isServer: true }), terser()],
+    plugins: [replace({ IS_SERVER: true })],
     output: {
       dir: 'build/server',
       format: 'esm',
@@ -24,7 +23,7 @@ export default [
   },
   {
     input: 'src/index.js',
-    plugins: [importMetaFlagsPlugin({ isServer: false }), terser()],
+    plugins: [replace({ IS_SERVER: false })],
     output: {
       dir: 'build/client',
       format: 'esm',

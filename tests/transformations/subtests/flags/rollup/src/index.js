@@ -10,7 +10,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-if (import.meta.isServer) {
+if (IS_SERVER) {
   console.log('This is running on the server');
 } else {
   console.log('This is running on the client');
