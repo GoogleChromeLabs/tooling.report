@@ -10,12 +10,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import constsPlugin from './lib/consts-plugin';
+import replace from '@rollup/plugin-replace';
 
 export default [
   {
     input: 'src/index.js',
-    plugins: [constsPlugin({ isServer: true })],
+    plugins: [replace({ IS_SERVER: true })],
     output: {
       dir: 'build/server',
       format: 'esm',
@@ -23,7 +23,7 @@ export default [
   },
   {
     input: 'src/index.js',
-    plugins: [constsPlugin({ isServer: false })],
+    plugins: [replace({ IS_SERVER: false })],
     output: {
       dir: 'build/client',
       format: 'esm',
