@@ -10,12 +10,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import constsPlugin from './lib/consts-plugin';
+import importMetaFlagsPlugin from './lib/import-meta-flags-plugin';
+import { terser } from 'rollup-plugin-terser';
 
 export default [
   {
     input: 'src/index.js',
-    plugins: [constsPlugin({ isServer: true })],
+    plugins: [importMetaFlagsPlugin({ isServer: true }), terser()],
     output: {
       dir: 'build/server',
       format: 'esm',
@@ -23,7 +24,7 @@ export default [
   },
   {
     input: 'src/index.js',
-    plugins: [constsPlugin({ isServer: false })],
+    plugins: [importMetaFlagsPlugin({ isServer: false }), terser()],
     output: {
       dir: 'build/client',
       format: 'esm',

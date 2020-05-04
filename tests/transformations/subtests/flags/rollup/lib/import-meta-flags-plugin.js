@@ -10,24 +10,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const moduleStart = 'consts:';
-
-export default function constsPlugin(consts) {
+export default function importMetaFlagsPlugin(consts) {
   return {
-    name: 'consts-plugin',
-    resolveId(id) {
-      if (!id.startsWith(moduleStart)) return;
-      return id;
-    },
-    load(id) {
-      if (!id.startsWith(moduleStart)) return;
-      const key = id.slice(moduleStart.length);
-
-      if (!(key in consts)) {
-        throw Error(`Cannot find const: ${key}`);
-      }
-
-      return `export default ${JSON.stringify(consts[key])}`;
+    name: 'import-meta-flags-plugin',
+    resolveImportMeta(property) {
+      if (!consts.hasOwnProperty(property)) return;
+      return JSON.stringify(consts[property]);
     },
   };
 }
