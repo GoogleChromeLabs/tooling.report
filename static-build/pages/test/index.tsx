@@ -27,6 +27,7 @@ import { LabcoatHero, WalkerHero } from '../../components/Heroes';
 import {
   $resultSet,
   $resultCard,
+  $results,
   $testResultList,
   $detailPage,
   $explainerPost,
@@ -109,33 +110,34 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
             </ul>
 
             <section class={$explainerPost}>
-              <h1>Explainer</h1>
+              <h1>The Test</h1>
               <article
                 dangerouslySetInnerHTML={{ __html: test.html }}
               ></article>
             </section>
 
             <section class={$resultSet}>
-              <h1>Results</h1>
+              <h1>The Results</h1>
               <article>
                 {Object.entries(test.results).map(([subject, result]) => (
-                  <div class={$resultCard}>
-                    <h1 id={subject}>
-                      {subject}:{' '}
+                  <details>
+                    <summary id={subject}>
+                      <b>{subject}</b>:{' '}
                       {result.meta.result === 'pass'
-                        ? 'Pass'
+                        ? 'pass'
                         : result.meta.result === 'fail'
-                        ? 'Fail'
-                        : 'So-so'}
-                    </h1>
-                    <div
-                      dangerouslySetInnerHTML={{ __html: result.html }}
-                    ></div>
-                    <a href={githubLink(result.repositoryPath)}>
-                      Inspect the test
-                    </a>
-                    {renderIssueLinksForTest(test, subject as BuildTool)}
-                  </div>
+                        ? 'fail'
+                        : 'so-so'}
+                      <a href={githubLink(result.repositoryPath)}>Source</a>
+                    </summary>
+                    <div class={$resultCard}>
+                      <div
+                        class={$results}
+                        dangerouslySetInnerHTML={{ __html: result.html }}
+                      ></div>
+                      {renderIssueLinksForTest(test, subject as BuildTool)}
+                    </div>
+                  </details>
                 ))}
               </article>
             </section>
