@@ -17,6 +17,15 @@
   background: white;
   padding: var(--spacing-2) 0;
 
+  @media (prefers-reduced-motion: no-preference) {
+    transition: transform 0.3s ease;
+  }
+
+  &:focus-within,
+  &:hover {
+    background-color: var(--background-gray);
+  }
+
   & > * {
     padding-left: var(--spacing-1);
     padding-right: var(--spacing-1);
@@ -29,13 +38,12 @@
   box-sizing: border-box;
   padding: var(--spacing-2);
   padding-left: 0;
+  text-align: end;
+  font-size: 1.1rem;
 
   @media (min-width: 700px) {
     flex-basis: auto;
     width: calc(var(--section-aside-width) + var(--spacing-3));
-  }
-
-  @media (min-width: 1200px) {
     padding-right: var(--spacing-4);
   }
 
@@ -100,5 +108,9 @@
       padding-right: var(--spacing-3);
       justify-content: flex-start;
     }
+  }
+
+  .dot {
+    box-sizing: border-box;
   }
 }

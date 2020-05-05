@@ -18,7 +18,8 @@ import {
   $summaryList,
   $sectionHeader,
   $hero,
-  $message,
+  $overviewHeader,
+  $overviewGrid,
   $heroImage,
 } from './styles.css';
 
@@ -118,9 +119,9 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
             </div>
           </section>
 
-          <section id="overview">
+          <section id="overview" class={$overviewGrid}>
             <a href="#overview">
-              <h3 class={$sectionHeader}>Overview</h3>
+              <h2 class={`${$overviewHeader} ${$sectionHeader}`}>Overview</h2>
             </a>
             <DataGrid tests={tests} basePath="/" />
           </section>

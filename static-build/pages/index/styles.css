@@ -12,6 +12,14 @@
   }
 }
 
+.overviewHeader {
+  font-size: 2rem;
+}
+
+.overviewGrid a {
+  font-weight: bold;
+}
+
 .sectionHeader {
   display: inline-block;
   text-transform: capitalize;
