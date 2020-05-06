@@ -1,9 +1,15 @@
 {
   "scripts": {
-    "start": "parcel build src/index.js && sed -i.bak '5 s/dist/dist2/' package.json && parcel build src2/index.js && sed -i.bak '5 s/dist2/dist/' package.json"
+    "build": "npm-run-all before build:* after",
+    "before": "rm -rf build dist src && mkdir build",
+    "build:1": "cp -r src1 src && parcel build src/index.js && mv dist build/1; rm -rf src dist",
+    "build:2": "cp -r src2 src && parcel build src/index.js && mv dist build/2; rm -rf src dist",
+    "after": "rm -rf .parcel-cache"
   },
-  "main": "dist/index.js",
   "dependencies": {
     "parcel": "^2.0.0-alpha.3.2"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
   }
 }

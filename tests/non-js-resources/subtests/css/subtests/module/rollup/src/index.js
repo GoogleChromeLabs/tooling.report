@@ -10,16 +10,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import cssURL, { className1, className2 } from 'css:./styles.css';
+import cssURL, { $className1, $className2 } from 'css:./styles.css';
 document.head.insertAdjacentElement(
   'afterend',
   `<link rel="stylesheet" href="${cssURL}">`,
 );
 document.body.insertAdjacentElement(
   'afterend',
-  `<div class="${className1}"></div>`,
+  `<div class="${$className1}"></div>`,
 );
 document.body.insertAdjacentElement(
   'afterend',
-  `<div class="${className2}"></div>`,
+  `<div class="${$className2}"></div>`,
 );

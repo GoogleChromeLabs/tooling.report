@@ -1,6 +1,7 @@
 ---
 title: Splitting modules between multiple entries
 importance: 1
+shortDesc: 'Can modules be split along their exports used by each entry bundle?'
 ---
 
 Can the build tool split a single module when subsets of its exports are used by multiple entries?

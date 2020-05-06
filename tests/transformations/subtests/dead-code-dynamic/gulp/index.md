@@ -3,4 +3,4 @@ result: fail
 issue: 'N/A'
 ---
 
-(This test uses Browserify) `tinyify` is a browserify plugin that runs various optimizations which includes dead code elimination; however, it does not eliminate dead code from dynamically imported module this is because Browserify does not support dynamic require.
+[tinyify](https://www.npmjs.com/package/tinyify) is a Browserify plugin that runs various optimizations which includes dead code elimination. However, Browserify does not support lazy-loading, so it cannot complete this test.

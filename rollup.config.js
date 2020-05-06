@@ -24,6 +24,7 @@ import resolveDirsPlugin from './lib/resolve-dirs-plugin';
 import runScript from './lib/run-script';
 import markdownPlugin from './lib/markdown-plugin';
 import testDataPlugin from './lib/test-data-plugin';
+import faqsPlugin from './lib/faqs-plugin';
 import * as config from './config.js';
 import metadataProcessor from './lib/markdown-processor';
 
@@ -70,7 +71,7 @@ export default async function({ watch }) {
         {
           dir,
           format: 'esm',
-          chunkFileNames: staticPath,
+          chunkFileNames: staticPath.replace('[extname]', '.js'),
           entryFileNames: staticPath.replace('[extname]', '.js'),
         },
         resolveFileUrl,
@@ -79,6 +80,7 @@ export default async function({ watch }) {
       cssPlugin(),
       nodeExternalPlugin(),
       testDataPlugin(),
+      faqsPlugin(),
       runScript(dir + '/index.js'),
     ],
   };

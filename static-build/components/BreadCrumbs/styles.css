@@ -1,0 +1,70 @@
+@import './Crumb/styles.css';
+
+.breadcrumbs {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  position: relative;
+  font-size: var(--font-size--detail);
+  margin-bottom: var(--spacing-6);
+  margin-left: calc(calc(var(--spacing-6) + var(--spacing-2)) * -1);
+  padding-left: var(--spacing-6);
+  padding-bottom: var(--spacing-3);
+
+  max-width: max-content;
+  overflow-x: auto;
+  overscroll-behavior: contain;
+
+  /* hack around https://bugs.chromium.org/p/chromium/issues/detail?id=1069614 */
+  & > *:last-child::after {
+    content: '';
+    display: inline-block;
+    width: var(--spacing-2);
+  }
+
+  @media (max-width: 822px) {
+    padding: 0 var(--spacing-3) var(--spacing-3);
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-left: var(--spacing-3);
+    padding-right: var(--spacing-3);
+  }
+}
+
+.home {
+  @media (min-width: 822px) {
+    margin-left: -2.5rem;
+    gap: 0;
+  }
+
+  & svg {
+    width: 55%;
+    fill: var(--vivid-blue);
+  }
+
+  & > :first-child {
+    display: none;
+
+    @media (min-width: 822px) {
+      display: inline-flex;
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .breadcrumbs {
+    background-image: 
+	
+    /* Shadows */ linear-gradient(to right, white, white),
+      linear-gradient(to right, white, white),
+      /* Shadow covers */
+        linear-gradient(to right, var(--light-blue), transparent),
+      linear-gradient(to left, var(--light-blue), transparent);
+
+    background-position: left center, right center, left center, right center;
+    background-repeat: no-repeat;
+    background-size: var(--spacing-3) 100%, var(--spacing-3) 100%, 14px 100%,
+      14px 100%;
+    background-attachment: local, local, scroll, scroll;
+  }
+}

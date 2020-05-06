@@ -1,3 +1,7 @@
-.cta {
-  border: 1px solid red;
+html {
+  background: green;
+}
+
+h1 {
+  color: white;
 }

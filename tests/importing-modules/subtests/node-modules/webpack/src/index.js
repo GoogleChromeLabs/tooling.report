@@ -10,7 +10,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {
-  openDB
-} from 'idb';
+import { openDB } from 'idb';
 console.log(openDB('lol', 1));

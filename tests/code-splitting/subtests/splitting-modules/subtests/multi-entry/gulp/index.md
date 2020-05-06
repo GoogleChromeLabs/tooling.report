@@ -1,7 +1,7 @@
 ---
-result: partial
+result: fail
 ---
 
-`factor-bundle` does no do split of a "common" file, it simply take multipul input and puts common functions into one. However, if the developer knows the dependency structure, one may write a multipul gulp tasks.
+Browserify's code-splitter, [factor-bundle], will chunk out common dependencies but won’t split those dependencies even when possible.
 
-TODO: discuss if this should be fail
+[factor-bundle]: https://github.com/browserify/factor-bundle

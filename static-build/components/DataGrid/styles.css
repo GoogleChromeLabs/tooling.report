@@ -1,0 +1,104 @@
+@import './Legend/styles.css';
+
+.datagrid {
+  display: grid;
+  gap: var(--spacing-1);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.results {
+  display: flex;
+  align-items: flex-start;
+  flex: 1;
+  background: white;
+  padding: var(--spacing-2) 0;
+
+  & > * {
+    padding-left: var(--spacing-1);
+    padding-right: var(--spacing-1);
+    justify-content: center;
+  }
+}
+
+.aside {
+  flex-basis: 100%;
+  box-sizing: border-box;
+  padding: var(--spacing-2);
+  padding-left: 0;
+
+  @media (min-width: 700px) {
+    flex-basis: auto;
+    width: calc(var(--section-aside-width) + var(--spacing-3));
+  }
+
+  @media (min-width: 1200px) {
+    padding-right: var(--spacing-4);
+  }
+
+  & > a {
+    color: var(--vivid-darker-blue);
+  }
+}
+
+.column {
+  flex: 1;
+  display: grid;
+  gap: var(--spacing-2);
+  grid-template-columns: repeat(auto-fill, minmax(var(--spacing-3), 1fr));
+  grid-template-rows: var(--spacing-3);
+  justify-items: center;
+  align-content: center;
+
+  &:not(:last-child) {
+    border-right: 1px solid var(--ice-blue);
+  }
+}
+
+.dot {
+  display: inline-block;
+  width: var(--spacing-3);
+  height: var(--spacing-3);
+  background: var(--test-skip);
+  border: 2px solid var(--test-skip);
+  border-radius: 50%;
+
+  &[data-result='pass'] {
+    background: var(--test-pass);
+    border-color: var(--test-pass);
+  }
+
+  &[data-result='partial'] {
+    background-image: linear-gradient(
+      90deg,
+      var(--test-partial),
+      50%,
+      var(--test-partial),
+      51%,
+      white,
+      52%,
+      white
+    );
+    border-color: var(--test-partial);
+  }
+
+  &[data-result='fail'] {
+    background: white;
+    border-color: var(--test-fail);
+  }
+}
+
+@media only screen and (min-width: 550px) {
+  .results {
+    padding: var(--spacing-3) 0;
+
+    & > * {
+      padding-left: var(--spacing-3);
+      padding-right: var(--spacing-3);
+      justify-content: flex-start;
+    }
+  }
+}

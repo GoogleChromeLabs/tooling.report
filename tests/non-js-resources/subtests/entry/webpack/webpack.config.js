@@ -30,24 +30,6 @@ module.exports = {
         test: /\.css$/,
         loader: 'css-loader',
       },
-      // {
-      //   test: /\.html$/,
-      //   loader: [
-      //     'file-loader',
-      //     'extract-loader',
-      //     {
-      //       loader: 'html-loader',
-      //       options: {
-      //         attrs: ['link:href', 'script:src', 'img:src'],
-      //       },
-      //     },
-      //   ],
-      // },
-      // {
-      //   test: /\.js$/,
-      //   loader: 'spawn-loader',
-      //   // compiler: 'main',
-      // },
     ],
   },
 };

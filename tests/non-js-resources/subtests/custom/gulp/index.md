@@ -2,5 +2,4 @@
 result: pass
 ---
 
-This test is same example as binary/arraybuffer test.
-Once you take in a content of the file, you can cook anyway you want suited to your application.
+Browserify has a [static-module](https://www.npmjs.com/package/static-module) plugin that lets you replace values and function calls with arbitrary script at build time. Browserify will also bundle any `require` calls in this replacement, so you can import helper functions _once_, even if they're used in multiple places.

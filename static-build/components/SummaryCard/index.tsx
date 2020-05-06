@@ -10,6 +10,7 @@ import {
   $cardTotal,
   $cardTotalCount,
   $dash,
+  $testsPassed,
 } from './styles.css';
 
 interface Props {
@@ -32,9 +33,7 @@ const SummaryCard: FunctionalComponent<Props> = ({
       <figure class={$summaryCardIcon}>
         <img src={image} alt="" />
       </figure>
-      <a href="#" class={$cardTitle}>
-        {name}
-      </a>
+      <p class={$cardTitle}>{name}</p>
       <div class={$progressSummary}>
         <div class={$progressBar} style={'width:' + percent + '%'}>
           <div class={$progressText}>{percent}%</div>
@@ -46,7 +45,7 @@ const SummaryCard: FunctionalComponent<Props> = ({
           <span class={$dash}>/</span>
           <span class={$cardTotalCount}>{possible}</span>
         </div>
-        <a href="#">Tests Passed</a>
+        <span class={$testsPassed}>Tests Passed</span>
       </div>
     </li>
   );

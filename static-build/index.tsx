@@ -15,14 +15,19 @@ import { h } from 'preact';
 import { renderPage, writeFiles } from './utils';
 import IndexPage from './pages/index';
 import TestPage from './pages/test';
+import AboutPage from './pages/about';
+import FAQPage from './pages/faqs';
 import testData from 'test-data:';
 
 interface Output {
   [outputPath: string]: string;
 }
-
 const toOutput: Output = {
   'index.html': renderPage(<IndexPage tests={testData} />),
+  'about/index.html': renderPage(<AboutPage />),
+  'faqs/index.html': renderPage(<FAQPage />),
+  'robots.txt': `User-agent: *
+  Disallow: /`,
 };
 
 function addTestPages(tests: Tests, basePath = '') {

@@ -11,7 +11,7 @@
  * limitations under the License.
  */
 
-const { src, dest, series } = require('gulp');
+const { src, dest } = require('gulp');
 const browserify = require('browserify');
 const tap = require('gulp-tap');
 const buffer = require('gulp-buffer');
@@ -22,18 +22,13 @@ function filePath() {
     .pipe(
       tap(function(file) {
         file.contents = browserify(file.path)
-          .plugin('urify-emitter', { output: 'build', base: '.' })
+          .plugin('urify-emitter', { output: 'dist/', base: '.' })
           .bundle();
       }),
     )
     .pipe(buffer())
-    .pipe(dest('build'));
-}
-
-function hashJS() {
-  return src('build/*.js')
     .pipe(RevAll.revision())
-    .pipe(dest('build/'));
+    .pipe(dest('dist/'));
 }
 
-exports.default = series(filePath, hashJS);
+exports.default = filePath;

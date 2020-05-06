@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "parcel build src/index.html"
+    "build": "rm -rf .parcel-cache && parcel build src/index.html"
   },
   "dependencies": {
     "@parcel/transformer-raw": "^2.0.0-alpha.3",

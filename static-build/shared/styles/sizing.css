@@ -5,9 +5,20 @@
   --spacing-4: 1.5rem;
   --spacing-5: 2rem;
   --spacing-6: 3rem;
+  --spacing-7: 5rem;
+  --spacing-8: 10rem;
 
   --touch-icon-size: 48px;
   --section-aside-width: 150px;
 
   --layer--top: 10;
+  --nontouch-small-icon-size: 32px;
+  --card-radius: 20px;
+  --section-aside-width: 125px;
+  --pageMax: 720px;
+  --numTools: 4;
+
+  @media (min-width: 1200px) {
+    --section-aside-width: 250px;
+  }
 }

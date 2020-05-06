@@ -31,6 +31,7 @@ export default function assetPlugin({ hashChunk = () => true }) {
         type: 'asset',
         source: await fs.readFile(realId),
       };
+      this.addWatchFile(realId);
 
       emitOpts[hashChunk(realId) ? 'name' : 'fileName'] = basename(realId);
 

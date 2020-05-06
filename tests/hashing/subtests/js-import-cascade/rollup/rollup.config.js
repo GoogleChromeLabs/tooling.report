@@ -11,10 +11,10 @@
  * limitations under the License.
  */
 export default {
-  input: `src/index.js`,
+  input: 'src/index.js',
   output: {
     entryFileNames: '[name]-[hash].js',
-    dir: 'build',
+    dir: 'dist',
     format: 'esm',
   },
 };

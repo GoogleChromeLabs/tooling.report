@@ -1,0 +1,180 @@
+.testCard,
+.subTestCard {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+
+  a {
+    background: white;
+    border: 1px solid var(--light-blue);
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+    padding: var(--spacing-5);
+    text-decoration: none;
+    color: var(--teal-blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    will-change: box-shadow;
+    transform-style: preserve-3d;
+    position: relative;
+
+    &:hover,
+    &:focus {
+      transform: translateY(-5px);
+    }
+  }
+}
+
+.testCard a {
+  &:not(:visited) {
+    .checkbox {
+      background: white;
+    }
+  }
+
+  &:visited {
+    .checkbox {
+      background: var(--sky-blue);
+    }
+  }
+
+  &:visited {
+    background-color: var(--background-blue);
+    box-shadow: none;
+  }
+}
+
+.checkbox {
+  position: absolute;
+  top: var(--spacing-2);
+  right: var(--spacing-2);
+  width: 24px;
+  height: 24px;
+  z-index: 1;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.subTestCard {
+  position: relative;
+  will-change: box-shadow;
+  transform-style: preserve-3d;
+
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background: white;
+    border: 1px solid var(--light-blue);
+    border-radius: var(--card-radius);
+    top: 0;
+    left: 0;
+    transition-duration: 0.5s;
+  }
+
+  &::after {
+    transform: rotate(-5deg);
+  }
+
+  &::before {
+    transform: rotate(2deg);
+  }
+
+  &:hover,
+  &:focus-within {
+    &::after {
+      transform: rotate(-8deg);
+      box-shadow: var(--card-shadow--active);
+    }
+
+    &::before {
+      transform: rotate(5deg) translateX(2px);
+    }
+  }
+
+  a {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.cardTitle {
+  color: var(--vivid-blue);
+  display: block;
+  font-size: var(--font-size--body);
+  line-height: var(--font-lineheight--body);
+  font-weight: var(--font-weight--normal);
+}
+
+.cardTotal {
+  font-size: var(--font-size--logo);
+  color: var(--dim-teal);
+  line-height: 1;
+}
+
+.cardTotalCount {
+  font-weight: var(--font-weight--bold);
+}
+
+.dash {
+  color: var(--sky-blue);
+}
+
+.subText {
+  color: var(--vivid-blue);
+  font-size: var(--font-size--detail);
+}
+
+.testDesc {
+  font-size: var(--font-size--detail);
+  margin: var(--spacing-3);
+  line-height: 1.5;
+}
+
+.iconList {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* visually hide bundler names */
+.iconList figcaption {
+  width: 0;
+  height: 0;
+  text-indent: -99999999px;
+}
+
+.testCardIcon {
+  width: var(--nontouch-small-icon-size);
+  height: var(--nontouch-small-icon-size);
+  flex-basis: var(--nontouch-small-icon-size);
+  border: 1px solid;
+  border-radius: 50%;
+  margin: var(--spacing-1);
+  background: white;
+}
+
+.testCardIcon[data-result='pass'] {
+  border-color: var(--test-pass);
+}
+
+.testCardIcon[data-result='partial'] {
+  border-color: var(--test-partial);
+}
+
+.testCardIcon img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  margin: 15% auto;
+}
+
+.subtestMeta {
+  display: flex;
+  align-items: center;
+}

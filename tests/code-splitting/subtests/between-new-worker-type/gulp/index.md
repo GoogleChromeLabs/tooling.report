@@ -3,4 +3,4 @@ result: fail
 issue: 'N/A'
 ---
 
-Browserify does not have a way to get JS file as a URL
+As Browserify does not support loading code dynamically, it cannot provide a JS file as a URL.

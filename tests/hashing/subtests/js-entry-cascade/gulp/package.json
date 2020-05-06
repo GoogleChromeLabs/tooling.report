@@ -1,13 +1,19 @@
 {
   "private": true,
   "scripts": {
-    "build": "gulp"
+    "build": "rm -rf build dist src && mkdir build && npm-run-all build:*",
+    "build:1": "cp -r src1 src && gulp && mv dist build/1; rm -rf src dist",
+    "build:2": "cp -r src2 src && gulp && mv dist build/2; rm -rf src dist"
   },
   "devDependencies": {
     "browserify": "^16.5.0",
+    "factor-bundle": "2.5.0",
+    "globby": "11.0.0",
     "gulp": "^4.0.2",
     "gulp-buffer": "0.0.2",
     "gulp-hash": "^4.2.2",
-    "gulp-tap": "^2.0.0"
+    "merge-stream": "2.0.0",
+    "npm-run-all": "^4.1.5",
+    "vinyl-source-stream": "2.0.0"
   }
 }

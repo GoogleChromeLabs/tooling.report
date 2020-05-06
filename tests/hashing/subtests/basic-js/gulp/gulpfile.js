@@ -26,7 +26,7 @@ function basicHash() {
     )
     .pipe(buffer())
     .pipe(hash())
-    .pipe(dest('build'));
+    .pipe(dest('dist'));
 }
 
 exports.default = basicHash;

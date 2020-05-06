@@ -12,7 +12,12 @@ function ToolNav() {
     <div className={$toolNav}>
       {config.testSubjects.map(tool => (
         <figure class={$tool}>
-          <img src={toolImages[tool]} />
+          <img
+            height="40"
+            width="40"
+            src={toolImages[tool]}
+            alt={`${tool} logo`}
+          />
           <figcaption>{tool}</figcaption>
         </figure>
       ))}

@@ -12,6 +12,16 @@
  */
 /// <reference path="../missing-types.d.ts" />
 
+declare module 'faqs:' {
+  const faqs: { title: string; html: string }[];
+  export default faqs;
+}
+
+declare module 'md:*' {
+  export const html: string;
+  export const meta: string;
+}
+
 declare module 'client-bundle:*' {
   const url: string;
   export default url;
@@ -52,6 +62,7 @@ interface Test {
 
 interface TestMeta {
   title: string;
+  shortDesc: string;
   importance: number;
 }
 
@@ -70,9 +81,13 @@ interface TestResult {
 interface ResultMeta {
   result: 'pass' | 'fail' | 'partial';
   issue?: Array<{
-    title: string;
-    status: string;
+    status: 'open' | 'closed';
     url: string;
+    fixedSince?: string;
+    githubData?: {
+      status: string;
+      title: string;
+    };
   }>;
 }
 

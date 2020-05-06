@@ -1,5 +1,17 @@
 body {
-  background-color: var(--background-gray);
   margin: 0;
   padding: 0;
+}
+
+*:focus-visible {
+  outline: 3px solid var(--sky-blue);
+}
+
+::selection {
+  color: white;
+  background: var(--vivid-blue);
+}
+
+pre {
+  display: inline-block;
 }

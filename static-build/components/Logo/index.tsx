@@ -1,10 +1,12 @@
 import { h } from 'preact';
+import { ReportIcon } from '../Icons/';
 import { $logo, $report } from './styles.css';
 
 function Logo() {
   return (
     <h2 class={$logo}>
-      Tooling.<span class={$report}>Report</span>
+      <ReportIcon />
+      tooling.<span class={$report}>report</span>
     </h2>
   );
 }

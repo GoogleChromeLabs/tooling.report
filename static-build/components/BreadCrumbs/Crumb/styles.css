@@ -1,0 +1,66 @@
+.divider {
+  padding: 0 var(--spacing-2);
+  color: var(--light-blue);
+  font-weight: var(--font-weight--normal);
+
+  @media (min-width: 822px) {
+    padding: 0 var(--spacing-3);
+  }
+}
+
+.collection {
+  flex-shrink: 0;
+  text-transform: capitalize;
+  display: inline-grid;
+  grid-auto-flow: column;
+  align-items: center;
+
+  @media (min-width: 822px) {
+    gap: var(--spacing-2);
+  }
+
+  &:hover > svg,
+  &:focus > svg {
+    fill: var(--denim-blue);
+  }
+}
+
+.iconbutton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--touch-icon-size);
+  height: var(--touch-icon-size);
+  position: relative;
+
+  & > span:first-of-type {
+    border-radius: 50%;
+    border: 1px solid var(--light-blue);
+    width: var(--spacing-5);
+    height: var(--spacing-5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &:focus-within > span,
+  &:hover > span {
+    border-color: var(--denim-blue);
+  }
+
+  & svg {
+    width: 30%;
+    fill: var(--vivid-blue);
+  }
+
+  & select {
+    font-size: 16px; /* prevents iOS from zooming on interaction */
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.01;
+    z-index: 1;
+  }
+}

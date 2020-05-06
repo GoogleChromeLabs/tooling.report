@@ -4,7 +4,7 @@
   display: block;
   border-radius: 20px;
   box-shadow: var(--card-shadow);
-  padding: 2rem;
+  padding: var(--spacing-5);
   text-align: center;
 }
 
@@ -26,10 +26,10 @@
 }
 
 .cardTestsPassedContainer {
-  margin-top: 2rem;
+  margin-top: var(--spacing-5);
 }
 
-.cardTestsPassedContainer a {
+.testsPassed {
   font-size: var(--font-size--detail);
   text-decoration: none;
   color: var(--vivid-blue);
