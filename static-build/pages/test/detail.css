@@ -49,6 +49,7 @@
   }
 
   & summary {
+    color: var(--vivid-blue);
     background: var(--background-gray-offset);
     padding: 0 var(--spacing-3);
     border-radius: var(--spacing-1) var(--spacing-1) 0 0;
@@ -57,6 +58,10 @@
 
     &:focus {
       outline-color: var(--sky-blue);
+    }
+
+    & > *:not(a) {
+      color: var(--backpack-blue);
     }
 
     & > a {

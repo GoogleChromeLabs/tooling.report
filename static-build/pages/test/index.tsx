@@ -122,12 +122,15 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                 {Object.entries(test.results).map(([subject, result]) => (
                   <details>
                     <summary id={subject}>
-                      <b>{subject}</b>:{' '}
-                      {result.meta.result === 'pass'
-                        ? 'pass'
-                        : result.meta.result === 'fail'
-                        ? 'fail'
-                        : 'so-so'}
+                      <b>{subject}</b>
+                      <span>
+                        :{' '}
+                        {result.meta.result === 'pass'
+                          ? 'pass'
+                          : result.meta.result === 'fail'
+                          ? 'fail'
+                          : 'so-so'}
+                      </span>
                       <a href={githubLink(result.repositoryPath)}>Source</a>
                     </summary>
                     <div class={$resultCard}>
