@@ -103,11 +103,15 @@
 
 @media (min-width: 600px) {
   .testResultList {
-    justify-content: center;
+    justify-content: start;
     margin-bottom: var(--spacing-5);
 
     li {
       margin: var(--spacing-3);
+
+      &:first-child {
+        margin-left: 0;
+      }
     }
   }
 }
