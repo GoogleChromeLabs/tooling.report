@@ -1,6 +1,7 @@
 .detailPage {
   gap: var(--spacing-6);
   padding: var(--spacing-5) var(--spacing-3);
+  box-sizing: content-box;
   max-width: var(--pageMax);
   margin: 0 auto;
 
@@ -30,8 +31,8 @@
 
   & > pre[class*='language-'] {
     justify-self: flex-start;
-    margin-bottom: var(--spacing-3);
-    margin-top: calc(var(--spacing-2) * -1);
+    margin-bottom: var(--spacing-5);
+    margin-top: 0;
     max-width: 100%;
     box-sizing: border-box;
     overflow-x: auto;
@@ -94,7 +95,7 @@
 .testResultList {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 00;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -103,6 +104,7 @@
 @media (min-width: 600px) {
   .testResultList {
     justify-content: center;
+    margin-bottom: var(--spacing-5);
 
     li {
       margin: var(--spacing-3);

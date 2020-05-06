@@ -117,7 +117,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
             </section>
 
             <section class={$resultSet}>
-              <h1>The Results</h1>
+              <h1>Conclusion</h1>
               <article>
                 {Object.entries(test.results).map(([subject, result]) => (
                   <details>
