@@ -3,6 +3,16 @@
 @import 'components/ToolNav/styles.css';
 @import 'components/Connect/styles.css';
 
+.overview > div {
+  background: var(--background-gray-offset);
+
+  @media (min-width: 822px) {
+    --extra-viewport-space: calc(100vw - 822px);
+    margin: 0 calc(var(--extra-viewport-space) * -1);
+    padding: var(--spacing-7) var(--extra-viewport-space);
+  }
+}
+
 .sidebarLayout {
   display: grid;
   gap: var(--spacing-3);

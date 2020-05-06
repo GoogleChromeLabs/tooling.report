@@ -20,6 +20,7 @@ import {
   $hero,
   $message,
   $heroImage,
+  $overview,
 } from './styles.css';
 
 import analyticsBundleURL from 'client-bundle:client/analytics/index.js';
@@ -118,7 +119,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
             </div>
           </section>
 
-          <section id="overview">
+          <section id="overview" class={$overview}>
             <a href="#overview">
               <h3 class={$sectionHeader}>Overview</h3>
             </a>
