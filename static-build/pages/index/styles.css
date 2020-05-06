@@ -12,16 +12,13 @@
   }
 }
 
-.overviewHeader {
-  font-size: 2rem;
-}
-
 .overviewGrid a {
   font-weight: bold;
 }
 
 .sectionHeader {
   display: inline-block;
+  font-size: 1.5rem;
   text-transform: capitalize;
   margin-bottom: var(--spacing-4);
   position: relative;
@@ -41,6 +38,20 @@
   }
 }
 
+.overviewHeader,
+.sectionHeader {
+  @media (min-width: 700px) {
+    text-align: end;
+    width: calc(
+      var(--section-aside-width) - var(--spacing-4) + var(--spacing-3)
+    );
+  }
+}
+
+.overviewHeader {
+  font-size: 2rem;
+}
+
 .summaryList {
   display: grid;
   gap: var(--spacing-5);
@@ -48,15 +59,6 @@
   margin: 0;
   padding: 0;
   list-style: none;
-}
-
-@media only screen and (min-width: 550px) {
-  .sectionHeader:before {
-    margin-right: 0;
-    position: absolute;
-    top: 0;
-    left: -1.5ch;
-  }
 }
 
 .hero {
