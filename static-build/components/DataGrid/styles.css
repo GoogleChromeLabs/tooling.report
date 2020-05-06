@@ -17,10 +17,6 @@
   background: white;
   padding: var(--spacing-2) 0;
 
-  @media (prefers-reduced-motion: no-preference) {
-    transition: transform 0.3s ease;
-  }
-
   &:focus-within,
   &:hover {
     background-color: var(--background-gray);
