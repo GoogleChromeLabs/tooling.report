@@ -14,28 +14,19 @@
 import { h, FunctionalComponent, Fragment } from 'preact';
 import pageStyles from 'css-bundle:./styles.css';
 import analyticsBundleURL from 'client-bundle:client/analytics/index.js';
-import HeadMeta from '../../components/HeadMeta';
-import Logo from '../../components/Logo';
-import Footer from '../../components/Footer';
-import HeaderLinkList from '../../components/HeaderLinkList';
-import { WalkerHero } from '../../components/Heroes';
+import HeadMeta from 'static-build/components/HeadMeta';
+import Logo from 'static-build/components/Logo';
+import Footer from 'static-build/components/Footer';
+import HeaderLinkList from 'static-build/components/HeaderLinkList';
+import { WalkerHero } from 'static-build/components/Heroes';
+import BreadCrumbs from 'static-build/components/BreadCrumbs';
+import faqs from 'faqs:';
 
 import { $heroText, $heroImage } from './styles.css';
-import {
-  $breadcrumbs,
-  $home,
-} from 'static-build/components/TestCrumbs/styles.css';
-import {
-  $collection,
-  $iconbutton,
-  $divider,
-} from 'static-build/components/TestCrumbs/Crumb/styles.css';
 
-interface Props {
-  faqs: FAQItem[];
-}
+interface Props {}
 
-const FAQPage: FunctionalComponent<Props> = ({ faqs }) => {
+const FAQPage: FunctionalComponent<Props> = () => {
   return (
     <html lang="en">
       <head>
@@ -49,20 +40,7 @@ const FAQPage: FunctionalComponent<Props> = ({ faqs }) => {
         <header>
           <section>
             <Logo />
-            <nav class={$breadcrumbs} id="breadcrumbs">
-              <a href="/" class={`${$home} ${$collection}`}>
-                <span class={$iconbutton}>
-                  <span>
-                    <svg viewBox="0 0 10 10">
-                      <path d="M4 8.5v-3h2v3h2.5v-4H10L5 0 0 4.5h1.5v4z" />
-                    </svg>
-                  </span>
-                </span>
-                <span>Home</span>
-              </a>
-              <span class={$divider}>//</span>
-              <span class={$collection}>FAQs</span>
-            </nav>
+            <BreadCrumbs crumbs={[{ title: 'FAQs' }]} />
             <div>
               <div class={$heroText}>
                 <HeaderLinkList />
@@ -74,14 +52,12 @@ const FAQPage: FunctionalComponent<Props> = ({ faqs }) => {
           </section>
         </header>
         <main>
-          {faqs
-            .sort((a, b) => a.meta.order - b.meta.order)
-            .map(item => (
-              <Fragment>
-                <h2>{item.meta.question}</h2>
-                <div dangerouslySetInnerHTML={{ __html: item.html }} />
-              </Fragment>
-            ))}
+          {faqs.map(({ title, html }) => (
+            <Fragment>
+              <h2>{title}</h2>
+              <div dangerouslySetInnerHTML={{ __html: html }} />
+            </Fragment>
+          ))}
         </main>
         <Footer />
       </body>

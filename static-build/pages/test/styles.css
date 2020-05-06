@@ -2,7 +2,7 @@
 @import './detail.css';
 @import './collection.css';
 @import 'components/TestCard/styles.css';
-@import 'components/TestCrumbs/styles.css';
+@import 'components/BreadCrumbs/styles.css';
 @import 'components/TestResultSnippet/styles.css';
 
 .heroImage {

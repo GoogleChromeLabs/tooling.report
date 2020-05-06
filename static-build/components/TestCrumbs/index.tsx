@@ -1,14 +1,14 @@
-import { h, FunctionalComponent, Fragment } from 'preact';
-import { parentMap } from '../../testdata';
-import { $breadcrumbs, $home } from './styles.css';
-import Crumb from './Crumb';
-import { $collection, $iconbutton } from './Crumb/styles.css';
+import { h, FunctionalComponent } from 'preact';
+import { parentMap, testURLMap } from 'static-build/testdata';
+import testData from 'test-data:';
+import { Crumb } from '../BreadCrumbs/Crumb';
+import BreadCrumbs from '../BreadCrumbs';
 
-interface TestCrumbProps {
+interface Props {
   test: Test;
 }
 
-const TestCrumbs: FunctionalComponent<TestCrumbProps> = ({ test }) => {
+const TestCrumbs: FunctionalComponent<Props> = ({ test }) => {
   const ancestors = [test];
   let ancestor = parentMap.get(test);
 
@@ -17,29 +17,18 @@ const TestCrumbs: FunctionalComponent<TestCrumbProps> = ({ test }) => {
     ancestor = parentMap.get(ancestor);
   }
 
-  return (
-    <Fragment>
-      <nav class={$breadcrumbs} id="breadcrumbs">
-        <a href="/" class={`${$home} ${$collection}`}>
-          <span class={$iconbutton}>
-            <span>
-              <svg viewBox="0 0 10 10">
-                <path d="M4 8.5v-3h2v3h2.5v-4H10L5 0 0 4.5h1.5v4z" />
-              </svg>
-            </span>
-          </span>
-          <span>Home</span>
-        </a>
-        {ancestors.map((ancestor, index) => (
-          <Crumb test={ancestor} index={index} current={test} />
-        ))}
-      </nav>
-      <script>
-        document.currentScript.previousElementSibling.scrollLeft =
-        Number.MAX_SAFE_INTEGER;
-      </script>
-    </Fragment>
-  );
+  const crumbs: Crumb[] = ancestors.map(test => {
+    const parentTest = parentMap.get(test);
+    const siblingTests = Object.values(parentTest?.subTests || testData);
+    const options: Crumb['options'] = siblingTests.map(test => ({
+      title: test.meta.title,
+      path: testURLMap.get(test),
+    }));
+
+    return { options, selected: siblingTests.indexOf(test) };
+  });
+
+  return <BreadCrumbs crumbs={crumbs} />;
 };
 
 export default TestCrumbs;
