@@ -89,7 +89,11 @@
     margin: 0;
   }
 
-  & code {
+  & pre {
+    background: var(--background-gray);
+  }
+
+  & p code {
     background: var(--background-gray);
     padding: 1ex 1ch;
     border-radius: var(--spacing-3);
