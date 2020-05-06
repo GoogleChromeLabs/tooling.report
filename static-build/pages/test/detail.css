@@ -82,6 +82,13 @@
   & > ul {
     margin: 0;
   }
+
+  & code {
+    background: var(--background-gray);
+    padding: 1ex 1ch;
+    border-radius: var(--spacing-3);
+    font-weight: var(--font-weight--bold);
+  }
 }
 
 .testResultList {
