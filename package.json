@@ -49,5 +49,8 @@
   },
   "engines": {
     "node": ">=12"
+  },
+  "dependencies": {
+    "esm": "^3.2.25"
   }
 }
