@@ -110,7 +110,6 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
             </ul>
 
             <section class={$explainerPost}>
-              <h1>The Test</h1>
               <article
                 dangerouslySetInnerHTML={{ __html: test.html }}
               ></article>
