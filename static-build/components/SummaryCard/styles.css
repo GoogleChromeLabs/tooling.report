@@ -29,7 +29,7 @@
   margin-top: var(--spacing-5);
 }
 
-.cardTestsPassedContainer a {
+.testsPassed {
   font-size: var(--font-size--detail);
   text-decoration: none;
   color: var(--vivid-blue);
