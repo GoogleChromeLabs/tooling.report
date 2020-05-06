@@ -11,6 +11,10 @@
 
   @media (min-width: 700px) {
     background: var(--background-gray-offset);
+
+    &:nth-child(2n) {
+      background: var(--light-gray-blue);
+    }
   }
 }
 
