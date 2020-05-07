@@ -6,6 +6,7 @@ import ToolTip from '../../components/ToolTip';
 interface Props {
   tests?: Tests;
   basePath: string;
+  collectionTitle: string;
 }
 
 function flattenTests(testDir: string, test: Test, results: Tests = {}): Tests {
@@ -23,6 +24,7 @@ function flattenTests(testDir: string, test: Test, results: Tests = {}): Tests {
 const DataGrid: FunctionalComponent<Props> = ({
   tests = {},
   basePath,
+  collectionTitle,
 }: Props) => {
   const testGroups = Object.entries(tests).map(([testDir, test]) =>
     flattenTests(testDir + '/', test),
@@ -57,7 +59,11 @@ const DataGrid: FunctionalComponent<Props> = ({
                             id={`${tool}-${testDir}`}
                             result={test.results[tool].meta.result}
                             tool={tool as BuildTool}
-                            category={'TBD'} //TODO
+                            category={
+                              mainTest !== test
+                                ? mainTest.meta.title
+                                : collectionTitle
+                            }
                             name={test.meta.title}
                             link={`${basePath}${testDir}`}
                             content={test.meta.shortDesc}

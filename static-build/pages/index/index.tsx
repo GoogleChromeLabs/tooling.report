@@ -122,7 +122,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
             <a href="#overview">
               <h3 class={$sectionHeader}>Overview</h3>
             </a>
-            <DataGrid tests={tests} basePath="/" />
+            <DataGrid tests={tests} basePath="/" collectionTitle="Overview" />
           </section>
 
           {Object.entries(tests).map(([testDir, collection]) => (
@@ -130,7 +130,11 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
               <a href={testDir}>
                 <h3 class={$sectionHeader}>{collection.meta.title}</h3>
               </a>
-              <DataGrid tests={collection.subTests} basePath={`${testDir}/`} />
+              <DataGrid
+                tests={collection.subTests}
+                basePath={`${testDir}/`}
+                collectionTitle={collection.meta.title}
+              />
             </section>
           ))}
         </main>
