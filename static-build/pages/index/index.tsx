@@ -126,7 +126,12 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
             <button aria-describedby="test-tooltip">⁉️</button>
             <ToolTip
               id="test-tooltip"
-              content="<h2>Title</h2><p>Test Paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit, and a <a href='#'>link</a> in the paragraph.</p>"
+              result="fail"
+              tool="gulp"
+              category="Code Splitting"
+              name="Dynamic Import"
+              link="#"
+              content="Test Paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
             />
           </div>
 

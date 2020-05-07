@@ -1,3 +1,66 @@
+.toolBadge {
+  border: 1px solid gray;
+  padding: var(--spacing-1) var(--spacing-3);
+  background: white;
+  display: inline-block;
+  border-radius: var(--spacing-2);
+  text-transform: capitalize;
+  font-weight: var(--font-weight--normal);
+
+  &[data-result='pass'] {
+    border-color: var(--test-pass);
+    color: var(--test-pass--text);
+  }
+
+  &[data-result='partial'] {
+    border-color: var(--test-partial);
+    color: var(--test-partial--text);
+  }
+
+  &[data-result='fail'] {
+    border-color: var(--test-fail);
+    color: var(--test-fail--text);
+  }
+}
+
+.headerBar {
+  background: var(--ice-blue);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-3);
+
+  h2 {
+    font-size: var(--font-size--body);
+  }
+}
+
+.headerMeta {
+  display: flex;
+  align-items: center;
+}
+
+.details {
+  padding: var(--spacing-3);
+}
+
+.toolIcon {
+  background: white;
+  margin-right: var(--spacing-2);
+  border-radius: 50%;
+  width: calc(var(--touch-icon-size));
+  height: calc(var(--touch-icon-size));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--light-blue);
+}
+
+.toolIcon img {
+  max-width: 80%;
+  max-height: 80%;
+}
+
 .tooltip {
   --tooltip-size: 10px;
   --tooltip-border: 10px;
@@ -6,14 +69,13 @@
 
   position: absolute;
   background: white;
-  border: var(--border-width) solid var(--light-blue);
+  border: var(--border-width) solid var(--ice-blue);
   box-shadow: var(--card-shadow);
-  padding: var(--spacing-3);
   z-index: var(--layer--top);
   border-radius: var(--tooltip-border);
   bottom: calc(100% + var(--spacing-2));
   font-size: var(--font-size--detail);
-  max-width: 400px;
+  max-width: 350px;
 
   &[data-position='center'] {
     &:after {
