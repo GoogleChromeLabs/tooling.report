@@ -70,7 +70,7 @@
 }
 
 .tooltip {
-  --tooltip-size: 10px;
+  --arrow-size: 10px;
   --tooltip-border: 10px;
   --arrow-horizontal-offset: 25px;
   --border-width: 1px;
@@ -83,16 +83,16 @@
   border-radius: var(--tooltip-border);
   bottom: calc(100% + var(--spacing-2));
   font-size: var(--font-size--detail);
-  max-width: 350px;
+  width: 350px;
 
   &[data-position='center'] {
     &:after {
       content: '';
       position: absolute;
       top: 100%;
-      left: calc(50% - var(--tooltip-size));
-      margin-left: calc(-1 * var(--tooltip-size));
-      border-width: var(--tooltip-size);
+      left: calc(50% - var(--arrow-size));
+      margin-left: calc(-1 * var(--arrow-size));
+      border-width: var(--arrow-size);
       border-style: solid;
       border-color: white transparent transparent transparent;
     }
@@ -102,22 +102,23 @@
       content: '';
       position: absolute;
       top: 100%;
-      left: calc(50% - var(--tooltip-size) - 2px);
-      margin-left: calc(-1 * var(--tooltip-size) + var(--border-width));
-      border-width: calc(var(--tooltip-size) +var(--border-width));
+      left: calc(50% - var(--arrow-size) - 2px);
+      margin-left: calc(-1 * var(--arrow-size) + var(--border-width));
+      border-width: calc(var(--arrow-size) +var(--border-width));
       border-style: solid;
       border-color: var(--light-blue) transparent transparent transparent;
     }
   }
 
   &[data-position='left'] {
+    transform: translateX(-6px) translateY(-10px);
     &:after {
       content: '';
       position: absolute;
       top: 100%;
-      left: calc(var(--arrow-horizontal-offset) - var(--tooltip-size));
-      margin-left: calc(-1 * var(--tooltip-size));
-      border-width: var(--tooltip-size);
+      left: calc(var(--arrow-horizontal-offset) - var(--arrow-size));
+      margin-left: calc(-1 * var(--arrow-size));
+      border-width: var(--arrow-size);
       border-style: solid;
       border-color: white transparent transparent transparent;
     }
@@ -127,9 +128,9 @@
       content: '';
       position: absolute;
       top: 100%;
-      left: calc(var(--arrow-horizontal-offset) - var(--tooltip-size) - 2px);
-      margin-left: calc(-1 * var(--tooltip-size) + var(--border-width));
-      border-width: calc(var(--tooltip-size) +var(--border-width));
+      left: calc(var(--arrow-horizontal-offset) - var(--arrow-size) - 2px);
+      margin-left: calc(-1 * var(--arrow-size) + var(--border-width));
+      border-width: calc(var(--arrow-size) +var(--border-width));
       border-style: solid;
       border-color: var(--light-blue) transparent transparent transparent;
     }
@@ -140,9 +141,9 @@
       content: '';
       position: absolute;
       top: 100%;
-      right: calc(var(--arrow-horizontal-offset) - var(--tooltip-size));
-      margin-left: calc(-1 * var(--tooltip-size));
-      border-width: var(--tooltip-size);
+      right: calc(var(--arrow-horizontal-offset) - var(--arrow-size));
+      margin-left: calc(-1 * var(--arrow-size));
+      border-width: var(--arrow-size);
       border-style: solid;
       border-color: white transparent transparent transparent;
     }
@@ -153,10 +154,10 @@
       position: absolute;
       top: 100%;
       right: calc(
-        var(--arrow-horizontal-offset) - var(--tooltip-size) -var(--border-width)
+        var(--arrow-horizontal-offset) - var(--arrow-size) -var(--border-width)
       );
-      margin-left: calc(-1 * var(--tooltip-size) + var(--border-width));
-      border-width: calc(var(--tooltip-size) +var(--border-width));
+      margin-left: calc(-1 * var(--arrow-size) + var(--border-width));
+      border-width: calc(var(--arrow-size) +var(--border-width));
       border-style: solid;
       border-color: var(--light-blue) transparent transparent transparent;
     }

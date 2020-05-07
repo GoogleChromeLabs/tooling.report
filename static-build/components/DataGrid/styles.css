@@ -65,6 +65,9 @@
   background: var(--test-skip);
   border: 2px solid var(--test-skip);
   border-radius: 50%;
+  padding: 0;
+  cursor: pointer;
+  box-sizing: content-box;
 
   &[data-result='pass'] {
     background: var(--test-pass);
@@ -89,6 +92,10 @@
     background: white;
     border-color: var(--test-fail);
   }
+
+  &:focus + [role='tooltip'] {
+    display: block;
+  }
 }
 
 @media only screen and (min-width: 550px) {
@@ -101,4 +108,10 @@
       justify-content: flex-start;
     }
   }
+}
+
+/* Tooltip Time */
+
+[role='tooltip'] {
+  display: none;
 }

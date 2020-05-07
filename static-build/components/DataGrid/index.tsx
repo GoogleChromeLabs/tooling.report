@@ -45,7 +45,7 @@ const DataGrid: FunctionalComponent<Props> = ({
                     <button
                       aria-describedby={`${subject}-${testDir}`}
                       data-tool={subject}
-                      data-result={result}
+                      data-result={result.meta.result}
                       class={$dot}
                     ></button>
                     <ToolTip
