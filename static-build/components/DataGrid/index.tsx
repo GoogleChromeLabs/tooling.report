@@ -8,87 +8,69 @@ interface Props {
   basePath: string;
 }
 
-function gatherSubtestResults(
-  test: Test,
-  tool: BuildTool,
-  tests: Tests,
-): Tests {
-  if (test.results[tool]) {
-    tests[test.meta.title] = test;
-  }
+function flattenTests(testDir: string, test: Test, results: Tests = {}): Tests {
+  results[testDir] = test;
 
   if (test.subTests) {
-    Object.entries(test.subTests).map(([testDir, t]) =>
-      gatherSubtestResults(t, tool, tests),
-    );
+    for (const [subTestDir, subTest] of Object.entries(test.subTests)) {
+      flattenTests(testDir + subTestDir + '/', subTest, results);
+    }
   }
 
-  return tests;
+  return results;
 }
 
 const DataGrid: FunctionalComponent<Props> = ({
   tests = {},
   basePath,
 }: Props) => {
+  const testGroups = Object.entries(tests).map(([testDir, test]) =>
+    flattenTests(testDir + '/', test),
+  );
+
   return (
     <div class={$datagrid}>
-      {Object.entries(tests).map(([testDir, test]) => (
-        <div class={$row}>
-          <div class={$aside}>
-            <a href={`${basePath}${testDir}`}>{test.meta && test.meta.title}</a>
-          </div>
-          <div class={$results}>
-            {test.results &&
-              Object.entries(test.results).map(([subject, result]) => (
+      {testGroups.map(tests => {
+        const [testDir, mainTest] = Object.entries(tests)[0];
+
+        return (
+          <div class={$row}>
+            <div class={$aside}>
+              <a href={`${basePath}${testDir}`}>
+                {mainTest.meta && mainTest.meta.title}
+              </a>
+            </div>
+            <div class={$results}>
+              {config.testSubjects.map(tool => (
                 <span class={$column}>
-                  <div style="position: relative">
-                    <button
-                      aria-describedby={`${subject}-${testDir}`}
-                      data-tool={subject}
-                      data-result={result.meta.result}
-                      class={$dot}
-                    ></button>
-                    <ToolTip
-                      id={`${subject}-${testDir}`}
-                      result={result.meta.result}
-                      tool={subject as BuildTool}
-                      category={'TBD'} //TODO
-                      name={test.meta.title}
-                      link={`${basePath}${testDir}`}
-                      content={test.meta.shortDesc}
-                    />
-                  </div>
-                </span>
-              ))}
-            {test.subTests &&
-              config.testSubjects.map(tool => (
-                <span class={$column}>
-                  {Object.entries(gatherSubtestResults(test, tool, {})).map(
-                    ([subject, test]) => (
-                      // TODO: Subtest DataGrid Tooltip
-                      <div style="position: relative">
-                        <button
-                          aria-describedby={`${subject}-${testDir}`}
-                          data-tool={subject}
-                          data-result={test.results[tool].meta.result}
-                          class={$dot}
-                        ></button>
-                        <ToolTip
-                          id={`${subject}-${testDir}`}
-                          result={test.results[tool].meta.result}
-                          tool={subject as BuildTool}
-                          name={test.meta.title}
-                          link={`${basePath}${testDir}`}
-                          content={test.meta.shortDesc}
-                        />
-                      </div>
-                    ),
+                  {Object.entries(tests).map(
+                    ([testDir, test]) =>
+                      test.results[tool] && (
+                        <div style="position: relative">
+                          <button
+                            aria-describedby={`${tool}-${testDir}`}
+                            data-tool={tool}
+                            data-result={test.results[tool].meta.result}
+                            class={$dot}
+                          ></button>
+                          <ToolTip
+                            id={`${tool}-${testDir}`}
+                            result={test.results[tool].meta.result}
+                            tool={tool as BuildTool}
+                            category={'TBD'} //TODO
+                            name={test.meta.title}
+                            link={`${basePath}${testDir}`}
+                            content={test.meta.shortDesc}
+                          />
+                        </div>
+                      ),
                   )}
                 </span>
               ))}
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 };
