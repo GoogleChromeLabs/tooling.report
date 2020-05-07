@@ -51,7 +51,7 @@ const DataGrid: FunctionalComponent<Props> = ({
                     <ToolTip
                       id={`${subject}-${testDir}`}
                       result={result.meta.result}
-                      tool={subject}
+                      tool={subject as BuildTool}
                       category={'TBD'} //TODO
                       name={test.meta.title}
                       link={`${basePath}${testDir}`}
@@ -76,7 +76,7 @@ const DataGrid: FunctionalComponent<Props> = ({
                         <ToolTip
                           id={`${subject}-${testDir}`}
                           result={test.results[tool].meta.result}
-                          tool={subject}
+                          tool={subject as BuildTool}
                           name={test.meta.title}
                           link={`${basePath}${testDir}`}
                           content={test.meta.shortDesc}

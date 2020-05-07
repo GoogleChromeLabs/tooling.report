@@ -18,7 +18,7 @@ interface Props {
   id: string;
   result: string;
   name: string;
-  tool: string;
+  tool: BuildTool;
   link: string;
   category?: string;
 }
@@ -42,7 +42,7 @@ const Tooltip: FunctionalComponent<Props> = ({
       <div class={$headerBar}>
         <div class={$headerMeta}>
           <figure class={$toolIcon}>
-            <img src={toolImages['gulp']} />
+            <img src={toolImages[tool]} />
           </figure>
           <span>
             {category && <small>{category}</small>}
