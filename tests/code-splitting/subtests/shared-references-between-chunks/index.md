@@ -4,9 +4,9 @@ importance: 1
 shortDesc: 'Are module exports between bundles live bindings?'
 ---
 
-## The Test
+# The Test
 
-The exports of an ECMAScript Module are "live" bindings. When importing a value from a module, you have a reference to it that always reflects the current value of that variable in the source module. If that value is changed, it is updated across all modules that import it. This test checks that a value imported by two different modules reflects changes to the the corresponding export in the source module.
+The exports of an ECMAScript Module are "live" bindings. When importing a value from a module, you have a reference to it that always reflects the current value of that variable in the source module. If that value is changed, it is updated across all modules that import it. This test checks that a value imported by two different modules reflects changes to the the corresponding export in the source module. This can be a difficult case for bundlers, since the shared `num.js` module may be extracted into a separate bundle and its bindings must be reflected in other bundles.
 
 **index.js**
 
