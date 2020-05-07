@@ -95,6 +95,7 @@
 
   &:focus + [role='tooltip'] {
     opacity: 1;
+    pointer-events: all;
   }
 }
 

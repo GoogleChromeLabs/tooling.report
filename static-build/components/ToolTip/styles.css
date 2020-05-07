@@ -87,6 +87,7 @@
   width: 350px;
 
   &[data-position='center'] {
+    transform: translateX(-155px) translateY(-10px);
     &:after {
       content: '';
       position: absolute;
