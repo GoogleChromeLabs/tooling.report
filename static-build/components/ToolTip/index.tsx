@@ -38,6 +38,7 @@ const Tooltip: FunctionalComponent<Props> = ({
       data-position="left" // Make this dynamic
       id={id}
       class={$tooltip}
+      tabIndex={-1}
     >
       <div class={$headerBar}>
         <div class={$headerMeta}>
