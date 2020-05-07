@@ -66,11 +66,22 @@ const DataGrid: FunctionalComponent<Props> = ({
                   {Object.entries(gatherSubtestResults(test, tool, {})).map(
                     ([subject, test]) => (
                       // TODO: Subtest DataGrid Tooltip
-                      <span
-                        data-tool={tool}
-                        data-result={test.results[tool].meta.result}
-                        class={$dot}
-                      ></span>
+                      <div style="position: relative">
+                        <button
+                          aria-describedby={`${subject}-${testDir}`}
+                          data-tool={subject}
+                          data-result={test.results[tool].meta.result}
+                          class={$dot}
+                        ></button>
+                        <ToolTip
+                          id={`${subject}-${testDir}`}
+                          result={test.results[tool].meta.result}
+                          tool={subject}
+                          name={test.meta.title}
+                          link={`${basePath}${testDir}`}
+                          content={test.meta.shortDesc}
+                        />
+                      </div>
                     ),
                   )}
                 </span>

@@ -20,7 +20,7 @@ interface Props {
   name: string;
   tool: string;
   link: string;
-  category: string;
+  category?: string;
 }
 
 const Tooltip: FunctionalComponent<Props> = ({
@@ -45,7 +45,7 @@ const Tooltip: FunctionalComponent<Props> = ({
             <img src={toolImages['gulp']} />
           </figure>
           <span>
-            <small>{category}</small>
+            {category && <small>{category}</small>}
             <h2>{name}</h2>
           </span>
         </div>

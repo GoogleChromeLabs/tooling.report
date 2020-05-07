@@ -115,3 +115,8 @@
 [role='tooltip'] {
   display: none;
 }
+
+[role='tooltip']:focus,
+[role='tooltip']:focus-within {
+  display: block;
+}

@@ -6,6 +6,7 @@
   border-radius: var(--spacing-2);
   text-transform: capitalize;
   font-weight: var(--font-weight--normal);
+  margin-left: var(--spacing-3);
 
   &[data-result='pass'] {
     border-color: var(--test-pass);
