@@ -129,3 +129,18 @@
   display: grid;
   gap: var(--spacing-3);
 }
+
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+    .resultSet summary {
+      display: block;
+      padding-top: 1ch;
+      padding-bottom: 1ch;
+    }
+
+    .resultSet summary > a {
+      float: right;
+      padding: 0;
+    }
+  }
+}
