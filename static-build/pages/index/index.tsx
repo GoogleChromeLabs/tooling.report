@@ -35,7 +35,6 @@ import DataGrid from '../../components/DataGrid';
 import Legend from '../../components/DataGrid/Legend';
 import Connect from '../../components/Connect';
 import FirstParagraphOnly from 'static-build/components/FirstParagraphOnly';
-import ToolTip from '../../components/ToolTip';
 
 import gulp from 'asset-url:../../img/gulp.svg';
 import rollup from 'asset-url:../../img/rollup.svg';
@@ -118,22 +117,6 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
               </div>
             </div>
           </section>
-
-          {/* TODO: Will Remove -- just for testing */}
-          <div style="position: relative">
-            {' '}
-            {/* Temp, just noting this style on parent*/}
-            <button aria-describedby="test-tooltip">⁉️</button>
-            <ToolTip
-              id="test-tooltip"
-              result="fail"
-              tool="gulp"
-              category="Code Splitting"
-              name="Dynamic Import"
-              link="#"
-              content="Test Paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            />
-          </div>
 
           <section id="overview">
             <a href="#overview">

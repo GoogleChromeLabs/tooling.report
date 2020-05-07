@@ -54,7 +54,7 @@ const Tooltip: FunctionalComponent<Props> = ({
         </div>
       </div>
       <div className={$details}>
-        <p>{content}</p>
+        {content && <p>{content}</p>}
         <a href={link}>Learn More</a>
       </div>
     </div>
