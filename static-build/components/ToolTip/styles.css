@@ -42,6 +42,11 @@
 
 .details {
   padding: var(--spacing-3);
+
+  a {
+    margin-top: var(--spacing-3);
+    display: inline-block;
+  }
 }
 
 .toolIcon {
