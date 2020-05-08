@@ -33,7 +33,7 @@
 }
 
 .container {
-  max-width: 720px;
+  max-width: var(--pageMax);
   margin: 0 auto;
 }
 

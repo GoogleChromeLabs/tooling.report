@@ -11,14 +11,13 @@
  * limitations under the License.
  */
 
-import { h, FunctionalComponent } from 'preact';
+import { h, FunctionalComponent, Fragment } from 'preact';
 import pageStyles from 'css-bundle:./styles.css';
 import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
 import Footer from '../../components/Footer';
 import HeaderLinkList from '../../components/HeaderLinkList';
 import { WalkerHero } from '../../components/Heroes';
-import FirstParagraphOnly from 'static-build/components/FirstParagraphOnly';
 
 import { $heroText, $heroImage } from './styles.css';
 import {
@@ -31,12 +30,11 @@ import {
   $divider,
 } from 'static-build/components/TestCrumbs/Crumb/styles.css';
 
-import { html as README } from 'md:../../../README.md';
-import { html as ABOUT } from 'md:../../../ABOUT.md';
+interface Props {
+  faqs: FAQItem[];
+}
 
-interface Props {}
-
-const AboutPage: FunctionalComponent<Props> = () => {
+const FAQPage: FunctionalComponent<Props> = ({ faqs }) => {
   return (
     <html>
       <head>
@@ -60,14 +58,11 @@ const AboutPage: FunctionalComponent<Props> = () => {
                 <span>Home</span>
               </a>
               <span class={$divider}>//</span>
-              <span class={$collection}>About</span>
+              <span class={$collection}>FAQs</span>
             </nav>
             <div>
               <div class={$heroText}>
-                <div>
-                  <FirstParagraphOnly content={README} />
-                </div>
-                <HeaderLinkList home={false} />
+                <HeaderLinkList />
               </div>
               <div class={$heroImage}>
                 <WalkerHero />
@@ -75,11 +70,20 @@ const AboutPage: FunctionalComponent<Props> = () => {
             </div>
           </section>
         </header>
-        <main dangerouslySetInnerHTML={{ __html: ABOUT }} />
+        <main>
+          {faqs
+            .sort((a, b) => a.meta.order - b.meta.order)
+            .map(item => (
+              <Fragment>
+                <h2>{item.meta.question}</h2>
+                <div dangerouslySetInnerHTML={{ __html: item.html }} />
+              </Fragment>
+            ))}
+        </main>
         <Footer />
       </body>
     </html>
   );
 };
 
-export default AboutPage;
+export default FAQPage;

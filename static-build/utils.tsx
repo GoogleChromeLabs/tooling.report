@@ -10,7 +10,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { h, JSX } from 'preact';
+import { h, JSX, Fragment } from 'preact';
 
 import { promises as fsp } from 'fs';
 import { join as joinPath } from 'path';
@@ -122,20 +122,25 @@ export function renderIssueLinksForTest(test: Test, tool: BuildTool) {
   // TODO: Would be nice to grab the issue titles and stuff
   // https://github.com/GoogleChromeLabs/tooling.report/issues/34
   return (
-    <ul class="issues">
-      {issues.map(issue => (
-        <li
-          style={issue.status === 'open' ? '' : 'text-decoration: line-through'}
-        >
-          {issue.url === 'N/A' ? (
-            'N/A'
-          ) : (
-            <a href={issue.url}>
-              {issue.githubData ? issue.githubData.title : issue.url}
-            </a>
-          )}
-        </li>
-      ))}
-    </ul>
+    <Fragment>
+      <h2>Issues</h2>
+      <ul class="issues">
+        {issues.map(issue => (
+          <li
+            style={
+              issue.status === 'open' ? '' : 'text-decoration: line-through'
+            }
+          >
+            {issue.url === 'N/A' ? (
+              'N/A'
+            ) : (
+              <a href={issue.url}>
+                {issue.githubData ? issue.githubData.title : issue.url}
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </Fragment>
   );
 }

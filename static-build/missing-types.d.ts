@@ -12,6 +12,17 @@
  */
 /// <reference path="../missing-types.d.ts" />
 
+type FAQItem = {
+  html: string;
+  meta: {
+    question: string;
+    order: number;
+  };
+};
+declare module 'faqs:*' {
+  const faqs: FAQItem[];
+  export default faqs;
+}
 declare module 'md:*' {
   export const html: string;
   export const meta: string;

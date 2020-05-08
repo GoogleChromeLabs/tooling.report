@@ -90,7 +90,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
                 <div>
                   <FirstParagraphOnly content={README} />
                 </div>
-                <HeaderLinkList />
+                <HeaderLinkList home={true} />
               </div>
             </div>
           </section>
