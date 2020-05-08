@@ -4,7 +4,11 @@ importance: 1
 shortDesc: 'Can bundles be shared between the main thread and workers?'
 ---
 
+## Introduction
+
 [Web Workers] are great for moving long blocking work and large modules [off the main thread], keeping UI updates fast and smooth. In many cases, code running in a worker will need to rely on some of the same modules as code used on the main thread or in other workers.
+
+# The Test
 
 This test checks to see if it's possible to share modules between Web Workers and the main thread, or between multiple workers. Since few browsers support [ECMAScript modules in workers][module-workers], a custom module format or runtime module loader is necessary in order to pass this test.
 
