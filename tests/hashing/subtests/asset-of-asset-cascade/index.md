@@ -3,7 +3,7 @@ title: Asset-of-asset hash cascading
 importance: 1
 ---
 
-Some asset types can have their own dependencies, much like JavaScript modules can. It's common to treat CSS and SVGs as assets, but both formats can include references to images, fonts or stylesheets.
+Some asset types can have their own dependencies, much like JavaScript modules can. It's common to treat CSS and SVGs as assets, but both formats can include references to images, fonts or stylesheets. When processing assets to add hashes to filenames, it's important that changing the URL hash of a subresource also changes the hashes of any assets referencing it.
 
 ```css
 body {
