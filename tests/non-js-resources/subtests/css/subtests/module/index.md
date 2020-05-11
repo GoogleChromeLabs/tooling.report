@@ -6,11 +6,18 @@ shortDesc: 'Can CSS "Modules" be used for scoping?'
 
 ## Introduction
 
-Modularity in CSS is important when building applications with composable User Interface components. While CSS does not (yet) provide a syntax for defining modular styles consumable from JavaScript, web developers have rallied around a community-standard [CSS "Module"](https://github.com/css-modules/css-modules) specification. As defined, CSS Modules have scoped class names and animation names by default, generally implemented as a transformation or prefix on the authored name.
+Modularity in CSS is important when composing applications out of independent User Interface components. While CSS does not (yet) provide a syntax for defining modular styles consumable from JavaScript, web developers have rallied around a community-standard [CSS "Module"](https://github.com/css-modules/css-modules) specification.
+
+As defined, CSS Modules have scoped class names and animation names by default, generally implemented as a transformation or prefix on the authored name. The value of a CSS Module imported into JavaScript is a object map of authored class names to their corresponding generated namespaced names:
+
+```js
+import styles from './styles.css';
+console.log(styles.someClass); // "someClass_X1y2z3"
+```
 
 # The Test
 
-<TODO: DESC>
+This test builds a JavaScript module that imports a CSS file. The CSS import's resulting class name mapping object is used to construct HTML elements that use the namespaced CSS rules.
 
 **index.js**
 

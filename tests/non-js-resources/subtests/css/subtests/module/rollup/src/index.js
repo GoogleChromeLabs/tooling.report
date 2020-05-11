@@ -11,15 +11,15 @@
  * limitations under the License.
  */
 import cssURL, { $className1, $className2 } from 'css:./styles.css';
-document.head.insertAdjacentElement(
+document.head.insertAdjacentHTML(
   'afterend',
   `<link rel="stylesheet" href="${cssURL}">`,
 );
-document.body.insertAdjacentElement(
+document.body.insertAdjacentHTML(
   'afterend',
   `<div class="${$className1}"></div>`,
 );
-document.body.insertAdjacentElement(
+document.body.insertAdjacentHTML(
   'afterend',
   `<div class="${$className2}"></div>`,
 );
