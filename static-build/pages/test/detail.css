@@ -37,12 +37,21 @@
   }
 
   & > pre[class*='language-'] {
-    justify-self: flex-start;
     margin-bottom: var(--spacing-5);
     margin-top: 0;
-    max-width: 100%;
     box-sizing: border-box;
     overflow-x: auto;
+
+    @media (min-width: 480px) {
+      justify-self: flex-start;
+      max-width: 100%;
+    }
+
+    @media (max-width: 480px) {
+      border-radius: 0;
+      margin-left: calc(-1 * var(--spacing-3));
+      width: calc(100% + (var(--spacing-3) * 2));
+    }
   }
 }
 
