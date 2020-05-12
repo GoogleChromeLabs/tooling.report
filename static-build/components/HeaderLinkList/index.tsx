@@ -31,7 +31,11 @@ const HeaderLinkList: FunctionalComponent<Props> = ({ home }) => {
               { title: 'FAQ', href: '/faqs/' },
             ]
           : [
-              { title: 'Contribute', href: '#' },
+              {
+                title: 'Contribute',
+                href:
+                  'https://github.com/GoogleChromeLabs/tooling.report/blob/master/CONTRIBUTING.md',
+              },
               {
                 title: 'Have an issue?',
                 href: `${config.githubRepository}/issues/new`,
