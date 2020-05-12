@@ -16,6 +16,13 @@
   & section > h1 {
     margin-bottom: var(--spacing-3);
   }
+
+  & p code {
+    background: var(--background-gray-offset);
+    padding: 1ex 1ch;
+    border-radius: var(--spacing-3);
+    font-weight: var(--font-weight--bold);
+  }
 }
 
 .explainerPost > article {
@@ -95,9 +102,6 @@
 
   & p code {
     background: var(--background-gray);
-    padding: 1ex 1ch;
-    border-radius: var(--spacing-3);
-    font-weight: var(--font-weight--bold);
   }
 }
 
