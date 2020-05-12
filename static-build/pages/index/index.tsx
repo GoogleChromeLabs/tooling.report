@@ -21,6 +21,8 @@ import {
   $message,
   $heroImage,
   $overview,
+  $well,
+  $gettingStarted,
 } from './styles.css';
 
 import analyticsBundleURL from 'client-bundle:client/analytics/index.js';
@@ -96,28 +98,68 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
         </header>
         <main>
           <GithubFAB />
+
+          <section id="getting-started">
+            <div class={$sidebarLayout}>
+              <aside></aside>
+              <div class={$gettingStarted}>
+                <h3>Getting Started</h3>
+                <p>
+                  This homepage shows the aggregated results from a bespoke
+                  suite of build tool tests. We intend for the results and the
+                  test build tool configurations to be transparent; to encourage
+                  learning & growing.
+                </p>
+                <p>
+                  <b>Each build tool had a hand written config file written!</b>{' '}
+                  We worked with the build tool authors to ensure fair tests and
+                  succinct configs.
+                </p>
+                <p class={$well}>
+                  We highly encourage you to{' '}
+                  <a href="https://github.com/GoogleChromeLabs/tooling.report/blob/master/CONTRIBUTING.md">
+                    contribute
+                  </a>{' '}
+                  too!
+                </p>
+              </div>
+            </div>
+          </section>
+
           <section id="summary">
             <a href="#summary">
               <h3 class={$sectionHeader}>Summary</h3>
             </a>
             <div class={$sidebarLayout}>
               <aside>
-                <small>Results at the highest level</small>
+                <small>
+                  Not interested in the details, here's the current score
+                </small>
               </aside>
               <div>{renderSummary(tests)}</div>
             </div>
           </section>
 
-          <ToolNav />
-
-          <section id="legend">
+          <section id="data">
             <div class={$sidebarLayout}>
               <aside></aside>
-              <div>
+              <div class={$gettingStarted}>
+                <h3>Scroll n' Tell</h3>
+                <p>
+                  Below you'll get to see how your favorite tool, or new to be
+                  favorite tool, is handling industry best practices for
+                  bundling and delivering optimized web experiences.
+                </p>
+                <p>Each test is scored against the legend below:</p>
+                <br />
                 <Legend />
+                <br />
+                <p>You're ready. Keep calm and scroll on.</p>
               </div>
             </div>
           </section>
+
+          <ToolNav />
 
           <section id="overview" class={$overview}>
             <a href="#overview">

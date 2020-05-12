@@ -13,12 +13,30 @@
   }
 }
 
+.well {
+  padding: var(--spacing-2) var(--spacing-3);
+  background: white;
+  font-size: var(--font-size--detail);
+  border-radius: var(--spacing-3);
+  display: inline-block;
+}
+
+.gettingStarted {
+  & > p {
+    margin: var(--spacing-3) 0 var(--spacing-2);
+  }
+}
+
 .sidebarLayout {
   display: grid;
   gap: var(--spacing-3);
 
   @media (min-width: 700px) {
     grid-template-columns: var(--section-aside-width) 1fr;
+  }
+
+  & > aside > small {
+    max-width: 20ch;
   }
 }
 
