@@ -40,7 +40,7 @@
 }
 
 .resultSet {
-  & details {
+  & > article > details {
     margin-bottom: var(--spacing-3);
   }
 
@@ -48,7 +48,7 @@
     max-width: initial;
   }
 
-  & summary {
+  & > article > details > summary {
     color: var(--vivid-blue);
     background: var(--background-gray-offset);
     padding: 0 var(--spacing-3);
@@ -132,13 +132,13 @@
 
 @media not all and (min-resolution: 0.001dpcm) {
   @supports (-webkit-appearance: none) and (stroke-color: transparent) {
-    .resultSet summary {
+    .resultSet > article > details > summary {
       display: block;
       padding-top: 1ch;
       padding-bottom: 1ch;
     }
 
-    .resultSet summary > a {
+    .resultSet > article > details > summary > a {
       float: right;
       padding: 0;
     }
