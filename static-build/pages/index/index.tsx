@@ -21,6 +21,7 @@ import {
   $overviewHeader,
   $overviewGrid,
   $heroImage,
+  $overview,
 } from './styles.css';
 
 import analyticsBundleURL from 'client-bundle:client/analytics/index.js';
@@ -119,7 +120,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
             </div>
           </section>
 
-          <section id="overview" class={$overviewGrid}>
+          <section id="overview" class={$overview}>
             <a href="#overview">
               <h2 class={`${$overviewHeader} ${$sectionHeader}`}>Overview</h2>
             </a>
