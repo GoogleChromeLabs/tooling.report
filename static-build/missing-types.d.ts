@@ -67,7 +67,7 @@ interface TestMeta {
 }
 
 type TestResults = Record<BuildTool, TestResult>;
-type BuildTool = 'rollup' | 'webpack' | 'parcel' | 'gulp';
+type BuildTool = 'rollup' | 'webpack' | 'parcel' | 'browserify';
 
 interface TestResult {
   /** Front-matter data from the result markdown file */
