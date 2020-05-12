@@ -3,7 +3,7 @@
 @import 'components/ToolNav/styles.css';
 @import 'components/Connect/styles.css';
 
-.overview > div {
+.overview {
   background: var(--background-gray-offset);
   margin: 0 calc(var(--spacing-3) * -1);
   padding: 0 var(--spacing-3) var(--spacing-3);
@@ -13,8 +13,8 @@
     padding: var(--spacing-5) var(--spacing-6) var(--spacing-6);
   }
 
-  @media (min-width: 822px) {
-    --extra-viewport-space: calc(100vw - 822px);
+  @media (min-width: 1400px) {
+    --extra-viewport-space: calc(calc(100vw - 1304px) / 2);
     margin: 0 calc(var(--extra-viewport-space) * -1);
     padding: var(--spacing-7) var(--extra-viewport-space);
   }
@@ -40,7 +40,6 @@
   margin-bottom: var(--spacing-4);
   position: relative;
   color: var(--backpack-blue);
-  background-color: var(--background-gray);
   line-height: var(--font-lineheight--tight);
 
   &:before {
