@@ -1,6 +1,7 @@
 ---
 title: Non-JavaScript resources
 importance: 1
+shortDesc: 'Import CSS and other files from JavaScript'
 ---
 
 Web apps consist of more than just JavaScript. A typical codebase might include HTML documents, CSS StyleSheets, data serialized as JSON or XML, as well as assets like images and fonts. Processing these types of resources individually becomes difficult if the relationship between each resource is not well-defined - references between resources can become out-of-sync when [hashing URLs](/hashing), and contextualized processing of resources is difficult or impossible.

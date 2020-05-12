@@ -1,6 +1,7 @@
 ---
 title: Hashing
 importance: 1
+shortDesc: 'Generate hashed URLs for long-term caching'
 ---
 
 An effective caching strategy is important in order to achieve good page load performance, but it can be tricky to get right. Ideally, resources like scripts and styles should be downloaded once and re-used unless there is an updated version of that resource available. If assets have standard unversioned filenames, we are forced to choose between repeatedly re-requesting those resources to catch new versions, or accepting that a stale cached version may be used even though a new one is available. This tradeoff can also lead to errors in production when updated code is unexpectedly combined with stale code that is functionally different than the current version.

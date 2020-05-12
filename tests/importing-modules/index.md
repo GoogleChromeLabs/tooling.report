@@ -1,6 +1,7 @@
 ---
 title: Importing modules
 importance: 1
+shortDesc: 'Consume modules in various popular formats'
 ---
 
 Modern JavaScript provides an official syntax for defining and importing modules. Along with this syntax, there are also a number of userland module systems in widespread use, including [CommonJS], [AMD] and [SystemJS]. The varied nature of JavaScript usage means build tools are responsible for reconciling these module formats and enabling cross-compatibility when multiple module formats are used in a single application.
