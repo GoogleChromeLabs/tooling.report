@@ -19,7 +19,7 @@
 
   &:focus-within,
   &:hover {
-    background-color: var(--background-gray);
+    background-color: var(--background-gray-highlight);
   }
 
   & > * {
