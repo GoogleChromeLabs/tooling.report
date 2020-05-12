@@ -33,6 +33,7 @@ import {
   $explainerPost,
 } from './detail.css';
 import { $collectionPage, $contribCard, $testCardList } from './collection.css';
+import { $toolBadge } from '../../components/TestResultSnippet/styles.css';
 import { $heroImage, $heroText } from './styles.css';
 
 interface Props {
@@ -122,15 +123,10 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                   <details>
                     <summary id={subject}>
                       <b>{subject}</b>
-                      <span>
-                        :{' '}
-                        {result.meta.result === 'pass'
-                          ? 'pass'
-                          : result.meta.result === 'fail'
-                          ? 'fail'
-                          : 'so-so'}
+                      <span data-result={result.meta.result} class={$toolBadge}>
+                        {result.meta.result}
                       </span>
-                      <a href={githubLink(result.repositoryPath)}>Source</a>
+                      <a href={githubLink(result.repositoryPath)}>Source ↗</a>
                     </summary>
                     <div class={$resultCard}>
                       <div

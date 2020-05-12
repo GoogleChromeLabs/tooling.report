@@ -71,6 +71,11 @@
       color: var(--backpack-blue);
     }
 
+    & > b {
+      display: inline-block;
+      min-width: 8ch;
+    }
+
     & > a {
       margin-left: auto;
     }
@@ -144,7 +149,7 @@
 
     .resultSet > article > details > summary > a {
       float: right;
-      padding: 0;
+      margin-top: calc(-1 * var(--spacing-1));
     }
   }
 }
