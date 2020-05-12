@@ -5,6 +5,13 @@
 
 .overview > div {
   background: var(--background-gray-offset);
+  margin: 0 calc(var(--spacing-3) * -1);
+  padding: 0 var(--spacing-3) var(--spacing-3);
+
+  @media (min-width: 550px) {
+    margin: 0 calc(var(--spacing-6) * -1);
+    padding: var(--spacing-5) var(--spacing-6) var(--spacing-6);
+  }
 
   @media (min-width: 822px) {
     --extra-viewport-space: calc(100vw - 822px);
