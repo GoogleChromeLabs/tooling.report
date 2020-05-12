@@ -120,7 +120,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
             </div>
           </section>
 
-          <section id="overview" class={$overview}>
+          <section id="overview" class={`${$overview} ${$overviewGrid}`}>
             <a href="#overview">
               <h2 class={`${$overviewHeader} ${$sectionHeader}`}>Overview</h2>
             </a>
