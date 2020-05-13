@@ -143,7 +143,9 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
             </a>
             <div class={$sidebarLayout}>
               <aside>
-                <small>Current results as of {config.buildDate}</small>
+                <small>
+                  Current results as of <time>{config.buildDate}</time>{' '}
+                </small>
               </aside>
               <div>{renderSummary(tests)}</div>
             </div>
