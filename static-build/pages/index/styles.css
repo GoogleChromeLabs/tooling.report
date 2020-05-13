@@ -3,11 +3,18 @@
 @import 'components/ToolNav/styles.css';
 @import 'components/Connect/styles.css';
 
-.overview > div {
+.overview {
   background: var(--background-gray-offset);
+  margin: 0 calc(var(--spacing-3) * -1);
+  padding: 0 var(--spacing-3) var(--spacing-3);
 
-  @media (min-width: 822px) {
-    --extra-viewport-space: calc(100vw - 822px);
+  @media (min-width: 550px) {
+    margin: 0 calc(var(--spacing-6) * -1);
+    padding: var(--spacing-5) var(--spacing-6) var(--spacing-6);
+  }
+
+  @media (min-width: 1400px) {
+    --extra-viewport-space: calc(calc(100vw - 1304px) / 2);
     margin: 0 calc(var(--extra-viewport-space) * -1);
     padding: var(--spacing-7) var(--extra-viewport-space);
   }
@@ -22,13 +29,17 @@
   }
 }
 
+.overviewGrid a {
+  font-weight: bold;
+}
+
 .sectionHeader {
   display: inline-block;
+  font-size: 1.5rem;
   text-transform: capitalize;
   margin-bottom: var(--spacing-4);
   position: relative;
   color: var(--backpack-blue);
-  background-color: var(--background-gray);
   line-height: var(--font-lineheight--tight);
 
   &:before {
@@ -43,6 +54,20 @@
   }
 }
 
+.overviewHeader,
+.sectionHeader {
+  @media (min-width: 700px) {
+    text-align: end;
+    width: calc(
+      var(--section-aside-width) - var(--spacing-4) + var(--spacing-3)
+    );
+  }
+}
+
+.overviewHeader {
+  font-size: 2rem;
+}
+
 .summaryList {
   display: grid;
   gap: var(--spacing-5);
@@ -50,15 +75,6 @@
   margin: 0;
   padding: 0;
   list-style: none;
-}
-
-@media only screen and (min-width: 550px) {
-  .sectionHeader:before {
-    margin-right: 0;
-    position: absolute;
-    top: 0;
-    left: -1.5ch;
-  }
 }
 
 .hero {
