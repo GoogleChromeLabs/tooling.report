@@ -8,6 +8,10 @@
 .row {
   display: flex;
   flex-wrap: wrap;
+
+  &:hover > div:first-child > a {
+    color: var(--teal-blue);
+  }
 }
 
 .results {
