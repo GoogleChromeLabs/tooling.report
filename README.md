@@ -1,6 +1,6 @@
 # What is tooling.report?
 
-tooling.report is a quick and easy way to figure out what the best tool for your next project is, if it’s worth your time to migrate from one tool to another and how to adopt a best practice into your existing code base.
+It's a quick way to figure out what the best tool for your next project is, or if tooling migration is worth it, or how to adopt a tool's best practice into your existing configuration and code base.
 
 # To get set up
 
