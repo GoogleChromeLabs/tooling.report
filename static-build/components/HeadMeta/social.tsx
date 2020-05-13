@@ -7,10 +7,7 @@ export default function SocialMeta() {
       <meta property="og:type" content="article" />
       <meta property="og:image" content={toolingReportSocial} />
       <meta property="og:url" content="https://tooling.report" />
-      <meta
-        property="og:site_name"
-        content="tooling.report | brought to you by web.dev"
-      />
+      <meta property="og:site_name" content="tooling.report" />
       <meta name="twitter:image" content={toolingReportSocial} />
       <meta name="twitter:site" content="@ChromiumDev" />
       <meta name="twitter:creator" content="@ChromiumDev" />

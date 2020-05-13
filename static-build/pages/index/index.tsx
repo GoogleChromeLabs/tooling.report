@@ -72,7 +72,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
   return (
     <html lang="en">
       <head>
-        <title>tooling.report | brought to you by web.dev</title>
+        <title>tooling.report | Overview</title>
         <meta name="description" content={config.metaDescription} />
         <HeadMeta />
         <link rel="stylesheet" href={pageStyles} />
