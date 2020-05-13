@@ -70,6 +70,9 @@ function renderSummary(tests: Tests): JSX.Element {
 }
 
 const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
+  const scores = calculateScoreTotals(tests);
+  const possible = scores[0].possible;
+
   return (
     <html lang="en">
       <head>
@@ -106,14 +109,20 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
                 <h3>Getting Started</h3>
                 <p>
                   This homepage shows the aggregated results from a bespoke
-                  suite of build tool tests. We intend for the results and the
-                  test build tool configurations to be transparent; to encourage
-                  learning & growing.
+                  suite of build tool tests. A build tool test is a
+                  configuration file created to specifically handle a feature.
+                  We intend for the capability results and the configuration
+                  files to be transparent; to encourage learning & growing
+                  together.
                 </p>
                 <p>
-                  <b>Each build tool had a hand written config file written!</b>{' '}
+                  Yes,{' '}
+                  <b>
+                    each of the {possible} feature tests have a hand written
+                    config file!
+                  </b>{' '}
                   We worked with the build tool authors to ensure fair tests and
-                  succinct configs.
+                  succinct configuration. It's all in Github.
                 </p>
                 <p class={$well}>
                   We highly encourage you to{' '}
@@ -144,17 +153,20 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
             <div class={$sidebarLayout}>
               <aside></aside>
               <div class={$gettingStarted}>
-                <h3>Scroll n' Tell</h3>
+                <h3>Information</h3>
                 <p>
-                  Below you'll get to see how your favorite tool, or new to be
-                  favorite tool, is handling industry best practices for
-                  bundling and delivering optimized web experiences.
+                  Below you'll get to see how your favorite, or new to be
+                  favorite, tool is handling our industry best practice test
+                  suite.
                 </p>
-                <p>Each test is scored against the legend below:</p>
-                <br />
+                <p class={$well}>Each tool scores as follows:</p>
                 <Legend />
-                <br />
-                <p>You're ready. Keep calm and scroll on.</p>
+                <h4>The Tools</h4>
+                <p>
+                  We chose gulp, parcel, rollup & webpack first out of
+                  popularity; to cover the most surface area. We are actively
+                  aggregating feedback for the next set of tools and tests.
+                </p>
               </div>
             </div>
           </section>
