@@ -4,7 +4,7 @@ importance: 1
 shortDesc: 'Can CSS "Modules" be used for scoping?'
 ---
 
-## Introduction
+# Introduction
 
 Modularity in CSS is important when composing applications out of independent User Interface components. While CSS does not (yet) provide a syntax for defining modular styles consumable from JavaScript, web developers have rallied around a community-standard [CSS "Module"](https://github.com/css-modules/css-modules) specification.
 

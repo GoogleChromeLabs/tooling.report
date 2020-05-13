@@ -4,7 +4,7 @@ importance: 1
 shortDesc: 'Can dependencies be imported from node_modules?'
 ---
 
-## Introduction
+# Introduction
 
 The most common way to distribute and consume front-end packages is through [the npm registry](https://www.npmjs.com). Projects are generally set up such that bare import specifiers (imports that aren't file paths) are resolved to installed packages by looking up the corresponding package name and path within a directory like `node_modules`. The specifics of how resolution occurs tends to vary between different configurations, tools and runtimes, however most are based on the [Node.js module resolution algorithm](https://nodejs.org/api/modules.html#modules_all_together). In its simplest form, bare specifiers are resolved using one or more entry mappings provided by a `package.json` description file generally located at the root of each module.
 

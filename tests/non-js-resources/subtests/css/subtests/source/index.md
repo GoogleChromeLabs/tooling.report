@@ -4,7 +4,7 @@ importance: 1
 shortDesc: 'Can CSS be imported as a JavaScript string?'
 ---
 
-## Introduction
+# Introduction
 
 There are a number of circumstances in which it is useful to be able to import a CSS stylesheet from JavaScript. One of the most common use-cases is to load styles for a reusable UI component library, which generally requires that the stylesheet can be imported as a JavaScript string.
 

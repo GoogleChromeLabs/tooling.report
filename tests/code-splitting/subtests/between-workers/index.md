@@ -4,7 +4,7 @@ importance: 1
 shortDesc: 'Can bundles be shared between the main thread and workers?'
 ---
 
-## Introduction
+# Introduction
 
 [Web Workers] are great for moving long blocking work and large modules [off the main thread], keeping UI updates fast and smooth. In many cases, code running in a worker will need to rely on some of the same modules as code used on the main thread or in other workers.
 

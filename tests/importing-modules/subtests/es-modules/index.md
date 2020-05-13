@@ -4,7 +4,7 @@ importance: 1
 shortDesc: 'Can ECMAScript modules be bundled?'
 ---
 
-## Introduction
+# Introduction
 
 Modern browser-focused JavaScript tends to use [JavaScript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules), which are also supported in [Node.js 12+](https://nodejs.org/api/esm.html). Unlike CommonJS or UMD, JavaScript Modules have a specific syntax that is more restrictive and designed to enable static analysis. This allows bundlers to more reliably parse and extract information about module exports and their usage, which can then be used to optimize bundles by removing unused exports - a process commonly referred to as tree-shaking.
 

@@ -4,7 +4,7 @@ importance: 1
 shortDesc: 'Can CommonJS modules be bundled?'
 ---
 
-## Introduction
+# Introduction
 
 Prior to the introduction of ECMAScript Modules, the most widely-used module format in JavaScript was [CommonJS](https://nodejs.org/api/modules.html). The majority of modules available on npm are published as CommonJS due to its wide support in runtimes like Node.js, though it is increasingly treated as a fallback for ECMAScript Modules. Many modules are designed to be used both in the browser and Node.js, so build tools generally need to be able to account for CommonJS modules being used somewhere in an application.
 

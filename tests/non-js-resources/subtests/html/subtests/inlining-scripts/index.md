@@ -4,7 +4,7 @@ importance: 1
 shortDesc: 'Can processed scripts be inlined into HTML?'
 ---
 
-## Introduction
+# Introduction
 
 This test emulates a minimal two-page website, with "index" and "profile" pages. Each page has its own script, but the two depend on a common library.
 

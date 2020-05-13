@@ -4,7 +4,7 @@ importance: 1
 shortDesc: 'Do hashed SVG URLs change when subresources change?'
 ---
 
-## Introduction
+# Introduction
 
 Much like HTML, SVG documents can contain references to external resources like stylesheets, scripts and images. When hashing generated URLs to enable long-term caching, changes to the hashed URLs of these subresources must also cause the URL hash of the SVG to change.
 

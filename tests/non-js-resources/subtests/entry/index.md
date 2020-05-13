@@ -4,7 +4,7 @@ importance: 1
 shortDesc: 'Can the entry point be a non-JavaScript resource?'
 ---
 
-## Introduction
+# Introduction
 
 The term "entry point" is commonly used to refer to the root module in an application's module graph - effctively where JavaScript bundling starts. However, on the Web the "entry point" into an application is always HTML: when navigating to a page, the browser receives an HTML document that controls which resources and scripts are loaded. While JavaScript dominates much of the tooling landscape, there are a number of cases where the process of building or bundling an application can be applicable even if there is no JavaScript present. Much the same as JavaScript bundles can be optimized and their URLs hashed, so can resources depended on by an HTML page and its StyleSheets.
 

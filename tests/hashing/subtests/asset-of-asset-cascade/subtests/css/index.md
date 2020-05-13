@@ -4,7 +4,7 @@ importance: 1
 shortDesc: 'Do CSS URL hashes reflect subresources changes?'
 ---
 
-## Introduction
+# Introduction
 
 CSS can reference other CSS stylesheets via `@import`, font files via `@font-face` and image files with `background-image`, `mask-image`, `border-image` et al. When the URL hashes for these resourcess are changed, the hashed URLs of any CSS files referring to them must also change.
 

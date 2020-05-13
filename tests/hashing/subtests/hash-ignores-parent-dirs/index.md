@@ -4,7 +4,7 @@ importance: 1
 shortDesc: 'Are URL hashes resilient to path changes?'
 ---
 
-## Introduction
+# Introduction
 
 Generating hashes for URLs based on file paths can result in unintentional cache invalidation when directory paths change between builds. This is commonly seen in Continuous Integration workflows that perform builds in a different directory on each run, or due to otherwise unrelated configuration changes.
 

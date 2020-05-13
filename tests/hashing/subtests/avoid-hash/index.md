@@ -4,7 +4,7 @@ importance: 1
 shortDesc: 'Can URL hashing be selectively disabled?'
 ---
 
-## Introduction
+# Introduction
 
 Including content hashes in URLs is beneficial for effective caching, however there are certain resources that should not have hashed URLs. Files like `robots.txt`, `index.html` and Service Workers can't have hashes in their URLs, because their URLs must always remain the same.
 

@@ -4,7 +4,7 @@ importance: 1
 shortDesc: 'Can non-JavaScript resources have dependencies?'
 ---
 
-## Introduction
+# Introduction
 
 Subresources like images and fonts referenced by a CSS StyleSheet are a common example of a dependency relationship where both the dependency and the requestor are non-JavaScript resources. It's important to be able to process assets used by stylesheets in order to [hash](/hashing) or rebase their URLs, and apply optimizations like inlining. Subresources capable of being represented as dependencies can also be found in HTML, SVG, JSON and other formats.
 

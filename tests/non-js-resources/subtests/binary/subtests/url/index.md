@@ -4,7 +4,7 @@ importance: 1
 shortDesc: 'Import a binary file as an asset URL'
 ---
 
-## Introduction
+# Introduction
 
 Binary files are often large, and representing them as text can be inefficient. When an application imports a large binary file, it often makes more sense to load that data from a URL rather than [inlining it into the JavaScript bundle](/non-js-resources/binary/arraybuffer).
 

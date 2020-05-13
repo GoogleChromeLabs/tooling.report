@@ -4,7 +4,7 @@ importance: 1
 shortDesc: 'Do code-splitted bundle changes update the parent hash?'
 ---
 
-## Introduction
+# Introduction
 
 [Code Splitting](/code-splitting), often using dynamic import, can be used to asynchronously load dependencies without blocking execution. This commonly used to implement lazy loading or move low priority work into idle time. Split points created this way have a parent-child relationship, where the parent bundle needs to be able to reference the code-splitted bundle so it can be loaded at runtime.
 

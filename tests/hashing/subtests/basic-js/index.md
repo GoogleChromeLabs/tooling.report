@@ -4,7 +4,7 @@ importance: 1
 shortDesc: 'Are bundle URLs hashed based on their contents?'
 ---
 
-## Introduction
+# Introduction
 
 Will the library hash bundled JavaScript? Does the hash change _only_ when the content of the file changes?
 

@@ -4,7 +4,7 @@ importance: 1
 shortDesc: 'Are common entry dependencies extracted into a shared bundle?'
 ---
 
-## Introduction
+# Introduction
 
 The use of multiple entry points in bundlers is often synonymous with multiple pages. As an example, imagine an "index" page and a "profile" page, each with their own script. Both scripts happen to make use of a large common library. Instead of being bundled into each page's script, the library should be split out into a bundle shared by both.
 

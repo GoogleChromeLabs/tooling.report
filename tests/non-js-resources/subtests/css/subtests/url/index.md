@@ -4,7 +4,7 @@ importance: 1
 shortDesc: 'Can CSS be imported to produce a stylesheet URL?'
 ---
 
-## Introduction
+# Introduction
 
 Importing CSS from JavaScript and getting back a URL is a convenient way let the browser handle the work of downloading and applying stylesheets, while still being able to control when and where that work happens. CSS has a smaller per-byte performance impact than JavaScript, so it's often a good idea to avoid [inlining CSS into JavaScript bundles](/non-js-resources/css/source).
 

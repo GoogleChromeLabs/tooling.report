@@ -4,7 +4,7 @@ importance: 1
 shortDesc: 'Can entry bundles be created for other contexts?'
 ---
 
-## Introduction
+# Introduction
 
 There are a number of different scenarios where it's necessary to bundle some code separately for a different JavaScript context. Web Workers are perhaps the most popular case, however the same underlying functionality is necessary in order to bundle code for use in [Service Workers], [Module Workers] and [Worklets]. Since many tools apply special handling to Web Workers, it can take time to catch up with new worker variants.
 

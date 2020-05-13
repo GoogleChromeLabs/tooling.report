@@ -3,7 +3,7 @@ title: Asset hash cascading
 importance: 1
 ---
 
-## Introduction
+# Introduction
 
 When including hashes in the URLs of non-JavaScript assets, it's often necessary to reference those URLs from JavaScript. When the contents of an asset are changed - an image updated or text content changed - it's hashed URL also changes. If a JavaScript bundle references that asset's URL, it's important that the bundle's hashed URL is also updated, since it must now be compiled with the updated hash of its asset "dependency".
 

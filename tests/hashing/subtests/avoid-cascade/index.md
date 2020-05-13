@@ -4,7 +4,7 @@ importance: 1
 shortDesc: 'Can a map be used to centralized bundle hashes?'
 ---
 
-## Introduction
+# Introduction
 
 When using [hashed URLs](/hashing) for long-term caching, hashes can be collected into a centralized mapping (like an [Import Map]) to reduce the scope of cache invalidation. This is a tradeoff: the mapping itself is an uncacheable resource, but this allows individual resource URLs to change without invalidating the URLs of every resource that references them.
 

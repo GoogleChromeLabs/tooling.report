@@ -4,7 +4,7 @@ importance: 1
 shortDesc: 'Can multiple entry points be used without duplicating modules?'
 ---
 
-## Introduction
+# Introduction
 
 When bundling multi-page websites, [multiple entry points] can be used to create page-specific bundles containing only the JavaScript code necessary for that page. This is an important technique for reducing the impact of JavaScript size on application performance, since it avoids downloading, parsing and compiling code that is ultimately unused by the current page.
 

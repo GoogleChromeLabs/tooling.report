@@ -4,7 +4,7 @@ importance: 1
 shortDesc: 'Are bundle hashes based on final compiled code?'
 ---
 
-## Introduction
+# Introduction
 
 It's possible to make changes to source code that have no effect on the bundled output. Some examples of this include comment and formatting changes, or functionally-equivalent refactoring. The likelihood of these types of changes having no effect on bundled output is higher when code is [transpiled](/transformations/transpile-js) and [minified](/transformations/minify-js).
 

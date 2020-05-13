@@ -4,7 +4,7 @@ importance: 1
 shortDesc: 'Can split points be created using dynamic import?'
 ---
 
-## Introduction
+# Introduction
 
 In Code Splitting, a "split point" refers to an asynchronous module boundary that allows for a dependency to be bundled separately and loaded separately from the parent bundle. Creating split points makes it possible to control when the JavaScript for each part of an application is loaded, which is particularly useful for prioritising "first interaction" code over other scripts.
 
