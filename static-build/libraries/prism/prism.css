@@ -7,7 +7,8 @@
   code[class*='language-'],
   pre[class*='language-'] {
     color: var(--teal-blue);
-    font-family: system-ui-monospace, monospace;
+    font-family: ui-monospace, Operator Mono, Dank Mono, Fira Code, Hack,
+      monospace;
     font-size: 1.1rem;
     font-weight: normal;
     direction: ltr;
