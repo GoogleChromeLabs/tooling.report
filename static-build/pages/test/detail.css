@@ -21,6 +21,7 @@
     background: var(--background-gray-offset);
     padding: 1ex 1ch;
     border-radius: var(--spacing-3);
+    border: 1px solid var(--sky-blue);
     font-weight: var(--font-weight--bold);
   }
 }
@@ -115,6 +116,7 @@
   }
 
   & p code {
+    border: 1px solid var(--background-gray-offset);
     background: var(--background-gray);
   }
 }
