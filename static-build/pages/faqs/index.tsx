@@ -30,7 +30,7 @@ const FAQPage: FunctionalComponent<Props> = () => {
   return (
     <html lang="en">
       <head>
-        <title>{`tooling.report | FAQs`}</title>
+        <title>FAQs</title>
         <meta
           name="description"
           content="Frequently asked questions we have about this site"

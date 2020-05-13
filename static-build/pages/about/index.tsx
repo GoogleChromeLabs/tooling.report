@@ -32,7 +32,7 @@ const AboutPage: FunctionalComponent<Props> = () => {
   return (
     <html lang="en">
       <head>
-        <title>tooling.report | About</title>
+        <title>About</title>
         <meta
           name="description"
           content="More direct and ancillary information about this site."
