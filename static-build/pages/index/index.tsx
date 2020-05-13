@@ -18,7 +18,8 @@ import {
   $summaryList,
   $sectionHeader,
   $hero,
-  $message,
+  $overviewHeader,
+  $overviewGrid,
   $heroImage,
   $overview,
   $well,
@@ -44,6 +45,7 @@ import rollup from 'asset-url:../../img/rollup.svg';
 import webpack from 'asset-url:../../img/webpack.svg';
 import parcel from 'asset-url:../../img/parcel.svg';
 
+import config from 'consts:config';
 import { html as README } from 'md:../../../README.md';
 
 const toolImages = { gulp, rollup, webpack, parcel };
@@ -141,9 +143,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
             </a>
             <div class={$sidebarLayout}>
               <aside>
-                <small>
-                  Not interested in the details, here's the current score
-                </small>
+                <small>Current results as of {config.buildDate}</small>
               </aside>
               <div>{renderSummary(tests)}</div>
             </div>
@@ -173,9 +173,9 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
 
           <ToolNav />
 
-          <section id="overview" class={$overview}>
+          <section id="overview" class={`${$overview} ${$overviewGrid}`}>
             <a href="#overview">
-              <h3 class={$sectionHeader}>Overview</h3>
+              <h2 class={`${$overviewHeader} ${$sectionHeader}`}>Overview</h2>
             </a>
             <DataGrid tests={tests} basePath="/" />
           </section>
