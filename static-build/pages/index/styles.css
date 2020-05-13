@@ -48,10 +48,15 @@
 
   @media (min-width: 700px) {
     grid-template-columns: var(--section-aside-width) 1fr;
-  }
 
-  & > aside > small {
-    max-width: 20ch;
+    & > aside {
+      margin-right: var(--spacing-2);
+      text-align: right;
+
+      & > small {
+        max-width: 20ch;
+      }
+    }
   }
 }
 
@@ -63,10 +68,14 @@
   display: inline-block;
   font-size: 1.5rem;
   text-transform: capitalize;
-  margin-bottom: var(--spacing-4);
+  margin-bottom: var(--spacing-2);
   position: relative;
   color: var(--backpack-blue);
   line-height: var(--font-lineheight--tight);
+
+  @media (min-width: 700px) {
+    margin-bottom: var(--spacing-4);
+  }
 
   &:before {
     content: '#';
