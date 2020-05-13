@@ -1,11 +1,12 @@
 ---
 title: Custom type
 importance: 1
+shortDesc: 'Import custom file types from JavaScript'
 ---
 
 ## Introduction
 
-Many applications rely on custom data types, from serialization schemes like [protobuf] to vendor-specific file formats like [MIDI]. For many of the same reasons it's useful to allow importing other [non-JavaScript resources](/non-js-resources), the ability to import custom file types as dependences allows them to be integrated into the build process. One key component of this technique is the ability to transform files at build time to "wrap" them in a specific interface.
+Many applications rely on custom data types, from serialization schemes like [protobuf] to vendor file formats like [MIDI]. For many of the same reasons it's useful to allow importing other [non-JavaScript resources](/non-js-resources), the ability to import custom file types as dependences allows them to be integrated into the build process. One key component of this technique is the ability to transform files at build time to "wrap" them in a specific interface.
 
 # The Test
 

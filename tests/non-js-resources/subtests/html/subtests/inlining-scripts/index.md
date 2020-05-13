@@ -1,9 +1,16 @@
 ---
 title: Inlining scripts
 importance: 1
+shortDesc: 'Can processed scripts be inlined into HTML?'
 ---
 
-Imagine you had an 'index' page and a 'profile' page. Each has their own root script, but the two make use of a common library.
+## Introduction
+
+This test emulates a minimal two-page website, with "index" and "profile" pages. Each page has its own script, but the two depend on a common library.
+
+# The Test
+
+This test emulates a minimal two-page website, with "index" and "profile" pages. Each page has its own script, but the two depend on a common library and also each lazily import a second shared module, creating a [split point](/code-splitting/dynamic-import). Building the pages should bundle and inline the scripts for `index.html`, but preserve the scripts from `profile.html` as well as the lazy-loaded module.
 
 **index.js**
 
@@ -44,4 +51,4 @@ export function logCaps(msg) {
 console.log('Totally lazy');
 ```
 
-Can HTML files be output where `index.html` contains, inlinined, all static imports (but not dynamic imports). Whereas `profile.html` will continue to use external scripts. Both pages must reference the same `lazy.js`.
+The build result should be include two HTML files. `index.html` should contain inlinined bundle for `index.js` and its dependencies. `profile.html` should reference the bundle for `profile.js` as an external script. Both pages should reference the same lazy-loaded bundle for `lazy.js`.
