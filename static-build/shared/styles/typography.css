@@ -30,6 +30,16 @@ h2 {
   font-size: var(--font-size--h2);
 }
 
+h3,
+h4 {
+  color: var(--vivid-blue);
+}
+
+h5,
+h6 {
+  color: var(--denim-blue);
+}
+
 p {
   max-width: 50ch;
   line-height: var(--font-lineheight--extended);
