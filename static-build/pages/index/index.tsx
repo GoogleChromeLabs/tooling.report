@@ -18,7 +18,6 @@ import {
   $summaryList,
   $sectionHeader,
   $hero,
-  $message,
   $heroImage,
 } from './styles.css';
 
@@ -31,19 +30,12 @@ import HeaderLinkList from '../../components/HeaderLinkList';
 import { BenchHero } from '../../components/Heroes';
 import SummaryCard from '../../components/SummaryCard';
 import ToolNav from '../../components/ToolNav';
-import DataGrid from '../../components/DataGrid';
-import Legend from '../../components/DataGrid/Legend';
+import DataGrid from 'shared/components/DataGrid';
+import Legend from 'shared/components/DataGrid/Legend';
 import Connect from '../../components/Connect';
 import FirstParagraphOnly from 'static-build/components/FirstParagraphOnly';
-
-import gulp from 'asset-url:../../img/gulp.svg';
-import rollup from 'asset-url:../../img/rollup.svg';
-import webpack from 'asset-url:../../img/webpack.svg';
-import parcel from 'asset-url:../../img/parcel.svg';
-
+import * as toolImages from 'shared/utils/tool-images';
 import { html as README } from 'md:../../../README.md';
-
-const toolImages = { gulp, rollup, webpack, parcel };
 
 interface Props {
   tests: Tests;

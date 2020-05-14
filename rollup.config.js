@@ -38,7 +38,7 @@ export default async function({ watch }) {
   const tsPluginInstance = simpleTS('static-build', { watch });
   const commonPlugins = () => [
     tsPluginInstance,
-    resolveDirsPlugin(['static-build', 'client', 'tests']),
+    resolveDirsPlugin(['static-build', 'client', 'tests', 'shared']),
     assetPlugin(),
     testDataPlugin(),
     constsPlugin({ config }),
@@ -81,7 +81,7 @@ export default async function({ watch }) {
       cssPlugin(),
       nodeExternalPlugin(),
       faqsPlugin(),
-      runScript(dir + '/index.js'),
+      runScript(dir + '/static-build/index.js'),
     ],
   };
 }

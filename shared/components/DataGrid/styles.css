@@ -58,6 +58,10 @@
   }
 }
 
+.dotContainer {
+  position: relative;
+}
+
 .dot {
   display: inline-block;
   width: var(--spacing-3);

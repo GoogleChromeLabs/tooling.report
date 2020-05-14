@@ -13,11 +13,7 @@ import {
   $subTestCard,
   $checkbox,
 } from './styles.css';
-import gulp from 'asset-url:../../img/gulp.svg';
-import rollup from 'asset-url:../../img/rollup.svg';
-import webpack from 'asset-url:../../img/webpack.svg';
-import parcel from 'asset-url:../../img/parcel.svg';
-const toolImages = { gulp, rollup, webpack, parcel };
+import * as toolImages from 'shared/utils/tool-images';
 import checkbox from 'asset-url:./checkbox.svg';
 
 interface Props {

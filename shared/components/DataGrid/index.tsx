@@ -1,7 +1,27 @@
-import { h, FunctionalComponent, JSX } from 'preact';
+/**
+ * Copyright 2020 Google Inc. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+import { h, FunctionalComponent } from 'preact';
 import config from 'consts:config';
-import { $datagrid, $row, $column, $dot, $aside, $results } from './styles.css';
-import ToolTip from '../../components/ToolTip';
+import {
+  $datagrid,
+  $row,
+  $column,
+  $dot,
+  $aside,
+  $results,
+  $dotContainer,
+} from './styles.css';
+import ToolTip from '../ToolTip';
 
 interface Props {
   tests?: Tests;
@@ -33,7 +53,8 @@ const DataGrid: FunctionalComponent<Props> = ({
   return (
     <div class={$datagrid}>
       {testGroups.map(tests => {
-        const [testDir, mainTest] = Object.entries(tests)[0];
+        const testEntries = Object.entries(tests);
+        const [testDir, mainTest] = testEntries[0];
 
         return (
           <div class={$row}>
@@ -45,10 +66,10 @@ const DataGrid: FunctionalComponent<Props> = ({
             <div class={$results}>
               {config.testSubjects.map(tool => (
                 <span class={$column}>
-                  {Object.entries(tests).map(
+                  {testEntries.map(
                     ([testDir, test]) =>
                       test.results[tool] && (
-                        <div style="position: relative">
+                        <div class={$dotContainer}>
                           <button
                             aria-describedby={`${tool}-${testDir}`}
                             data-tool={tool}

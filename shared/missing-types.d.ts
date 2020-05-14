@@ -10,7 +10,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/*
-TypeScript won't build unless there's a file in this dir. We can remove this once we have real
-shared files.
-*/
+/// <reference path="../missing-types.d.ts" />

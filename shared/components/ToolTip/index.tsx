@@ -7,11 +7,7 @@ import {
   $details,
   $toolIcon,
 } from './styles.css';
-import gulp from 'asset-url:../../img/gulp.svg';
-import rollup from 'asset-url:../../img/rollup.svg';
-import webpack from 'asset-url:../../img/webpack.svg';
-import parcel from 'asset-url:../../img/parcel.svg';
-const toolImages = { gulp, rollup, webpack, parcel };
+import * as toolImages from 'shared/utils/tool-images';
 
 interface Props {
   content: string;
@@ -33,13 +29,7 @@ const Tooltip: FunctionalComponent<Props> = ({
   category,
 }: Props) => {
   return (
-    <div
-      role="tooltip"
-      data-position="left" // Make this dynamic
-      id={id}
-      class={$tooltip}
-      tabIndex={-1}
-    >
+    <div role="tooltip" id={id} class={$tooltip} tabIndex={-1}>
       <div class={$headerBar}>
         <div class={$headerMeta}>
           <figure class={$toolIcon}>
