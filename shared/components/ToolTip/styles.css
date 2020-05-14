@@ -87,14 +87,14 @@
   font-size: var(--font-size--detail);
   width: 350px;
 
-  /* Default tooltip left styles */
-  transform: translateX(-6px) translateY(-10px);
+  /* Default tooltip center styles */
+  transform: translateX(-155px) translateY(-10px);
 
   &:after {
     content: '';
     position: absolute;
     top: 100%;
-    left: calc(var(--arrow-horizontal-offset) - var(--arrow-size));
+    left: calc(50% - var(--arrow-size));
     margin-left: calc(-1 * var(--arrow-size));
     border-width: var(--arrow-size);
     border-style: solid;
@@ -106,27 +106,27 @@
     content: '';
     position: absolute;
     top: 100%;
-    left: calc(var(--arrow-horizontal-offset) - var(--arrow-size) - 2px);
+    left: calc(50% - var(--arrow-size) - 2px);
     margin-left: calc(-1 * var(--arrow-size) + var(--border-width));
     border-width: calc(var(--arrow-size) +var(--border-width));
     border-style: solid;
     border-color: var(--light-blue) transparent transparent transparent;
   }
 
-  &.tooltip-center {
-    transform: translateX(-155px) translateY(-10px);
+  &.tooltipLeft {
+    transform: translateX(-6px) translateY(-10px);
 
     &:after {
-      left: calc(50% - var(--arrow-size));
+      left: calc(var(--arrow-horizontal-offset) - var(--arrow-size));
     }
 
     /* For the border */
     &:before {
-      left: calc(50% - var(--arrow-size) - 2px);
+      left: calc(var(--arrow-horizontal-offset) - var(--arrow-size) - 2px);
     }
   }
 
-  &.tooltip-right {
+  &.tooltipRight {
     transform: translateX(-316px) translateY(-10px);
 
     &:after {

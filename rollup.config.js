@@ -43,6 +43,7 @@ export default async function({ watch }) {
     testDataPlugin(),
     constsPlugin({ config }),
     markdownPlugin({ metadataProcessor }),
+    cssPlugin(),
   ];
   const dir = '.tmp/build';
   const staticPath = 'static/[name]-[hash][extname]';
@@ -78,7 +79,6 @@ export default async function({ watch }) {
         resolveFileUrl,
       ),
       ...commonPlugins(),
-      cssPlugin(),
       nodeExternalPlugin(),
       faqsPlugin(),
       runScript(dir + '/static-build/index.js'),

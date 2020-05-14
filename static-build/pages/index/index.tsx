@@ -21,6 +21,7 @@ import {
   $heroImage,
 } from './styles.css';
 
+import bundleURL, { imports } from 'client-bundle:client/index/index.ts';
 import analyticsBundleURL from 'client-bundle:client/analytics/index.js';
 import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
@@ -66,6 +67,10 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
         <meta name="description" content="TODO: site description" />
         <HeadMeta />
         <link rel="stylesheet" href={pageStyles} />
+        <script type="module" src={bundleURL} />
+        {imports.map(v => (
+          <link rel="preload" as="script" href={v} crossOrigin="" />
+        ))}
         <script type="module" async src={analyticsBundleURL}></script>
       </head>
       <body>
