@@ -54,12 +54,12 @@ const DataGrid: FunctionalComponent<Props> = ({
     <div class={$datagrid}>
       {testGroups.map(tests => {
         const testEntries = Object.entries(tests);
-        const [testDir, mainTest] = testEntries[0];
+        const [mainTestDir, mainTest] = testEntries[0];
 
         return (
           <div class={$row}>
             <div class={$aside}>
-              <a href={`${basePath}${testDir}`}>
+              <a href={`${basePath}${mainTestDir}`}>
                 {mainTest.meta && mainTest.meta.title}
               </a>
             </div>
