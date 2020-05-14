@@ -42,10 +42,7 @@ for (const dataGrid of dataGrids) {
 
       if (bounds.left < 0) {
         tooltip.classList.add($tooltipLeft);
-      } else if (
-        bounds.width + bounds.left >
-        document.documentElement.clientWidth
-      ) {
+      } else if (bounds.right > document.documentElement.clientWidth) {
         tooltip.classList.add($tooltipRight);
       }
     },
