@@ -25,6 +25,7 @@ import {
 } from './styles.css';
 
 import analyticsBundleURL from 'client-bundle:client/analytics/index.js';
+import config from 'consts:config';
 import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
 import GithubFAB from '../../components/GithubFAB';
@@ -72,8 +73,8 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
   return (
     <html lang="en">
       <head>
-        <title>tooling.report</title>
-        <meta name="description" content="TODO: site description" />
+        <title>Home | Score Overview</title>
+        <meta name="description" content={config.metaDescription} />
         <HeadMeta />
         <link rel="stylesheet" href={pageStyles} />
         <script type="module" async src={analyticsBundleURL}></script>

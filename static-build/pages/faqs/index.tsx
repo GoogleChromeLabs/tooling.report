@@ -30,8 +30,11 @@ const FAQPage: FunctionalComponent<Props> = () => {
   return (
     <html lang="en">
       <head>
-        <title>{`tooling.report: About`}</title>
-        <meta name="description" content="FAQs" />
+        <title>FAQs</title>
+        <meta
+          name="description"
+          content="Frequently asked questions we have about this site"
+        />
         <HeadMeta />
         <link rel="stylesheet" href={pageStyles} />
         <script type="module" async src={analyticsBundleURL}></script>

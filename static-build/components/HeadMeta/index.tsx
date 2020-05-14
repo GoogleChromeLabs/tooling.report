@@ -1,5 +1,7 @@
 import { h, Fragment } from 'preact';
+import SocialMeta from './social';
 import sharedStyles from 'css-bundle:static-build/shared/styles/index.css';
+
 import icoURL from 'asset-url:../../img/favicon.ico';
 import appleIconURL from 'asset-url:../../img/apple-touch-icon.png';
 import png32URL from 'asset-url:../../img/favicon-32x32.png';
@@ -17,6 +19,7 @@ export default function HeadMeta() {
       <link rel="mask-icon" href={safariURL} />
       <meta name="msapplication-TileColor" content="#ffffff" />
       <meta name="theme-color" content="#ffffff" />
+      <SocialMeta />
       <link rel="stylesheet" href={sharedStyles} />
     </Fragment>
   );
