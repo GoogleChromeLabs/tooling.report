@@ -18,11 +18,14 @@ import {
   $summaryList,
   $sectionHeader,
   $hero,
-  $message,
+  $overviewHeader,
+  $overviewGrid,
   $heroImage,
+  $overview,
 } from './styles.css';
 
 import analyticsBundleURL from 'client-bundle:client/analytics/index.js';
+import config from 'consts:config';
 import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
 import GithubFAB from '../../components/GithubFAB';
@@ -70,8 +73,8 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
   return (
     <html lang="en">
       <head>
-        <title>tooling.report</title>
-        <meta name="description" content="TODO: site description" />
+        <title>Home | Score Overview</title>
+        <meta name="description" content={config.metaDescription} />
         <HeadMeta />
         <link rel="stylesheet" href={pageStyles} />
         <script type="module" async src={analyticsBundleURL}></script>
@@ -118,9 +121,9 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
             </div>
           </section>
 
-          <section id="overview">
+          <section id="overview" class={`${$overview} ${$overviewGrid}`}>
             <a href="#overview">
-              <h3 class={$sectionHeader}>Overview</h3>
+              <h2 class={`${$overviewHeader} ${$sectionHeader}`}>Overview</h2>
             </a>
             <DataGrid tests={tests} basePath="/" />
           </section>

@@ -43,6 +43,7 @@ declare module 'consts:config' {
   const value: {
     testSubjects: BuildTool[];
     githubRepository: string;
+    metaDescription: string;
   };
   export default value;
 }

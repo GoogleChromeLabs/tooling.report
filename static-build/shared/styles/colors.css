@@ -21,6 +21,7 @@
   /* Gra|eys */
   --background-gray: #edf0f2;
   --background-gray-offset: #dae1e6;
+  --background-gray-highlight: hsl(205deg 69% 97%);
   --text-gray: hsl(0 0% 10%);
 
   /* Shadows */
