@@ -180,6 +180,11 @@
 
 @media not all and (min-resolution: 0.001dpcm) {
   @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+    .detailPage pre {
+      max-width: 100vw;
+      margin-right: -3rem;
+    }
+
     .resultSet > article > details > summary {
       display: block;
       padding-top: 1ch;
