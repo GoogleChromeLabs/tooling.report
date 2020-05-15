@@ -23,6 +23,7 @@
     border-radius: var(--spacing-3);
     border: 1px solid var(--sky-blue);
     font-weight: var(--font-weight--bold);
+    white-space: nowrap;
   }
 }
 
@@ -105,6 +106,7 @@
 
     & > a {
       margin-left: auto;
+      white-space: nowrap;
     }
   }
 }
@@ -135,6 +137,7 @@
   & p code {
     border: 1px solid var(--background-gray-offset);
     background: var(--background-gray);
+    white-space: nowrap;
   }
 }
 
