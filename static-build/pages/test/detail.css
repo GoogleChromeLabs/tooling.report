@@ -17,7 +17,8 @@
     margin-bottom: var(--spacing-3);
   }
 
-  & p code {
+  & p code,
+  & li code {
     background: var(--background-gray-offset);
     padding: 0.25em 0.5em;
     border-radius: var(--spacing-3);
