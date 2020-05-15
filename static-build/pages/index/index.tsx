@@ -23,6 +23,7 @@ import {
   $heroImage,
   $overview,
   $well,
+  $consumeGap,
   $gettingStarted,
 } from './styles.css';
 
@@ -148,7 +149,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
             </div>
           </section>
 
-          <section id="data">
+          <section id="data" class={$consumeGap}>
             <div class={$sidebarLayout}>
               <aside></aside>
               <div class={$gettingStarted}>

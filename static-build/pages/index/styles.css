@@ -28,13 +28,13 @@
   display: inline-block;
 }
 
+.consumeGap {
+  margin-bottom: -8rem;
+}
+
 .gettingStarted {
   & > p {
     margin: var(--spacing-3) 0 var(--spacing-2);
-
-    &:last-of-type {
-      margin-bottom: -8rem;
-    }
   }
 
   & > div {
