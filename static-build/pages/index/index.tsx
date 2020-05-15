@@ -27,7 +27,6 @@ import {
 } from './styles.css';
 
 import analyticsBundleURL from 'client-bundle:client/analytics/index.js';
-import config from 'consts:config';
 import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
 import GithubFAB from '../../components/GithubFAB';
