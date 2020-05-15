@@ -6,7 +6,7 @@ shortDesc: 'Can generated bundles be referenced from HTML?'
 
 # Introduction
 
-When using a build tool to bundle or transform JavaScript, the resulting files generally have URLs that are different than those of the original modules they were constructed from. This come as a result of configurable output filename templating, or because the generated URLs contain [hashes](/hashing) to enable long-term caching. In either case, it's important to be able to update `<script>` tags in an HTML document to reference the correct URLs for generated bundles.
+When using a build tool to bundle or transform JavaScript, the resulting files generally have URLs that are different than those of the original modules they were constructed from. This come as a result of configurable output filename templating, or because the generated URLs contain [hashes](/hashing/) to enable long-term caching. In either case, it's important to be able to update `<script>` tags in an HTML document to reference the correct URLs for generated bundles.
 
 # The Test
 

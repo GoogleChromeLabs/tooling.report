@@ -6,7 +6,7 @@ shortDesc: 'Can preloads be generated for scripts?'
 
 # Introduction
 
-Creating [split points](/code-splitting/dynamic-import) using dynamic imports makes it possible to progressively load parts of the code for an application as-needed. The ability to preload code-splitted bundles can improve performance by increasing the likelihood that bundles are available by the time they are needed. However, this is not always optimal: preloading scripts that are loaded conditionally or that may never be needed incurs an unnecessary cost.
+Creating [split points](/code-splitting/dynamic-import/) using dynamic imports makes it possible to progressively load parts of the code for an application as-needed. The ability to preload code-splitted bundles can improve performance by increasing the likelihood that bundles are available by the time they are needed. However, this is not always optimal: preloading scripts that are loaded conditionally or that may never be needed incurs an unnecessary cost.
 
 # The Test
 

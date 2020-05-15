@@ -8,7 +8,7 @@ Import an image and get a URL that can be used in an `<img />`.
 
 # Introduction
 
-Images can be quite large depending on their format, quality and dimensions. For the majority of images that are too large to be [inlined into JavaScript bundles](/non-js-resources/image/data-url), the most direct way to reference them from JavaScript is by their URL. Like most other [non-JavaScript resources](/non-js-resources), images imported into the JavaScript module graph have the benefit of being treated as dependencies that can be processed and have their [URLs hashed](/hashing) for effective long-term caching.
+Images can be quite large depending on their format, quality and dimensions. For the majority of images that are too large to be [inlined into JavaScript bundles](/non-js-resources/image/data-url/), the most direct way to reference them from JavaScript is by their URL. Like most other [non-JavaScript resources](/non-js-resources/), images imported into the JavaScript module graph have the benefit of being treated as dependencies that can be processed and have their [URLs hashed](/hashing/) for effective long-term caching.
 
 # The Test
 

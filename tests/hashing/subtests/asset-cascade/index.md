@@ -24,4 +24,4 @@ console.log(txtUrl);
 This is an asset.
 ```
 
-Bundling the above should produce two files with hashes in their names, like `bundle.12345.js` and `some-asset.54321.txt`. A second build after changing the contents of `some-asset.txt` should generate two _new_ files with new hashes.
+Bundling the above should produce two files with hashes in their names, like `bundle.12345.js` and `some-asset.54321.txt`. When the contents of `some-asset.txt` are changed and the project is rebuilt, the hash must be different in _both_ output files.

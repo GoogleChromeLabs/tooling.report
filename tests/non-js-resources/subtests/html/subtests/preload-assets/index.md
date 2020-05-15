@@ -45,4 +45,4 @@ body {
 <binary data>
 ```
 
-The result produced by this test should be five files: an HTML document, the bundled JavaScript and CSS, and the font and image subresources - all with [hashed URLs](/hashing). The generated HTML document should contain `<link rel="preload">` tags for the font and image, with the correct `as` attribute value for each.
+The result produced by this test should be five files: an HTML document, the bundled JavaScript and CSS, and the font and image subresources - all with [hashed URLs](/hashing/). The generated HTML document should contain `<link rel="preload">` tags for the font and image, with the correct `as` attribute value for each.

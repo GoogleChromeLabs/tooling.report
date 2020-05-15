@@ -38,7 +38,7 @@ body {
 
 ```js
 const assets = ['..']; // obtained differently in each tool
-const version = 'v12'; // obtained differently in each tool
+const version = 'ab57fcd2'; // obtained differently in each tool
 
 async function install() {
   const cache = await caches.open(version);
@@ -53,7 +53,7 @@ async function activate() {
 addEventListener('activate', e => e.waitUntil(activate()));
 ```
 
-The build result should include a bundled version of `index.js`, the processed stylesheet, and the image asset - all with [hashed URLs](/hashing). An `index.html` file with the JavaScript and CSS resources should also be produced, as well as a processed version of the `sw.js` service worker. The HTML file and service worker cannot have hashed URLs.
+The build result should include a bundled version of `index.js`, the processed stylesheet, and the image asset - all with [hashed URLs](/hashing/). An `index.html` file with the JavaScript and CSS resources should also be produced, as well as a processed version of the `sw.js` service worker. The HTML file and service worker cannot have hashed URLs.
 
 To pass this test, the service worker needs to be aware of the final URL of all assets produced by the build:
 

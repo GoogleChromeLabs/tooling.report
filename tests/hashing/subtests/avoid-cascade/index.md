@@ -6,7 +6,7 @@ shortDesc: 'Can a map be used to centralized bundle hashes?'
 
 # Introduction
 
-When using [hashed URLs](/hashing) for long-term caching, hashes can be collected into a centralized mapping (like an [Import Map]) to reduce the scope of cache invalidation. This is a tradeoff: the mapping itself is an uncacheable resource, but this allows individual resource URLs to change without invalidating the URLs of every resource that references them.
+When using [hashed URLs](/hashing/) for long-term caching, hashes can be collected into a centralized mapping (like an [Import Map]) to reduce the scope of cache invalidation. This is a tradeoff: the mapping itself is an uncacheable resource, but this allows individual resource URLs to change without invalidating the URLs of every resource that references them.
 
 This is most beneficial for JavaScript bundles, where each bundle is often referenced from at least one other bundle. Adopting a mapping technique for hashed bundled URLs makes it possible to push new versions of dependencies without having to push new versions of everything that references them.
 
@@ -60,6 +60,14 @@ export const str = 'This is a string';
 This is an asset!
 ```
 
-The build produces four JavaScript bundles and a text file, all with hashed URLs. There should be bundles for the `index.<hash>.js` and `profile.<hash>.js` "routes", another for their `logCaps()` dependency, and a fourth for `lazy.js`. To pass this test, all hashes should be collected in a map file or module loader, and no hashes should appear in any of the bundles.
+The build produces four JavaScript bundles and a text file, all with hashed URLs. There should be bundles for the `index.<hash>.js` and `profile.<hash>.js` "routes", another for their `logCaps()` dependency, and a fourth for `lazy.js`.
+
+To pass this test:
+
+- The output files must be hashed.
+- A change to `some-asset.txt` should only change the hash of it's output file.
+- A change to `utils.js` should only change the hash of it's output file.
+- No other files should change content, except a file containing some form of loader or map.
+- A forever-cached entry point should still pick up the new `some-asset.txt` and `utils.js`.
 
 [import map]: https://github.com/WICG/import-maps

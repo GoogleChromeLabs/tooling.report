@@ -28,4 +28,6 @@ body {
 }
 ```
 
-In this example, when `bg.svg` changes, its hashed URL `bg.a1b2c.svg` will change. Since the built CSS has to be updated with the new image URL, its hashed URL `styles.9z8y7.css` should also change. The result of running two builds with differing content in `bg.svg` should be four files: two pairs of `styles.<hash>.css` and `bg.<hash>.svg`, each with different hashes.
+In this example, when `bg.svg` changes, its hashed URL `bg.a1b2c.svg` will change. Since the built CSS has to be updated with the new image URL, its hashed URL `styles.9z8y7.css` should also change.
+
+If the content of `bg.svg` is changed between two builds, the hash of _both_ output files must change compared to the previous build.

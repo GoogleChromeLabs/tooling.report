@@ -25,4 +25,6 @@ console.log(cjs);
 module.exports = 'my string';
 ```
 
-In order to pass the test, the result of bundling these modules should be a single JavaScript file. Ideally, the string exported from `cjs.js` should be inlined and the now-empty module's closure removed from the bundle.
+In order to pass the test, the result of bundling these modules should be a single JavaScript file, where `'my string'` is logged.
+
+Ideally, the string export from `cjs.js` can be inlined where it is used in `index.js`, removing the module's representation from the bundle entirely, and stripping away any module loading runtime. The contents of the bundle should essentially be `console.log('my string')`, although this optimization may require a minifier.

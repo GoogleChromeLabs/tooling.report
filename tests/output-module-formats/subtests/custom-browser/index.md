@@ -10,7 +10,7 @@ Some older browsers don’t support [ECMAScript modules] or [dynamic import], wh
 
 # The Test
 
-This test bundles three JavaScript modules: an entry module with a dependency, and a dynamically imported module that will be [code-splitted](/code-splitting/dynamic-import). Each build tool is configured to use either its built-in custom module format or the most popular custom module format for that tool.
+This test bundles three JavaScript modules: an entry module with a dependency, and a dynamically imported module that will be [code-splitted](/code-splitting/dynamic-import/). Each build tool is configured to use either its built-in custom module format or the most popular custom module format for that tool.
 
 **index.js**
 

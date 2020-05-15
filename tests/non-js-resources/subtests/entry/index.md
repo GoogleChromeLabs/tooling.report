@@ -10,7 +10,7 @@ The term "entry point" is commonly used to refer to the root module in an applic
 
 # The Test
 
-This test checks to see if it's possible to use [non-JavaScript resources](/non-js-resources) as the entry point of a build. It builds starting from an HTML file, which contains references to some scripts that need to be bundled and a stylesheet that needs to be transformed.
+This test checks to see if it's possible to use [non-JavaScript resources](/non-js-resources/) as the entry point of a build. It builds starting from an HTML file, which contains references to some scripts that need to be bundled and a stylesheet that needs to be transformed.
 
 **index.html**
 

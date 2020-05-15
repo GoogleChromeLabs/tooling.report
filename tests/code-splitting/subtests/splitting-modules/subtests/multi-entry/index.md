@@ -40,4 +40,4 @@ In this example, `entry-1.js` uses `foo` from `objects.js`, whereas `entry-2.js`
 
 Ideally this should result in 4 generated bundles: a bundle for `entry-1` with `foo` inlined, and bundles for `entry-2` and `entry-3` that reference a separate bundle containing only `bar`.
 
-[entry modules]: /code-splitting/multi-entry
+[entry modules]: /code-splitting/multi-entry/

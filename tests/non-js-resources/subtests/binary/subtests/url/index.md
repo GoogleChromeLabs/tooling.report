@@ -27,4 +27,4 @@ fetch(binURL).then(async r => {
 <binary data>
 ```
 
-The built result should be a copy of `binary.bin` with a [hashed URL](/hashing), and a JavaScript bundle with a `binURL` value matching the generated URL for the binary file.
+The built result should be a copy of `binary.bin` with a [hashed URL](/hashing/), and a JavaScript bundle that passes the hashed URL of `binary.bin` to `fetch()`.

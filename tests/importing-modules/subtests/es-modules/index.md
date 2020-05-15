@@ -25,4 +25,6 @@ console.log(esm);
 export default 'my string';
 ```
 
-The result of building the entry module should be a single JavaScript bundle containing the code from both modules. Ideally, the string default export from `esm.js` should be inlined where it is used in `index.js` removing the module's representation from the bundle entirely. Stripping away any module loading runtime and hashing information, the contents of the bundle should essentially be `console.log('my string')`.
+In order to pass the test, the result of bundling these modules should be a single JavaScript file, where `'my string'` is logged.
+
+Ideally, the string export from `esm.js` can be inlined where it is used in `index.js`, removing the module's representation from the bundle entirely, and stripping away any module loading runtime. The contents of the bundle should essentially be `console.log('my string')`, although this optimization may require a minifier.
