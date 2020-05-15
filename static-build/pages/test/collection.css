@@ -4,7 +4,7 @@
   max-width: 1024px;
   margin: 0 auto;
 
-  @media (min-width: 480px) {
+  & @media (min-width: 480px) {
     padding: var(--spacing-5);
   }
 
@@ -41,6 +41,7 @@
   color: var(--light-blue);
   border-radius: 20px;
   box-shadow: var(--card-shadow);
+  transition: 0.2s ease-in-out;
   will-change: box-shadow;
   transform-style: preserve-3d;
 

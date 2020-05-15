@@ -16,6 +16,7 @@
     flex-direction: column;
     justify-content: center;
     width: 100%;
+    transition: 0.2s ease-in-out;
     will-change: box-shadow;
     transform-style: preserve-3d;
     position: relative;
@@ -59,6 +60,7 @@
 
 .subTestCard {
   position: relative;
+  transition: 0.2s ease-in-out;
   will-change: box-shadow;
   transform-style: preserve-3d;
 
