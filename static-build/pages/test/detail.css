@@ -101,7 +101,7 @@
 
     & > b {
       display: inline-block;
-      min-width: 8ch;
+      margin-right: var(--spacing-2);
     }
 
     & > a {
