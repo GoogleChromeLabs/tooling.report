@@ -37,6 +37,8 @@ header {
     & > section > div {
       flex-direction: row;
       padding: 0;
+      max-width: var(--pageMax);
+      margin: auto;
     }
   }
 }
