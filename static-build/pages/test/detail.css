@@ -19,9 +19,8 @@
 
   & p code {
     background: var(--background-gray-offset);
-    padding: 1ex 1ch;
+    padding: 0.25em 0.5em;
     border-radius: var(--spacing-3);
-    border: 1px solid var(--sky-blue);
     font-weight: var(--font-weight--bold);
     white-space: nowrap;
   }
