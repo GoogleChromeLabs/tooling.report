@@ -32,7 +32,12 @@ import {
   $detailPage,
   $explainerPost,
 } from './detail.css';
-import { $collectionPage, $contribCard, $testCardList } from './collection.css';
+import {
+  $collectionPage,
+  $contribCard,
+  $testCardList,
+  $collectionSummary,
+} from './collection.css';
 import { $toolBadge } from '../../components/TestResultSnippet/styles.css';
 import { $heroImage, $heroText } from './styles.css';
 
@@ -75,7 +80,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
 
         {test.subTests && (
           <main class={$collectionPage}>
-            <section>
+            <section class={$collectionSummary}>
               <h3>Capabilities & Verification</h3>
               <p>
                 Below is a list of related features, capabilities and tests to{' '}

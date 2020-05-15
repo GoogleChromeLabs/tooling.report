@@ -13,6 +13,11 @@
   }
 }
 
+.collectionSummary {
+  width: var(--pageMax);
+  margin: 0 auto var(--spacing-6);
+}
+
 .testCardList {
   display: grid;
   gap: var(--spacing-5);
