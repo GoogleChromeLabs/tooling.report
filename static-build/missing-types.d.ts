@@ -12,17 +12,11 @@
  */
 /// <reference path="../missing-types.d.ts" />
 
-type FAQItem = {
-  html: string;
-  meta: {
-    question: string;
-    order: number;
-  };
-};
-declare module 'faqs:*' {
-  const faqs: FAQItem[];
+declare module 'faqs:' {
+  const faqs: { title: string; html: string }[];
   export default faqs;
 }
+
 declare module 'md:*' {
   export const html: string;
   export const meta: string;
@@ -49,6 +43,7 @@ declare module 'consts:config' {
   const value: {
     testSubjects: BuildTool[];
     githubRepository: string;
+    metaDescription: string;
   };
   export default value;
 }

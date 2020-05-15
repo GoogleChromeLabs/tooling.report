@@ -4,7 +4,8 @@
   --ice-blue: #e6f4ff;
   --light-blue: #cce9ff;
   --sky-blue: #66bdff;
-  --vivid-blue: #148ae3;
+  --vivid-blue: #127aca;
+  --vivid-darker-blue: #0f66a9;
   --teal-blue: #195380;
   --backpack-blue: #406480;
   --denim-blue: #5689b0;
@@ -20,6 +21,7 @@
   /* Gra|eys */
   --background-gray: #edf0f2;
   --background-gray-offset: #dae1e6;
+  --background-gray-highlight: hsl(205deg 69% 97%);
   --text-gray: hsl(0 0% 10%);
 
   /* Shadows */

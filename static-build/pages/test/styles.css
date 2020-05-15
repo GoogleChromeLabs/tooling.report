@@ -1,7 +1,7 @@
 @import '../../libraries/prism/prism.css';
 @import './article.css';
 @import 'components/TestCard/styles.css';
-@import 'components/TestCrumbs/styles.css';
+@import 'components/BreadCrumbs/styles.css';
 @import 'components/TestResultSnippet/styles.css';
 
 main {

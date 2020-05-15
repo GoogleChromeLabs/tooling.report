@@ -17,6 +17,7 @@ This test checks to see if each build tool is capable of generating JavaScript b
 ```js
 import { logCaps } from './utils.js';
 
+// example dynamic import:
 async function main() {
   const { exclaim } = await import('./exclaim.js');
   logCaps(exclaim('This is index'));
@@ -40,7 +41,7 @@ export function exclaim(msg) {
 }
 ```
 
-The result of bundling `index.js` should be two JavaScript bundles: one containing the code from `index.js` and `utils.js`, and another with the contents of `exclaim.js`. The `main()` function in the first bundle should now contain a dynamic `require()` call that loads and executes the second bundle.
+The result of bundling `index.js` should be two JavaScript bundles in CommonJS format: one containing the code from `index.js` and `utils.js`, and another with the contents of `exclaim.js`. The `main()` function in the first bundle should now contain a dynamic `require()` call that loads and executes the second bundle.
 
 [commonjs]: http://wiki.commonjs.org/wiki/Modules/1.1.1
 [node]: https://nodejs.org/api/modules.html

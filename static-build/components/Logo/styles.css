@@ -12,6 +12,7 @@
 
   & > svg {
     margin-right: var(--spacing-2);
+    margin-top: var(--spacing-1);
   }
 }
 
