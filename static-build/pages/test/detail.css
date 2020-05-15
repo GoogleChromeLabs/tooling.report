@@ -61,7 +61,7 @@
     max-width: calc(50ch - var(--spacing-3));
 
     & > li {
-      padding-left: var(--spacing-3);
+      padding-left: 0;
 
       &::marker {
         color: var(--teal-blue);
