@@ -18,6 +18,7 @@ import bundleURL, { imports } from 'client-bundle:client/test/index.ts';
 import analyticsBundleURL from 'client-bundle:client/analytics/index.js';
 import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
+import { GithubIcon } from '../../components/Icons/';
 import Footer from '../../components/Footer';
 import HeaderLinkList from '../../components/HeaderLinkList';
 import TestCrumbs from '../../components/TestCrumbs';
@@ -132,7 +133,9 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                         data-result={result.meta.result}
                         class={$dot}
                       ></span>
-                      <a href={githubLink(result.repositoryPath)}>Source ↗</a>
+                      <a href={githubLink(result.repositoryPath)}>
+                        <GithubIcon />
+                      </a>
                     </summary>
                     <div class={$resultCard}>
                       <div

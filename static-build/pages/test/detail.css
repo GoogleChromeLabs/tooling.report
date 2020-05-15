@@ -90,6 +90,7 @@
     border-radius: var(--spacing-1) var(--spacing-1) 0 0;
     display: flex;
     align-items: center;
+    padding: 1ch 2ch;
 
     &:focus {
       outline-color: var(--sky-blue);
@@ -106,7 +107,13 @@
 
     & > a {
       margin-left: auto;
-      white-space: nowrap;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+
+      & > svg {
+        width: var(--spacing-4);
+      }
     }
   }
 }
@@ -178,9 +185,13 @@
       padding-bottom: 1ch;
     }
 
+    .resultSet > article > details > summary > span {
+      position: relative;
+      top: 3px;
+    }
+
     .resultSet > article > details > summary > a {
       float: right;
-      margin-top: calc(-1 * var(--spacing-1));
     }
   }
 }
