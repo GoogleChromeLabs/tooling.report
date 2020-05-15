@@ -44,6 +44,7 @@ declare module 'consts:config' {
     testSubjects: BuildTool[];
     githubRepository: string;
     buildDate: string;
+    metaDescription: string;
   };
   export default value;
 }
