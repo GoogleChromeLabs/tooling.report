@@ -128,10 +128,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
                 </p>
                 <p class={$well}>
                   We highly encourage you to{' '}
-                  <a href="https://github.com/GoogleChromeLabs/tooling.report/blob/master/CONTRIBUTING.md">
-                    contribute
-                  </a>{' '}
-                  too!
+                  <a href={config.githubContribute}>contribute</a> too!
                 </p>
               </div>
             </div>
