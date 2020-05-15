@@ -54,6 +54,23 @@
       width: calc(100% + (var(--spacing-3) * 2));
     }
   }
+
+  & ul {
+    margin: 0;
+    max-width: calc(50ch - var(--spacing-3));
+
+    & > li {
+      padding-left: var(--spacing-3);
+
+      &::marker {
+        color: var(--teal-blue);
+      }
+
+      &:not(:last-child) {
+        margin-bottom: var(--spacing-3);
+      }
+    }
+  }
 }
 
 .resultSet {
