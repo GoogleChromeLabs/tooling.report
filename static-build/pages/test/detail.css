@@ -43,6 +43,7 @@
     margin-top: 0;
     box-sizing: border-box;
     overflow-x: auto;
+    overscroll-behavior-x: contain;
 
     @media (min-width: 480px) {
       justify-self: flex-start;
