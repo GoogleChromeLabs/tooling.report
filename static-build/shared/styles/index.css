@@ -5,6 +5,7 @@
 @import 'body.css';
 @import 'header.css';
 @import 'main.css';
+@import 'well.css';
 
 @import 'components/GithubFAB/styles.css';
 @import 'components/Footer/styles.css';

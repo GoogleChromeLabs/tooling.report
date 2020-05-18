@@ -16,6 +16,9 @@
 .collectionSummary {
   width: var(--pageMax);
   margin: 0 auto var(--spacing-6);
+  & > p {
+    margin: var(--spacing-3) 0;
+  }
 }
 
 .testCardList {

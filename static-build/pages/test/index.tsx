@@ -41,6 +41,7 @@ import {
   $collectionSummary,
 } from './collection.css';
 import { $dot } from '../../components/DataGrid/styles.css';
+import { $well } from '../../shared/styles/well.css';
 import { $heroImage, $heroText } from './styles.css';
 
 interface Props {
@@ -88,6 +89,9 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                 Below is a list of related features, capabilities and tests to{' '}
                 {test.meta.title}. Each test has a detail page outlining the
                 what, why and how of the test.
+              </p>
+              <p class={$well}>
+                Did we miss something: click that (+) card to tell us
               </p>
             </section>
 

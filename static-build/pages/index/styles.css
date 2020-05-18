@@ -19,14 +19,6 @@
   }
 }
 
-.well {
-  padding: var(--spacing-2) var(--spacing-3);
-  background: var(--background-gray-offset);
-  font-size: var(--font-size--detail);
-  border-radius: var(--spacing-3);
-  display: inline-block;
-}
-
 .consumeGap {
   margin-bottom: -8rem;
 }
