@@ -75,51 +75,45 @@
   }
 }
 
-.resultSet {
-  & > article > details {
-    margin-bottom: var(--spacing-3);
+.resultDetails {
+  margin-bottom: var(--spacing-3);
+}
+
+.resultSummary {
+  color: var(--vivid-blue);
+  background: var(--background-gray-offset);
+  padding: 0 var(--spacing-3);
+  border-radius: var(--spacing-1) var(--spacing-1) 0 0;
+  display: flex;
+  align-items: center;
+  padding: 1ch 2ch;
+
+  &:focus {
+    outline-color: var(--sky-blue);
   }
 
-  & p {
-    max-width: initial;
+  & > *:not(a) {
+    color: var(--backpack-blue);
   }
 
-  & > article > details > summary {
-    color: var(--vivid-blue);
-    background: var(--background-gray-offset);
-    padding: 0 var(--spacing-3);
-    border-radius: var(--spacing-1) var(--spacing-1) 0 0;
-    display: flex;
+  & > b {
+    display: inline-block;
+    margin-right: var(--spacing-2);
+  }
+
+  & > a {
+    margin-left: auto;
+    padding: 0;
+    display: inline-flex;
     align-items: center;
-    padding: 1ch 2ch;
 
-    &:focus {
-      outline-color: var(--sky-blue);
-    }
-
-    & > *:not(a) {
-      color: var(--backpack-blue);
-    }
-
-    & > b {
-      display: inline-block;
-      margin-right: var(--spacing-2);
-    }
-
-    & > a {
-      margin-left: auto;
-      padding: 0;
-      display: inline-flex;
-      align-items: center;
-
-      & > svg {
-        width: var(--spacing-4);
-      }
+    & > svg {
+      width: var(--spacing-4);
     }
   }
 }
 
-.resultCard {
+.resultsCard {
   display: grid;
   gap: var(--spacing-2);
   background: white;
@@ -136,6 +130,10 @@
 
   & > ul {
     margin: 0;
+  }
+
+  & p {
+    max-width: initial;
   }
 
   & pre {
@@ -195,18 +193,18 @@ into a layout similar to if we had flex
       margin-right: -3rem;
     }
 
-    .resultSet > article > details > summary {
+    .resultSummary {
       display: block;
       padding-top: 1ch;
       padding-bottom: 1ch;
     }
 
-    .resultSet > article > details > summary > span {
+    .resultSummary > span {
       position: relative;
       top: 3px;
     }
 
-    .resultSet > article > details > summary > a {
+    .resultSummary > a {
       float: right;
     }
   }

@@ -26,8 +26,9 @@ import TestCard from '../../components/TestCard';
 import TestResultSnippet from '../../components/TestResultSnippet';
 import { LabcoatHero, WalkerHero } from '../../components/Heroes';
 import {
-  $resultSet,
-  $resultCard,
+  $resultDetails,
+  $resultSummary,
+  $resultsCard,
   $results,
   $testResultList,
   $detailPage,
@@ -122,12 +123,12 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
               ></article>
             </section>
 
-            <section class={$resultSet}>
+            <section>
               <h1>Conclusion</h1>
               <article>
                 {Object.entries(test.results).map(([subject, result]) => (
-                  <details>
-                    <summary id={subject}>
+                  <details class={$resultDetails}>
+                    <summary id={subject} class={$resultSummary}>
                       <b>{subject}</b>
                       <span
                         data-result={result.meta.result}
@@ -137,7 +138,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                         <GithubIcon />
                       </a>
                     </summary>
-                    <div class={$resultCard}>
+                    <div class={$resultsCard}>
                       <div
                         class={$results}
                         dangerouslySetInnerHTML={{ __html: result.html }}
