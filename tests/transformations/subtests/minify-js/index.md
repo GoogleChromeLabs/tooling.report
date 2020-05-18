@@ -1,9 +1,16 @@
 ---
 title: Minify JS
 importance: 1
+shortDesc: 'Can JavaScript be minified for production?'
 ---
 
-There should be a way for JavaScript to be minified for production builds.
+# Introduction
+
+Minification is an important optimization step when bundling JavaScript code for production use. Minification reduces the size of code by removing comments and whitespace, inlining small functions and values where they are used, and normalizing control flow to use repeated syntax that compresses well.
+
+# The Test
+
+This test ensures each build tool provides a way to enable minification for a production build.
 
 **index.js**
 

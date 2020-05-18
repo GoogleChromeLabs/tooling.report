@@ -69,7 +69,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
               <div class={$heroText}>
                 <small>feature</small>
                 <h2>{test.meta.title}</h2>
-                <p>TODO: use a description from front matter</p>
+                <p>{test.meta.shortDesc}</p>
                 <HeaderLinkList home={false} />
               </div>
               <div class={$heroImage}>
