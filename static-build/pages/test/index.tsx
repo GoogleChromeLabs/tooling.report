@@ -85,14 +85,12 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
         {test.subTests && (
           <main class={$collectionPage}>
             <section class={$collectionSummary}>
-              <h3>Capabilities & Verification</h3>
-              <p>
-                Below is a list of related features, capabilities and tests to{' '}
-                {test.meta.title}. Each test has a detail page outlining the
-                what, why and how of the test.
-              </p>
+              <h3>Why</h3>
+              <article
+                dangerouslySetInnerHTML={{ __html: test.html }}
+              ></article>
               <p class={$well}>
-                Use the (+) card below & tell us if we missed something!
+                Use the (+) card below & tell us if we missed a capability!
               </p>
             </section>
 

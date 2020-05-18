@@ -20,10 +20,6 @@
 .collectionSummary {
   margin: 0 0 var(--spacing-6);
 
-  & > p {
-    margin: var(--spacing-3) 0;
-  }
-
   @media (min-width: 480px) {
     margin: 0 var(--spacing-3) var(--spacing-6);
   }
@@ -31,6 +27,10 @@
   @media (min-width: 822px) {
     margin: 0 auto var(--spacing-6);
     width: var(--pageMax);
+  }
+
+  & p {
+    margin: var(--spacing-3) 0;
   }
 }
 

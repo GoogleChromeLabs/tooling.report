@@ -34,7 +34,6 @@
   place-content: center;
 
   & p {
-    text-align: justify;
     max-width: 60ch;
   }
 
