@@ -11,6 +11,10 @@
   @media (min-width: 822px) {
     padding: var(--spacing-7) var(--spacing-6) var(--spacing-8);
   }
+
+  & > section:last-of-type {
+    margin-bottom: var(--spacing-5);
+  }
 }
 
 .collectionSummary {
