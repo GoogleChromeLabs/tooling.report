@@ -107,7 +107,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
 
           <section id="getting-started">
             <div class={$sidebarLayout}>
-              <aside></aside>
+              <div></div>
               <div class={$gettingStarted}>
                 <h3>Getting Started</h3>
                 <p>
@@ -151,7 +151,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
 
           <section id="data" class={$consumeGap}>
             <div class={$sidebarLayout}>
-              <aside></aside>
+              <div></div>
               <div class={$gettingStarted}>
                 <h3>Information</h3>
                 <p>
