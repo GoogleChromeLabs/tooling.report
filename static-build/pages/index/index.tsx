@@ -41,7 +41,7 @@ import Legend from '../../components/DataGrid/Legend';
 import Connect from '../../components/Connect';
 import FirstParagraphOnly from 'static-build/components/FirstParagraphOnly';
 
-import gulp from 'asset-url:../../img/gulp.svg';
+import browserify from 'asset-url:../../img/browserify.svg';
 import rollup from 'asset-url:../../img/rollup.svg';
 import webpack from 'asset-url:../../img/webpack.svg';
 import parcel from 'asset-url:../../img/parcel.svg';
@@ -49,7 +49,7 @@ import parcel from 'asset-url:../../img/parcel.svg';
 import config from 'consts:config';
 import { html as README } from 'md:../../../README.md';
 
-const toolImages = { gulp, rollup, webpack, parcel };
+const toolImages = { browserify, rollup, webpack, parcel };
 
 interface Props {
   tests: Tests;
