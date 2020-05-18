@@ -27,6 +27,7 @@ header {
 
     @media (min-width: 822px) {
       max-width: 1024px;
+      min-width: var(--pageMax);
       margin: auto;
     }
 
