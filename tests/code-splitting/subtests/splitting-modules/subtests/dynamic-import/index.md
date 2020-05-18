@@ -4,7 +4,9 @@ importance: 1
 shortDesc: 'Can modules be split along their exports used by different bundles?'
 ---
 
-Can the build tool split a single module subsets of its exports are used in code-splitted bundles?
+# The Test
+
+This test checks to see if exports from a common module can be separated when they are used exclusively by different consuming modules. In this particular variation, an entry module and a lazily-loaded module each use one of the exported objects from a third common module.
 
 **index.js**
 
@@ -28,9 +30,9 @@ export const foo = { name: 'foo' };
 export const bar = { name: 'bar' };
 ```
 
-In this example, `index.js` needs `foo` from `objects.js`, whereas `lazy.js` needs `bar` from `objects.js`.
+In this example, `index.js` only uses `foo` from `objects.js`, whereas `lazy.js` only uses `bar`.
 
-There are a few outputs that would be considered ideal:
+There are a few possible outputs that could be considered ideal:
 
-- inline `foo` and `bar` into the generated bundles for `index.js` and `lazy.js` respectively
-- split `objects.js` along export boundaries and inline `foo` and `bar` to `index.js` and `lazy.js` separately
+- inline `foo` into the generated bundle for `index.js`, and `bar` into the bundle for `lazy.js`
+- split `objects.js` into separate bundles for `foo` and `bar`, used by the bundles for `index.js` and `lazy.js`
