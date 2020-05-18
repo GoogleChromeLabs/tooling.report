@@ -41,7 +41,11 @@ main {
       padding-left: var(--spacing-3);
 
       &::marker {
-        color: red;
+        color: var(--grape);
+      }
+
+      &:not(:last-child) {
+        margin-bottom: var(--spacing-3);
       }
     }
   }
