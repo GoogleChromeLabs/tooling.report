@@ -163,7 +163,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
                 <Legend />
                 <h4>The Tools</h4>
                 <p>
-                  We chose gulp, parcel, rollup & webpack first out of
+                  We chose browserify, parcel, rollup & webpack first out of
                   popularity; to cover the most surface area. We are actively
                   aggregating feedback for the next set of tools and tests.
                 </p>
