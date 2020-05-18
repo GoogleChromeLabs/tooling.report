@@ -178,6 +178,16 @@
   gap: var(--spacing-3);
 }
 
+/* 
+
+problem: 
+Safari doesn't support flex display on <summary> elements
+  
+solution: 
+Safari specific media query to float and nudge <summary> children
+into a layout similar to if we had flex
+
+*/
 @media not all and (min-resolution: 0.001dpcm) {
   @supports (-webkit-appearance: none) and (stroke-color: transparent) {
     .detailPage pre {
