@@ -12,7 +12,7 @@
  */
 // import './styles.css';
 import cssUrl from './styles.css';
-document.head.insertAdjacentElement(
+document.head.insertAdjacentHTML(
   'afterend',
   `<link rel="stylesheet" href="${cssUrl}">`,
 );
