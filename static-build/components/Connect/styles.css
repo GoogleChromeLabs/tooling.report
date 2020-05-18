@@ -71,6 +71,11 @@
 .message {
   flex: 3;
 
+  & > h2 {
+    font-size: 1.75rem;
+    margin-bottom: var(--spacing-2);
+  }
+
   & > a {
     color: var(--vivid-darker-blue);
     display: inline-block;
