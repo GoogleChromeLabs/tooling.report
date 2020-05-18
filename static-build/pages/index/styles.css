@@ -18,6 +18,12 @@
   }
 }
 
+@media (min-width: 1024px) {
+  header p {
+    margin-right: calc(-1 * var(--spacing-7));
+  }
+}
+
 .consumeGap {
   margin-bottom: -8rem;
 }
