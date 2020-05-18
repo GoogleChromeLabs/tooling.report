@@ -43,6 +43,7 @@ import {
 import { $dot } from '../../components/DataGrid/styles.css';
 import { $well } from '../../shared/styles/well.css';
 import { $heroImage, $heroText } from './styles.css';
+import Connect from 'static-build/components/Connect/index.js';
 
 interface Props {
   test: Test;
@@ -91,7 +92,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                 what, why and how of the test.
               </p>
               <p class={$well}>
-                Did we miss something: click that (+) card to tell us
+                Use the (+) card below & tell us if we missed something!
               </p>
             </section>
 
@@ -110,6 +111,8 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                 </li>
               </ul>
             </section>
+
+            <Connect />
           </main>
         )}
 
