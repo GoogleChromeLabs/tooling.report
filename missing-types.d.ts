@@ -36,7 +36,7 @@ interface TestMeta {
 }
 
 type TestResults = Record<BuildTool, TestResult>;
-type BuildTool = 'rollup' | 'webpack' | 'parcel' | 'gulp';
+type BuildTool = 'rollup' | 'webpack' | 'parcel' | 'browserify';
 
 interface TestResult {
   /** Front-matter data from the result markdown file */
@@ -75,6 +75,9 @@ declare module 'consts:config' {
   const value: {
     testSubjects: BuildTool[];
     githubRepository: string;
+    githubContribute: string;
+    buildDate: string;
+    metaDescription: string;
   };
   export default value;
 }
