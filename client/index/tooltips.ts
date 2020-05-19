@@ -20,29 +20,28 @@ const dataGrids = document.querySelectorAll('.' + $datagrid) as NodeListOf<
   HTMLElement
 >;
 
-for (const dataGrid of dataGrids) {
-  dataGrid.addEventListener(
-    'click',
-    event => {
-      const dotContainer = (event.target as HTMLElement).closest(
-        '.' + $dotContainer,
-      );
-      if (!dotContainer) return;
-
-      const dotTrigger = event.target as HTMLElement;
-      dotTrigger.focus();
-
-      const tooltip = dotContainer.querySelector('.' + $tooltip) as HTMLElement;
-      const gapOffset = 16;
-
-      const bounds = tooltip.getBoundingClientRect();
-      const leftOffset = bounds.width - (window.outerWidth - bounds.x);
-      console.log(bounds, leftOffset);
-
-      if (leftOffset >= gapOffset) {
-        tooltip.style.left = `-${leftOffset + gapOffset}px`;
-      }
-    },
-    { capture: true },
+const toolTipEvent = (event: MouseEvent) => {
+  const dotContainer = (event.target as HTMLElement).closest(
+    '.' + $dotContainer,
   );
+  if (!dotContainer) return;
+
+  const dotTrigger = event.target as HTMLElement;
+  dotTrigger.focus();
+
+  const tooltip = dotContainer.querySelector('.' + $tooltip) as HTMLElement;
+  const gapOffset = 16;
+
+  const bounds = tooltip.getBoundingClientRect();
+  const leftOffset = bounds.width - (window.outerWidth - bounds.x);
+  console.log(bounds, leftOffset);
+
+  if (leftOffset >= gapOffset) {
+    tooltip.style.left = `-${leftOffset + gapOffset}px`;
+  }
+};
+
+for (const dataGrid of dataGrids) {
+  dataGrid.addEventListener('mousedown', toolTipEvent, { capture: true });
+  dataGrid.addEventListener('click', toolTipEvent, { capture: true });
 }
