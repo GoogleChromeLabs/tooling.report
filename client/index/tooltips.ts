@@ -34,7 +34,6 @@ const toolTipEvent = (event: MouseEvent) => {
 
   const bounds = tooltip.getBoundingClientRect();
   const leftOffset = bounds.width - (window.outerWidth - bounds.x);
-  console.log(bounds, leftOffset);
 
   if (leftOffset >= gapOffset) {
     tooltip.style.left = `-${leftOffset + gapOffset}px`;
