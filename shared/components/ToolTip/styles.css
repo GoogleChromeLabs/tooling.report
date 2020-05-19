@@ -79,6 +79,7 @@
   box-shadow: var(--card-shadow);
   z-index: var(--layer--top);
   border-radius: var(--tooltip-border);
+  overflow: hidden;
   bottom: calc(100% + var(--spacing-2));
   left: 0;
   font-size: var(--font-size--detail);
