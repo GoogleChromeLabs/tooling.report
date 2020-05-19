@@ -48,7 +48,7 @@ p {
 a {
   color: var(--vivid-blue);
   padding: 1ch 0;
-  transition-duration: 0.25s;
+  transition: color 0.25s ease;
 
   &:hover,
   &:focus {

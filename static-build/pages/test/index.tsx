@@ -18,6 +18,7 @@ import bundleURL, { imports } from 'client-bundle:client/test/index.ts';
 import analyticsBundleURL from 'client-bundle:client/analytics/index.js';
 import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
+import { GithubIcon } from '../../components/Icons/';
 import Footer from '../../components/Footer';
 import HeaderLinkList from '../../components/HeaderLinkList';
 import TestCrumbs from '../../components/TestCrumbs';
@@ -25,12 +26,24 @@ import TestCard from '../../components/TestCard';
 import TestResultSnippet from '../../components/TestResultSnippet';
 import { LabcoatHero, WalkerHero } from '../../components/Heroes';
 import {
-  $heroImage,
-  $heroText,
-  $testCardList,
-  $contribCard,
+  $resultDetails,
+  $resultSummary,
+  $resultsCard,
+  $results,
   $testResultList,
-} from './styles.css';
+  $detailPage,
+  $explainerPost,
+} from './detail.css';
+import {
+  $collectionPage,
+  $contribCard,
+  $testCardList,
+  $collectionSummary,
+} from './collection.css';
+import { $dot } from '../../components/DataGrid/styles.css';
+import { $well } from '../../shared/styles/well.css';
+import { $heroImage, $heroText } from './styles.css';
+import Connect from 'static-build/components/Connect/index.js';
 
 interface Props {
   test: Test;
@@ -68,53 +81,19 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
             </div>
           </section>
         </header>
-        <main>
-          {test.subTests && (
-            <section>
-              <h3>Capabilities & Verification</h3>
-              <p>
-                Below is a list of related features, capabilities and tests to{' '}
-                {test.meta.title}. Each test has a detail page outlining the
-                what, why and how of the test.
+
+        {test.subTests && (
+          <main class={$collectionPage}>
+            <section class={$collectionSummary}>
+              <h3>Why</h3>
+              <article
+                dangerouslySetInnerHTML={{ __html: test.html }}
+              ></article>
+              <p class={$well}>
+                Use the (+) card below & tell us if we missed a capability!
               </p>
             </section>
-          )}
 
-          <ul class={$testResultList}>
-            {Object.entries(test.results).map(([subject, result]) => (
-              <TestResultSnippet
-                name={subject}
-                result={result.meta.result}
-                link={githubLink(result.repositoryPath)}
-              />
-            ))}
-          </ul>
-
-          <div dangerouslySetInnerHTML={{ __html: test.html }}></div>
-
-          {test.results && (
-            <article>
-              {Object.entries(test.results).map(([subject, result]) => (
-                <div>
-                  <h1>
-                    {subject}:{' '}
-                    {result.meta.result === 'pass'
-                      ? 'Pass'
-                      : result.meta.result === 'fail'
-                      ? 'Fail'
-                      : 'So-so'}
-                  </h1>
-                  <div dangerouslySetInnerHTML={{ __html: result.html }}></div>
-                  <a href={githubLink(result.repositoryPath)}>
-                    Inspect the test
-                  </a>
-                  {renderIssueLinksForTest(test, subject as BuildTool)}
-                </div>
-              ))}
-            </article>
-          )}
-
-          {test.subTests && (
             <section>
               <ul class={$testCardList}>
                 {Object.entries(test.subTests).map(([path, test]) => (
@@ -130,8 +109,53 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                 </li>
               </ul>
             </section>
-          )}
-        </main>
+
+            <Connect />
+          </main>
+        )}
+
+        {!test.subTests && (
+          <main class={$detailPage}>
+            <ul class={$testResultList}>
+              {Object.entries(test.results).map(([subject, result]) => (
+                <TestResultSnippet name={subject} result={result.meta.result} />
+              ))}
+            </ul>
+
+            <section class={$explainerPost}>
+              <article
+                dangerouslySetInnerHTML={{ __html: test.html }}
+              ></article>
+            </section>
+
+            <section>
+              <h1>Conclusion</h1>
+              <article>
+                {Object.entries(test.results).map(([subject, result]) => (
+                  <details class={$resultDetails}>
+                    <summary id={subject} class={$resultSummary}>
+                      <b>{subject}</b>
+                      <span
+                        data-result={result.meta.result}
+                        class={$dot}
+                      ></span>
+                      <a href={githubLink(result.repositoryPath)}>
+                        <GithubIcon />
+                      </a>
+                    </summary>
+                    <div class={$resultsCard}>
+                      <div
+                        class={$results}
+                        dangerouslySetInnerHTML={{ __html: result.html }}
+                      ></div>
+                      {renderIssueLinksForTest(test, subject as BuildTool)}
+                    </div>
+                  </details>
+                ))}
+              </article>
+            </section>
+          </main>
+        )}
         <Footer />
       </body>
     </html>

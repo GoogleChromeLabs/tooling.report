@@ -7,8 +7,10 @@
   code[class*='language-'],
   pre[class*='language-'] {
     color: var(--teal-blue);
-    font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier,
+    font-family: ui-monospace, Operator Mono, Dank Mono, Fira Code, Hack,
       monospace;
+    font-size: 1.1rem;
+    font-weight: normal;
     direction: ltr;
     text-align: left;
     white-space: pre;

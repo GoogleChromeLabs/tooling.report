@@ -22,10 +22,10 @@ import {
   $overviewGrid,
   $heroImage,
   $overview,
-  $well,
   $consumeGap,
   $gettingStarted,
 } from './styles.css';
+import { $well } from '../../shared/styles/well.css';
 
 import bundleURL, { imports } from 'client-bundle:client/index/index.ts';
 import analyticsBundleURL from 'client-bundle:client/analytics/index.js';

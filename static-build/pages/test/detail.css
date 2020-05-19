@@ -1,0 +1,211 @@
+.detailPage {
+  gap: var(--spacing-6);
+  padding: var(--spacing-5) var(--spacing-3);
+  box-sizing: content-box;
+  max-width: var(--pageMax);
+  margin: 0 auto;
+
+  @media (min-width: 480px) {
+    padding: var(--spacing-5);
+  }
+
+  @media (min-width: 822px) {
+    padding: var(--spacing-7) var(--spacing-6) var(--spacing-8);
+  }
+
+  & section > h1 {
+    margin-bottom: var(--spacing-3);
+  }
+
+  & p code,
+  & li code {
+    background: var(--background-gray-offset);
+    padding: 0.25em 0.5em;
+    border-radius: var(--spacing-3);
+    font-weight: var(--font-weight--bold);
+    white-space: nowrap;
+  }
+}
+
+.explainerPost > article {
+  display: grid;
+  grid-auto-columns: 1fr;
+  gap: var(--spacing-3);
+  place-content: center;
+
+  & p {
+    max-width: 60ch;
+  }
+
+  & > pre[class*='language-'] {
+    margin-bottom: var(--spacing-5);
+    margin-top: 0;
+    box-sizing: border-box;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+
+    @media (min-width: 480px) {
+      justify-self: flex-start;
+      max-width: 100%;
+    }
+
+    @media (max-width: 480px) {
+      border-radius: 0;
+      margin-left: calc(-1 * var(--spacing-3));
+      width: calc(100% + (var(--spacing-3) * 2));
+    }
+  }
+
+  & ul {
+    margin: 0;
+    max-width: calc(50ch - var(--spacing-3));
+
+    & > li {
+      padding-left: 0;
+
+      &::marker {
+        color: var(--teal-blue);
+      }
+
+      &:not(:last-child) {
+        margin-bottom: var(--spacing-3);
+      }
+    }
+  }
+}
+
+.resultDetails {
+  margin-bottom: var(--spacing-3);
+}
+
+.resultSummary {
+  color: var(--vivid-blue);
+  background: var(--background-gray-offset);
+  padding: 0 var(--spacing-3);
+  border-radius: var(--spacing-1) var(--spacing-1) 0 0;
+  display: flex;
+  align-items: center;
+  padding: 1ch 2ch;
+  cursor: pointer;
+
+  &:focus {
+    outline-color: var(--sky-blue);
+  }
+
+  & > *:not(a) {
+    color: var(--backpack-blue);
+  }
+
+  & > b {
+    display: inline-block;
+    margin-right: var(--spacing-2);
+  }
+
+  & > a {
+    margin-left: auto;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+
+    & > svg {
+      width: var(--spacing-4);
+    }
+  }
+}
+
+.resultsCard {
+  display: grid;
+  gap: var(--spacing-2);
+  background: white;
+  border-radius: 0 0 var(--spacing-1) var(--spacing-1);
+  padding: var(--spacing-3);
+
+  & > h2 {
+    margin: 0 calc(var(--spacing-3) * -1);
+    padding: 0 var(--spacing-3);
+    border-top: 1px solid var(--light-blue);
+    margin-top: var(--spacing-1);
+    padding-top: var(--spacing-2);
+  }
+
+  & > ul {
+    margin: 0;
+  }
+
+  & p {
+    max-width: initial;
+  }
+
+  & pre {
+    background: var(--background-gray);
+  }
+
+  & p code {
+    border: 1px solid var(--background-gray-offset);
+    background: var(--background-gray);
+    white-space: nowrap;
+  }
+}
+
+.testResultList {
+  list-style: none;
+  padding: 0;
+  margin: 00;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+@media (min-width: 600px) {
+  .testResultList {
+    justify-content: start;
+    margin-bottom: var(--spacing-5);
+
+    li {
+      margin: var(--spacing-3);
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+.results {
+  display: grid;
+  gap: var(--spacing-3);
+}
+
+/* 
+
+problem: 
+Safari doesn't support flex display on <summary> elements
+  
+solution: 
+Safari specific media query to float and nudge <summary> children
+into a layout similar to if we had flex
+
+*/
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+    .detailPage pre {
+      max-width: 100vw;
+      margin-right: -3rem;
+    }
+
+    .resultSummary {
+      display: block;
+      padding-top: 1ch;
+      padding-bottom: 1ch;
+    }
+
+    .resultSummary > span {
+      position: relative;
+      top: 3px;
+    }
+
+    .resultSummary > a {
+      float: right;
+    }
+  }
+}

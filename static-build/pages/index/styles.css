@@ -1,7 +1,7 @@
 @import 'components/SummaryCard/styles.css';
-@import 'shared/components/DataGrid/styles.css';
 @import 'components/ToolNav/styles.css';
 @import 'components/Connect/styles.css';
+@import 'shared/components/DataGrid/styles.css';
 @import 'shared/components/ToolTip/styles.css';
 
 .overview {
@@ -21,12 +21,10 @@
   }
 }
 
-.well {
-  padding: var(--spacing-2) var(--spacing-3);
-  background: var(--background-gray-offset);
-  font-size: var(--font-size--detail);
-  border-radius: var(--spacing-3);
-  display: inline-block;
+@media (min-width: 1024px) {
+  header p {
+    margin-right: calc(-1 * var(--spacing-7));
+  }
 }
 
 .consumeGap {
