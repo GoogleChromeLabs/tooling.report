@@ -57,7 +57,7 @@
   display: grid;
   gap: var(--spacing-2);
   grid-template-columns: repeat(auto-fill, minmax(var(--spacing-3), 1fr));
-  grid-template-rows: var(--spacing-3);
+  grid-auto-rows: var(--spacing-3);
   justify-items: center;
   align-content: center;
   padding: 0 var(--spacing-2);
@@ -81,7 +81,6 @@
   border-radius: 50%;
   padding: 0;
   cursor: pointer;
-  box-sizing: content-box;
   position: relative;
 
   &::after {
