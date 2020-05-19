@@ -11,11 +11,11 @@
  * limitations under the License.
  */
 import styles from './styles.css';
-document.body.insertAdjacentElement(
+document.body.insertAdjacentHTML(
   'afterend',
   `<div class="${styles.className1}"></div>`,
 );
-document.body.insertAdjacentElement(
+document.body.insertAdjacentHTML(
   'afterend',
   `<div class="${styles.className2}"></div>`,
 );

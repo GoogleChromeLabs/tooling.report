@@ -17,7 +17,7 @@ import { $dot } from '../styles.css';
 function Legend() {
   return (
     <div>
-      <h2 class={$legendHeader}>Legend</h2>
+      <h4 class={$legendHeader}>Legend</h4>
       <div class={$legendCard}>
         <div class={$legendRow}>
           <span data-result="pass" class={$dot}></span> Pass

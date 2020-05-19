@@ -31,7 +31,10 @@ const HeaderLinkList: FunctionalComponent<Props> = ({ home }) => {
               { title: 'FAQ', href: '/faqs/' },
             ]
           : [
-              { title: 'Contribute', href: '#' },
+              {
+                title: 'Contribute',
+                href: config.githubContribute,
+              },
               {
                 title: 'Have an issue?',
                 href: `${config.githubRepository}/issues/new`,

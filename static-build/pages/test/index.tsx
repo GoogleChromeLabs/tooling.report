@@ -40,8 +40,8 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
   return (
     <html lang="en">
       <head>
-        <title>{`Tooling.Report: ${test.meta.title}`}</title>
-        <meta name="description" content="Tests page" />
+        <title>{`${test.meta.title}`}</title>
+        <meta name="description" content={test.meta.shortDesc} />
         <HeadMeta />
         <link rel="stylesheet" href={pageStyles} />
         <script type="module" src={bundleURL} />
@@ -59,7 +59,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
               <div class={$heroText}>
                 <small>feature</small>
                 <h2>{test.meta.title}</h2>
-                <p>TODO: use a description from front matter</p>
+                <p>{test.meta.shortDesc}</p>
                 <HeaderLinkList home={false} />
               </div>
               <div class={$heroImage}>

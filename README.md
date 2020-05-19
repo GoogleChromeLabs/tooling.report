@@ -1,6 +1,6 @@
 # What is tooling.report?
 
-tooling.report is a quick and easy way to figure out what the best tool for your next project is, if it’s worth your time to migrate from one tool to another and how to adopt a best practice into your existing code base.
+It's a quick way to figure out what the best tool for your next project is, or if tooling migration is worth it, or how to adopt a tool's best practice into your existing configuration and code base.
 
 # To get set up
 
@@ -34,7 +34,7 @@ npm run build
 A test directory contains:
 
 - `index.md` - Describes the test or test category. Must include `title` in the front-matter.
-- Results for each tool in a folder (`rollup`, `webpack`, `parcel`, `gulp` - all optional) - Each folder contains an `index.md` describing how a particular build tool performs. If no results are present, this directory is considered to be a category only. Each result file requires `result` in the front-matter, which must be 'pass', 'fail' or 'partial'. The folder also contains a minimal project for the respective tool showing how to pass the current test. Build artifacts should be placed in a folder called `build`, as that folder is globally ignored.
+- Results for each tool in a folder (`rollup`, `webpack`, `parcel`, `browserify` - all optional) - Each folder contains an `index.md` describing how a particular build tool performs. If no results are present, this directory is considered to be a category only. Each result file requires `result` in the front-matter, which must be 'pass', 'fail' or 'partial'. The folder also contains a minimal project for the respective tool showing how to pass the current test. Build artifacts should be placed in a folder called `build`, as that folder is globally ignored.
 - If a test has subtests, the folder must be named `subtests` and contain the structure above.
 
 # Special imports

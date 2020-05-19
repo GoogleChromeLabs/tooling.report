@@ -18,7 +18,13 @@ import {
   $summaryList,
   $sectionHeader,
   $hero,
+  $overviewHeader,
+  $overviewGrid,
   $heroImage,
+  $overview,
+  $well,
+  $consumeGap,
+  $gettingStarted,
 } from './styles.css';
 
 import bundleURL, { imports } from 'client-bundle:client/index/index.ts';
@@ -37,6 +43,7 @@ import Connect from '../../components/Connect';
 import FirstParagraphOnly from 'static-build/components/FirstParagraphOnly';
 import * as toolImages from 'shared/utils/tool-images';
 import { html as README } from 'md:../../../README.md';
+import config from 'consts:config';
 
 interface Props {
   tests: Tests;
@@ -60,11 +67,14 @@ function renderSummary(tests: Tests): JSX.Element {
 }
 
 const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
+  const scores = calculateScoreTotals(tests);
+  const possible = scores[0].possible;
+
   return (
     <html lang="en">
       <head>
-        <title>tooling.report</title>
-        <meta name="description" content="TODO: site description" />
+        <title>Home | Score Overview</title>
+        <meta name="description" content={config.metaDescription} />
         <HeadMeta />
         <link rel="stylesheet" href={pageStyles} />
         <script type="module" src={bundleURL} />
@@ -92,32 +102,78 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
         </header>
         <main>
           <GithubFAB />
+
+          <section id="getting-started">
+            <div class={$sidebarLayout}>
+              <div></div>
+              <div class={$gettingStarted}>
+                <h3>Getting Started</h3>
+                <p>
+                  This homepage shows the aggregated results from a bespoke
+                  suite of build tool tests. A build tool test is a
+                  configuration file created to specifically handle a feature.
+                  We intend for the capability results and the configuration
+                  files to be transparent; to encourage learning & growing
+                  together.
+                </p>
+                <p>
+                  Yes,{' '}
+                  <b>
+                    each of the {possible} feature tests have a hand written
+                    config file!
+                  </b>{' '}
+                  We worked with the build tool authors to ensure fair tests and
+                  succinct configuration. It's all in Github.
+                </p>
+                <p class={$well}>
+                  We highly encourage you to{' '}
+                  <a href={config.githubContribute}>contribute</a> too!
+                </p>
+              </div>
+            </div>
+          </section>
+
           <section id="summary">
             <a href="#summary">
               <h3 class={$sectionHeader}>Summary</h3>
             </a>
             <div class={$sidebarLayout}>
               <aside>
-                <small>Results at the highest level</small>
+                <small>
+                  Current results as of <time>{config.buildDate}</time>{' '}
+                </small>
               </aside>
               <div>{renderSummary(tests)}</div>
             </div>
           </section>
 
-          <ToolNav />
-
-          <section id="legend">
+          <section id="data" class={$consumeGap}>
             <div class={$sidebarLayout}>
-              <aside></aside>
-              <div>
+              <div></div>
+              <div class={$gettingStarted}>
+                <h3>Information</h3>
+                <p>
+                  Below you'll get to see how your favorite, or new to be
+                  favorite, tool is handling our industry best practice test
+                  suite.
+                </p>
+                <p class={$well}>Each tool scores as follows:</p>
                 <Legend />
+                <h4>The Tools</h4>
+                <p>
+                  We chose browserify, parcel, rollup & webpack first out of
+                  popularity; to cover the most surface area. We are actively
+                  aggregating feedback for the next set of tools and tests.
+                </p>
               </div>
             </div>
           </section>
 
-          <section id="overview">
+          <ToolNav />
+
+          <section id="overview" class={`${$overview} ${$overviewGrid}`}>
             <a href="#overview">
-              <h3 class={$sectionHeader}>Overview</h3>
+              <h2 class={`${$overviewHeader} ${$sectionHeader}`}>Overview</h2>
             </a>
             <DataGrid tests={tests} basePath="/" collectionTitle="Overview" />
           </section>

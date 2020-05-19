@@ -1,6 +1,7 @@
 ---
 title: Code splitting
 importance: 1
+shortDesc: 'Extract common dependencies into shared bundles'
 ---
 
-Code splitting is hugely important for performance, since you don't end up loading everything when you only need a small bit of code.
+Code splitting is an important part of delivering high-performance JavaScript applications, helping to avoid downloading and executing more JavaScript than is necessary for a given page. At a high level, "code splitting" refers to the process of breaking up bundled code into multiple smaller bundles that can be loaded and executed independently as needed.

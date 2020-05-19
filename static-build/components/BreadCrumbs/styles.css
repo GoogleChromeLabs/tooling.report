@@ -6,12 +6,10 @@
   align-items: center;
   position: relative;
   font-size: var(--font-size--detail);
-  margin-bottom: var(--spacing-6);
-  margin-left: calc(calc(var(--spacing-6) + var(--spacing-2)) * -1);
-  padding-left: var(--spacing-6);
-  padding-bottom: var(--spacing-3);
+  padding: 0 var(--spacing-3) var(--spacing-3);
+  margin-bottom: 0;
+  margin-left: 0;
 
-  max-width: max-content;
   overflow-x: auto;
   overscroll-behavior: contain;
 
@@ -22,12 +20,19 @@
     width: var(--spacing-2);
   }
 
-  @media (max-width: 822px) {
-    padding: 0 var(--spacing-3) var(--spacing-3);
-    margin-bottom: 0;
-    margin-left: 0;
-    padding-left: var(--spacing-3);
-    padding-right: var(--spacing-3);
+  @media (min-width: 480px) {
+    width: calc(100% + var(--spacing-5));
+    margin-left: calc(-1 * var(--spacing-3));
+    padding-left: var(--spacing-5);
+    padding-right: var(--spacing-5);
+  }
+
+  @media (min-width: 822px) {
+    width: calc(100% + var(--spacing-2) + var(--spacing-7) * 2);
+    margin-bottom: var(--spacing-6);
+    margin-left: calc((var(--spacing-7) + var(--spacing-2)) * -1);
+    padding-left: var(--spacing-7);
+    padding-right: var(--spacing-7);
   }
 }
 
