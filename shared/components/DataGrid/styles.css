@@ -72,7 +72,7 @@
 }
 
 .dot {
-  display: inline-block;
+  display: flex;
   box-sizing: border-box;
   width: var(--spacing-3);
   height: var(--spacing-3);
