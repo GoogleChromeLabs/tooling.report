@@ -14,11 +14,7 @@ import {
   $datagrid,
   $dotContainer,
 } from 'shared/components/DataGrid/styles.css';
-import {
-  $tooltip,
-  $tooltipLeft,
-  $tooltipRight,
-} from 'shared/components/ToolTip/styles.css';
+import { $tooltip } from 'shared/components/ToolTip/styles.css';
 
 const dataGrids = document.querySelectorAll('.' + $datagrid) as NodeListOf<
   HTMLElement
@@ -37,16 +33,14 @@ for (const dataGrid of dataGrids) {
       dotTrigger.focus();
 
       const tooltip = dotContainer.querySelector('.' + $tooltip) as HTMLElement;
-
-      // Reset position
-      tooltip.classList.remove($tooltipLeft, $tooltipRight);
+      const gapOffset = 16;
 
       const bounds = tooltip.getBoundingClientRect();
+      const leftOffset = bounds.width - (window.outerWidth - bounds.x);
+      console.log(bounds, leftOffset);
 
-      if (bounds.left < 0) {
-        tooltip.classList.add($tooltipLeft);
-      } else if (bounds.right > document.documentElement.clientWidth) {
-        tooltip.classList.add($tooltipRight);
+      if (leftOffset >= gapOffset) {
+        tooltip.style.left = `-${leftOffset + gapOffset}px`;
       }
     },
     { capture: true },

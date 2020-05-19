@@ -82,6 +82,22 @@
   padding: 0;
   cursor: pointer;
   box-sizing: content-box;
+  position: relative;
+
+  &::after {
+    --arrow-size: 10px;
+
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    margin-left: calc(-1 * var(--arrow-size));
+    border-width: var(--arrow-size);
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+    display: none;
+    z-index: 100;
+  }
 
   &[data-result='pass'] {
     background: var(--test-pass);
@@ -111,6 +127,10 @@
   &:focus + [role='tooltip'] {
     opacity: 1;
     pointer-events: all;
+  }
+
+  &:focus::after {
+    display: block;
   }
 }
 

@@ -43,7 +43,6 @@
 
 .details {
   padding: var(--spacing-3);
-  background: white;
 
   p {
     margin-bottom: var(--spacing-3);
@@ -73,74 +72,17 @@
 }
 
 .tooltip {
-  --arrow-size: 10px;
   --tooltip-border: 10px;
-  --arrow-horizontal-offset: 25px;
-  --border-width: 1px;
 
   position: absolute;
   background: white;
-  border: var(--border-width) solid var(--ice-blue);
   box-shadow: var(--card-shadow);
   z-index: var(--layer--top);
   border-radius: var(--tooltip-border);
   bottom: calc(100% + var(--spacing-2));
+  left: 0;
   font-size: var(--font-size--detail);
-  width: 350px;
-
-  /* Default tooltip center styles */
-  transform: translateX(-155px) translateY(-10px);
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: calc(50% - var(--arrow-size));
-    margin-left: calc(-1 * var(--arrow-size));
-    border-width: var(--arrow-size);
-    border-style: solid;
-    border-color: white transparent transparent transparent;
-  }
-
-  /* For the border */
-  &::before {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: calc(50% - var(--arrow-size) - 2px);
-    margin-left: calc(-1 * var(--arrow-size) + var(--border-width));
-    border-width: calc(var(--arrow-size) +var(--border-width));
-    border-style: solid;
-    border-color: var(--light-blue) transparent transparent transparent;
-  }
-
-  &.tooltipLeft {
-    transform: translateX(-6px) translateY(-10px);
-
-    &::after {
-      left: calc(var(--arrow-horizontal-offset) - var(--arrow-size));
-    }
-
-    /* For the border */
-    &::before {
-      left: calc(var(--arrow-horizontal-offset) - var(--arrow-size) - 2px);
-    }
-  }
-
-  &.tooltipRight {
-    transform: translateX(-316px) translateY(-10px);
-
-    &::after {
-      left: auto;
-      right: calc(var(--arrow-horizontal-offset) - var(--arrow-size));
-    }
-
-    /* For the border */
-    &::before {
-      left: auto;
-      right: calc(
-        var(--arrow-horizontal-offset) - var(--arrow-size) -var(--border-width)
-      );
-    }
-  }
+  width: 85vw;
+  max-width: 350px;
+  transform: translateX(-10px);
 }
