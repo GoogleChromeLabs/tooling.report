@@ -26,12 +26,15 @@ const dataGrids = document.querySelectorAll('.' + $datagrid) as NodeListOf<
 
 for (const dataGrid of dataGrids) {
   dataGrid.addEventListener(
-    'focus',
+    'click',
     event => {
       const dotContainer = (event.target as HTMLElement).closest(
         '.' + $dotContainer,
       );
       if (!dotContainer) return;
+
+      const dotTrigger = event.target as HTMLElement;
+      dotTrigger.focus();
 
       const tooltip = dotContainer.querySelector('.' + $tooltip) as HTMLElement;
 

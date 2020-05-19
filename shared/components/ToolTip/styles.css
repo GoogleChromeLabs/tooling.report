@@ -43,6 +43,7 @@
 
 .details {
   padding: var(--spacing-3);
+  background: white;
 
   p {
     margin-bottom: var(--spacing-3);
@@ -90,7 +91,7 @@
   /* Default tooltip center styles */
   transform: translateX(-155px) translateY(-10px);
 
-  &:after {
+  &::after {
     content: '';
     position: absolute;
     top: 100%;
@@ -102,7 +103,7 @@
   }
 
   /* For the border */
-  &:before {
+  &::before {
     content: '';
     position: absolute;
     top: 100%;
@@ -116,12 +117,12 @@
   &.tooltipLeft {
     transform: translateX(-6px) translateY(-10px);
 
-    &:after {
+    &::after {
       left: calc(var(--arrow-horizontal-offset) - var(--arrow-size));
     }
 
     /* For the border */
-    &:before {
+    &::before {
       left: calc(var(--arrow-horizontal-offset) - var(--arrow-size) - 2px);
     }
   }
@@ -129,13 +130,13 @@
   &.tooltipRight {
     transform: translateX(-316px) translateY(-10px);
 
-    &:after {
+    &::after {
       left: auto;
       right: calc(var(--arrow-horizontal-offset) - var(--arrow-size));
     }
 
     /* For the border */
-    &:before {
+    &::before {
       left: auto;
       right: calc(
         var(--arrow-horizontal-offset) - var(--arrow-size) -var(--border-width)
