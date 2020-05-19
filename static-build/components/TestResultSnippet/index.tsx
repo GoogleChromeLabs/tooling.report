@@ -9,17 +9,15 @@ const toolImages = { browserify, rollup, webpack, parcel };
 interface Props {
   name: string;
   result: string;
-  link: string;
 }
 
 const TestResultSnippet: FunctionalComponent<Props> = ({
   name,
   result,
-  link,
 }: Props) => {
   return (
     <li class={$resultItem}>
-      <a href={link} class={$toolName}>
+      <a href={`#${name}`} title={`Explain the ${result}`} class={$toolName}>
         {name}
       </a>
       <figure class={$toolIcon}>

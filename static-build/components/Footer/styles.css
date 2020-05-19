@@ -1,6 +1,7 @@
 @import '../Logo/styles.css';
 
 .footer {
+  min-height: 225px;
   background: var(--backpack-blue);
   padding: var(--spacing-5) var(--spacing-3) var(--spacing-3);
 
@@ -58,6 +59,14 @@
   position: absolute;
   right: 0;
   opacity: 0.3;
+
+  & > img {
+    object-fit: contain;
+
+    @media (max-width: 550px) {
+      height: 215px;
+    }
+  }
 }
 
 @media only screen and (min-width: 550px) {
