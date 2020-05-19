@@ -5,20 +5,30 @@
   border-radius: 20px;
   box-shadow: var(--card-shadow);
   padding: var(--spacing-5);
+  box-sizing: border-box;
   text-align: center;
+  max-width: min(80vw, 300px);
+  width: 100%;
 }
 
 .cardTitle {
   color: var(--vivid-blue);
   margin: var(--spacing-1);
   display: block;
-  line-height: var(--font-lineheight--body);
-  font-weight: var(--font-weight--normal);
+  line-height: 1.5;
+  font-size: var(--font-size--logo);
+  font-weight: var(--font-weight--light);
+
+  @media (min-width: 460px) {
+    font-size: var(--font-size--h2);
+    font-weight: var(--font-weight--normal);
+  }
 }
 
 .cardTotal {
   font-size: var(--font-size--logo);
   color: var(--dim-teal);
+  line-height: 1.1;
 }
 
 .cardTotalCount {
@@ -61,11 +71,11 @@
 .progressText {
   color: white;
   padding: 0 var(--spacing-1);
-  font-size: var(--font-size--detail);
+  font-size: var(--font-size--body);
+  font-family: monospace;
 }
 
 .progressSummary {
-  height: 20px;
   background-color: var(--ice-blue);
   border-radius: 20px;
   position: relative;
@@ -73,10 +83,6 @@
 }
 
 .progressBar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
   background-color: var(--vivid-blue);
   display: flex;
   align-items: center;
