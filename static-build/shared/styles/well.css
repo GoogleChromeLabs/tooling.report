@@ -4,4 +4,10 @@
   font-size: var(--font-size--detail);
   border-radius: var(--spacing-3);
   display: inline-block;
+
+  svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+  }
 }
