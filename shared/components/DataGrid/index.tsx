@@ -20,6 +20,7 @@ import {
   $aside,
   $results,
   $dotContainer,
+  $toolTipArrow,
 } from './styles.css';
 import ToolTip from '../ToolTip';
 
@@ -89,6 +90,7 @@ const DataGrid: FunctionalComponent<Props> = ({
                             link={`${basePath}${testDir}`}
                             content={test.meta.shortDesc}
                           />
+                          <div class={$toolTipArrow}></div>
                         </div>
                       ),
                   )}

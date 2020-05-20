@@ -80,7 +80,7 @@
   z-index: var(--layer--top);
   border-radius: var(--tooltip-border);
   overflow: hidden;
-  bottom: calc(100% + 14px);
+  bottom: calc(100% + 11px);
   left: 0;
   font-size: var(--font-size--detail);
   width: 85vw;

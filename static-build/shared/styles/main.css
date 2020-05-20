@@ -7,6 +7,7 @@ main {
   box-sizing: border-box;
   background: var(--background-gray);
   position: relative;
+  overflow: hidden;
 
   @media (min-width: 550px) {
     padding: var(--spacing-7) var(--spacing-6) var(--spacing-3);

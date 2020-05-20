@@ -83,21 +83,6 @@
   cursor: pointer;
   position: relative;
 
-  &::after {
-    --arrow-size: 10px;
-
-    content: '';
-    position: absolute;
-    bottom: 8px;
-    left: 50%;
-    margin-left: calc(-1 * var(--arrow-size));
-    border-width: var(--arrow-size);
-    border-style: solid;
-    border-color: white transparent transparent transparent;
-    display: none;
-    z-index: 100;
-  }
-
   &[data-result='pass'] {
     background: var(--test-pass);
     border-color: var(--test-pass);
@@ -123,14 +108,34 @@
     border-color: var(--test-fail);
   }
 
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--light-blue), 0 0 0 6px var(--vivid-blue);
+  }
+
   &:focus + [role='tooltip'] {
     opacity: 1;
     pointer-events: all;
   }
 
-  &:focus::after {
+  &:focus ~ .toolTipArrow {
     display: block;
   }
+}
+
+.toolTipArrow {
+  --arrow-size: 10px;
+
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  margin-left: calc(-1 * var(--arrow-size));
+  border-width: var(--arrow-size);
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+  display: none;
+  z-index: 100;
 }
 
 @media only screen and (min-width: 550px) {
@@ -156,4 +161,9 @@
 [role='tooltip']:focus-within {
   opacity: 1;
   pointer-events: all;
+}
+
+[role='tooltip']:focus + .toolTipArrow,
+[role='tooltip']:focus-within + .toolTipArrow {
+  display: block;
 }
