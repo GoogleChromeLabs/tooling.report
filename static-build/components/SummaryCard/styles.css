@@ -70,9 +70,10 @@
 
 .progressText {
   color: white;
-  padding: 0 var(--spacing-1);
-  font-size: var(--font-size--body);
-  font-family: monospace;
+  padding: var(--spacing-1) var(--spacing-2);
+  font-size: var(--font-size--detail);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
 }
 
 .progressSummary {
