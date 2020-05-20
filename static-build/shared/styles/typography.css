@@ -24,6 +24,7 @@ html {
   font-size: var(--font-size--body);
   font-weight: var(--font-weight--light);
   line-height: var(--font-lineheight--body);
+  overflow-x: hidden;
 }
 
 h2 {
