@@ -88,5 +88,11 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  /* will-change: width; TODO note: in the future have the bars animate out from 0% with an intersection observer */
+  animation: fill-bar 1.25s ease;
+}
+
+@keyframes fill-bar {
+  from {
+    transform: translateX(-100%);
+  }
 }
