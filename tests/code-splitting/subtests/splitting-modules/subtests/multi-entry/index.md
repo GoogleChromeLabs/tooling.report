@@ -4,7 +4,9 @@ importance: 1
 shortDesc: 'Can modules be split along their exports used by each entry bundle?'
 ---
 
-Can the build tool split a single module when subsets of its exports are used by multiple entries?
+# The Test
+
+This test checks to see if exports from a common module can be separated when they are used exclusively by different [entry modules], avoiding a bundle being loaded that contains unused exports. In this particular variation, three entry modules each use one of two exported objects from a common module.
 
 **entry-1.js**
 
@@ -34,6 +36,8 @@ export const foo = { name: 'foo' };
 export const bar = { name: 'bar' };
 ```
 
-In this example, `entry-1.js` needs `foo` from `objects.js`, whereas `entry-2.js` and `entry-3.js` need `bar` from `objects.js`.
+In this example, `entry-1.js` uses `foo` from `objects.js`, whereas `entry-2.js` and `entry-3.js` use `bar`.
 
-Ideally this should produce 4 output files. `entry-1` should have `foo` inlined. `entry-2` and `entry-3` should reference a split module which contains only `bar`.
+Ideally this should result in 4 generated bundles: a bundle for `entry-1` with `foo` inlined, and bundles for `entry-2` and `entry-3` that reference a separate bundle containing only `bar`.
+
+[entry modules]: /code-splitting/multi-entry/

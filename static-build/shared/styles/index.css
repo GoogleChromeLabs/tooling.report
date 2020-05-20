@@ -5,7 +5,10 @@
 @import 'body.css';
 @import 'header.css';
 @import 'main.css';
+@import 'well.css';
 
 @import 'components/GithubFAB/styles.css';
 @import 'components/Footer/styles.css';
 @import 'components/LinkList/styles.css';
+@import 'components/DataGrid/styles.css';
+@import 'components/Connect/styles.css';

@@ -1,6 +1,6 @@
 @import '../../libraries/prism/prism.css';
 @import 'components/TestCard/styles.css';
-@import 'components/TestCrumbs/styles.css';
+@import 'components/BreadCrumbs/styles.css';
 
 main {
   gap: var(--spacing-3);
@@ -41,7 +41,11 @@ main {
       padding-left: var(--spacing-3);
 
       &::marker {
-        color: red;
+        color: var(--grape);
+      }
+
+      &:not(:last-child) {
+        margin-bottom: var(--spacing-3);
       }
     }
   }

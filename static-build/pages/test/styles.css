@@ -1,23 +1,9 @@
 @import '../../libraries/prism/prism.css';
-@import './article.css';
+@import './detail.css';
+@import './collection.css';
 @import 'components/TestCard/styles.css';
-@import 'components/TestCrumbs/styles.css';
+@import 'components/BreadCrumbs/styles.css';
 @import 'components/TestResultSnippet/styles.css';
-
-main {
-  gap: var(--spacing-5);
-  padding: var(--spacing-5) var(--spacing-3);
-  max-width: 1024px;
-  margin: 0 auto;
-
-  @media (min-width: 480px) {
-    padding: var(--spacing-5);
-  }
-
-  @media (min-width: 822px) {
-    padding: var(--spacing-7) var(--spacing-6) var(--spacing-8);
-  }
-}
 
 .heroImage {
   background: var(--ice-blue);
@@ -59,7 +45,7 @@ main {
     right: initial;
     margin-left: 0;
     margin-right: -10vw;
-    margin-bottom: -70px;
+    margin-bottom: -55px;
     margin-top: 0;
     align-self: initial;
 
@@ -70,81 +56,5 @@ main {
 
   .heroText {
     align-self: initial;
-  }
-}
-
-.testCardList {
-  display: grid;
-  gap: var(--spacing-5);
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.contribCard {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  background: white;
-  border: 1px solid var(--light-blue);
-  border-radius: 20px;
-  box-shadow: var(--card-shadow);
-  will-change: box-shadow;
-  transform-style: preserve-3d;
-
-  &:hover,
-  &:focus {
-    transform: translateY(-5px);
-    box-shadow: var(--card-shadow--active);
-
-    .plus {
-      color: var(--sky-blue);
-    }
-
-    .desc {
-      opacity: 1;
-      color: var(--vivid-blue);
-      transform: translateX(0);
-    }
-  }
-}
-
-.plus {
-  color: var(--light-blue);
-  font-size: 120px;
-  font-family: monospace;
-}
-
-.desc {
-  color: var(--light-blue);
-  position: absolute;
-  display: block;
-  opacity: 0;
-  top: var(--spacing-5);
-  font-weight: var(--font-weight--normal);
-  transition-duration: 0.5s;
-  transform: translateX(var(--spacing-5));
-}
-
-.testResultList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-@media (min-width: 600px) {
-  .testResultList {
-    justify-content: center;
-
-    li {
-      margin: var(--spacing-3);
-    }
   }
 }

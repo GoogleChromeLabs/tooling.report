@@ -10,8 +10,26 @@ header {
     padding: var(--spacing-3);
   }
 
+  & small {
+    color: var(--vivid-darker-blue);
+  }
+
+  & h2 {
+    text-transform: capitalize;
+  }
+
+  & p {
+    color: var(--teal-blue);
+  }
+
   & > section {
     position: relative;
+
+    @media (min-width: 822px) {
+      max-width: 1024px;
+      min-width: var(--pageMax);
+      margin: auto;
+    }
 
     & > div {
       display: flex;
@@ -19,11 +37,6 @@ header {
       align-items: center;
       flex-direction: column;
       padding: 0 var(--spacing-3);
-    }
-
-    @media (min-width: 822px) {
-      max-width: 1024px;
-      margin: auto;
     }
   }
 }
@@ -37,6 +50,8 @@ header {
     & > section > div {
       flex-direction: row;
       padding: 0;
+      max-width: var(--pageMax);
+      margin: auto;
     }
   }
 }
