@@ -25,6 +25,7 @@
 }
 
 .headerBar {
+  border-radius: var(--tooltip-border) var(--tooltip-border) 0 0;
   background: var(--ice-blue);
   display: flex;
   align-items: center;
@@ -80,18 +81,20 @@
   z-index: var(--layer--top);
   border-radius: var(--tooltip-border);
   bottom: calc(100% + 11px);
-  left: 0;
+  left: -1000px;
   font-size: var(--font-size--detail);
-  width: 85vw;
   max-width: 350px;
   transform: translateX(-10px);
+  width: 85vw;
 
   opacity: 0;
   pointer-events: none;
 }
 
 .tooltip:focus,
-.tooltip:focus-within {
+.tooltip:focus-within,
+:focus + .tooltip {
+  left: 0;
   opacity: 1;
   pointer-events: all;
   outline: none;

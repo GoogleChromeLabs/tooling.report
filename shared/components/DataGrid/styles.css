@@ -113,15 +113,6 @@
     box-shadow: 0 0 0 2px var(--light-blue), 0 0 0 6px var(--vivid-blue);
   }
 
-  &:focus + [role='tooltip'] {
-    opacity: 1;
-    pointer-events: all;
-  }
-
-  &:focus ~ .toolTipArrow {
-    display: block;
-  }
-
   /* Prevent inner focus effect in Firefox */
   &::-moz-focus-inner {
     border: 0;

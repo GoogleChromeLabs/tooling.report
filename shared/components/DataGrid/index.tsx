@@ -20,7 +20,6 @@ import {
   $aside,
   $results,
   $dotContainer,
-  $toolTipArrow,
 } from './styles.css';
 import ToolTip from '../ToolTip';
 

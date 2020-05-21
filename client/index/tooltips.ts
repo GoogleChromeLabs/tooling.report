@@ -40,6 +40,7 @@ function pointerUp(event: PointerEvent): void {
   // Whereas for touch, we only want to hear about pointer ups that
   // weren't cancelled (as in, scrolling didn't happen)
   if (event.pointerType !== 'mouse') {
+    event.preventDefault();
     focusClosest(event.target as HTMLElement);
   }
 }
@@ -55,17 +56,21 @@ function tooltipFocus(event: Event): void {
   ) as HTMLElement;
   const gapOffset = 16;
 
-  const bounds = tooltip.getBoundingClientRect();
-  const leftOffset = bounds.width - (window.innerWidth - bounds.x);
+  tooltip.style.left = '0';
 
-  if (leftOffset >= gapOffset) {
-    tooltip.style.left = `-${leftOffset + gapOffset}px`;
+  const bounds = tooltip.getBoundingClientRect();
+  const innerWidth = window.innerWidth;
+  console.log(innerWidth, bounds);
+
+  if (bounds.right + gapOffset > innerWidth) {
+    const leftOffset = bounds.right - innerWidth + gapOffset;
+    tooltip.style.left = `${leftOffset * -1}px`;
 
     // In a previous build the tooltip arrow sat outside the tooltip so this wasn't necessary.
     // However, in Safari stable, the use of focus-within caused like a 500ms delay to
     // tooltips appearing. It's fixed in TP, so in future, we can move the arrow back
     // outside the tooltip.
-    tooltipArrow.style.left = `${leftOffset + gapOffset}px`;
+    tooltipArrow.style.left = `${leftOffset}px`;
   }
 }
 
