@@ -60,7 +60,6 @@ function tooltipFocus(event: Event): void {
 
   const bounds = tooltip.getBoundingClientRect();
   const innerWidth = window.innerWidth;
-  console.log(innerWidth, bounds);
 
   if (bounds.right + gapOffset > innerWidth) {
     const leftOffset = bounds.right - innerWidth + gapOffset;
