@@ -128,21 +128,6 @@
   }
 }
 
-.toolTipArrow {
-  --arrow-size: 10px;
-
-  content: '';
-  position: absolute;
-  bottom: 8px;
-  left: 50%;
-  margin-left: calc(-1 * var(--arrow-size));
-  border-width: var(--arrow-size);
-  border-style: solid;
-  border-color: white transparent transparent transparent;
-  display: none;
-  z-index: 100;
-}
-
 @media only screen and (min-width: 550px) {
   .results {
     padding: var(--spacing-3) 0;
@@ -153,22 +138,4 @@
       justify-content: flex-start;
     }
   }
-}
-
-/* Tooltip Time */
-
-[role='tooltip'] {
-  opacity: 0;
-  pointer-events: none;
-}
-
-[role='tooltip']:focus,
-[role='tooltip']:focus-within {
-  opacity: 1;
-  pointer-events: all;
-}
-
-[role='tooltip']:focus + .toolTipArrow,
-[role='tooltip']:focus-within + .toolTipArrow {
-  display: block;
 }

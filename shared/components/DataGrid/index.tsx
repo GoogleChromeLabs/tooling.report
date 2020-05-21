@@ -75,6 +75,7 @@ const DataGrid: FunctionalComponent<Props> = ({
                             aria-describedby={`${tool}-${testDir}`}
                             data-tool={tool}
                             data-result={test.results[tool].meta.result}
+                            tabIndex={0}
                             class={$dot}
                           ></button>
                           <ToolTip
@@ -90,7 +91,6 @@ const DataGrid: FunctionalComponent<Props> = ({
                             link={`${basePath}${testDir}`}
                             content={test.meta.shortDesc}
                           />
-                          <div class={$toolTipArrow}></div>
                         </div>
                       ),
                   )}

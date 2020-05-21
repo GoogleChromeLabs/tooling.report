@@ -79,11 +79,32 @@
   box-shadow: var(--card-shadow);
   z-index: var(--layer--top);
   border-radius: var(--tooltip-border);
-  overflow: hidden;
   bottom: calc(100% + 11px);
   left: 0;
   font-size: var(--font-size--detail);
   width: 85vw;
   max-width: 350px;
   transform: translateX(-10px);
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tooltip:focus,
+.tooltip:focus-within {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.toolTipArrow {
+  --arrow-size: 10px;
+
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-left: 8px;
+  border-width: var(--arrow-size);
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+  z-index: 100;
 }

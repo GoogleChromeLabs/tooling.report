@@ -6,6 +6,7 @@ import {
   $headerMeta,
   $details,
   $toolIcon,
+  $toolTipArrow,
 } from './styles.css';
 import * as toolImages from 'shared/utils/tool-images';
 
@@ -48,6 +49,7 @@ const Tooltip: FunctionalComponent<Props> = ({
         {content && <p>{content}</p>}
         <a href={link}>Learn More</a>
       </div>
+      <div class={$toolTipArrow}></div>
     </div>
   );
 };

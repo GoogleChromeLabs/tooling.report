@@ -14,7 +14,7 @@ import {
   $datagrid,
   $dotContainer,
 } from 'shared/components/DataGrid/styles.css';
-import { $tooltip } from 'shared/components/ToolTip/styles.css';
+import { $tooltip, $toolTipArrow } from 'shared/components/ToolTip/styles.css';
 
 const dataGrids = document.querySelectorAll('.' + $datagrid) as NodeListOf<
   HTMLElement
@@ -23,8 +23,8 @@ const dataGrids = document.querySelectorAll('.' + $datagrid) as NodeListOf<
 function focusClosest(el: HTMLElement): void {
   const focusable = el.closest('button, [tabindex]') as HTMLElement | null;
   if (focusable) {
-    focusable.focus();
-    //requestAnimationFrame(() => focusable.focus());
+    // This needs to be wrapped in raf to get back the default browser action.
+    requestAnimationFrame(() => focusable.focus());
   }
 }
 
@@ -50,6 +50,9 @@ function tooltipFocus(event: Event): void {
   if (!dotContainer) return;
 
   const tooltip = dotContainer.querySelector('.' + $tooltip) as HTMLElement;
+  const tooltipArrow = dotContainer.querySelector(
+    '.' + $toolTipArrow,
+  ) as HTMLElement;
   const gapOffset = 16;
 
   const bounds = tooltip.getBoundingClientRect();
@@ -57,6 +60,12 @@ function tooltipFocus(event: Event): void {
 
   if (leftOffset >= gapOffset) {
     tooltip.style.left = `-${leftOffset + gapOffset}px`;
+
+    // In a previous build the tooltip arrow sat outside the tooltip so this wasn't necessary.
+    // However, in Safari stable, the use of focus-within caused like a 500ms delay to
+    // tooltips appearing. It's fixed in TP, so in future, we can move the arrow back
+    // outside the tooltip.
+    tooltipArrow.style.left = `${leftOffset + gapOffset}px`;
   }
 }
 
