@@ -94,6 +94,7 @@
 .tooltip:focus-within {
   opacity: 1;
   pointer-events: all;
+  outline: none;
 }
 
 .toolTipArrow {
