@@ -10,7 +10,74 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 declare module 'asset-url:*' {
   const value: string;
+  export default value;
+}
+
+interface Tests {
+  [testName: string]: Test;
+}
+
+interface Test {
+  /** Front-matter data from the index.md in the test. */
+  meta: TestMeta;
+  /** HTML from the index.md in the test. */
+  html: string;
+  subTests?: Tests;
+  results: TestResults;
+}
+
+interface TestMeta {
+  title: string;
+  shortDesc: string;
+  importance: number;
+}
+
+type TestResults = Record<BuildTool, TestResult>;
+type BuildTool = 'rollup' | 'webpack' | 'parcel' | 'browserify';
+
+interface TestResult {
+  /** Front-matter data from the result markdown file */
+  meta: ResultMeta;
+  /** HTML from the result markdown file */
+  html: string;
+  /** Path to the test project in the repository */
+  repositoryPath: string;
+}
+
+interface ResultMeta {
+  result: 'pass' | 'fail' | 'partial';
+  issue?: Array<{
+    status: 'open' | 'closed';
+    url: string;
+    fixedSince?: string;
+    githubData?: {
+      status: string;
+      title: string;
+    };
+  }>;
+}
+
+interface ToolSummary {
+  tool: BuildTool;
+  total: number;
+  possible: number;
+}
+
+interface Link {
+  title: string;
+  href: string;
+}
+
+declare module 'consts:config' {
+  const value: {
+    testSubjects: BuildTool[];
+    githubRepository: string;
+    githubContribute: string;
+    buildDate: string;
+    metaDescription: string;
+  };
   export default value;
 }

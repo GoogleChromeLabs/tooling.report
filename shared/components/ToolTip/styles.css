@@ -1,0 +1,114 @@
+.toolBadge {
+  border: 1px solid gray;
+  padding: var(--spacing-1) var(--spacing-3);
+  background: white;
+  display: inline-block;
+  border-radius: var(--spacing-2);
+  text-transform: capitalize;
+  font-weight: var(--font-weight--normal);
+  margin-left: var(--spacing-3);
+
+  &[data-result='pass'] {
+    border-color: var(--test-pass);
+    color: var(--test-pass--text);
+  }
+
+  &[data-result='partial'] {
+    border-color: var(--test-partial);
+    color: var(--test-partial--text);
+  }
+
+  &[data-result='fail'] {
+    border-color: var(--test-fail);
+    color: var(--test-fail--text);
+  }
+}
+
+.headerBar {
+  border-radius: var(--tooltip-border) var(--tooltip-border) 0 0;
+  background: var(--ice-blue);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-3);
+
+  h2 {
+    font-size: var(--font-size--body);
+  }
+}
+
+.headerMeta {
+  display: flex;
+  align-items: center;
+}
+
+.details {
+  padding: var(--spacing-3);
+
+  p {
+    margin-bottom: var(--spacing-3);
+  }
+
+  a {
+    display: inline-block;
+  }
+}
+
+.toolIcon {
+  background: white;
+  margin-right: var(--spacing-2);
+  border-radius: 50%;
+  width: calc(var(--touch-icon-size));
+  height: calc(var(--touch-icon-size));
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--light-blue);
+}
+
+.toolIcon img {
+  max-width: 60%;
+  max-height: 60%;
+}
+
+.tooltip {
+  --tooltip-border: 10px;
+
+  position: absolute;
+  background: white;
+  box-shadow: var(--card-shadow);
+  z-index: var(--layer--top);
+  border-radius: var(--tooltip-border);
+  bottom: calc(100% + 11px);
+  left: -1000px;
+  font-size: var(--font-size--detail);
+  max-width: 350px;
+  transform: translateX(-10px);
+  width: 85vw;
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tooltip:focus,
+.tooltip:focus-within,
+:focus + .tooltip {
+  left: 0;
+  opacity: 1;
+  pointer-events: all;
+  outline: none;
+}
+
+.toolTipArrow {
+  --arrow-size: 10px;
+
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-left: 8px;
+  border-width: var(--arrow-size);
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+  z-index: 100;
+}

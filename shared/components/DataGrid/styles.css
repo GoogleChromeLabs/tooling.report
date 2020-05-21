@@ -57,7 +57,7 @@
   display: grid;
   gap: var(--spacing-2);
   grid-template-columns: repeat(auto-fill, minmax(var(--spacing-3), 1fr));
-  grid-template-rows: var(--spacing-3);
+  grid-auto-rows: var(--spacing-3);
   justify-items: center;
   align-content: center;
   padding: 0 var(--spacing-2);
@@ -67,14 +67,21 @@
   }
 }
 
+.dotContainer {
+  position: relative;
+}
+
 .dot {
-  display: inline-block;
+  display: flex;
   box-sizing: border-box;
   width: var(--spacing-3);
   height: var(--spacing-3);
   background: var(--test-skip);
   border: 2px solid var(--test-skip);
   border-radius: 50%;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
 
   &[data-result='pass'] {
     background: var(--test-pass);
@@ -99,6 +106,16 @@
   &[data-result='fail'] {
     background: transparent;
     border-color: var(--test-fail);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--light-blue), 0 0 0 6px var(--vivid-blue);
+  }
+
+  /* Prevent inner focus effect in Firefox */
+  &::-moz-focus-inner {
+    border: 0;
   }
 }
 
