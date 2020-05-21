@@ -1,0 +1,37 @@
+.dot {
+  display: flex;
+  box-sizing: border-box;
+  width: var(--spacing-3);
+  height: var(--spacing-3);
+  background: var(--test-skip);
+  border: 2px solid var(--test-skip);
+  border-radius: 50%;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+
+  &[data-result='pass'] {
+    background: var(--test-pass);
+    border-color: var(--test-pass);
+  }
+
+  &[data-result='partial'] {
+    background-image: linear-gradient(
+      90deg,
+      var(--test-partial),
+      50%,
+      var(--test-partial),
+      51%,
+      transparent,
+      52%,
+      transparent
+    );
+    background-color: transparent;
+    border-color: var(--test-partial);
+  }
+
+  &[data-result='fail'] {
+    background: transparent;
+    border-color: var(--test-fail);
+  }
+}

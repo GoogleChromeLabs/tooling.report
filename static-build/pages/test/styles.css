@@ -4,6 +4,7 @@
 @import 'components/TestCard/styles.css';
 @import 'components/BreadCrumbs/styles.css';
 @import 'components/TestResultSnippet/styles.css';
+@import 'shared/components/Dot/styles.css';
 
 .heroImage {
   background: var(--ice-blue);

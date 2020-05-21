@@ -40,10 +40,10 @@ import {
   $testCardList,
   $collectionSummary,
 } from './collection.css';
-import { $dot } from 'shared/components/DataGrid/styles.css';
 import { $well } from '../../shared/styles/well.css';
 import { $heroImage, $heroText } from './styles.css';
 import Connect from 'static-build/components/Connect/index.js';
+import Dot from 'shared/components/Dot/index.js';
 
 interface Props {
   test: Test;
@@ -135,10 +135,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                   <details class={$resultDetails}>
                     <summary id={subject} class={$resultSummary}>
                       <b>{subject}</b>
-                      <span
-                        data-result={result.meta.result}
-                        class={$dot}
-                      ></span>
+                      <Dot result={result.meta.result} />
                       <a href={githubLink(result.repositoryPath)}>
                         <GithubIcon />
                       </a>

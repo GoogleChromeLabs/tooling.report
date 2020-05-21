@@ -71,54 +71,6 @@
   position: relative;
 }
 
-.dot {
-  display: flex;
-  box-sizing: border-box;
-  width: var(--spacing-3);
-  height: var(--spacing-3);
-  background: var(--test-skip);
-  border: 2px solid var(--test-skip);
-  border-radius: 50%;
-  padding: 0;
-  cursor: pointer;
-  position: relative;
-
-  &[data-result='pass'] {
-    background: var(--test-pass);
-    border-color: var(--test-pass);
-  }
-
-  &[data-result='partial'] {
-    background-image: linear-gradient(
-      90deg,
-      var(--test-partial),
-      50%,
-      var(--test-partial),
-      51%,
-      transparent,
-      52%,
-      transparent
-    );
-    background-color: transparent;
-    border-color: var(--test-partial);
-  }
-
-  &[data-result='fail'] {
-    background: transparent;
-    border-color: var(--test-fail);
-  }
-
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px var(--light-blue), 0 0 0 6px var(--vivid-blue);
-  }
-
-  /* Prevent inner focus effect in Firefox */
-  &::-moz-focus-inner {
-    border: 0;
-  }
-}
-
 @media only screen and (min-width: 550px) {
   .results {
     padding: var(--spacing-3) 0;
@@ -128,5 +80,23 @@
       padding-right: var(--spacing-3);
       justify-content: flex-start;
     }
+  }
+}
+
+.dotButton {
+  padding: 0;
+  border: none;
+  background: none;
+  border-radius: 50%;
+  display: flex;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--light-blue), 0 0 0 6px var(--vivid-blue);
+  }
+
+  /* Prevent inner focus effect in Firefox */
+  &::-moz-focus-inner {
+    border: 0;
   }
 }
