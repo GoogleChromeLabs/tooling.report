@@ -26,13 +26,17 @@ import TestCard from '../../components/TestCard';
 import TestResultSnippet from '../../components/TestResultSnippet';
 import { LabcoatHero, WalkerHero } from '../../components/Heroes';
 import {
-  $resultDetails,
+  $result,
   $resultSummary,
   $resultsCard,
   $results,
   $testResultList,
   $detailPage,
   $explainerPost,
+  $subjectName,
+  $gitHubIconPlaceholder,
+  $gitHubIcon,
+  $resultSummaryInner,
 } from './detail.css';
 import {
   $collectionPage,
@@ -131,24 +135,47 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
             <section>
               <h1>Conclusion</h1>
               <article>
-                {Object.entries(test.results).map(([subject, result]) => (
-                  <details class={$resultDetails}>
-                    <summary id={subject} class={$resultSummary}>
-                      <b>{subject}</b>
+                {Object.entries(test.results).map(([subject, result]) => {
+                  const summaryInner = (
+                    <div class={$resultSummaryInner}>
+                      <span class={$subjectName}>{subject}</span>
                       <Dot result={result.meta.result} />
-                      <a href={githubLink(result.repositoryPath)}>
+                      <div class={$gitHubIconPlaceholder} />
+                    </div>
+                  );
+
+                  return (
+                    <div class={$result}>
+                      {result.html || result.meta.issue ? (
+                        <details>
+                          <summary class={$resultSummary}>
+                            {summaryInner}
+                          </summary>
+                          <div class={$resultsCard}>
+                            <div
+                              class={$results}
+                              dangerouslySetInnerHTML={{
+                                __html: result.html || 'NO',
+                              }}
+                            ></div>
+                            {renderIssueLinksForTest(
+                              test,
+                              subject as BuildTool,
+                            )}
+                          </div>
+                        </details>
+                      ) : (
+                        <div class={$resultSummary}>{summaryInner}</div>
+                      )}
+                      <a
+                        href={githubLink(result.repositoryPath)}
+                        class={$gitHubIcon}
+                      >
                         <GithubIcon />
                       </a>
-                    </summary>
-                    <div class={$resultsCard}>
-                      <div
-                        class={$results}
-                        dangerouslySetInnerHTML={{ __html: result.html }}
-                      ></div>
-                      {renderIssueLinksForTest(test, subject as BuildTool)}
                     </div>
-                  </details>
-                ))}
+                  );
+                })}
               </article>
             </section>
           </main>

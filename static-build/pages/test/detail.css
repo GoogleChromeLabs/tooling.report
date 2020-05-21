@@ -74,43 +74,58 @@
   }
 }
 
-.resultDetails {
+.result {
   margin-bottom: var(--spacing-3);
+  position: relative;
 }
 
 .resultSummary {
   color: var(--vivid-blue);
   background: var(--background-gray-offset);
-  padding: 0 var(--spacing-3);
   border-radius: var(--spacing-1) var(--spacing-1) 0 0;
-  display: flex;
-  align-items: center;
   padding: 1ch 2ch;
-  cursor: pointer;
+  color: var(--backpack-blue);
 
   &:focus {
     outline-color: var(--sky-blue);
   }
+}
 
-  & > *:not(a) {
-    color: var(--backpack-blue);
+summary.resultSummary {
+  cursor: pointer;
+}
+
+/* This needs to be a separate element else the change in display
+value means Firefox won't render the arrow */
+.resultSummaryInner {
+  display: inline-flex;
+  align-items: center;
+}
+
+.gitHubIconPlaceholder,
+.gitHubIcon {
+  margin-left: auto;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  width: var(--spacing-4);
+}
+
+.gitHubIcon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1ch 2ch;
+
+  & svg {
+    width: 100%;
   }
+}
 
-  & > b {
-    display: inline-block;
-    margin-right: var(--spacing-2);
-  }
-
-  & > a {
-    margin-left: auto;
-    padding: 0;
-    display: inline-flex;
-    align-items: center;
-
-    & > svg {
-      width: var(--spacing-4);
-    }
-  }
+.subjectName {
+  display: inline-block;
+  margin-right: var(--spacing-2);
+  font-weight: bold;
 }
 
 .resultsCard {
@@ -176,12 +191,12 @@
   gap: var(--spacing-3);
 }
 
-/* 
+/*
 
-problem: 
+problem:
 Safari doesn't support flex display on <summary> elements
-  
-solution: 
+
+solution:
 Safari specific media query to float and nudge <summary> children
 into a layout similar to if we had flex
 
