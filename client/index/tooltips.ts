@@ -20,14 +20,34 @@ const dataGrids = document.querySelectorAll('.' + $datagrid) as NodeListOf<
   HTMLElement
 >;
 
-const toolTipEvent = (event: MouseEvent) => {
-  const dotContainer = (event.target as HTMLElement).closest(
-    '.' + $dotContainer,
-  );
-  if (!dotContainer) return;
+function focusClosest(el: HTMLElement): void {
+  const focusable = el.closest('button, [tabindex]') as HTMLElement | null;
+  if (focusable) {
+    focusable.focus();
+    //requestAnimationFrame(() => focusable.focus());
+  }
+}
 
-  const dotTrigger = event.target as HTMLElement;
-  dotTrigger.focus();
+// Safari & Firefox don't focus on click, so we do that ourselves.
+function pointerDown(event: PointerEvent): void {
+  // We only focus on pointerdown for mouse devices
+  if (event.pointerType === 'mouse') {
+    focusClosest(event.target as HTMLElement);
+  }
+}
+
+function pointerUp(event: PointerEvent): void {
+  // Whereas for touch, we only want to hear about pointer ups that
+  // weren't cancelled (as in, scrolling didn't happen)
+  if (event.pointerType !== 'mouse') {
+    focusClosest(event.target as HTMLElement);
+  }
+}
+
+function tooltipFocus(event: Event): void {
+  const target = event.target as HTMLElement;
+  const dotContainer = target.closest('.' + $dotContainer);
+  if (!dotContainer) return;
 
   const tooltip = dotContainer.querySelector('.' + $tooltip) as HTMLElement;
   const gapOffset = 16;
@@ -38,9 +58,10 @@ const toolTipEvent = (event: MouseEvent) => {
   if (leftOffset >= gapOffset) {
     tooltip.style.left = `-${leftOffset + gapOffset}px`;
   }
-};
+}
 
 for (const dataGrid of dataGrids) {
-  dataGrid.addEventListener('mousedown', toolTipEvent, { capture: true });
-  dataGrid.addEventListener('click', toolTipEvent, { capture: true });
+  dataGrid.addEventListener('focus', tooltipFocus, { capture: true });
+  dataGrid.addEventListener('pointerdown', pointerDown);
+  dataGrid.addEventListener('pointerup', pointerUp);
 }
