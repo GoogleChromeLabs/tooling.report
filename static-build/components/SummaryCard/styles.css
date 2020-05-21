@@ -5,20 +5,30 @@
   border-radius: 20px;
   box-shadow: var(--card-shadow);
   padding: var(--spacing-5);
+  box-sizing: border-box;
   text-align: center;
+  max-width: min(80vw, 300px);
+  width: 100%;
 }
 
 .cardTitle {
   color: var(--vivid-blue);
   margin: var(--spacing-1);
   display: block;
-  line-height: var(--font-lineheight--body);
-  font-weight: var(--font-weight--normal);
+  line-height: 1.5;
+  font-size: var(--font-size--logo);
+  font-weight: var(--font-weight--light);
+
+  @media (min-width: 460px) {
+    font-size: var(--font-size--h2);
+    font-weight: var(--font-weight--normal);
+  }
 }
 
 .cardTotal {
   font-size: var(--font-size--logo);
   color: var(--dim-teal);
+  line-height: 1.1;
 }
 
 .cardTotalCount {
@@ -60,12 +70,13 @@
 
 .progressText {
   color: white;
-  padding: 0 var(--spacing-1);
+  padding: var(--spacing-1) var(--spacing-2);
   font-size: var(--font-size--detail);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
 }
 
 .progressSummary {
-  height: 20px;
   background-color: var(--ice-blue);
   border-radius: 20px;
   position: relative;
@@ -73,13 +84,15 @@
 }
 
 .progressBar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
   background-color: var(--vivid-blue);
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  /* will-change: width; TODO note: in the future have the bars animate out from 0% with an intersection observer */
+  animation: fill-bar 1.25s ease;
+}
+
+@keyframes fill-bar {
+  from {
+    transform: translateX(-100%);
+  }
 }
