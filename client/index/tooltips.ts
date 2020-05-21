@@ -25,6 +25,8 @@ function focusClosest(el: HTMLElement): void {
   if (focusable) {
     // This needs to be wrapped in raf to get back the default browser action.
     requestAnimationFrame(() => focusable.focus());
+  } else if (document.activeElement) {
+    (document.activeElement as HTMLElement).blur();
   }
 }
 
@@ -36,12 +38,25 @@ function pointerDown(event: PointerEvent): void {
   }
 }
 
+let preventNextTouchEnd = false;
+
+function touchEnd(event: Event): void {
+  if (!preventNextTouchEnd) return;
+
+  event.preventDefault();
+  preventNextTouchEnd = false;
+}
+
 function pointerUp(event: PointerEvent): void {
   // Whereas for touch, we only want to hear about pointer ups that
   // weren't cancelled (as in, scrolling didn't happen)
   if (event.pointerType !== 'mouse') {
-    event.preventDefault();
     focusClosest(event.target as HTMLElement);
+  }
+
+  if (event.pointerType === 'touch') {
+    // This fixes a weird iOS Safari bug that I still don't fully understand.
+    preventNextTouchEnd = true;
   }
 }
 
@@ -77,4 +92,5 @@ for (const dataGrid of dataGrids) {
   dataGrid.addEventListener('focus', tooltipFocus, { capture: true });
   dataGrid.addEventListener('pointerdown', pointerDown);
   dataGrid.addEventListener('pointerup', pointerUp);
+  dataGrid.addEventListener('touchend', touchEnd);
 }
