@@ -167,6 +167,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                       ) : (
                         <div class={$resultSummary}>{summaryInner}</div>
                       )}
+                      {/* This needs to sit outside the <summary>, as links inside <summary> aren't clickable */}
                       <a
                         href={githubLink(result.repositoryPath)}
                         class={$gitHubIcon}
