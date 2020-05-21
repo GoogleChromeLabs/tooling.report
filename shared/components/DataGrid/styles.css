@@ -121,6 +121,11 @@
   &:focus ~ .toolTipArrow {
     display: block;
   }
+
+  /* Prevent inner focus effect in Firefox */
+  &::-moz-focus-inner {
+    border: 0;
+  }
 }
 
 .toolTipArrow {
