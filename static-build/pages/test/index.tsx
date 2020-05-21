@@ -147,7 +147,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                   return (
                     <div class={$result}>
                       {result.html || result.meta.issue ? (
-                        <details>
+                        <details id={subject}>
                           <summary class={$resultSummary}>
                             {summaryInner}
                           </summary>
