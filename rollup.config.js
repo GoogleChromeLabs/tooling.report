@@ -26,7 +26,7 @@ import markdownPlugin from './lib/markdown-plugin';
 import testDataPlugin from './lib/test-data-plugin';
 import faqsPlugin from './lib/faqs-plugin';
 import * as config from './config.js';
-import metadataProcessor from './lib/markdown-processor';
+import markdownProcessor from './lib/markdown-processor';
 
 function resolveFileUrl({ fileName }) {
   return JSON.stringify(fileName.replace(/^static\//, '/'));
@@ -42,7 +42,7 @@ export default async function({ watch }) {
     assetPlugin(),
     testDataPlugin(),
     constsPlugin({ config }),
-    markdownPlugin({ metadataProcessor }),
+    markdownPlugin({ processContent: markdownProcessor }),
     cssPlugin(),
   ];
   const dir = '.tmp/build';
