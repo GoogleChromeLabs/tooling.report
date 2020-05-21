@@ -166,3 +166,19 @@
     margin: var(--spacing-3) 0;
   }
 }
+
+.webdev {
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  font-weight: bold;
+  font-size: 0.7em;
+  margin-top: 5em;
+
+  img {
+    object-fit: contain;
+    object-position: top;
+    margin-top: 1em;
+  }
+}

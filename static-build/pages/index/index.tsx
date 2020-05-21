@@ -24,6 +24,7 @@ import {
   $overview,
   $consumeGap,
   $gettingStarted,
+  $webdev,
 } from './styles.css';
 import { $well } from '../../shared/styles/well.css';
 
@@ -44,6 +45,7 @@ import FirstParagraphOnly from 'static-build/components/FirstParagraphOnly';
 import * as toolImages from 'shared/utils/tool-images';
 import { html as README } from 'md:../../../README.md';
 import config from 'consts:config';
+import webdevLogoURL from 'asset-url:../../img/webdev.svg';
 
 interface Props {
   tests: Tests;
@@ -96,6 +98,10 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
                   <FirstParagraphOnly content={README} />
                 </div>
                 <HeaderLinkList home={true} />
+                <div class={$webdev}>
+                  Brought to you by
+                  <img src={webdevLogoURL} alt="web.dev" />
+                </div>
               </div>
             </div>
           </section>
