@@ -1,6 +1,6 @@
 # What is tooling.report?
 
-It's a quick way to determine the best build tool for your next project, **or** if tooling migration is worth it, **or** how to adopt a tool's best practice into your existing configuration and code base.
+It's a quick way to determine the best build tool for your next web project, **or** if tooling migration is worth it, **or** how to adopt a tool's best practice into your existing configuration and code base.
 
 # To get set up
 
