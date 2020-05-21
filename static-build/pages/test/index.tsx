@@ -40,7 +40,7 @@ import {
   $testCardList,
   $collectionSummary,
 } from './collection.css';
-import { $dot } from '../../components/DataGrid/styles.css';
+import { $dot } from 'shared/components/DataGrid/styles.css';
 import { $well } from '../../shared/styles/well.css';
 import { $heroImage, $heroText } from './styles.css';
 import Connect from 'static-build/components/Connect/index.js';

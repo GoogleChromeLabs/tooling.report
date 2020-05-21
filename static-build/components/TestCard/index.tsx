@@ -1,3 +1,15 @@
+/**
+ * Copyright 2020 Google Inc. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 import { h, FunctionalComponent } from 'preact';
 import {
   $testCard,
@@ -9,15 +21,10 @@ import {
   $testDesc,
   $testCardIcon,
   $iconList,
-  $subtestMeta,
   $subTestCard,
   $checkbox,
 } from './styles.css';
-import browserify from 'asset-url:../../img/browserify.svg';
-import rollup from 'asset-url:../../img/rollup.svg';
-import webpack from 'asset-url:../../img/webpack.svg';
-import parcel from 'asset-url:../../img/parcel.svg';
-const toolImages = { browserify, rollup, webpack, parcel };
+import * as toolImages from 'shared/utils/tool-images';
 import checkbox from 'asset-url:./checkbox.svg';
 
 interface Props {

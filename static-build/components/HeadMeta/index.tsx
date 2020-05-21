@@ -11,7 +11,10 @@ import safariURL from 'asset-url:../../img/safari-pinned-tab.svg';
 export default function HeadMeta() {
   return (
     <Fragment>
-      <meta name="viewport" content="width=device-width,initial-scale=1" />
+      <meta
+        name="viewport"
+        content="width=device-width,initial-scale=1,minimum-scale=1"
+      />
       <link rel="shortcut icon" href={icoURL} />
       <link rel="apple-touch-icon" sizes="180x180" href={appleIconURL} />
       <link rel="icon" type="image/png" sizes="32x32" href={png32URL} />

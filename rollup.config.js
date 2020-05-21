@@ -38,10 +38,12 @@ export default async function({ watch }) {
   const tsPluginInstance = simpleTS('static-build', { watch });
   const commonPlugins = () => [
     tsPluginInstance,
-    resolveDirsPlugin(['static-build', 'client', 'tests']),
+    resolveDirsPlugin(['static-build', 'client', 'tests', 'shared']),
     assetPlugin(),
+    testDataPlugin(),
     constsPlugin({ config }),
     markdownPlugin({ processContent: markdownProcessor }),
+    cssPlugin(),
   ];
   const dir = '.tmp/build';
   const staticPath = 'static/[name]-[hash][extname]';
@@ -77,11 +79,9 @@ export default async function({ watch }) {
         resolveFileUrl,
       ),
       ...commonPlugins(),
-      cssPlugin(),
       nodeExternalPlugin(),
-      testDataPlugin(),
       faqsPlugin(),
-      runScript(dir + '/index.js'),
+      runScript(dir + '/static-build/index.js'),
     ],
   };
 }

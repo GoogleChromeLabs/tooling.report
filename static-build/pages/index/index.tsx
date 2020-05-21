@@ -26,6 +26,8 @@ import {
   $gettingStarted,
 } from './styles.css';
 import { $well } from '../../shared/styles/well.css';
+
+import bundleURL, { imports } from 'client-bundle:client/index/index.ts';
 import analyticsBundleURL from 'client-bundle:client/analytics/index.js';
 import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
@@ -35,20 +37,13 @@ import HeaderLinkList from '../../components/HeaderLinkList';
 import { BenchHero } from '../../components/Heroes';
 import SummaryCard from '../../components/SummaryCard';
 import ToolNav from '../../components/ToolNav';
-import DataGrid from '../../components/DataGrid';
-import Legend from '../../components/DataGrid/Legend';
+import DataGrid from 'shared/components/DataGrid';
+import Legend from 'shared/components/DataGrid/Legend';
 import Connect from '../../components/Connect';
 import FirstParagraphOnly from 'static-build/components/FirstParagraphOnly';
-
-import browserify from 'asset-url:../../img/browserify.svg';
-import rollup from 'asset-url:../../img/rollup.svg';
-import webpack from 'asset-url:../../img/webpack.svg';
-import parcel from 'asset-url:../../img/parcel.svg';
-
-import config from 'consts:config';
+import * as toolImages from 'shared/utils/tool-images';
 import { html as README } from 'md:../../../README.md';
-
-const toolImages = { browserify, rollup, webpack, parcel };
+import config from 'consts:config';
 
 interface Props {
   tests: Tests;
@@ -82,6 +77,10 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
         <meta name="description" content={config.metaDescription} />
         <HeadMeta />
         <link rel="stylesheet" href={pageStyles} />
+        <script type="module" src={bundleURL} />
+        {imports.map(v => (
+          <link rel="preload" as="script" href={v} crossOrigin="" />
+        ))}
         <script type="module" async src={analyticsBundleURL}></script>
       </head>
       <body>
@@ -176,15 +175,19 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
             <a href="#overview">
               <h2 class={`${$overviewHeader} ${$sectionHeader}`}>Overview</h2>
             </a>
-            <DataGrid tests={tests} basePath="/" />
+            <DataGrid tests={tests} basePath="/" collectionTitle="Overview" />
           </section>
 
           {Object.entries(tests).map(([testDir, collection]) => (
             <section id={collection.meta.title}>
-              <a href={testDir}>
+              <a href={`${testDir}/`}>
                 <h3 class={$sectionHeader}>{collection.meta.title}</h3>
               </a>
-              <DataGrid tests={collection.subTests} basePath={`${testDir}/`} />
+              <DataGrid
+                tests={collection.subTests}
+                basePath={`${testDir}/`}
+                collectionTitle={collection.meta.title}
+              />
             </section>
           ))}
         </main>
