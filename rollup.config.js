@@ -26,7 +26,7 @@ import markdownPlugin from './lib/markdown-plugin';
 import testDataPlugin from './lib/test-data-plugin';
 import faqsPlugin from './lib/faqs-plugin';
 import * as config from './config.js';
-import metadataProcessor from './lib/markdown-processor';
+import markdownProcessor from './lib/markdown-processor';
 
 function resolveFileUrl({ fileName }) {
   return JSON.stringify(fileName.replace(/^static\//, '/'));
@@ -41,7 +41,7 @@ export default async function({ watch }) {
     resolveDirsPlugin(['static-build', 'client', 'tests']),
     assetPlugin(),
     constsPlugin({ config }),
-    markdownPlugin({ metadataProcessor }),
+    markdownPlugin({ processContent: markdownProcessor }),
   ];
   const dir = '.tmp/build';
   const staticPath = 'static/[name]-[hash][extname]';
