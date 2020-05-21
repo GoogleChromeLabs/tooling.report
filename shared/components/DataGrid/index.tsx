@@ -16,12 +16,13 @@ import {
   $datagrid,
   $row,
   $column,
-  $dot,
   $aside,
   $results,
   $dotContainer,
+  $dotButton,
 } from './styles.css';
 import ToolTip from '../ToolTip';
+import Dot from '../Dot';
 
 interface Props {
   tests?: Tests;
@@ -72,11 +73,10 @@ const DataGrid: FunctionalComponent<Props> = ({
                         <div class={$dotContainer}>
                           <button
                             aria-describedby={`${tool}-${testDir}`}
-                            data-tool={tool}
-                            data-result={test.results[tool].meta.result}
-                            tabIndex={0}
-                            class={$dot}
-                          ></button>
+                            class={$dotButton}
+                          >
+                            <Dot result={test.results[tool].meta.result} />
+                          </button>
                           <ToolTip
                             id={`${tool}-${testDir}`}
                             result={test.results[tool].meta.result}

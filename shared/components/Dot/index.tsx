@@ -10,27 +10,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { h } from 'preact';
-import { $legendCard, $legendRow, $legendHeader } from './styles.css';
-import Dot from 'shared/components/Dot';
+import { h, FunctionalComponent } from 'preact';
+import { $dot } from './styles.css';
 
-function Legend() {
-  return (
-    <div>
-      <h4 class={$legendHeader}>Legend</h4>
-      <div class={$legendCard}>
-        <div class={$legendRow}>
-          <Dot result="pass" /> Pass
-        </div>
-        <div class={$legendRow}>
-          <Dot result="partial" /> Partial Pass
-        </div>
-        <div class={$legendRow}>
-          <Dot result="fail" /> Fail
-        </div>
-      </div>
-    </div>
-  );
+interface Props {
+  result: ResultMeta['result'];
 }
 
-export default Legend;
+const Dot: FunctionalComponent<Props> = ({ result }: Props) => (
+  <div data-result={result} class={$dot} />
+);
+
+export default Dot;
