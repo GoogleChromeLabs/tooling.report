@@ -25,7 +25,7 @@
   display: flex;
   align-items: center;
 
-  & > span {
+  & > div {
     margin-right: var(--spacing-3);
   }
 }
