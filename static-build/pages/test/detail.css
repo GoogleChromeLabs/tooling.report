@@ -124,12 +124,17 @@ value means Firefox won't render the arrow */
 
 .subjectName {
   display: inline-block;
-  margin: 0 var(--spacing-2) 0 var(--spacing-4);
+  margin-right: var(--spacing-2);
   font-weight: bold;
 }
 
-details .subjectName {
-  margin: 0 var(--spacing-2);
+.subjectContainer {
+  position: absolute;
+  display: flex;
+  left: var(--spacing-6);
+  top: 0;
+  align-items: center;
+  padding: 10px 0;
 }
 
 .resultsCard {
