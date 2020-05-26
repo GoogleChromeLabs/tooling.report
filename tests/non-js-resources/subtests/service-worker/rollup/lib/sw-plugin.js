@@ -13,12 +13,7 @@
 import { basename, relative } from 'path';
 import { createHash } from 'crypto';
 
-const swAssetsPrefix = 'sw-assets:';
-const swVersionPrefix = 'sw-version:';
 const swFilePrefix = 'sw:';
-
-const swAssetsPlaceholder = '__SW_ASSETS_GOES_HERE__';
-const swVersionPlaceholder = '__SW_VERSION_GOES_HERE__';
 
 export default function serviceWorkerPlugin({
   filterAssets = () => true,
@@ -31,20 +26,16 @@ export default function serviceWorkerPlugin({
       emittedIds = [];
     },
     async resolveId(id, importer) {
-      if (id === swAssetsPrefix || id === swVersionPrefix) return id;
       if (!id.startsWith(swFilePrefix)) return;
-      return (
-        swFilePrefix +
-        (await this.resolve(id.slice(swFilePrefix.length), importer)).id
-      );
+
+      const realId = id.slice(swFilePrefix.length);
+      const result = await this.resolve(realId, importer);
+
+      if (!result) throw Error(`Cannot find ${realId} from ${importer}`);
+
+      return swFilePrefix + result.id;
     },
     load(id) {
-      if (id === swAssetsPrefix) {
-        return `export default ${swAssetsPlaceholder};`;
-      }
-      if (id === swVersionPrefix) {
-        return `export default ${swVersionPlaceholder};`;
-      }
       if (!id.startsWith(swFilePrefix)) return;
 
       const realId = id.slice(swFilePrefix.length);
@@ -55,6 +46,7 @@ export default function serviceWorkerPlugin({
       });
 
       emittedIds.push(fileId);
+      this.addWatchFile(realId);
 
       return `export default import.meta.ROLLUP_FILE_URL_${fileId};`;
     },
@@ -65,10 +57,10 @@ export default function serviceWorkerPlugin({
         const swChunk = bundle[this.getFileName(swId)];
         const swPath = relative(process.cwd(), swChunk.facadeModuleId);
         const toCacheInSW = bundleItems.filter(
-          item => item !== swChunk && filterAssets(swPath, item),
+          item => item !== swChunk && filterAssets(item, swPath),
         );
 
-        const versionHash = createHash('md5');
+        const versionHash = createHash('sha1');
         versionHash.update(swChunk.code);
 
         for (const item of toCacheInSW) {
@@ -77,9 +69,11 @@ export default function serviceWorkerPlugin({
 
         const version = versionHash.digest('hex');
         const fileNames = toCacheInSW.map(item => item.fileName);
-        swChunk.code = swChunk.code
-          .replace(swAssetsPlaceholder, JSON.stringify(fileNames))
-          .replace(swVersionPlaceholder, JSON.stringify(version));
+
+        swChunk.code =
+          `const VERSION = ${JSON.stringify(version)};\n` +
+          `const ASSETS = ${JSON.stringify(fileNames)};\n` +
+          swChunk.code;
       }
     },
   };
