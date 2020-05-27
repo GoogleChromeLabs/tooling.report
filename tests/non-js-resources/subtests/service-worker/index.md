@@ -44,13 +44,13 @@ async function install() {
   const cache = await caches.open(version);
   await cache.addAll(assets);
 }
-addEventListener('install', (e) => e.waitUntil(install()));
+addEventListener('install', e => e.waitUntil(install()));
 
 async function activate() {
   const keys = await caches.keys();
-  await Promise.all(keys.map((key) => key !== version && caches.delete(key)));
+  await Promise.all(keys.map(key => key !== version && caches.delete(key)));
 }
-addEventListener('activate', (e) => e.waitUntil(activate()));
+addEventListener('activate', e => e.waitUntil(activate()));
 ```
 
 The build result should include a bundled version of `index.js`, the processed stylesheet, and the image asset - all with [hashed URLs](/hashing/). An `index.html` file with the JavaScript and CSS resources should also be produced, as well as a processed version of the `sw.js` service worker. The HTML file and service worker cannot have hashed URLs.
