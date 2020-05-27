@@ -37,6 +37,7 @@ import {
   $gitHubIconPlaceholder,
   $gitHubIcon,
   $resultSummaryInner,
+  $subjectContainer,
 } from './detail.css';
 import {
   $collectionPage,
@@ -138,8 +139,10 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                 {Object.entries(test.results).map(([subject, result]) => {
                   const summaryInner = (
                     <div class={$resultSummaryInner}>
-                      <span class={$subjectName}>{subject}</span>
-                      <Dot result={result.meta.result} />
+                      <div class={$subjectContainer}>
+                        <span class={$subjectName}>{subject}</span>
+                        <Dot result={result.meta.result} />
+                      </div>
                       <div class={$gitHubIconPlaceholder} />
                     </div>
                   );
