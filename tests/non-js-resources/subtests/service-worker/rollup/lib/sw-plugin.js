@@ -56,11 +56,10 @@ export default function serviceWorkerPlugin({
       for (const swId of emittedIds) {
         const swChunk = bundle[this.getFileName(swId)];
         const toCacheInSW = bundleItems.filter(
-          (item) => item !== swChunk && filterAssets(item),
+          item => item !== swChunk && filterAssets(item),
         );
 
         const versionHash = createHash('sha1');
-        versionHash.update(swChunk.code);
 
         for (const item of toCacheInSW) {
           versionHash.update(item.code || item.source);
@@ -68,7 +67,7 @@ export default function serviceWorkerPlugin({
 
         const version = versionHash.digest('hex');
         const fileNames = toCacheInSW.map(
-          (item) => './' + item.fileName.replace(/(index\.)?html$/, ''),
+          item => './' + item.fileName.replace(/(index)?\.html$/, ''),
         );
 
         swChunk.code =

@@ -34,6 +34,13 @@ body {
 <binary data>
 ```
 
+**index.html**
+
+```
+<!DOCTYPE html>
+…
+```
+
 **sw.js**
 
 ```js
@@ -53,14 +60,8 @@ async function activate() {
 addEventListener('activate', e => e.waitUntil(activate()));
 ```
 
-The build result should include a bundled version of `index.js`, the processed stylesheet, and the image asset - all with [hashed URLs](/hashing/). An `index.html` file with the JavaScript and CSS resources should also be produced, as well as a processed version of the `sw.js` service worker. The HTML file and service worker cannot have hashed URLs.
+The build result should include a bundled version of `index.js`, the processed stylesheet, and the image asset - all with [hashed URLs](/hashing/). The HTML file and processed service worker script should also be output, without being hashed.
 
-To pass this test, the service worker needs to be aware of the final URL of all assets produced by the build:
+To pass this test, the service worker needs to be aware of the final URL of `index.js`, `styles.css`, `image.png`, and `index.html`.
 
-- All HTML files
-- All scripts
-- All stylesheets
-- All assets
-- Any fonts included in the stylesheets
-
-The service worker should also have access to a variable or identifier that can be used to create a cache name. This identifier should be generated based on the content of all cached files, as well the service worker itself.
+The service worker should also have access to a variable or identifier that can be used to create a cache name. This identifier should be generated based on the content of all cached files.
