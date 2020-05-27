@@ -10,12 +10,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { basename, relative } from 'path';
 import { createHash } from 'crypto';
 
 const swFilePrefix = 'sw:';
 
 export default function serviceWorkerPlugin({
+  output = 'sw.js',
   filterAssets = () => true,
 } = {}) {
   let emittedIds;
@@ -42,7 +42,7 @@ export default function serviceWorkerPlugin({
       const fileId = this.emitFile({
         type: 'chunk',
         id: realId,
-        fileName: basename(realId),
+        fileName: output,
       });
 
       emittedIds.push(fileId);
@@ -55,9 +55,8 @@ export default function serviceWorkerPlugin({
 
       for (const swId of emittedIds) {
         const swChunk = bundle[this.getFileName(swId)];
-        const swPath = relative(process.cwd(), swChunk.facadeModuleId);
         const toCacheInSW = bundleItems.filter(
-          item => item !== swChunk && filterAssets(item, swPath),
+          (item) => item !== swChunk && filterAssets(item),
         );
 
         const versionHash = createHash('sha1');
@@ -68,7 +67,9 @@ export default function serviceWorkerPlugin({
         }
 
         const version = versionHash.digest('hex');
-        const fileNames = toCacheInSW.map(item => item.fileName);
+        const fileNames = toCacheInSW.map(
+          (item) => './' + item.fileName.replace(/(index\.)?html$/, ''),
+        );
 
         swChunk.code =
           `const VERSION = ${JSON.stringify(version)};\n` +
