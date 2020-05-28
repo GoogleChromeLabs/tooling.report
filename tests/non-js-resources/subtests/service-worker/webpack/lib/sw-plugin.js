@@ -13,7 +13,7 @@
 const { createHash } = require('crypto');
 const SingleEntryPlugin = require('webpack/lib/SingleEntryPlugin');
 const WebWorkerTemplatePlugin = require('webpack/lib/webworker/WebWorkerTemplatePlugin');
-const { ConcatSource } = require('webpack-sources');
+const { ConcatSource, RawSource } = require('webpack-sources');
 const RawModule = require('webpack/lib/RawModule');
 // const ConcatSource = require('webpack-sources/lib/ConcatSource');
 
@@ -47,6 +47,97 @@ module.exports = class AutoSWPlugin {
     compiler.hooks.normalModuleFactory.tap(NAME, factory => {
       // factory.getResolver('normal');
 
+      const resolver = factory.getResolver('normal');
+      const resolve = require('util').promisify(
+        resolver.resolve.bind(resolver),
+      );
+      // const resolve = (context, request) => new Promise((resolve, reject) => {
+      //   resolver.resolve({}, context, request, {}, (err, result) => {
+      //     if (err) reject(err);
+      //     else resolve(result);
+      //   });
+      // });
+
+      factory.hooks.resolver.tap(NAME, originalResolve => {
+        return async (dep, callback) => {
+          if (!dep.request.startsWith(swFilePrefix)) {
+            return originalResolve(dep, callback);
+          }
+
+          // debugger;
+
+          // console.log('SW: ', dep);
+          const request = dep.request.slice(swFilePrefix.length);
+          const resolved = await resolve({}, dep.context, request, {});
+
+          serviceWorkers.push({
+            outputFilename: this.output,
+            filename: request,
+            context: dep.context,
+          });
+
+          // new Promise((resolve, reject) => {
+          //   factory.getResolver('normal').resolve({}, dep.context, request, {}, (err, result) => {
+          //     if (err) reject(err);
+          //     else resolve(result);
+          //   });
+          // });
+
+          // const resolver = factory.getResolver('normal');
+          // resolver.resolve({}, dep.context, request, {}, (err, result) => {
+          // });
+
+          // console.log(dep.context, request, resolved);
+
+          const str = JSON.stringify(this.output);
+          const code = `module.exports = __webpack_public_path__ + ${str}`;
+          return callback(null, new RawModule(code, null, `sw:${request}`));
+
+          const mod = {
+            type: 'javascript/dynamic',
+            request,
+            userRequest: dep.request,
+            rawRequest: dep.rawRequest || dep.request,
+            loaders: [],
+            resource: resolved,
+            parser: {
+              parse(source, { module }) {
+                console.log('parse ', module.context, module.request);
+                module.buildMeta.exportsType = 'default';
+                // module.buildMeta.defaultObject = "redirect-warn";
+                module.buildInfo.content = JSON.stringify(source);
+              },
+            },
+            generator: {
+              // getSize(module) {
+              //   return 17 + module.buildInfo.content.length;
+              // },
+              /** @type {import('webpack/lib/Generator')['generate']} */
+              generate(module, dependencyTemplates, runtimeTemplate, type) {
+                // console.log('generate ', module.buildInfo.content);
+                return new RawSource(
+                  `module.exports = ${module.buildInfo.content}`,
+                );
+              },
+            },
+            // resolveOptions: {
+            //   settings: {},
+            // },
+            settings: {},
+          };
+          // mod.settings = {};
+
+          // const mod = new RawModule(
+          //   `export default ${JSON.stringify(this.output)};`,
+          //   null,
+          //   `sw:${request}`,
+          // );
+
+          callback(null, mod);
+        };
+      });
+
+      /*
       factory.hooks.beforeResolve.tap(NAME, dep => {
         // return (dep, callback) => {
         if (!dep.request.startsWith(swFilePrefix)) return dep;
@@ -68,6 +159,7 @@ module.exports = class AutoSWPlugin {
         //   source: () => `export default ${JSON.stringify(this.output)};`,
         // };
       });
+      */
 
       // factory.hooks.createModule.tap(NAME, result => {
       //   console.log('createModule: ', result);
@@ -133,32 +225,25 @@ module.exports = class AutoSWPlugin {
   async emit(compilation, serviceWorkers) {
     const toCache = Object.keys(compilation.assets).filter(this.filterAssets);
 
-    const hash = createHash('sha1');
+    const versionHash = createHash('sha1');
     for (const file of toCache) {
-      compilation.assets[file].updateHash(hash);
+      const asset = compilation.assets[file];
+      versionHash.update(asset.source());
+      // would work if HtmlWebpackPlugin used webpack-sources :/
+      // asset.updateHash(hash);
     }
-    const version = hash.digest('hex');
+    const version = versionHash.digest('hex');
+
+    const publicPath = compilation.outputOptions.publicPath || '/';
     const fileNames = toCache.map(
-      // @TODO: prepend output.publicPath?
-      fileName => './' + fileName.replace(/(index)?\.html$/, ''),
+      fileName => publicPath + fileName.replace(/(index)?\.html$/, ''),
     );
 
     for (const serviceWorker of serviceWorkers) {
       const { filename, context, outputFilename } = serviceWorker;
-      const swAsset = await this.bundleSw(
-        compilation,
-        filename,
-        context,
-        outputFilename,
-      );
+      const swAsset = await this.bundleSw(compilation, filename, context);
 
-      // const swCode =
-      //   `const VERSION = ${JSON.stringify(version)};\n` +
-      //   `const ASSETS = ${JSON.stringify(fileNames)};\n` +
-      //   swAsset.source();
-      // compilation.assets[filename] = new RawSource(swCode);
-
-      compilation.assets[filename] = new ConcatSource(
+      compilation.assets[outputFilename] = new ConcatSource(
         `const VERSION = ${JSON.stringify(version)};\n`,
         `const ASSETS = ${JSON.stringify(fileNames)};\n`,
         swAsset.source(),
@@ -170,22 +255,21 @@ module.exports = class AutoSWPlugin {
    * @param {import('webpack/lib/Compilation')} compilation
    * @param {string} filename
    * @param {string} context
-   * @param {string} name
    * @returns {Promise<import('webpack-sources').Source>}
    */
-  bundleSw(compilation, filename, context, name = filename) {
+  bundleSw(compilation, filename, context) {
     const opts = {
       filename,
       globalObject: 'self',
     };
     const childCompiler = compilation.createChildCompiler(NAME, opts, []);
     new WebWorkerTemplatePlugin().apply(childCompiler);
-    new SingleEntryPlugin(context, filename, name).apply(childCompiler);
+    new SingleEntryPlugin(context, filename, 'sw').apply(childCompiler);
 
     return new Promise((resolve, reject) => {
-      childCompiler.runAsChild((err, entries) => {
+      childCompiler.runAsChild((err, entries, compilation) => {
         if (err) reject(err);
-        else resolve(entries[0].files[0]);
+        else resolve(compilation.getAssets()[0].source);
       });
     });
   }

@@ -45,10 +45,10 @@ module.exports = {
       },
     }),
 
-    // Automatically compile navigator.serviceWorker.register("..") using Webpack.
-    // This also inlines a (optionally filtered) Array of asset URLs as `BUILD_ASSETS`.
+    // Adds support for `import swURL from 'sw:./sw.js'`.
+    // The SW is compiled with `ASSETS` (a filtered Array of URLs) and `VERSION` (their hash).
     new AutoSWPlugin({
-      filename: 'sw.js',
+      output: 'sw.js',
     }),
   ],
 };
