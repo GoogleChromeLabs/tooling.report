@@ -13,9 +13,8 @@
 const { createHash } = require('crypto');
 const SingleEntryPlugin = require('webpack/lib/SingleEntryPlugin');
 const WebWorkerTemplatePlugin = require('webpack/lib/webworker/WebWorkerTemplatePlugin');
-const { ConcatSource, RawSource } = require('webpack-sources');
+const { ConcatSource } = require('webpack-sources');
 const RawModule = require('webpack/lib/RawModule');
-// const ConcatSource = require('webpack-sources/lib/ConcatSource');
 
 const swFilePrefix = 'sw:';
 
@@ -32,43 +31,17 @@ module.exports = class AutoSWPlugin {
     const serviceWorkers = [];
 
     compiler.hooks.emit.tapPromise(NAME, compilation => {
-      // compilation.mainTemplate.outputOptions.globalObject = 'self';
       return this.emit(compilation, serviceWorkers);
     });
 
-    /*
-				contextInfo,
-				resolveOptions,
-				context,
-				request,
-				dependencies
-    */
-
     compiler.hooks.normalModuleFactory.tap(NAME, factory => {
-      // factory.getResolver('normal');
-
-      const resolver = factory.getResolver('normal');
-      const resolve = require('util').promisify(
-        resolver.resolve.bind(resolver),
-      );
-      // const resolve = (context, request) => new Promise((resolve, reject) => {
-      //   resolver.resolve({}, context, request, {}, (err, result) => {
-      //     if (err) reject(err);
-      //     else resolve(result);
-      //   });
-      // });
-
       factory.hooks.resolver.tap(NAME, originalResolve => {
         return async (dep, callback) => {
           if (!dep.request.startsWith(swFilePrefix)) {
             return originalResolve(dep, callback);
           }
 
-          // debugger;
-
-          // console.log('SW: ', dep);
           const request = dep.request.slice(swFilePrefix.length);
-          const resolved = await resolve({}, dep.context, request, {});
 
           serviceWorkers.push({
             outputFilename: this.output,
@@ -76,145 +49,11 @@ module.exports = class AutoSWPlugin {
             context: dep.context,
           });
 
-          // new Promise((resolve, reject) => {
-          //   factory.getResolver('normal').resolve({}, dep.context, request, {}, (err, result) => {
-          //     if (err) reject(err);
-          //     else resolve(result);
-          //   });
-          // });
-
-          // const resolver = factory.getResolver('normal');
-          // resolver.resolve({}, dep.context, request, {}, (err, result) => {
-          // });
-
-          // console.log(dep.context, request, resolved);
-
-          const str = JSON.stringify(this.output);
-          const code = `module.exports = __webpack_public_path__ + ${str}`;
+          const url = JSON.stringify(this.output);
+          const code = `module.exports = __webpack_public_path__ + ${url}`;
           return callback(null, new RawModule(code, null, `sw:${request}`));
-
-          const mod = {
-            type: 'javascript/dynamic',
-            request,
-            userRequest: dep.request,
-            rawRequest: dep.rawRequest || dep.request,
-            loaders: [],
-            resource: resolved,
-            parser: {
-              parse(source, { module }) {
-                console.log('parse ', module.context, module.request);
-                module.buildMeta.exportsType = 'default';
-                // module.buildMeta.defaultObject = "redirect-warn";
-                module.buildInfo.content = JSON.stringify(source);
-              },
-            },
-            generator: {
-              // getSize(module) {
-              //   return 17 + module.buildInfo.content.length;
-              // },
-              /** @type {import('webpack/lib/Generator')['generate']} */
-              generate(module, dependencyTemplates, runtimeTemplate, type) {
-                // console.log('generate ', module.buildInfo.content);
-                return new RawSource(
-                  `module.exports = ${module.buildInfo.content}`,
-                );
-              },
-            },
-            // resolveOptions: {
-            //   settings: {},
-            // },
-            settings: {},
-          };
-          // mod.settings = {};
-
-          // const mod = new RawModule(
-          //   `export default ${JSON.stringify(this.output)};`,
-          //   null,
-          //   `sw:${request}`,
-          // );
-
-          callback(null, mod);
         };
       });
-
-      /*
-      factory.hooks.beforeResolve.tap(NAME, dep => {
-        // return (dep, callback) => {
-        if (!dep.request.startsWith(swFilePrefix)) return dep;
-
-        const request = dep.request.slice(swFilePrefix.length);
-
-        console.log('sw: ', request, dep);
-
-        serviceWorkers.push({
-          outputFilename: this.output,
-          filename: request,
-          context: dep.context,
-        });
-
-        return dep;
-
-        // return {
-        //   identifier: () => `sw-${serviceWorkers.length}`,
-        //   source: () => `export default ${JSON.stringify(this.output)};`,
-        // };
-      });
-      */
-
-      // factory.hooks.createModule.tap(NAME, result => {
-      //   console.log('createModule: ', result);
-      // });
-
-      /*
-      // https://github.com/webpack/webpack/blob/8070bcd333cd1d07ce13fe5e91530c80779d51c6/lib/NormalModuleFactory.js#L34
-      factory.hooks.resolver.tap(NAME, originalResolve => {
-        // console.log(resolve + '');
-        return (dep, callback) => {
-          // console.log(dep);
-          // factory.hooks.beforeResolve.tap(NAME, dep => {
-          // const { contextInfo, resolveOptions, context, request, dependencies } = dependency;
-          // const p = factory.resolveRequestArray(
-          //   factory.context,
-          //   context,
-          //   request,
-          //   factory.getResolver('normal'),
-          //   (a, b) => {
-
-          //   }
-          // );
-          // console.log('resolve', dep.request, dep.context);
-          if (dep.request.startsWith(swFilePrefix)) {
-            console.log('SW: ', dep);
-            const request = dep.request.slice(swFilePrefix.length);
-            serviceWorkers.push({
-              outputFilename: this.output,
-              filename: request,
-              context: dep.context,
-            });
-
-            const mod = new RawModule(
-              `export default ${JSON.stringify(this.output)};`,
-              null,
-              `sw:${request}`,
-            );
-
-            callback(mod);
-            return;
-
-            // return mod;
-
-            // return new RawModule(
-            //   `export default ${JSON.stringify(this.output)};`,
-            //   null,
-            //   `sw:${request}`,
-            // );
-            // return request;
-          }
-
-          originalResolve(dep, callback);
-        };
-      });
-      */
     });
   }
 
