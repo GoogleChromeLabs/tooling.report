@@ -11,70 +11,56 @@
  * limitations under the License.
  */
 import { createHash } from 'crypto';
+import { posix } from 'path';
 
-const swFilePrefix = 'sw:';
+const importPrefix = 'sw:';
 
 export default function serviceWorkerPlugin({
   output = 'sw.js',
   filterAssets = () => true,
 } = {}) {
-  let emittedIds;
-
   return {
     name: 'service-worker',
-    buildStart() {
-      emittedIds = [];
-    },
     async resolveId(id, importer) {
-      if (!id.startsWith(swFilePrefix)) return;
+      if (!id.startsWith(importPrefix)) return;
 
-      const realId = id.slice(swFilePrefix.length);
-      const result = await this.resolve(realId, importer);
+      const plainId = id.slice(importPrefix.length);
+      const result = await this.resolve(plainId, importer);
+      if (!result) return;
 
-      if (!result) throw Error(`Cannot find ${realId} from ${importer}`);
-
-      return swFilePrefix + result.id;
+      return importPrefix + result.id;
     },
     load(id) {
-      if (!id.startsWith(swFilePrefix)) return;
+      if (!id.startsWith(importPrefix)) return;
 
-      const realId = id.slice(swFilePrefix.length);
-      const fileId = this.emitFile({
+      return `export default import.meta.ROLLUP_FILE_URL_${this.emitFile({
         type: 'chunk',
-        id: realId,
+        id: id.slice(importPrefix.length),
         fileName: output,
-      });
-
-      emittedIds.push(fileId);
-      this.addWatchFile(realId);
-
-      return `export default import.meta.ROLLUP_FILE_URL_${fileId};`;
+      })};`;
     },
-    generateBundle(_, bundle) {
-      const bundleItems = Object.values(bundle);
+    generateBundle(options, bundle) {
+      const swChunk = bundle[output];
+      const toCacheInSW = Object.values(bundle).filter(
+        item => item !== swChunk && filterAssets(item),
+      );
+      const urls = toCacheInSW.map(
+        item =>
+          posix
+            .relative(posix.dirname(output), item.fileName)
+            .replace(/((?<=^|\/)index)?\.html?$/, '') || '.',
+      );
 
-      for (const swId of emittedIds) {
-        const swChunk = bundle[this.getFileName(swId)];
-        const toCacheInSW = bundleItems.filter(
-          item => item !== swChunk && filterAssets(item),
-        );
-
-        const versionHash = createHash('sha1');
-
-        for (const item of toCacheInSW) {
-          versionHash.update(item.code || item.source);
-        }
-
-        const version = versionHash.digest('hex');
-        const fileNames = toCacheInSW.map(
-          item => './' + item.fileName.replace(/(index)?\.html$/, ''),
-        );
-
-        swChunk.code =
-          `const VERSION = ${JSON.stringify(version)};\n` +
-          `const ASSETS = ${JSON.stringify(fileNames)};\n` +
-          swChunk.code;
+      const versionHash = createHash('sha1');
+      for (const item of toCacheInSW) {
+        versionHash.update(item.code || item.source);
       }
+      const version = versionHash.digest('hex');
+
+      swChunk.code =
+        `const ASSETS = ${JSON.stringify(urls)};\n` +
+        `const VERSION = ${JSON.stringify(version)};\n` +
+        swChunk.code;
     },
   };
 }
