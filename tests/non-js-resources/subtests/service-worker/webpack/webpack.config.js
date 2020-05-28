@@ -12,7 +12,7 @@
  */
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const AutoSWPlugin = require('./lib/auto-sw-plugin');
+const AutoSWPlugin = require('./lib/sw-plugin');
 
 module.exports = {
   output: {
