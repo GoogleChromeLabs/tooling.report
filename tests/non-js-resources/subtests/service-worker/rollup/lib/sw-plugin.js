@@ -13,7 +13,7 @@
 import { createHash } from 'crypto';
 import { posix } from 'path';
 
-const importPrefix = 'sw:';
+const importPrefix = 'service-worker:';
 
 export default function serviceWorkerPlugin({
   output = 'sw.js',
