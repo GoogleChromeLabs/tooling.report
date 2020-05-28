@@ -21,7 +21,7 @@ const swFilePrefix = 'sw:';
 
 const NAME = 'service-worker';
 
-export default class AutoSWPlugin {
+module.exports = class AutoSWPlugin {
   constructor({ output = 'sw.js', filterAssets = () => true }) {
     this.output = output;
     this.filterAssets = filterAssets;
@@ -36,24 +36,93 @@ export default class AutoSWPlugin {
       return this.emit(compilation, serviceWorkers);
     });
 
+    /*
+				contextInfo,
+				resolveOptions,
+				context,
+				request,
+				dependencies
+    */
+
     compiler.hooks.normalModuleFactory.tap(NAME, factory => {
-      // https://github.com/webpack/webpack/blob/8070bcd333cd1d07ce13fe5e91530c80779d51c6/lib/NormalModuleFactory.js#L34
-      factory.hooks.resolver.tap(NAME, (request, context) => {
-        if (request.startsWith(swFilePrefix)) {
-          request = swFilePrefix.slice(swFilePrefix.length);
-          serviceWorkers.push({
-            outputFilename: this.output,
-            filename: request,
-            context,
-          });
-          return new RawModule(
-            `export default ${JSON.stringify(this.output)};`,
-            null,
-            `sw:${request}`,
-          );
-          // return request;
-        }
+      // factory.getResolver('normal');
+
+      factory.hooks.beforeResolve.tap(NAME, dep => {
+        // return (dep, callback) => {
+        if (!dep.request.startsWith(swFilePrefix)) return dep;
+
+        const request = dep.request.slice(swFilePrefix.length);
+
+        console.log('sw: ', request, dep);
+
+        serviceWorkers.push({
+          outputFilename: this.output,
+          filename: request,
+          context: dep.context,
+        });
+
+        return dep;
+
+        // return {
+        //   identifier: () => `sw-${serviceWorkers.length}`,
+        //   source: () => `export default ${JSON.stringify(this.output)};`,
+        // };
       });
+
+      // factory.hooks.createModule.tap(NAME, result => {
+      //   console.log('createModule: ', result);
+      // });
+
+      /*
+      // https://github.com/webpack/webpack/blob/8070bcd333cd1d07ce13fe5e91530c80779d51c6/lib/NormalModuleFactory.js#L34
+      factory.hooks.resolver.tap(NAME, originalResolve => {
+        // console.log(resolve + '');
+        return (dep, callback) => {
+          // console.log(dep);
+          // factory.hooks.beforeResolve.tap(NAME, dep => {
+          // const { contextInfo, resolveOptions, context, request, dependencies } = dependency;
+          // const p = factory.resolveRequestArray(
+          //   factory.context,
+          //   context,
+          //   request,
+          //   factory.getResolver('normal'),
+          //   (a, b) => {
+
+          //   }
+          // );
+          // console.log('resolve', dep.request, dep.context);
+          if (dep.request.startsWith(swFilePrefix)) {
+            console.log('SW: ', dep);
+            const request = dep.request.slice(swFilePrefix.length);
+            serviceWorkers.push({
+              outputFilename: this.output,
+              filename: request,
+              context: dep.context,
+            });
+
+            const mod = new RawModule(
+              `export default ${JSON.stringify(this.output)};`,
+              null,
+              `sw:${request}`,
+            );
+
+            callback(mod);
+            return;
+
+            // return mod;
+
+            // return new RawModule(
+            //   `export default ${JSON.stringify(this.output)};`,
+            //   null,
+            //   `sw:${request}`,
+            // );
+            // return request;
+          }
+
+          originalResolve(dep, callback);
+        };
+      });
+      */
     });
   }
 
@@ -120,4 +189,4 @@ export default class AutoSWPlugin {
       });
     });
   }
-}
+};
