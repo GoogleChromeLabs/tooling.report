@@ -12,7 +12,7 @@
  */
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const AutoSWPlugin = require('./lib/sw-plugin');
+const ServiceWorkerPlugin = require('./lib/sw-plugin');
 
 module.exports = {
   output: {
@@ -47,7 +47,7 @@ module.exports = {
 
     // Adds support for `import swURL from 'sw:./sw.js'`.
     // The SW is compiled with `ASSETS` (a filtered Array of URLs) and `VERSION` (their hash).
-    new AutoSWPlugin({
+    new ServiceWorkerPlugin({
       output: 'sw.js',
     }),
   ],

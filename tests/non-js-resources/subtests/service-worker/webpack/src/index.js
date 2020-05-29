@@ -11,6 +11,6 @@
  * limitations under the License.
  */
 import './styles.css';
-import swURL from 'sw:./sw.js';
+import swURL from 'service-worker:./sw.js';
 
 navigator.serviceWorker.register(swURL);
