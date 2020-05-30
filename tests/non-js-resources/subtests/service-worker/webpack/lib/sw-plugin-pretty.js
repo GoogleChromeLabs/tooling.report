@@ -10,11 +10,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+const { promisify, callbackify } = require('util');
 const { createHash } = require('crypto');
-const RawModule = require('webpack/lib/RawModule');
 const SingleEntryPlugin = require('webpack/lib/SingleEntryPlugin');
 const WebWorkerTemplatePlugin = require('webpack/lib/webworker/WebWorkerTemplatePlugin');
-const { ConcatSource } = require('webpack-sources');
+const { ConcatSource, Source } = require('webpack-sources');
+const RawModule = require('webpack/lib/RawModule');
 
 /** @typedef {import('webpack/lib/Compiler')} Compiler */
 /** @typedef {import('webpack/lib/Compilation')} Compilation */
@@ -32,35 +33,34 @@ module.exports = class SWPlugin {
 
   /** @param {Compiler} compiler */
   apply(compiler) {
-    compiler.hooks.emit.tapAsync(NAME, this.emit.bind(this));
+    compiler.hooks.emit.tapPromise(NAME, this.emit.bind(this));
 
     compiler.hooks.normalModuleFactory.tap(NAME, factory => {
       factory.hooks.resolver.tap(NAME, resolve => {
-        return (dep, callback) => this.resolveId(dep, resolve, callback);
+        resolve = promisify(resolve);
+        return callbackify(
+          async dep => (await this.load(dep, resolve)) || (await resolve(dep)),
+        );
       });
     });
   }
 
   /** @param {NormalModule} dep */
-  resolveId(dep, resolve, callback) {
-    if (!dep.request.startsWith(swFilePrefix)) {
-      return resolve(dep, callback);
-    }
+  async load(dep, resolve) {
+    if (!dep.request.startsWith(swFilePrefix)) return;
 
     dep.request = dep.request.slice(swFilePrefix.length);
-    resolve(dep, (err, dep) => {
-      if (err) return callback(err);
+    dep = await resolve(dep);
+    if (!dep) return;
+    this.sw = dep;
 
-      this.sw = dep;
-
-      const url = JSON.stringify(this.output);
-      const code = `module.exports = __webpack_public_path__ + ${url}`;
-      return new RawModule(code, null, `sw:${dep.rawRequest}`);
-    });
+    const url = JSON.stringify(this.output);
+    const code = `module.exports = __webpack_public_path__ + ${url}`;
+    return new RawModule(code, null, `sw:${dep.rawRequest}`);
   }
 
   /** @param {Compilation} compilation */
-  async emit(compilation, callback) {
+  async emit(compilation) {
     const toCache = Object.keys(compilation.assets).filter(this.filterAssets);
 
     const versionHash = createHash('sha1');
@@ -74,7 +74,21 @@ module.exports = class SWPlugin {
       fileName => publicPath + fileName.replace(/(index)?\.html$/, ''),
     );
 
-    const sw = this.sw;
+    const swAsset = await this.bundleSw(compilation, this.sw);
+
+    compilation.assets[this.output] = new ConcatSource(
+      `const VERSION = ${JSON.stringify(version)};\n`,
+      `const ASSETS = ${JSON.stringify(fileNames)};\n`,
+      swAsset.source(),
+    );
+  }
+
+  /**
+   * @param {Compilation} compilation
+   * @param {NormalModule} sw
+   * @returns {Promise<Source>}
+   */
+  bundleSw(compilation, sw) {
     const opts = {
       filename: this.output,
       globalObject: 'self',
@@ -83,18 +97,11 @@ module.exports = class SWPlugin {
     new WebWorkerTemplatePlugin().apply(compiler);
     new SingleEntryPlugin(sw.context, sw.request, 'sw').apply(compiler);
 
-    compiler.runAsChild((err, entries, childCompilation) => {
-      if (err) return callback(err);
-
-      const swAsset = childCompilation.getAssets()[0].source;
-
-      compilation.assets[this.output] = new ConcatSource(
-        `const VERSION = ${JSON.stringify(version)};\n`,
-        `const ASSETS = ${JSON.stringify(fileNames)};\n`,
-        swAsset.source(),
-      );
-
-      callback();
+    return new Promise((resolve, reject) => {
+      compiler.runAsChild((err, entries, compilation) => {
+        if (err) reject(err);
+        else resolve(compilation.getAssets()[0].source);
+      });
     });
   }
 };
