@@ -35,7 +35,67 @@ module.exports = class SWPlugin {
   apply(compiler) {
     compiler.hooks.emit.tapPromise(NAME, this.emit.bind(this));
 
-    // Twitter said this was too confusing:
+    compiler.hooks.normalModuleFactory.tap(NAME, factory => {
+      factory.hooks.resolver.tap(NAME, resolve => {
+        resolve = promisify(resolve);
+        return callbackify(
+          async dep => (await this.load(dep, resolve)) || (await resolve(dep)),
+        );
+      });
+    });
+
+    // compiler.hooks.normalModuleFactory.tap(NAME, factory => {
+    //   const resolve = dep =>
+    //     factory
+    //       .getResolver('normal')
+    //       .hooks.resolve.callAsync(dep.context, dep.request, dep.request, {});
+    //   factory.hooks.afterResolve.tapAsync(NAME, async dep => {
+    //     return (await this.load(dep, resolve)) || (await resolve(dep));
+    //   });
+    // });
+
+    // compiler.hooks.normalModuleFactory.tap(NAME, factory => {
+    //   factory.hooks.resolver.tap(NAME, originalResolve => {
+    //     const resolve = promisify(originalResolve);
+    //     return async (dep, callback) => {
+    //       try {
+    //         return (await this.load(dep, resolve)) || (await resolve(dep));
+    //       } catch (e) {
+    //         callback(e);
+    //       }
+    //     };
+    //   });
+    // });
+
+    // compiler.hooks.normalModuleFactory.tap(NAME, factory => {
+    //   factory.hooks.resolver.tap(NAME, resolve => {
+    //     resolve = promisify(resolve);
+    //     async function resolver(resolve, dep) {
+    //       return (await this.load(dep, resolve)) || (await resolve(dep));
+    //     }
+    //     return callbackify(resolver);
+    //   });
+    // });
+
+    // async function customResolve(resolve, dep) {
+    //   const resolved = await this.load(dep, resolve);
+    //   return resolved || (await resolve(dep));
+    // }
+    // compiler.hooks.normalModuleFactory.tap(NAME, factory => {
+    //   factory.hooks.resolver.tap(NAME, resolve => {
+    //     return callbackify(customResolve.bind(this, promisify(resolve)));
+    //   });
+    // });
+
+    // compiler.hooks.normalModuleFactory.tap(NAME, factory => {
+    //   factory.hooks.resolver.tap(NAME, resolve => {
+    //     resolve = promisify(resolve);
+    //     return callbackify(
+    //       async dep => (await this.load(dep, resolve)) || (await resolve(dep)),
+    //     );
+    //   });
+    // });
+
     // const doResolve = callbackify(async (resolve, dep) => {
     //   return (await this.load(dep, resolve)) || (await resolve(dep));
     // });
@@ -45,19 +105,19 @@ module.exports = class SWPlugin {
     //   );
     // });
 
-    compiler.hooks.normalModuleFactory.tap(NAME, factory => {
-      factory.hooks.resolver.tap(NAME, originalResolve => {
-        const resolve = promisify(originalResolve);
-        return (dep, callback) => {
-          this.load(dep, resolve)
-            .then(result => {
-              if (result) callback(null, result);
-              else originalResolve(dep, callback);
-            })
-            .catch(callback);
-        };
-      });
-    });
+    // compiler.hooks.normalModuleFactory.tap(NAME, factory => {
+    //   factory.hooks.resolver.tap(NAME, originalResolve => {
+    //     const resolve = promisify(originalResolve);
+    //     return (dep, callback) => {
+    //       this.load(dep, resolve)
+    //         .then(result => {
+    //           if (result) callback(null, result);
+    //           else originalResolve(dep, callback);
+    //         })
+    //         .catch(callback);
+    //     };
+    //   });
+    // });
   }
 
   /** @param {NormalModule} dep */
@@ -80,8 +140,7 @@ module.exports = class SWPlugin {
 
     const versionHash = createHash('sha1');
     for (const file of toCache) {
-      const asset = compilation.assets[file];
-      versionHash.update(asset.source());
+      versionHash.update(compilation.assets[file].source());
     }
     const version = versionHash.digest('hex');
 
