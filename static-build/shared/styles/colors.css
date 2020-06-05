@@ -38,4 +38,36 @@
     0 60px 10px hsl(var(--denim-blue-hsl) / 5%),
     0 100px 20px hsl(var(--denim-blue-hsl) / 6%);
   --fab-shadow: 0 5px 10px hsl(var(--denim-blue-hsl) / 20%);
+
+  @media (prefers-color-scheme: dark) {
+    --ice-blue: hsl(206 50% 8%);
+    --light-blue: hsl(206 20% 17%);
+    --sky-blue: hsl(206 40% 50%);
+    --vivid-blue: hsl(206 40% 70%);
+    --vivid-darker-blue: hsl(206 100% 75%);
+    --teal-blue: hsl(206 27% 60%);
+    --backpack-blue: hsl(206 20% 63%);
+    --denim-blue: hsl(206 36% 51%);
+
+    --grape: hsl(309 84% 32%);
+
+    --test-pass: hsl(111 27% 62%);
+    --test-pass--text: hsl(111 27% 52%);
+    --test-partial: hsl(37 60% 56%);
+    --test-partial--text: hsl(37 60% 46%);
+    --test-fail: hsl(0 64% 68%);
+    --test-fail--text: hsl(0 67% 60%);
+    --test-skip: hsl(0 0% 87%);
+
+    --background: hsl(206 100% 4%);
+    --background-blue: hsl(212 30% 9%);
+    --background-gray: hsl(204 40% 8%);
+    --background-gray-offset: hsl(205 40% 11%);
+    --background-gray-highlight: hsl(205 100% 1%);
+    --text-gray: hsl(0 0% 90%);
+
+    --card-shadow: none;
+    --card-shadow--active: none;
+    --fab-shadow: none;
+  }
 }
