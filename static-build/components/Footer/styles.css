@@ -66,6 +66,10 @@
     @media (max-width: 550px) {
       height: 215px;
     }
+
+    @media (prefers-color-scheme: dark) {
+      filter: brightness(0.5) saturate(3);
+    }
   }
 }
 
