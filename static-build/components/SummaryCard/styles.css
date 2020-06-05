@@ -1,5 +1,5 @@
 .summaryCard {
-  background: white;
+  background: var(--background);
   border: 1px solid var(--light-blue);
   display: block;
   border-radius: 20px;
@@ -69,7 +69,7 @@
 /* Progress */
 
 .progressText {
-  color: white;
+  color: var(--background);
   padding: var(--spacing-1) var(--spacing-2);
   font-size: var(--font-size--detail);
   line-height: 1;

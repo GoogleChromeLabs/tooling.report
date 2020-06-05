@@ -51,7 +51,7 @@
     bottom: 0;
     width: 200%;
     height: 200%;
-    background: #fff;
+    background: var(--background);
     border-radius: 1000px;
     z-index: 0;
   }

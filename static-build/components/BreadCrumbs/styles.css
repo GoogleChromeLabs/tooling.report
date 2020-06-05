@@ -60,8 +60,12 @@
   .breadcrumbs {
     background-image: 
 	
-    /* Shadows */ linear-gradient(to right, white, white),
-      linear-gradient(to right, white, white),
+    /* Shadows */ linear-gradient(
+        to right,
+        var(--background),
+        var(--background)
+      ),
+      linear-gradient(to right, var(--background), var(--background)),
       /* Shadow covers */
         linear-gradient(to right, var(--light-blue), hsla(0, 0%, 100%, 0%)),
       linear-gradient(to left, var(--light-blue), hsla(0, 0%, 100%, 0%));

@@ -3,7 +3,7 @@
   top: var(--spacing-3);
   z-index: 2;
 
-  background: white;
+  background: var(--background);
   display: flex;
   padding: var(--spacing-3) 0;
   border: 1px solid var(--ice-blue);

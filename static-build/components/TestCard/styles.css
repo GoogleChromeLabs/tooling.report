@@ -5,7 +5,7 @@
   justify-content: center;
 
   a {
-    background: white;
+    background: var(--background);
     border: 1px solid var(--light-blue);
     border-radius: var(--card-radius);
     box-shadow: var(--card-shadow);
@@ -31,7 +31,7 @@
 .testCard a {
   &:not(:visited) {
     .checkbox {
-      background: white;
+      background: var(--background);
     }
   }
 
@@ -55,7 +55,7 @@
   height: 24px;
   z-index: 1;
   border-radius: 50%;
-  border: 2px solid white;
+  border: 2px solid var(--background);
 }
 
 .subTestCard {
@@ -71,7 +71,7 @@
     width: 100%;
     height: 100%;
     z-index: 0;
-    background: white;
+    background: var(--background);
     border: 1px solid var(--light-blue);
     border-radius: var(--card-radius);
     top: 0;
@@ -158,7 +158,7 @@
   border: 1px solid;
   border-radius: 50%;
   margin: var(--spacing-1);
-  background: white;
+  background: var(--background);
 }
 
 .testCardIcon[data-result='pass'] {

@@ -3,7 +3,7 @@
 }
 
 .toolIcon {
-  background: white;
+  background: var(--background);
   margin: 0 auto;
   border-radius: 50%;
   width: calc(var(--touch-icon-size) * 1.5);
@@ -28,7 +28,7 @@
 .toolBadge {
   border: 1px solid gray;
   padding: var(--spacing-1) var(--spacing-3);
-  background: white;
+  background: var(--background);
   display: inline-block;
   border-radius: var(--spacing-2);
   text-transform: capitalize;

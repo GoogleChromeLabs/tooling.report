@@ -14,7 +14,7 @@
 
     &:hover,
     &:focus {
-      color: white;
+      color: var(--background);
     }
   }
 
