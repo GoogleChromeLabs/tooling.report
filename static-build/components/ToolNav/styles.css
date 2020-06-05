@@ -10,6 +10,10 @@
   border-radius: var(--spacing-2);
   box-shadow: 0 10px 45px -25px hsl(var(--denim-blue-hsl) / 70%);
   overflow-x: hidden;
+
+  @media (prefers-color-scheme: dark) {
+    box-shadow: none;
+  }
 }
 
 .tool {
