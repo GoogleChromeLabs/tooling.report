@@ -83,3 +83,27 @@
     opacity: 1;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .footer {
+    background: var(--background);
+
+    & h2 {
+      color: inherit;
+
+      & > span {
+        color: var(--vivid-blue);
+      }
+    }
+
+    & .desc,
+    & a {
+      color: inherit;
+    }
+
+    & a:hover,
+    & a:focus {
+      color: var(--vivid-blue);
+    }
+  }
+}
