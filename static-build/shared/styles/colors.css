@@ -1,29 +1,30 @@
 :root {
   /* Blues */
-  --background-blue: #f0f7ff;
-  --ice-blue: #e6f4ff;
-  --light-blue: #cce9ff;
-  --sky-blue: #66bdff;
-  --vivid-blue: #127aca;
-  --vivid-darker-blue: #0f66a9;
-  --teal-blue: #195380;
-  --backpack-blue: #406480;
-  --denim-blue: #5689b0;
+  --background-blue: hsl(212 100% 97%);
+  --ice-blue: hsl(206 100% 95%);
+  --light-blue: hsl(206 100% 90%);
+  --sky-blue: hsl(206 100% 70%);
+  --vivid-blue: hsl(206 84% 43%);
+  --vivid-darker-blue: hsl(206 84% 36%);
+  --teal-blue: hsl(206 67% 30%);
+  --backpack-blue: hsl(206 33% 38%);
+  --denim-blue: hsl(206 36% 51%);
 
-  --grape: #950d80;
+  --grape: hsl(309 84% 32%);
 
-  --test-pass: #7fcc71;
-  --test-pass--text: #0e3307;
-  --test-partial: #ffa91f;
-  --test-partial--text: #6f4902;
-  --test-fail: #f26969;
-  --test-fail--text: #801111;
-  --test-skip: #dedede;
+  --test-pass: hsl(111 47% 62%);
+  --test-pass--text: hsl(110 76% 11%);
+  --test-partial: hsl(37 100% 56%);
+  --test-partial--text: hsl(39 96% 22%);
+  --test-fail: hsl(0 84% 68%);
+  --test-fail--text: hsl(0 77% 28%);
+  --test-skip: hsl(0 0% 87%);
 
   /* Gra|eys */
-  --background-gray: #edf0f2;
-  --background-gray-offset: #dae1e6;
-  --background-gray-highlight: hsl(205deg 69% 97%);
+  --background: white;
+  --background-gray: hsl(204 16% 94%);
+  --background-gray-offset: hsl(205 19% 88%);
+  --background-gray-highlight: hsl(205 69% 97%);
   --text-gray: hsl(0 0% 10%);
 
   /* Shadows */
