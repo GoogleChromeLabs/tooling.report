@@ -76,7 +76,11 @@ const TestCard: FunctionalComponent<Props> = ({ link, test }: Props) => {
       return (
         <li class={$testCard}>
           <a href={link}>
-            <img src={checkbox} class={$checkbox} />
+            <span class={$checkbox} title="Marked as read">
+              <svg viewBox="0 0 24 24">
+                <path class="st0" d="M6 11.1l5.1 5.1L19 7.8" />
+              </svg>
+            </span>
             <h3 class={$cardTitle}>{test.meta.title}</h3>
             {test.meta.shortDesc && (
               <p class={$testDesc}>{test.meta.shortDesc}</p>

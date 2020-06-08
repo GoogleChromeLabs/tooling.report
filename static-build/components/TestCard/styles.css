@@ -56,6 +56,13 @@
   z-index: 1;
   border-radius: 50%;
   border: 2px solid var(--background);
+
+  & > svg {
+    stroke: var(--background);
+    fill: none;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+  }
 }
 
 .subTestCard {
