@@ -17,6 +17,8 @@ import {
   $sidebarLayout,
   $summaryList,
   $sectionHeader,
+  $sectionHashtag,
+  $sectionTitle,
   $hero,
   $overviewHeader,
   $overviewGrid,
@@ -179,16 +181,31 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
 
           <section id="overview" class={`${$overview} ${$overviewGrid}`}>
             <a href="#overview">
-              <h2 class={`${$overviewHeader} ${$sectionHeader}`}>Overview</h2>
+              <h2 class={`${$overviewHeader} ${$sectionHeader}`}>
+                <span class={$sectionHashtag}>#</span>
+                Overview
+              </h2>
             </a>
             <DataGrid tests={tests} basePath="/" collectionTitle="Overview" />
           </section>
 
           {Object.entries(tests).map(([testDir, collection]) => (
-            <section id={collection.meta.title}>
-              <a href={`${testDir}/`}>
-                <h3 class={$sectionHeader}>{collection.meta.title}</h3>
-              </a>
+            <section
+              id={collection.meta.title.replace(/\s/g, '-').toLowerCase()}
+            >
+              <h3 class={$sectionHeader}>
+                <a
+                  class={$sectionHashtag}
+                  href={`#${collection.meta.title
+                    .replace(/\s/g, '-')
+                    .toLowerCase()}`}
+                >
+                  #
+                </a>
+                <a class={$sectionTitle} href={`${testDir}/`}>
+                  {collection.meta.title}
+                </a>
+              </h3>
               <DataGrid
                 tests={collection.subTests}
                 basePath={`${testDir}/`}

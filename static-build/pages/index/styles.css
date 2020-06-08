@@ -8,7 +8,7 @@
 .overview {
   background: var(--background-gray-offset);
   margin: 0 calc(var(--spacing-3) * -1);
-  padding: var(--spacing-3);
+  padding: var(--spacing-6) var(--spacing-3);
 
   @media (min-width: 550px) {
     margin: 0 calc(var(--spacing-6) * -1);
@@ -66,6 +66,7 @@
 
 .overviewGrid a {
   font-weight: bold;
+  text-decoration: none;
 }
 
 .sectionHeader {
@@ -81,14 +82,30 @@
     margin-bottom: var(--spacing-4);
   }
 
-  &:before {
-    content: '#';
-    color: var(--denim-blue);
-    margin-right: var(--spacing-1);
+  & > span {
+    font-weight: 300;
   }
 
-  &:hover:before,
-  &:focus:before {
+  & > a {
+    text-decoration: none;
+  }
+}
+
+.sectionHashtag {
+  color: var(--denim-blue);
+  margin-right: var(--spacing-1);
+
+  &:hover,
+  &:focus {
+    color: var(--backpack-blue);
+  }
+}
+
+.sectionTitle {
+  text-decoration: none;
+
+  &:hover > h3,
+  &:active > h3 {
     color: var(--backpack-blue);
   }
 }
