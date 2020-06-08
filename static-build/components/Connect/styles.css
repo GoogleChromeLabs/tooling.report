@@ -29,6 +29,11 @@
 
   & h2 {
     font-weight: var(--font-weight--bold);
+
+    @media (prefers-color-scheme: light) {
+      color: var(--backpack-blue);
+    }
+
     & > span {
       font-weight: var(--font-weight--light);
     }

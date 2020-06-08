@@ -74,11 +74,14 @@
   text-transform: capitalize;
   margin-bottom: var(--spacing-2);
   position: relative;
-  color: var(--backpack-blue);
   line-height: var(--font-lineheight--tight);
 
   @media (min-width: 700px) {
     margin-bottom: var(--spacing-4);
+  }
+
+  @media (prefers-color-scheme: light) {
+    color: var(--backpack-blue);
   }
 
   &:before {
