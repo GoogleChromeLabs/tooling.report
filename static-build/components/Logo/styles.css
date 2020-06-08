@@ -20,3 +20,7 @@
   color: var(--backpack-blue);
   font-weight: var(--font-weight--thin);
 }
+
+.linkwrap {
+  text-decoration: none;
+}
