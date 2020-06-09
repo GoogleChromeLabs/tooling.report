@@ -158,14 +158,14 @@
     margin: 0 50px -100px -225px;
   }
 
-  @media (prefers-color-scheme: dark) {
-    filter: brightness(0.5);
-  }
-
   & svg {
     width: 65%;
     height: 65%;
     object-fit: contain;
+
+    @media (prefers-color-scheme: dark) {
+      filter: brightness(0.5);
+    }
   }
 }
 
