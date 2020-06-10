@@ -11,24 +11,3 @@
  * limitations under the License.
  */
 /// <reference path="../missing-types.d.ts" />
-
-declare module 'faqs:' {
-  const faqs: { title: string; html: string }[];
-  export default faqs;
-}
-
-declare module 'md:*' {
-  export const html: string;
-  export const meta: string;
-}
-
-declare module 'client-bundle:*' {
-  const url: string;
-  export default url;
-  export const imports: string[];
-}
-
-declare module 'test-data:' {
-  const value: Tests;
-  export default value;
-}

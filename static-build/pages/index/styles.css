@@ -2,7 +2,7 @@
 @import 'components/ToolNav/styles.css';
 @import 'components/Connect/styles.css';
 @import 'shared/components/DataGrid/styles.css';
-@import 'shared/components/ToolTip/styles.css';
+@import 'client/index/tooltips/ToolTipContent/styles.css';
 @import 'shared/components/Dot/styles.css';
 
 .overview {

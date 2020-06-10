@@ -81,23 +81,11 @@
   z-index: var(--layer--top);
   border-radius: var(--tooltip-border);
   bottom: calc(100% + 11px);
-  left: -1000px;
+  left: 0;
   font-size: var(--font-size--detail);
   max-width: 350px;
   transform: translateX(-10px);
   width: 85vw;
-
-  opacity: 0;
-  pointer-events: none;
-}
-
-.tooltip:focus,
-.tooltip:focus-within,
-:focus + .tooltip {
-  left: 0;
-  opacity: 1;
-  pointer-events: all;
-  outline: none;
 }
 
 .toolTipArrow {
