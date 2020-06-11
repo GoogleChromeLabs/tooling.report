@@ -189,30 +189,29 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
             <DataGrid tests={tests} basePath="/" collectionTitle="Overview" />
           </section>
 
-          {Object.entries(tests).map(([testDir, collection]) => (
-            <section
-              id={collection.meta.title.replace(/\s/g, '-').toLowerCase()}
-            >
-              <h3 class={$sectionHeader}>
-                <a
-                  class={$sectionHashtag}
-                  href={`#${collection.meta.title
-                    .replace(/\s/g, '-')
-                    .toLowerCase()}`}
-                >
-                  #
-                </a>
-                <a class={$sectionTitle} href={`${testDir}/`}>
-                  {collection.meta.title}
-                </a>
-              </h3>
-              <DataGrid
-                tests={collection.subTests}
-                basePath={`${testDir}/`}
-                collectionTitle={collection.meta.title}
-              />
-            </section>
-          ))}
+          {Object.entries(tests).map(([testDir, collection]) => {
+            const sectionId = collection.meta.title
+              .replace(/\s/g, '-')
+              .toLowerCase();
+
+            return (
+              <section id={sectionId}>
+                <h3 class={$sectionHeader}>
+                  <a class={$sectionHashtag} href={`#${sectionId}`}>
+                    #
+                  </a>
+                  <a class={$sectionTitle} href={`${testDir}/`}>
+                    {collection.meta.title}
+                  </a>
+                </h3>
+                <DataGrid
+                  tests={collection.subTests}
+                  basePath={`${testDir}/`}
+                  collectionTitle={collection.meta.title}
+                />
+              </section>
+            );
+          })}
         </main>
         <Connect />
         <Footer />
