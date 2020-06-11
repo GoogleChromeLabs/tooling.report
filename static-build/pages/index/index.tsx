@@ -15,6 +15,7 @@ import { calculateScoreTotals } from 'static-build/utils';
 import pageStyles from 'css-bundle:./styles.css';
 import {
   $sidebarLayout,
+  $summaryHeader,
   $summaryList,
   $sectionHeader,
   $sectionHashtag,
@@ -142,8 +143,11 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
           </section>
 
           <section id="summary">
-            <a href="#summary">
-              <h3 class={$sectionHeader}>Summary</h3>
+            <a href="#summary" class={$summaryHeader}>
+              <h3 class={$sectionHeader}>
+                <span class={$sectionHashtag}>#</span>
+                Summary
+              </h3>
             </a>
             <div class={$sidebarLayout}>
               <aside>

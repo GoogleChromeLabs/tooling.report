@@ -142,6 +142,10 @@
   font-size: 2rem;
 }
 
+.summaryHeader {
+  text-decoration: none;
+}
+
 .summaryList {
   display: grid;
   gap: var(--spacing-5);
