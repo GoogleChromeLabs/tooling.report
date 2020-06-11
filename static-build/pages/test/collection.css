@@ -43,26 +43,36 @@
   list-style: none;
 }
 
-.contribCard {
-  font-family: monospace;
-  width: 100%;
-  height: 100%;
+.contribWrapper {
+  text-align: center;
   display: flex;
   justify-content: center;
-  align-items: center;
-  font-size: 120px;
-  text-decoration: none;
+  min-height: 200px; /* looks sad when its on its own line */
+}
+
+.contribCard {
+  text-align: center;
+  flex: 1;
+  display: grid;
+  place-items: center;
   background: white;
   border: 1px solid var(--light-blue);
-  color: var(--light-blue);
-  border-radius: 20px;
+  border-radius: var(--card-radius);
   box-shadow: var(--card-shadow);
+  padding: var(--spacing-5);
   transition: 0.2s ease-in-out;
   will-change: box-shadow;
   transform-style: preserve-3d;
+  position: relative;
+
+  svg {
+    width: 40px;
+    height: 40px;
+  }
 
   &:hover,
-  &:focus {
+  &:focus,
+  &:focus-within {
     color: var(--sky-blue);
     transform: translateY(-5px);
     box-shadow: var(--card-shadow--active);

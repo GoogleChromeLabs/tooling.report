@@ -42,6 +42,7 @@ import {
 import {
   $collectionPage,
   $contribCard,
+  $contribWrapper,
   $testCardList,
   $collectionSummary,
 } from './collection.css';
@@ -95,7 +96,8 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                 dangerouslySetInnerHTML={{ __html: test.html }}
               ></article>
               <p class={$well}>
-                Use the (+) card below & tell us if we missed a capability!
+                Use the Github card <GithubIcon /> below to contribute & tell us
+                if we missed a capability!
               </p>
             </section>
 
@@ -104,12 +106,12 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                 {Object.entries(test.subTests).map(([path, test]) => (
                   <TestCard link={path + '/'} test={test} />
                 ))}
-                <li>
+                <li class={$contribWrapper}>
                   <a
                     class={$contribCard}
                     href="https://github.com/GoogleChromeLabs/tooling.report/blob/master/CONTRIBUTING.md"
                   >
-                    +
+                    <GithubIcon />
                   </a>
                 </li>
               </ul>
