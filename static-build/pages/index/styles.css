@@ -90,6 +90,10 @@
     @media (min-width: 700px) {
       --clearance: 20px;
     }
+
+    @media (min-width: 1200px) {
+      --clearance: 60px;
+    }
   }
 
   @media (min-width: 700px) {
