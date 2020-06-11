@@ -19,7 +19,7 @@ function focusChange(event: Event) {
   if (!shownTooltip) return;
   const target = event.target as HTMLElement;
   if (!('closest' in target)) return;
-  if (target.closest('grid-tooltip')) return;
+  if (target.closest('grid-tooltip') === shownTooltip) return;
   shownTooltip.hide();
 }
 
@@ -42,7 +42,6 @@ class GridTooltip extends HTMLElement {
         result={this.getAttribute('result')!}
         name={this.getAttribute('testname')!}
         tool={this.getAttribute('tool') as BuildTool}
-        id={this.getAttribute('innerid')!}
         link={this.getAttribute('href')!}
       />,
       this._tooltipContent,
@@ -53,7 +52,6 @@ class GridTooltip extends HTMLElement {
     super();
     this.addEventListener('click', () => this.show());
     this.addEventListener('mousedown', () => this.show());
-    this.addEventListener('focus', () => this.show(), { capture: true });
   }
 
   connectedCallback() {

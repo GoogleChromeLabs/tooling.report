@@ -25,7 +25,6 @@ declare module 'preact' {
 }
 
 interface GridTooltipAttributes extends PreactJSX.HTMLAttributes {
-  innerid: string;
   content: string;
   result: string;
   testname: string;

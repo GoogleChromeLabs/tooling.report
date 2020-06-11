@@ -24,7 +24,6 @@ import * as toolImages from 'shared/utils/tool-images';
 
 interface Props {
   content: string;
-  id: string;
   result: string;
   name: string;
   tool: BuildTool;
@@ -34,6 +33,7 @@ interface Props {
 
 export default class TooltipContent extends Component<Props> {
   private _arrowRef = createRef();
+  private _headingId = `tooltip-${Math.random()}`;
 
   componentDidMount() {
     const tooltip = this.base as HTMLElement;
@@ -48,9 +48,9 @@ export default class TooltipContent extends Component<Props> {
       tooltipArrow.style.left = `${leftOffset}px`;
     }
   }
-  render({ content, id, result, name, tool, link, category }: Props) {
+  render({ content, result, name, tool, link, category }: Props) {
     return (
-      <div role="tooltip" id={id} class={$tooltip}>
+      <div role="dialog" class={$tooltip} aria-labbeledby={this._headingId}>
         <div class={$headerBar}>
           <div class={$headerMeta}>
             <figure class={$toolIcon}>
@@ -58,7 +58,7 @@ export default class TooltipContent extends Component<Props> {
             </figure>
             <span>
               {category && <small>{category}</small>}
-              <h2>{name}</h2>
+              <h2 id={this._headingId}>{name}</h2>
             </span>
           </div>
           <div data-result={result} class={$toolBadge}>

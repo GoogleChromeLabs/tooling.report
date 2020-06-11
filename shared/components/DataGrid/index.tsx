@@ -71,7 +71,6 @@ const DataGrid: FunctionalComponent<Props> = ({
                       test.results[tool] && (
                         <div class={$dotContainer}>
                           <grid-tooltip
-                            innerid={`${tool}-${testDir}`}
                             result={test.results[tool].meta.result}
                             tool={tool as BuildTool}
                             category={
@@ -83,10 +82,7 @@ const DataGrid: FunctionalComponent<Props> = ({
                             href={`${basePath}${testDir}`}
                             content={test.meta.shortDesc}
                           >
-                            <button
-                              aria-describedby={`${tool}-${testDir}`}
-                              class={$dotButton}
-                            >
+                            <button class={$dotButton}>
                               <Dot result={test.results[tool].meta.result} />
                             </button>
                           </grid-tooltip>
