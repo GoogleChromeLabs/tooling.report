@@ -32,12 +32,13 @@ export default function serviceWorkerPlugin({
     },
     load(id) {
       if (!id.startsWith(importPrefix)) return;
-
-      return `export default import.meta.ROLLUP_FILE_URL_${this.emitFile({
+      const fileId = this.emitFile({
         type: 'chunk',
         id: id.slice(importPrefix.length),
         fileName: output,
-      })};`;
+      });
+
+      return `export default import.meta.ROLLUP_FILE_URL_${fileId};`;
     },
     generateBundle(options, bundle) {
       const swChunk = bundle[output];
