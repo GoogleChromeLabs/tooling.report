@@ -79,7 +79,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
         <meta name="description" content={config.metaDescription} />
         <HeadMeta />
         <link rel="stylesheet" href={pageStyles} />
-        <script type="module" src={bundleURL} />
+        <script type="module" src={bundleURL} async />
         {imports.map(v => (
           <link rel="preload" as="script" href={v} crossOrigin="" />
         ))}
