@@ -162,16 +162,16 @@
     margin-bottom: var(--spacing-2);
   }
 
-  & > section > a > h2 {
-    margin-bottom: var(--spacing-4);
-  }
-
   & > section > div {
     @media (max-width: 822px) {
       flex-direction: column-reverse;
       align-items: flex-start;
     }
   }
+}
+
+.heroLogo {
+  margin-bottom: var(--spacing-4);
 }
 
 .heroImage {

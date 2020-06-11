@@ -21,9 +21,10 @@ import {
   $sectionHashtag,
   $sectionTitle,
   $hero,
+  $heroLogo,
+  $heroImage,
   $overviewHeader,
   $overviewGrid,
-  $heroImage,
   $overview,
   $consumeGap,
   $gettingStarted,
@@ -91,7 +92,9 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
       <body>
         <header class={$hero}>
           <section>
-            <Logo />
+            <div class={$heroLogo}>
+              <Logo />
+            </div>
             <div>
               <div class={$heroImage}>
                 <BenchHero />
