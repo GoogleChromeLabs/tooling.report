@@ -47,7 +47,6 @@ p {
 
 a {
   color: var(--vivid-blue);
-  padding: 1ch 0;
   transition: color 0.25s ease;
 
   &:hover,
