@@ -12,7 +12,7 @@
  */
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const AutoSWPlugin = require('./lib/auto-sw-plugin');
+const ServiceWorkerPlugin = require('./lib/sw-plugin');
 
 module.exports = {
   output: {
@@ -45,10 +45,10 @@ module.exports = {
       },
     }),
 
-    // Automatically compile navigator.serviceWorker.register("..") using Webpack.
-    // This also inlines a (optionally filtered) Array of asset URLs as `BUILD_ASSETS`.
-    new AutoSWPlugin({
-      filename: 'sw.js',
+    // Adds support for `import swURL from 'sw:./sw.js'`.
+    // The SW is compiled with `ASSETS` (a filtered Array of URLs) and `VERSION` (their hash).
+    new ServiceWorkerPlugin({
+      output: 'sw.js',
     }),
   ],
 };

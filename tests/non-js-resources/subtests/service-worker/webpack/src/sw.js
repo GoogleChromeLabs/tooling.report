@@ -10,11 +10,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-addEventListener('install', ev => {
-  ev.waitUntil(
+const staticCache = `static-${VERSION}`;
+const preserveCaches = [staticCache];
+
+addEventListener('install', event => {
+  event.waitUntil(
     (async () => {
-      const cache = await caches.open('assets');
-      await cache.addAll(BUILD_ASSETS);
+      const cache = await caches.open(staticCache);
+      await cache.addAll(ASSETS);
+    })(),
+  );
+});
+
+addEventListener('activate', event => {
+  event.waitUntil(
+    (async () => {
+      const keys = await caches.keys();
+      await Promise.all(
+        keys
+          .filter(key => preserveCaches.includes(key))
+          .map(key => caches.delete(key)),
+      );
     })(),
   );
 });

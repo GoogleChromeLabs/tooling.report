@@ -10,14 +10,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const staticCache = `static-${CACHE_VERSION}`;
+const staticCache = `static-${VERSION}`;
 const preserveCaches = [staticCache];
 
 addEventListener('install', event => {
   event.waitUntil(
     (async () => {
       const cache = await caches.open(staticCache);
-      await cache.addAll(ASSETS_TO_CACHE);
+      await cache.addAll(ASSETS);
     })(),
   );
 });

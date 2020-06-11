@@ -24,7 +24,8 @@ function hashAssets() {
   return src('src/**', { ignore: 'src/sw.js' })
     .pipe(
       RevAll.revision({
-        includeFilesInManifest: ['.js', '.css', '.png'],
+        includeFilesInManifest: ['.js', '.css', '.png', '.html'],
+        dontRenameFile: ['.html'],
       }),
     )
     .pipe(dest('build/'))
@@ -36,7 +37,7 @@ async function sw() {
   const manifest = JSON.parse(
     fs.readFileSync('build/rev-manifest.json', { encoding: 'utf8' }),
   );
-  const versionHash = createHash('md5');
+  const versionHash = createHash('sha1');
 
   await Promise.all(
     Object.values(manifest).map(async filePath => {
@@ -54,15 +55,14 @@ async function sw() {
     .pipe(buffer())
     .pipe(
       through2.obj(function(file, enc, callback) {
-        versionHash.update(file.contents);
+        const fileNames = Object.values(manifest).map(
+          item => './' + item.replace(/(index)?\.html$/, ''),
+        );
+
         file.contents = Buffer.from(
-          file.contents
-            .toString('utf8')
-            .replace(
-              /CACHE_VERSION/g,
-              JSON.stringify(versionHash.digest('hex')),
-            )
-            .replace(/ASSETS_TO_CACHE/g, JSON.stringify(manifest)),
+          `const VERSION = ${JSON.stringify(versionHash.digest('hex'))};\n` +
+            `const ASSETS = ${JSON.stringify(fileNames)};\n` +
+            file.contents.toString('utf8'),
         );
         this.push(file);
         callback();

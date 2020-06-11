@@ -10,33 +10,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { promises as fsp } from 'fs';
-import { basename } from 'path';
-
 import serviceWorkerPlugin from './lib/sw-plugin';
+import addAssetsPlugin from './lib/add-assets-plugin';
 
 export default {
   input: [`src/index.js`],
   output: {
     dir: 'build',
     format: 'esm',
+    entryFileNames: '[name]-[hash].js',
   },
-  plugins: [
-    {
-      // Adding some items to the build.
-      // In reality this would be done by more involved plugins, but
-      // it's irrelevant to this test.
-      async buildStart() {
-        const assets = ['src/image.png', 'src/styles.css'];
-        for (const asset of assets) {
-          this.emitFile({
-            type: 'asset',
-            source: await fsp.readFile(asset),
-            name: basename(asset),
-          });
-        }
-      },
-    },
-    serviceWorkerPlugin(),
-  ],
+  plugins: [addAssetsPlugin(), serviceWorkerPlugin()],
 };
