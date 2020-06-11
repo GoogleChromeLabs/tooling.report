@@ -70,13 +70,27 @@
 }
 
 .sectionHeader {
-  display: inline-block;
   font-size: 1.5rem;
   text-transform: capitalize;
   margin-bottom: var(--spacing-2);
   position: relative;
   color: var(--backpack-blue);
   line-height: var(--font-lineheight--tight);
+
+  /* Clear the sticky header when linking to a section */
+  &::before {
+    --clearance: 110px;
+    display: block;
+    content: ' ';
+    margin-top: calc(var(--clearance) * -1);
+    height: var(--clearance);
+    visibility: hidden;
+    pointer-events: none;
+
+    @media (min-width: 700px) {
+      --clearance: 20px;
+    }
+  }
 
   @media (min-width: 700px) {
     margin-bottom: var(--spacing-4);

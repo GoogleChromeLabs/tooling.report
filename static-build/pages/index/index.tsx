@@ -179,9 +179,9 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
 
           <ToolNav />
 
-          <section id="overview" class={`${$overview} ${$overviewGrid}`}>
+          <section class={`${$overview} ${$overviewGrid}`}>
             <a href="#overview">
-              <h2 class={`${$overviewHeader} ${$sectionHeader}`}>
+              <h2 id="overview" class={`${$overviewHeader} ${$sectionHeader}`}>
                 <span class={$sectionHashtag}>#</span>
                 Overview
               </h2>
@@ -195,8 +195,8 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
               .toLowerCase();
 
             return (
-              <section id={sectionId}>
-                <h3 class={$sectionHeader}>
+              <section>
+                <h3 class={$sectionHeader} id={sectionId}>
                   <a class={$sectionHashtag} href={`#${sectionId}`}>
                     #
                   </a>
