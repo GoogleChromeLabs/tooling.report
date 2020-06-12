@@ -17,8 +17,7 @@ let shownTooltip: GridTooltip | undefined;
 
 function focusChange(event: Event) {
   if (!shownTooltip) return;
-  const target = event.target as HTMLElement;
-  if (!('closest' in target)) return;
+  const target = event.target as Element;
   if (target.closest('grid-tooltip') === shownTooltip) return;
   shownTooltip.hide();
 }
