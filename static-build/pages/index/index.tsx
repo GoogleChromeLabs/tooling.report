@@ -15,12 +15,16 @@ import { calculateScoreTotals } from 'static-build/utils';
 import pageStyles from 'css-bundle:./styles.css';
 import {
   $sidebarLayout,
+  $summaryHeader,
   $summaryList,
   $sectionHeader,
+  $sectionHashtag,
+  $sectionTitle,
   $hero,
+  $heroLogo,
+  $heroImage,
   $overviewHeader,
   $overviewGrid,
-  $heroImage,
   $overview,
   $consumeGap,
   $gettingStarted,
@@ -88,7 +92,9 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
       <body>
         <header class={$hero}>
           <section>
-            <Logo />
+            <div class={$heroLogo}>
+              <Logo />
+            </div>
             <div>
               <div class={$heroImage}>
                 <BenchHero />
@@ -140,8 +146,11 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
           </section>
 
           <section id="summary">
-            <a href="#summary">
-              <h3 class={$sectionHeader}>Summary</h3>
+            <a href="#summary" class={$summaryHeader}>
+              <h3 class={$sectionHeader}>
+                <span class={$sectionHashtag}>#</span>
+                Summary
+              </h3>
             </a>
             <div class={$sidebarLayout}>
               <aside>
@@ -177,25 +186,39 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
 
           <ToolNav />
 
-          <section id="overview" class={`${$overview} ${$overviewGrid}`}>
+          <section class={`${$overview} ${$overviewGrid}`}>
             <a href="#overview">
-              <h2 class={`${$overviewHeader} ${$sectionHeader}`}>Overview</h2>
+              <h2 id="overview" class={`${$overviewHeader} ${$sectionHeader}`}>
+                <span class={$sectionHashtag}>#</span>
+                Overview
+              </h2>
             </a>
             <DataGrid tests={tests} basePath="/" collectionTitle="Overview" />
           </section>
 
-          {Object.entries(tests).map(([testDir, collection]) => (
-            <section id={collection.meta.title}>
-              <a href={`${testDir}/`}>
-                <h3 class={$sectionHeader}>{collection.meta.title}</h3>
-              </a>
-              <DataGrid
-                tests={collection.subTests}
-                basePath={`${testDir}/`}
-                collectionTitle={collection.meta.title}
-              />
-            </section>
-          ))}
+          {Object.entries(tests).map(([testDir, collection]) => {
+            const sectionId = collection.meta.title
+              .replace(/\s/g, '-')
+              .toLowerCase();
+
+            return (
+              <section>
+                <h3 class={$sectionHeader} id={sectionId}>
+                  <a class={$sectionHashtag} href={`#${sectionId}`}>
+                    #
+                  </a>
+                  <a class={$sectionTitle} href={`${testDir}/`}>
+                    {collection.meta.title}
+                  </a>
+                </h3>
+                <DataGrid
+                  tests={collection.subTests}
+                  basePath={`${testDir}/`}
+                  collectionTitle={collection.meta.title}
+                />
+              </section>
+            );
+          })}
         </main>
         <Connect />
         <Footer />
