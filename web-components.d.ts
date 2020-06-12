@@ -11,5 +11,24 @@
  * limitations under the License.
  */
 
-// NOTE: This script is loaded async on the index page.
-import './tooltips';
+import { JSXInternal as PreactJSX } from 'preact/src/jsx';
+
+declare module 'preact' {
+  namespace JSXInternal {
+    interface IntrinsicElements extends PreactJSX.IntrinsicElements {
+      'grid-tooltip': GridTooltipAttributes;
+    }
+    interface Element extends PreactJSX.Element {}
+    interface HTMLAttributes extends PreactJSX.HTMLAttributes {}
+    interface SVGAttributes extends PreactJSX.SVGAttributes {}
+  }
+}
+
+interface GridTooltipAttributes extends PreactJSX.HTMLAttributes {
+  content: string;
+  result: string;
+  testname: string;
+  tool: BuildTool;
+  href: string;
+  category?: string;
+}

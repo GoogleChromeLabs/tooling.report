@@ -18,7 +18,7 @@ interface Props {
 }
 
 const Dot: FunctionalComponent<Props> = ({ result }: Props) => (
-  <div data-result={result} class={$dot} />
+  <div data-result={result} class={$dot} aria-label={result} />
 );
 
 export default Dot;
