@@ -1,7 +1,7 @@
 export const testSubjects = ['rollup', 'webpack', 'parcel', 'browserify'];
 export const githubRepository =
   'https://github.com/GoogleChromeLabs/tooling.report/';
-export const githubDefaultBranch = 'dev';
+export const githubDefaultBranch = 'live';
 export const githubContribute = `${githubRepository}blob/${githubDefaultBranch}/CONTRIBUTING.md`;
 
 export const metaDescription =
