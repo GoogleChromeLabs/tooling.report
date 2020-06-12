@@ -26,9 +26,14 @@ document.addEventListener('click', focusChange);
 document.addEventListener('focus', focusChange, { capture: true });
 
 class GridTooltip extends HTMLElement {
-  private _tooltipContent = document.createElement('div');
+  private _tooltipContent?: HTMLDivElement;
 
   private _renderContent() {
+    if (!this._tooltipContent) {
+      this._tooltipContent = document.createElement('div');
+      this.append(this._tooltipContent);
+    }
+
     if (shownTooltip !== this) {
       this._tooltipContent.textContent = '';
       return;
@@ -51,12 +56,6 @@ class GridTooltip extends HTMLElement {
     super();
     this.addEventListener('click', () => this.show());
     this.addEventListener('mousedown', () => this.show());
-  }
-
-  connectedCallback() {
-    if (!this.contains(this._tooltipContent)) {
-      this.append(this._tooltipContent);
-    }
   }
 
   show() {
