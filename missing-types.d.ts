@@ -10,7 +10,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/// <reference path="./web-components.d.ts" />
 
 declare module 'asset-url:*' {
   const value: string;
@@ -87,4 +86,21 @@ declare module 'consts:config' {
     metaDescription: string;
   };
   export default value;
+}
+
+declare module 'preact/src/jsx' {
+  namespace JSXInternal {
+    interface IntrinsicElements {
+      'grid-tooltip': GridTooltipAttributes;
+    }
+    interface HTMLAttributes {}
+    interface GridTooltipAttributes extends HTMLAttributes {
+      content: string;
+      result: string;
+      testname: string;
+      tool: BuildTool;
+      href: string;
+      category?: string;
+    }
+  }
 }
