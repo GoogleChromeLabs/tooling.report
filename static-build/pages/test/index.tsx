@@ -12,6 +12,7 @@
  */
 
 import { h, FunctionalComponent } from 'preact';
+import config from 'consts:config';
 import { githubLink, renderIssueLinksForTest } from '../../utils.js';
 import pageStyles from 'css-bundle:./styles.css';
 import bundleURL, { imports } from 'client-bundle:client/test/index.ts';
@@ -105,10 +106,7 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                   <TestCard link={path + '/'} test={test} />
                 ))}
                 <li>
-                  <a
-                    class={$contribCard}
-                    href="https://github.com/GoogleChromeLabs/tooling.report/blob/master/CONTRIBUTING.md"
-                  >
+                  <a class={$contribCard} href={config.githubContribute}>
                     +
                   </a>
                 </li>
