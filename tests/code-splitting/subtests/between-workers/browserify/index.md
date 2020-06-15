@@ -1,6 +1,6 @@
 ---
 result: partial
-issue: ''
+issue: 'N/A'
 ---
 
 Browserify's module format works in both the main thread and workers.
