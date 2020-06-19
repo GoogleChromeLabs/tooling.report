@@ -36,9 +36,8 @@ body {
 
 **index.html**
 
-```
-<!DOCTYPE html>
-…
+```html
+<!DOCTYPE html> …
 ```
 
 **sw.js**
