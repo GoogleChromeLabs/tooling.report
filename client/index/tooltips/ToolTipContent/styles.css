@@ -1,7 +1,7 @@
 .toolBadge {
   border: 1px solid gray;
   padding: var(--spacing-1) var(--spacing-3);
-  background: white;
+  background: var(--background);
   display: inline-block;
   border-radius: var(--spacing-2);
   text-transform: capitalize;
@@ -55,7 +55,7 @@
 }
 
 .toolIcon {
-  background: white;
+  background: var(--background);
   margin-right: var(--spacing-2);
   border-radius: 50%;
   width: calc(var(--touch-icon-size));
@@ -76,10 +76,11 @@
   --tooltip-border: 10px;
 
   position: absolute;
-  background: white;
+  background: var(--background);
   box-shadow: var(--card-shadow);
   z-index: var(--layer--top);
   border-radius: var(--tooltip-border);
+  border: 1px solid var(--light-blue);
   bottom: calc(100% + 11px);
   left: 0;
   font-size: var(--font-size--detail);
@@ -97,6 +98,6 @@
   margin-left: 8px;
   border-width: var(--arrow-size);
   border-style: solid;
-  border-color: white transparent transparent transparent;
+  border-color: var(--background) transparent transparent transparent;
   z-index: 100;
 }

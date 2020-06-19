@@ -52,7 +52,7 @@
   align-items: center;
   font-size: 120px;
   text-decoration: none;
-  background: white;
+  background: var(--background);
   border: 1px solid var(--light-blue);
   color: var(--light-blue);
   border-radius: 20px;

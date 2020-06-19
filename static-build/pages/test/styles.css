@@ -25,6 +25,10 @@
     @media (max-width: 822px) {
       display: none;
     }
+
+    @media (prefers-color-scheme: dark) {
+      filter: brightness(0.5);
+    }
   }
 }
 

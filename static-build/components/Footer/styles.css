@@ -14,7 +14,7 @@
 
     &:hover,
     &:focus {
-      color: white;
+      color: var(--background);
     }
   }
 
@@ -66,6 +66,10 @@
     @media (max-width: 550px) {
       height: 215px;
     }
+
+    @media (prefers-color-scheme: dark) {
+      filter: brightness(0.5) saturate(3);
+    }
   }
 }
 
@@ -77,5 +81,29 @@
   .plant {
     position: relative;
     opacity: 1;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .footer {
+    background: var(--background);
+
+    & h2 {
+      color: inherit;
+
+      & > span {
+        color: var(--vivid-blue);
+      }
+    }
+
+    & .desc,
+    & a {
+      color: inherit;
+    }
+
+    & a:hover,
+    & a:focus {
+      color: var(--vivid-blue);
+    }
   }
 }

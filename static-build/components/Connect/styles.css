@@ -29,6 +29,11 @@
 
   & h2 {
     font-weight: var(--font-weight--bold);
+
+    @media (prefers-color-scheme: light) {
+      color: var(--backpack-blue);
+    }
+
     & > span {
       font-weight: var(--font-weight--light);
     }
@@ -40,6 +45,10 @@
 
   & img {
     position: relative;
+
+    @media (prefers-color-scheme: dark) {
+      filter: brightness(0.5) saturate(3);
+    }
   }
 
   &:before {
@@ -51,7 +60,7 @@
     bottom: 0;
     width: 200%;
     height: 200%;
-    background: #fff;
+    background: var(--background);
     border-radius: 1000px;
     z-index: 0;
   }

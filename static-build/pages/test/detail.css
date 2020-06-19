@@ -140,7 +140,7 @@ value means Firefox won't render the arrow */
 .resultsCard {
   display: grid;
   gap: var(--spacing-2);
-  background: white;
+  background: var(--background);
   border-radius: 0 0 var(--spacing-1) var(--spacing-1);
   padding: var(--spacing-3);
 

@@ -3,13 +3,17 @@
   top: var(--spacing-3);
   z-index: 2;
 
-  background: white;
+  background: var(--background);
   display: flex;
   padding: var(--spacing-3) 0;
   border: 1px solid var(--ice-blue);
   border-radius: var(--spacing-2);
   box-shadow: 0 10px 45px -25px hsl(var(--denim-blue-hsl) / 70%);
   overflow-x: hidden;
+
+  @media (prefers-color-scheme: dark) {
+    box-shadow: none;
+  }
 }
 
 .tool {

@@ -1,29 +1,30 @@
 :root {
   /* Blues */
-  --background-blue: #f0f7ff;
-  --ice-blue: #e6f4ff;
-  --light-blue: #cce9ff;
-  --sky-blue: #66bdff;
-  --vivid-blue: #127aca;
-  --vivid-darker-blue: #0f66a9;
-  --teal-blue: #195380;
-  --backpack-blue: #406480;
-  --denim-blue: #5689b0;
+  --background-blue: hsl(212 100% 97%);
+  --ice-blue: hsl(206 100% 95%);
+  --light-blue: hsl(206 100% 90%);
+  --sky-blue: hsl(206 100% 70%);
+  --vivid-blue: hsl(206 84% 43%);
+  --vivid-darker-blue: hsl(206 84% 36%);
+  --teal-blue: hsl(206 67% 30%);
+  --backpack-blue: hsl(206 33% 38%);
+  --denim-blue: hsl(206 36% 51%);
 
-  --grape: #950d80;
+  --grape: hsl(309 84% 32%);
 
-  --test-pass: #7fcc71;
-  --test-pass--text: #0e3307;
-  --test-partial: #ffa91f;
-  --test-partial--text: #6f4902;
-  --test-fail: #f26969;
-  --test-fail--text: #801111;
-  --test-skip: #dedede;
+  --test-pass: hsl(111 47% 62%);
+  --test-pass--text: hsl(110 76% 11%);
+  --test-partial: hsl(37 100% 56%);
+  --test-partial--text: hsl(39 96% 22%);
+  --test-fail: hsl(0 84% 68%);
+  --test-fail--text: hsl(0 77% 28%);
+  --test-skip: hsl(0 0% 87%);
 
   /* Gra|eys */
-  --background-gray: #edf0f2;
-  --background-gray-offset: #dae1e6;
-  --background-gray-highlight: hsl(205deg 69% 97%);
+  --background: white;
+  --background-gray: hsl(204 16% 94%);
+  --background-gray-offset: hsl(205 19% 88%);
+  --background-gray-highlight: hsl(205 69% 97%);
   --text-gray: hsl(0 0% 10%);
 
   /* Shadows */
@@ -37,4 +38,36 @@
     0 60px 10px hsl(var(--denim-blue-hsl) / 5%),
     0 100px 20px hsl(var(--denim-blue-hsl) / 6%);
   --fab-shadow: 0 5px 10px hsl(var(--denim-blue-hsl) / 20%);
+
+  @media (prefers-color-scheme: dark) {
+    --ice-blue: hsl(206 50% 8%);
+    --light-blue: hsl(206 20% 17%);
+    --sky-blue: hsl(206 40% 50%);
+    --vivid-blue: hsl(206 40% 85%);
+    --vivid-darker-blue: hsl(206 100% 75%);
+    --teal-blue: hsl(206 27% 60%);
+    --backpack-blue: hsl(206 30% 70%);
+    --denim-blue: hsl(206 36% 51%);
+
+    --grape: hsl(309 84% 32%);
+
+    --test-pass: hsl(111 27% 62%);
+    --test-pass--text: hsl(111 27% 52%);
+    --test-partial: hsl(37 60% 56%);
+    --test-partial--text: hsl(37 60% 46%);
+    --test-fail: hsl(0 64% 68%);
+    --test-fail--text: hsl(0 67% 60%);
+    --test-skip: hsl(0 0% 87%);
+
+    --background: hsl(206 100% 4%);
+    --background-blue: hsl(212 30% 9%);
+    --background-gray: hsl(204 40% 8%);
+    --background-gray-offset: hsl(205 40% 11%);
+    --background-gray-highlight: hsl(205 100% 1%);
+    --text-gray: hsl(0 0% 90%);
+
+    --card-shadow: none;
+    --card-shadow--active: none;
+    --fab-shadow: none;
+  }
 }

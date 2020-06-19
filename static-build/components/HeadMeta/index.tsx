@@ -20,8 +20,7 @@ export default function HeadMeta() {
       <link rel="icon" type="image/png" sizes="32x32" href={png32URL} />
       <link rel="icon" type="image/png" sizes="16x16" href={png16URL} />
       <link rel="mask-icon" href={safariURL} />
-      <meta name="msapplication-TileColor" content="#ffffff" />
-      <meta name="theme-color" content="#ffffff" />
+      <meta name="color-scheme" content="dark light" />
       <SocialMeta />
       <link rel="stylesheet" href={sharedStyles} />
     </Fragment>
