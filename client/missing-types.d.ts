@@ -10,7 +10,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import './styles.css';
-import swURL from 'service-worker:./sw.js';
-
-navigator.serviceWorker.register(swURL);
+/// <reference path="../missing-types.d.ts" />

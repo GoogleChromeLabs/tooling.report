@@ -10,7 +10,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import './styles.css';
-import swURL from 'service-worker:./sw.js';
+import { JSXInternal } from 'preact/src/jsx';
 
-navigator.serviceWorker.register(swURL);
+declare module 'preact/src/jsx' {
+  namespace JSXInternal {
+    interface IntrinsicElements {
+      'grid-tooltip': GridTooltipAttributes;
+    }
+    interface HTMLAttributes {}
+  }
+}
+
+interface GridTooltipAttributes extends JSXInternal.HTMLAttributes {
+  content: string;
+  result: string;
+  testname: string;
+  tool: BuildTool;
+  href: string;
+  category?: string;
+}

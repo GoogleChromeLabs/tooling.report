@@ -21,7 +21,6 @@ import {
   $dotContainer,
   $dotButton,
 } from './styles.css';
-import ToolTip from '../ToolTip';
 import Dot from '../Dot';
 
 interface Props {
@@ -71,14 +70,7 @@ const DataGrid: FunctionalComponent<Props> = ({
                     ([testDir, test]) =>
                       test.results[tool] && (
                         <div class={$dotContainer}>
-                          <button
-                            aria-describedby={`${tool}-${testDir}`}
-                            class={$dotButton}
-                          >
-                            <Dot result={test.results[tool].meta.result} />
-                          </button>
-                          <ToolTip
-                            id={`${tool}-${testDir}`}
+                          <grid-tooltip
                             result={test.results[tool].meta.result}
                             tool={tool as BuildTool}
                             category={
@@ -86,10 +78,14 @@ const DataGrid: FunctionalComponent<Props> = ({
                                 ? mainTest.meta.title
                                 : collectionTitle
                             }
-                            name={test.meta.title}
-                            link={`${basePath}${testDir}`}
+                            testname={test.meta.title}
+                            href={`${basePath}${testDir}`}
                             content={test.meta.shortDesc}
-                          />
+                          >
+                            <button class={$dotButton}>
+                              <Dot result={test.results[tool].meta.result} />
+                            </button>
+                          </grid-tooltip>
                         </div>
                       ),
                   )}

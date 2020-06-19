@@ -28,12 +28,6 @@ declare module 'client-bundle:*' {
   export const imports: string[];
 }
 
-declare module 'css-bundle:*' {
-  const url: string;
-  export default url;
-  export const inline: string;
-}
-
 declare module 'test-data:' {
   const value: Tests;
   export default value;

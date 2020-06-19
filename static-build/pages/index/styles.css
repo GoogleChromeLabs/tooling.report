@@ -2,13 +2,13 @@
 @import 'components/ToolNav/styles.css';
 @import 'components/Connect/styles.css';
 @import 'shared/components/DataGrid/styles.css';
-@import 'shared/components/ToolTip/styles.css';
+@import 'client/index/tooltips/ToolTipContent/styles.css';
 @import 'shared/components/Dot/styles.css';
 
 .overview {
   background: var(--background-gray-offset);
   margin: 0 calc(var(--spacing-3) * -1);
-  padding: var(--spacing-3);
+  padding: var(--spacing-6) var(--spacing-3);
 
   @media (min-width: 550px) {
     margin: 0 calc(var(--spacing-6) * -1);
@@ -66,32 +66,60 @@
 
 .overviewGrid a {
   font-weight: bold;
+  text-decoration: none;
 }
 
 .sectionHeader {
-  display: inline-block;
   font-size: 1.5rem;
   text-transform: capitalize;
   margin-bottom: var(--spacing-2);
   position: relative;
   line-height: var(--font-lineheight--tight);
 
+  /* Clear the sticky header when linking to a section */
+  &::before {
+    --clearance: 110px;
+    display: block;
+    content: ' ';
+    margin-top: calc(var(--clearance) * -1);
+    height: var(--clearance);
+    visibility: hidden;
+    pointer-events: none;
+
+    @media (min-width: 700px) {
+      --clearance: 20px;
+    }
+
+    @media (min-width: 1200px) {
+      --clearance: 60px;
+    }
+  }
+
   @media (min-width: 700px) {
     margin-bottom: var(--spacing-4);
   }
 
-  @media (prefers-color-scheme: light) {
+  & > a {
+    text-decoration: none;
+    padding: 0;
+  }
+}
+
+.sectionHashtag {
+  color: var(--denim-blue);
+  margin-right: var(--spacing-1);
+
+  &:hover,
+  &:focus {
     color: var(--backpack-blue);
   }
+}
 
-  &:before {
-    content: '#';
-    color: var(--denim-blue);
-    margin-right: var(--spacing-1);
-  }
+.sectionTitle {
+  text-decoration: none;
 
-  &:hover:before,
-  &:focus:before {
+  &:hover > h3,
+  &:active > h3 {
     color: var(--backpack-blue);
   }
 }
@@ -110,6 +138,10 @@
   font-size: 2rem;
 }
 
+.summaryHeader {
+  text-decoration: none;
+}
+
 .summaryList {
   display: grid;
   gap: var(--spacing-5);
@@ -125,16 +157,16 @@
     margin-bottom: var(--spacing-2);
   }
 
-  & > section > h2 {
-    margin-bottom: var(--spacing-4);
-  }
-
   & > section > div {
     @media (max-width: 822px) {
       flex-direction: column-reverse;
       align-items: flex-start;
     }
   }
+}
+
+.heroLogo {
+  margin-bottom: var(--spacing-4);
 }
 
 .heroImage {

@@ -10,17 +10,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import assetsToCache from 'sw-assets:';
-import version from 'sw-version:';
-
-const staticCache = `static-${version}`;
+const staticCache = `static-${VERSION}`;
 const preserveCaches = [staticCache];
 
 addEventListener('install', event => {
   event.waitUntil(
     (async () => {
       const cache = await caches.open(staticCache);
-      await cache.addAll(assetsToCache);
+      await cache.addAll(ASSETS);
     })(),
   );
 });

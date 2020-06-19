@@ -10,6 +10,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import swURL from 'sw:./sw.js';
+import swURL from 'service-worker:./sw.js';
 
 navigator.serviceWorker.register(swURL);

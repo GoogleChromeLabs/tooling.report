@@ -20,7 +20,10 @@ import { VNode } from 'preact';
 
 import config from 'consts:config';
 
-export function githubLink(filePath: string, ref: string = 'master') {
+export function githubLink(
+  filePath: string,
+  ref: string = config.githubDefaultBranch,
+) {
   return `${config.githubRepository}tree/${ref}/${filePath}`;
 }
 

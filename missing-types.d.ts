@@ -10,10 +10,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+/// <reference path="./web-components.d.ts" />
 
 declare module 'asset-url:*' {
   const value: string;
   export default value;
+}
+
+declare module 'css-bundle:*' {
+  const url: string;
+  export default url;
+  export const inline: string;
 }
 
 interface Tests {
@@ -78,6 +85,7 @@ declare module 'consts:config' {
     githubContribute: string;
     buildDate: string;
     metaDescription: string;
+    githubDefaultBranch: string;
   };
   export default value;
 }

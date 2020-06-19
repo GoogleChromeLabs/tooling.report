@@ -10,77 +10,58 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { basename, relative } from 'path';
 import { createHash } from 'crypto';
+import { posix } from 'path';
 
-const swAssetsPrefix = 'sw-assets:';
-const swVersionPrefix = 'sw-version:';
-const swFilePrefix = 'sw:';
-
-const swAssetsPlaceholder = '__SW_ASSETS_GOES_HERE__';
-const swVersionPlaceholder = '__SW_VERSION_GOES_HERE__';
+const importPrefix = 'service-worker:';
 
 export default function serviceWorkerPlugin({
+  output = 'sw.js',
   filterAssets = () => true,
 } = {}) {
-  let emittedIds;
-
   return {
     name: 'service-worker',
-    buildStart() {
-      emittedIds = [];
-    },
     async resolveId(id, importer) {
-      if (id === swAssetsPrefix || id === swVersionPrefix) return id;
-      if (!id.startsWith(swFilePrefix)) return;
-      return (
-        swFilePrefix +
-        (await this.resolve(id.slice(swFilePrefix.length), importer)).id
-      );
+      if (!id.startsWith(importPrefix)) return;
+
+      const plainId = id.slice(importPrefix.length);
+      const result = await this.resolve(plainId, importer);
+      if (!result) return;
+
+      return importPrefix + result.id;
     },
     load(id) {
-      if (id === swAssetsPrefix) {
-        return `export default ${swAssetsPlaceholder};`;
-      }
-      if (id === swVersionPrefix) {
-        return `export default ${swVersionPlaceholder};`;
-      }
-      if (!id.startsWith(swFilePrefix)) return;
-
-      const realId = id.slice(swFilePrefix.length);
+      if (!id.startsWith(importPrefix)) return;
       const fileId = this.emitFile({
         type: 'chunk',
-        id: realId,
-        fileName: basename(realId),
+        id: id.slice(importPrefix.length),
+        fileName: output,
       });
-
-      emittedIds.push(fileId);
 
       return `export default import.meta.ROLLUP_FILE_URL_${fileId};`;
     },
-    generateBundle(_, bundle) {
-      const bundleItems = Object.values(bundle);
+    generateBundle(options, bundle) {
+      const swChunk = bundle[output];
+      const toCacheInSW = Object.values(bundle).filter(
+        item => item !== swChunk && filterAssets(item),
+      );
+      const urls = toCacheInSW.map(
+        item =>
+          posix
+            .relative(posix.dirname(output), item.fileName)
+            .replace(/((?<=^|\/)index)?\.html?$/, '') || '.',
+      );
 
-      for (const swId of emittedIds) {
-        const swChunk = bundle[this.getFileName(swId)];
-        const swPath = relative(process.cwd(), swChunk.facadeModuleId);
-        const toCacheInSW = bundleItems.filter(
-          item => item !== swChunk && filterAssets(swPath, item),
-        );
-
-        const versionHash = createHash('md5');
-        versionHash.update(swChunk.code);
-
-        for (const item of toCacheInSW) {
-          versionHash.update(item.code || item.source);
-        }
-
-        const version = versionHash.digest('hex');
-        const fileNames = toCacheInSW.map(item => item.fileName);
-        swChunk.code = swChunk.code
-          .replace(swAssetsPlaceholder, JSON.stringify(fileNames))
-          .replace(swVersionPlaceholder, JSON.stringify(version));
+      const versionHash = createHash('sha1');
+      for (const item of toCacheInSW) {
+        versionHash.update(item.code || item.source);
       }
+      const version = versionHash.digest('hex');
+
+      swChunk.code =
+        `const ASSETS = ${JSON.stringify(urls)};\n` +
+        `const VERSION = ${JSON.stringify(version)};\n` +
+        swChunk.code;
     },
   };
 }
