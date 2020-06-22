@@ -26,8 +26,6 @@ const toOutput: Output = {
   'index.html': renderPage(<IndexPage tests={testData} />),
   'about/index.html': renderPage(<AboutPage />),
   'faqs/index.html': renderPage(<FAQPage />),
-  'robots.txt': `User-agent: *
-  Disallow: /`,
 };
 
 function addTestPages(tests: Tests, basePath = '') {
