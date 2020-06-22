@@ -8,7 +8,7 @@ The first version of tooling.report focuses on [Browserify](http://browserify.or
 
 ### Choosing the next tool
 
-There are _many_ build tools out there with a wide spectrum of capabilities and varying popularity. We haven’t established quantitative rules on which tools are eligible to be listed on tooling.report and which are not, but the guiding principle is to maximize _helpfulness_ of tooling.report. While the core team will have the final call on whether any given tool should get listed on tooling.report, we strive to publicize and democratize the process in a dedicated [GitHub project board](https://github.com/GoogleChromeLabs/tooling.report/projects/2). If you plan to add a tool to tooling.report, please make sure it is listed in the project board and has been discussed in a dedicated issue with the core team.
+There are _many_ build tools out there. We haven’t yet established quantitative rules on which tools are eligible to be listed on tooling.report, but the guiding principle is to maximize _helpfulness_ of tooling.report. While the core team will have the final call on whether any given tool should get listed on tooling.report, we strive to publicize and democratize the process via GitHub issues and the [project board](https://github.com/GoogleChromeLabs/tooling.report/projects/2). If you plan to add a tool to tooling.report, please [file an issue](https://github.com/GoogleChromeLabs/tooling.report/issues/new) so it can be discussed before you put hours of work into it.
 
 ### Gathering the data
 
