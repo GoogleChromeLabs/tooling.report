@@ -12,7 +12,7 @@ There are _many_ build tools out there. We haven’t yet established quantitativ
 
 ### Gathering the data
 
-To contribute a new tool, the first step is to add its name to the top-level `config.js`. From here on in, every test in the `tests` folder is expected to have a dedicated folder with the tool's name. That folder must contain an `index.md` with the test results and a self-contained, _minimal_ setup demonstrating how the tool needs to be set up to pass the test. The test project should have a dedicated `package.json` with a `build` npm script that invokes the build tool. Whether the build output is considered a pass or a fail is determined by manual inspection and sometimes requires additional context or justification. All of this should be put into an accompanying `index.md` that has the following structure:
+Once you have agreement that a tool should be represented on the site, next step is to add its name to the top-level [`config.js`](https://github.com/GoogleChromeLabs/tooling.report/blob/dev/config.js). From here on in, every test in the `tests` folder is expected to have a dedicated folder with the tool's name. That folder must contain an `index.md` with the test results and a self-contained, _minimal_ setup demonstrating how the tool needs to be set up to pass the test. The test project should have a dedicated `package.json` with a `build` npm script that invokes the build tool. Whether the build output is considered a pass or a fail is determined by manual inspection and sometimes requires additional context or justification. All of this should be put into an accompanying `index.md` that has the following structure:
 
 ```markdown
 ---
