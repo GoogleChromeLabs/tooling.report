@@ -4,7 +4,7 @@ tooling.report is built around open-source projects and built with open-source p
 
 ## Contributing a new tool
 
-The first version of tooling.report focuses on [Browserify](http://browserify.org/) + [Gulp](https://gulpjs.com/), [Parcel](https://parceljs.org/), [Rollup](https://rollupjs.org/) and [webpack](https://webpack.js.org/). The main goal of tooling.report is to help developers find the best tool for their next project or decide whether it’s worth their time to migrate from one tool to another, and as such it is vital that we expand tooling.report to cover more tools over time. Getting help from the open-source community is vital to achieve this.
+The first version of tooling.report focuses on [Browserify](http://browserify.org/) + [Gulp](https://gulpjs.com/), [Parcel](https://parceljs.org/), [Rollup](https://rollupjs.org/) and [webpack](https://webpack.js.org/). The main goal of tooling.report is to help developers find the best tool for their next project or make the most of the tool they already use, and as such it is vital that we expand tooling.report to cover more tools over time.
 
 ### Choosing the next tool
 
