@@ -2,6 +2,10 @@
 
 tooling.report is built around open-source projects and built with open-source projects. We stand on the shoulders of giants and on many hours of work done by members of the web development community. We hope that tooling.report itself adds value to the community, but also encourage and welcome anyone who wants to contribute to tooling.report. Contributions to tooling.report can be broken down into three main groups: _Contributing a new tool to the report_, _contributing a new test to the report_ and _contributing to the site_.
 
+## Contributing a new test
+
+The web platform is ever-changing and best practices change along with it due to the evolution of protocols (e.g. HTTP/1 vs HTTP/2), browser capabilities (e.g. [import maps](https://www.youtube.com/watch?v=yOcgGSCrn-c)), file formats (e.g. JPEG vs WebP vs AVIF etc) and developer tooling. If you have an idea for a new test, the first step is to [open an issue](https://github.com/GoogleChromeLabs/tooling.report/issues/new/choose) and outline in which scenarios the _user of a web app_ would measurably benefit from a tool passing this test. Once the discussion has concluded that this test is a valuable addition to tooling.report, a PR should be opened implementing the test for the set of tools listed in tooling.report. We can’t expect everyone to be comfortable with every build tool, so each tool-specific test will be reviewed by dedicated experts of that tool
+
 ## Contributing a new tool
 
 The first version of tooling.report focuses on [Browserify](http://browserify.org/) + [Gulp](https://gulpjs.com/), [Parcel](https://parceljs.org/), [Rollup](https://rollupjs.org/) and [webpack](https://webpack.js.org/). The main goal of tooling.report is to help developers find the best tool for their next project or make the most of the tool they already use, and as such it is vital that we expand tooling.report to cover more tools over time.
@@ -28,10 +32,6 @@ Surma’s tool _says_ it is the best file size optimizer in the market, but it a
 ```
 
 Tests that are not a pass _must_ link to at least one open issue. It is strongly recommended to look at the other tools’ test projects and align with them as closely as possible. If possible, tools should try to use the same set of source files for a given test.
-
-## Contributing a new test
-
-The web platform is ever-changing and best practices change along with it due to the evolution of protocols (e.g. HTTP/1 vs HTTP/2), browser capabilities (e.g. [import maps](https://www.youtube.com/watch?v=yOcgGSCrn-c)), file formats (e.g. JPEG vs WebP vs AVIF etc) and developer tooling. If you have an idea for a new test, the first step is to [open an issue](https://github.com/GoogleChromeLabs/tooling.report/issues/new/choose) and outline in which scenarios the _user of a web app_ would measurably benefit from a tool passing this test. Once the discussion has concluded that this test is a valuable addition to tooling.report, a PR should be opened implementing the test for the set of tools listed in tooling.report. We can’t expect everyone to be comfortable with every build tool, so each tool-specific test will be reviewed by dedicated experts of that tool
 
 ## Contributing to the site
 
