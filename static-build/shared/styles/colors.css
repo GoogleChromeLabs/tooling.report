@@ -39,6 +39,10 @@
     0 100px 20px hsl(var(--denim-blue-hsl) / 6%);
   --fab-shadow: 0 5px 10px hsl(var(--denim-blue-hsl) / 20%);
 
+  /* Syntax */
+  --syntax-pink: hsl(334 86% 48%);
+  --syntax-puncation: hsl(70 5% 22%);
+
   @media (prefers-color-scheme: dark) {
     --ice-blue: hsl(206 50% 8%);
     --light-blue: hsl(206 20% 17%);
@@ -49,7 +53,7 @@
     --backpack-blue: hsl(206 30% 70%);
     --denim-blue: hsl(206 36% 51%);
 
-    --grape: hsl(309 84% 32%);
+    --grape: hsl(309 45% 60%);
 
     --test-pass: hsl(111 27% 62%);
     --test-pass--text: hsl(111 27% 52%);
@@ -69,5 +73,8 @@
     --card-shadow: none;
     --card-shadow--active: none;
     --fab-shadow: none;
+
+    --syntax-pink: hsl(334 65% 80%);
+    --syntax-puncation: hsl(70 5% 80%);
   }
 }

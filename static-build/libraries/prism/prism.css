@@ -61,12 +61,12 @@
 
   .token.string,
   .token.attr-value {
-    color: #e3116c;
+    color: var(--syntax-pink);
   }
 
   .token.punctuation,
   .token.operator {
-    color: #393a34; /* no highlight */
+    color: var(--syntax-puncation); /* no highlight */
   }
 
   .token.entity,
@@ -92,13 +92,7 @@
   .token.function,
   .token.deleted,
   .language-autohotkey .token.tag {
-    color: #950d80; /* var(--grape) ala #156 */
-  }
-
-  .token.tag,
-  .token.selector,
-  .language-autohotkey .token.keyword {
-    color: #00009f;
+    color: var(--grape);
   }
 
   .token.important,
