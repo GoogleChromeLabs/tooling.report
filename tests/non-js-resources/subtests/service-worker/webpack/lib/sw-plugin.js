@@ -34,8 +34,8 @@ module.exports = class SWPlugin {
   apply(compiler) {
     compiler.hooks.emit.tapAsync(NAME, this.emit.bind(this));
 
-    compiler.hooks.normalModuleFactory.tap(NAME, factory => {
-      factory.hooks.resolver.tap(NAME, resolve => {
+    compiler.hooks.normalModuleFactory.tap(NAME, (factory) => {
+      factory.hooks.resolver.tap(NAME, (resolve) => {
         return (dep, callback) => this.resolveId(dep, resolve, callback);
       });
     });
@@ -51,11 +51,11 @@ module.exports = class SWPlugin {
     resolve(dep, (err, dep) => {
       if (err) return callback(err);
 
-      this.sw = dep;
+      this.sw = dep.request;
 
       const url = JSON.stringify(this.output);
       const code = `module.exports = __webpack_public_path__ + ${url}`;
-      return new RawModule(code, null, `sw:${dep.rawRequest}`);
+      callback(null, new RawModule(code, null, `sw:${dep.rawRequest}`));
     });
   }
 
@@ -71,30 +71,31 @@ module.exports = class SWPlugin {
 
     const publicPath = compilation.outputOptions.publicPath || '/';
     const fileNames = toCache.map(
-      fileName => publicPath + fileName.replace(/(index)?\.html$/, ''),
+      (fileName) => publicPath + fileName.replace(/(index)?\.html$/, ''),
     );
 
-    const sw = this.sw;
-    const opts = {
-      filename: this.output,
-      globalObject: 'self',
-    };
-    const compiler = compilation.createChildCompiler(NAME, opts, []);
-    new WebWorkerTemplatePlugin().apply(compiler);
-    new SingleEntryPlugin(sw.context, sw.request, 'sw').apply(compiler);
-
-    compiler.runAsChild((err, entries, childCompilation) => {
+    compileSw(compilation, this.sw, this.output, (err, swAsset) => {
       if (err) return callback(err);
-
-      const swAsset = childCompilation.getAssets()[0].source;
 
       compilation.assets[this.output] = new ConcatSource(
         `const VERSION = ${JSON.stringify(version)};\n`,
         `const ASSETS = ${JSON.stringify(fileNames)};\n`,
-        swAsset.source(),
+        swAsset,
       );
-
       callback();
     });
   }
 };
+
+function compileSw(compilation, entry, output, callback) {
+  const opts = {
+    filename: output,
+    globalObject: 'self',
+  };
+  const compiler = compilation.createChildCompiler(NAME, opts, []);
+  new WebWorkerTemplatePlugin().apply(compiler);
+  new SingleEntryPlugin(null, entry, 'sw').apply(compiler);
+  compiler.runAsChild((err, entries, compilation) => {
+    callback(err, compilation.assets[output]);
+  });
+}
