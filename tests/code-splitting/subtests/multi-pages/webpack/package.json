@@ -1,9 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "build": "webpack -p"
+    "build": "rm -rf dist && webpack -p"
   },
   "devDependencies": {
+    "html-webpack-plugin": "^4.3.0",
     "terser-webpack-plugin": "2.3.5",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12"

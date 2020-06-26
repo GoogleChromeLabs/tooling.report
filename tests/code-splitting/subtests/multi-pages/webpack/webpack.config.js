@@ -10,10 +10,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export default {
-  input: ['src/component-1.js', 'src/component-2.js'],
-  output: {
-    dir: 'build',
-    format: 'esm',
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  entry: {
+    index: './src/index.js',
+    profile: './src/profile.js',
   },
+  optimization: {
+    splitChunks: {
+      // extract shared dependencies from entry bundles:
+      chunks: 'all',
+      // allow any size dependency to be shared:
+      // minSize: 0,
+    },
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      chunks: ['index'],
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'profile.html',
+      chunks: ['profile'],
+    }),
+  ],
 };

@@ -11,7 +11,7 @@
  * limitations under the License.
  */
 export default {
-  input: ['src/component-1.js', 'src/component-2.js'],
+  input: ['src/index.js', 'src/profile.js'],
   output: {
     dir: 'build',
     format: 'esm',
