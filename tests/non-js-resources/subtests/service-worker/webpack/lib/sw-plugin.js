@@ -34,8 +34,8 @@ module.exports = class SWPlugin {
   apply(compiler) {
     compiler.hooks.emit.tapAsync(NAME, this.emit.bind(this));
 
-    compiler.hooks.normalModuleFactory.tap(NAME, (factory) => {
-      factory.hooks.resolver.tap(NAME, (resolve) => {
+    compiler.hooks.normalModuleFactory.tap(NAME, factory => {
+      factory.hooks.resolver.tap(NAME, resolve => {
         return (dep, callback) => this.resolveId(dep, resolve, callback);
       });
     });
@@ -71,7 +71,7 @@ module.exports = class SWPlugin {
 
     const publicPath = compilation.outputOptions.publicPath || '/';
     const fileNames = toCache.map(
-      (fileName) => publicPath + fileName.replace(/(index)?\.html$/, ''),
+      fileName => publicPath + fileName.replace(/(index)?\.html$/, ''),
     );
 
     compileSw(compilation, this.sw, this.output, (err, swAsset) => {

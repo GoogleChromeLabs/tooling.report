@@ -36,12 +36,11 @@ module.exports = class SWPlugin {
   apply(compiler) {
     compiler.hooks.emit.tapPromise(NAME, this.emit.bind(this));
 
-    compiler.hooks.normalModuleFactory.tap(NAME, (factory) => {
-      factory.hooks.resolver.tap(NAME, (resolve) => {
+    compiler.hooks.normalModuleFactory.tap(NAME, factory => {
+      factory.hooks.resolver.tap(NAME, resolve => {
         resolve = promisify(resolve);
         return callbackify(
-          async (dep) =>
-            (await this.load(dep, resolve)) || (await resolve(dep)),
+          async dep => (await this.load(dep, resolve)) || (await resolve(dep)),
         );
       });
     });
@@ -73,7 +72,7 @@ module.exports = class SWPlugin {
 
     const publicPath = compilation.outputOptions.publicPath || '/';
     const fileNames = toCache.map(
-      (fileName) => publicPath + fileName.replace(/(index)?\.html$/, ''),
+      fileName => publicPath + fileName.replace(/(index)?\.html$/, ''),
     );
 
     const swAsset = await bundleSw(compilation, this.sw, this.output);
