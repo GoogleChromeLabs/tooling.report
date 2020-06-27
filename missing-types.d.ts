@@ -65,6 +65,12 @@ interface ResultMeta {
       title: string;
     };
   }>;
+  contributors?: Array<{
+    login: string;
+    name: string;
+    avatarUrl: string;
+    commits: number;
+  }>;
 }
 
 interface ToolSummary {

@@ -163,6 +163,33 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                               test,
                               subject as BuildTool,
                             )}
+                            <ol style={{ listStyle: 'none', padding: 'none' }}>
+                              {result.meta.contributors &&
+                                result.meta.contributors.map(contrib => (
+                                  <li
+                                    style={{
+                                      display: 'inline',
+                                      padding: 'none',
+                                    }}
+                                  >
+                                    <a
+                                      href={`https://github.com/${contrib.login}`}
+                                      target="_blank"
+                                      title={contrib.name}
+                                    >
+                                      <img
+                                        src={contrib.avatarUrl}
+                                        width={30}
+                                        height={30}
+                                        style={{
+                                          borderRadius: 15,
+                                          marginRight: -5,
+                                        }}
+                                      />
+                                    </a>
+                                  </li>
+                                ))}
+                            </ol>
                           </div>
                         </details>
                       ) : (
