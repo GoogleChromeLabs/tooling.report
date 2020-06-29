@@ -13,4 +13,3 @@
 
 // NOTE: This script is loaded async on the index page.
 import './tooltips';
-import './windows-font-weight';
