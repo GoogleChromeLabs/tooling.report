@@ -8,7 +8,7 @@ However, you can set [`optimization.runtimeChunk`][runtimechunk] to `"single"`. 
 
 The [`optimization.splitChunks.minSize` option](https://webpack.js.org/plugins/split-chunks-plugin/#splitchunksminsize) can be used to change the size threshold for creating a chunk, which defaults to 30k. To achieve full shared dependencies, the bundle size threshold can be effectively disabled by setting `optimization.splitChunks.minSize` to `0`.
 
-This test is a "partial" pass, since the default is buggy in terms of module instantiation. It's also undocumented in [Webpack's code splitting guide](https://webpack.js.org/guides/code-splitting/).
+This test is a "partial" pass, since `runtimeChunk:"single"` is required to ensure correct module instantiation, but it is disabled by default and not documented in [Webpack's code splitting guide](https://webpack.js.org/guides/code-splitting/).
 
 [heuristics]: https://webpack.js.org/plugins/split-chunks-plugin/#defaults
 [runtimechunk]: https://webpack.js.org/configuration/optimization/#optimizationruntimechunk
