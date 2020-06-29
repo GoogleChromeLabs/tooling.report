@@ -22,6 +22,12 @@ export default function HeadMeta() {
       <link rel="mask-icon" href={safariURL} />
       <meta name="color-scheme" content="dark light" />
       <SocialMeta />
+      <script>{`
+        const ua = navigator.userAgent;
+        if (ua.includes('Windows') && ua.includes('Chrome')) {
+          document.documentElement.style.setProperty('--font-weight--light', '400');
+        }
+      `}</script>
       <link rel="stylesheet" href={sharedStyles} />
     </Fragment>
   );
