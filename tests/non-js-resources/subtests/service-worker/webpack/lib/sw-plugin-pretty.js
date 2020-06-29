@@ -14,12 +14,13 @@ const { promisify, callbackify } = require('util');
 const { createHash } = require('crypto');
 const SingleEntryPlugin = require('webpack/lib/SingleEntryPlugin');
 const WebWorkerTemplatePlugin = require('webpack/lib/webworker/WebWorkerTemplatePlugin');
-const { ConcatSource, Source } = require('webpack-sources');
+const { ConcatSource } = require('webpack-sources');
 const RawModule = require('webpack/lib/RawModule');
 
 /** @typedef {import('webpack/lib/Compiler')} Compiler */
 /** @typedef {import('webpack/lib/Compilation')} Compilation */
 /** @typedef {import('webpack/lib/NormalModule')} NormalModule */
+/** @typedef {import('webpack/lib/Compilation').Source} Source */
 
 const swFilePrefix = 'service-worker:';
 
@@ -52,11 +53,11 @@ module.exports = class SWPlugin {
     dep.request = dep.request.slice(swFilePrefix.length);
     dep = await resolve(dep);
     if (!dep) return;
-    this.sw = dep;
+    this.sw = dep.resource;
 
     const url = JSON.stringify(this.output);
     const code = `module.exports = __webpack_public_path__ + ${url}`;
-    return new RawModule(code, null, `sw:${dep.rawRequest}`);
+    return new RawModule(code, null, `sw:${this.sw}`);
   }
 
   /** @param {Compilation} compilation */
@@ -74,34 +75,35 @@ module.exports = class SWPlugin {
       fileName => publicPath + fileName.replace(/(index)?\.html$/, ''),
     );
 
-    const swAsset = await this.bundleSw(compilation, this.sw);
+    const swAsset = await bundleSw(compilation, this.sw, this.output);
 
     compilation.assets[this.output] = new ConcatSource(
       `const VERSION = ${JSON.stringify(version)};\n`,
       `const ASSETS = ${JSON.stringify(fileNames)};\n`,
-      swAsset.source(),
+      swAsset,
     );
   }
-
-  /**
-   * @param {Compilation} compilation
-   * @param {NormalModule} sw
-   * @returns {Promise<Source>}
-   */
-  bundleSw(compilation, sw) {
-    const opts = {
-      filename: this.output,
-      globalObject: 'self',
-    };
-    const compiler = compilation.createChildCompiler(NAME, opts, []);
-    new WebWorkerTemplatePlugin().apply(compiler);
-    new SingleEntryPlugin(sw.context, sw.request, 'sw').apply(compiler);
-
-    return new Promise((resolve, reject) => {
-      compiler.runAsChild((err, entries, compilation) => {
-        if (err) reject(err);
-        else resolve(compilation.getAssets()[0].source);
-      });
-    });
-  }
 };
+
+/**
+ * @param {Compilation} compilation
+ * @param {string} entry
+ * @param {string} output
+ * @returns {Promise<Source>}
+ */
+function bundleSw(compilation, entry, output) {
+  const opts = {
+    filename: output,
+    globalObject: 'self',
+  };
+  const compiler = compilation.createChildCompiler(NAME, opts, []);
+  new WebWorkerTemplatePlugin().apply(compiler);
+  new SingleEntryPlugin(null, entry, 'sw').apply(compiler);
+
+  return new Promise((resolve, reject) => {
+    compiler.runAsChild((err, entries, compilation) => {
+      if (err) reject(err);
+      else resolve(compilation.getAssets()[0].source);
+    });
+  });
+}
