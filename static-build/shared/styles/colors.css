@@ -1,34 +1,34 @@
 :root {
   /* Blues */
-  --background-blue: hsl(212 100% 97%);
-  --ice-blue: hsl(206 100% 95%);
-  --light-blue: hsl(206 100% 90%);
-  --sky-blue: hsl(206 100% 70%);
-  --vivid-blue: hsl(206 84% 43%);
-  --vivid-darker-blue: hsl(206 84% 36%);
-  --teal-blue: hsl(206 67% 30%);
-  --backpack-blue: hsl(206 33% 38%);
-  --denim-blue: hsl(206 36% 51%);
+  --background-blue: hsl(212, 100%, 97%);
+  --ice-blue: hsl(206, 100%, 95%);
+  --light-blue: hsl(206, 100%, 90%);
+  --sky-blue: hsl(206, 100%, 70%);
+  --vivid-blue: hsl(206, 84%, 43%);
+  --vivid-darker-blue: hsl(206, 84%, 36%);
+  --teal-blue: hsl(206, 67%, 30%);
+  --backpack-blue: hsl(206, 33%, 38%);
+  --denim-blue: hsl(206, 36%, 51%);
 
-  --grape: hsl(309 84% 32%);
+  --grape: hsl(309, 84%, 32%);
 
-  --test-pass: hsl(111 47% 62%);
-  --test-pass--text: hsl(110 76% 11%);
-  --test-partial: hsl(37 100% 56%);
-  --test-partial--text: hsl(39 96% 22%);
-  --test-fail: hsl(0 84% 68%);
-  --test-fail--text: hsl(0 77% 28%);
-  --test-skip: hsl(0 0% 87%);
+  --test-pass: hsl(111, 47%, 62%);
+  --test-pass--text: hsl(110, 76%, 11%);
+  --test-partial: hsl(37, 100%, 56%);
+  --test-partial--text: hsl(39, 96%, 22%);
+  --test-fail: hsl(0, 84%, 68%);
+  --test-fail--text: hsl(0, 77%, 28%);
+  --test-skip: hsl(0, 0%, 87%);
 
   /* Gra|eys */
   --background: white;
-  --background-gray: hsl(204 16% 94%);
-  --background-gray-offset: hsl(205 19% 88%);
-  --background-gray-highlight: hsl(205 69% 97%);
-  --text-gray: hsl(0 0% 10%);
+  --background-gray: hsl(204, 16%, 94%);
+  --background-gray-offset: hsl(205, 19%, 88%);
+  --background-gray-highlight: hsl(205, 69%, 97%);
+  --text-gray: hsl(0, 0%, 10%);
 
   /* Shadows */
-  --denim-blue-hsl: 206 36% 51%;
+  --denim-blue-hsl: 206, 36%, 51%;
   --card-shadow: 0 8px 2px hsl(var(--denim-blue-hsl) / 2%),
     0 25px 10px hsl(var(--denim-blue-hsl) / 7%),
     0 50px 10px hsl(var(--denim-blue-hsl) / 5%),
@@ -40,41 +40,41 @@
   --fab-shadow: 0 5px 10px hsl(var(--denim-blue-hsl) / 20%);
 
   /* Syntax */
-  --syntax-pink: hsl(334 86% 48%);
-  --syntax-puncation: hsl(70 5% 22%);
+  --syntax-pink: hsl(334, 86%, 48%);
+  --syntax-puncation: hsl(70, 5%, 22%);
 
   @media (prefers-color-scheme: dark) {
-    --ice-blue: hsl(206 50% 8%);
-    --light-blue: hsl(206 20% 17%);
-    --sky-blue: hsl(206 40% 50%);
-    --vivid-blue: hsl(206 40% 85%);
-    --vivid-darker-blue: hsl(206 100% 75%);
-    --teal-blue: hsl(206 27% 60%);
-    --backpack-blue: hsl(206 30% 70%);
-    --denim-blue: hsl(206 36% 51%);
+    --ice-blue: hsl(206, 50%, 8%);
+    --light-blue: hsl(206, 20%, 17%);
+    --sky-blue: hsl(206, 40%, 50%);
+    --vivid-blue: hsl(206, 40%, 85%);
+    --vivid-darker-blue: hsl(206, 100%, 75%);
+    --teal-blue: hsl(206, 27%, 60%);
+    --backpack-blue: hsl(206, 30%, 70%);
+    --denim-blue: hsl(206, 36%, 51%);
 
-    --grape: hsl(309 45% 60%);
+    --grape: hsl(309, 45%, 60%);
 
-    --test-pass: hsl(111 27% 62%);
-    --test-pass--text: hsl(111 27% 52%);
-    --test-partial: hsl(37 60% 56%);
-    --test-partial--text: hsl(37 60% 46%);
-    --test-fail: hsl(0 64% 68%);
-    --test-fail--text: hsl(0 67% 60%);
-    --test-skip: hsl(0 0% 87%);
+    --test-pass: hsl(111, 27%, 62%);
+    --test-pass--text: hsl(111, 27%, 52%);
+    --test-partial: hsl(37, 60%, 56%);
+    --test-partial--text: hsl(37, 60%, 46%);
+    --test-fail: hsl(0, 64%, 68%);
+    --test-fail--text: hsl(0, 67%, 60%);
+    --test-skip: hsl(0, 0%, 87%);
 
-    --background: hsl(206 100% 4%);
-    --background-blue: hsl(212 30% 9%);
-    --background-gray: hsl(204 40% 8%);
-    --background-gray-offset: hsl(205 40% 11%);
-    --background-gray-highlight: hsl(205 100% 1%);
-    --text-gray: hsl(0 0% 90%);
+    --background: hsl(206, 100%, 4%);
+    --background-blue: hsl(212, 30%, 9%);
+    --background-gray: hsl(204, 40%, 8%);
+    --background-gray-offset: hsl(205, 40%, 11%);
+    --background-gray-highlight: hsl(205, 100%, 1%);
+    --text-gray: hsl(0, 0%, 90%);
 
     --card-shadow: none;
     --card-shadow--active: none;
     --fab-shadow: none;
 
-    --syntax-pink: hsl(334 65% 80%);
-    --syntax-puncation: hsl(70 5% 80%);
+    --syntax-pink: hsl(334, 65%, 80%);
+    --syntax-puncation: hsl(70, 5%, 80%);
   }
 }
