@@ -106,10 +106,15 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
                   <FirstParagraphOnly content={README} />
                 </div>
                 <HeaderLinkList home={true} />
-                <div class={$webdev}>
+                <a
+                  href="https://web.dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={$webdev}
+                >
                   Brought to you by
                   <img src={webdevLogoURL} alt="web.dev" />
-                </div>
+                </a>
               </div>
             </div>
           </section>
