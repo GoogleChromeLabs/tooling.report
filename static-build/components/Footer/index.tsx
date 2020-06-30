@@ -27,8 +27,6 @@ import {
 import { html as CREDITS } from 'md:../../../CREDITS.md';
 
 const links = [
-  { title: 'Privacy Policy', href: '#' },
-  { title: 'Terms and Conditions', href: '#' },
   {
     title: 'Source on Github',
     href: config.githubRepository,
