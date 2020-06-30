@@ -203,6 +203,7 @@
 }
 
 .webdev {
+  text-decoration: none;
   text-transform: uppercase;
   display: flex;
   flex-direction: column;
