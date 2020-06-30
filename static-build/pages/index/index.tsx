@@ -46,6 +46,7 @@ import DataGrid from 'shared/components/DataGrid';
 import Legend from 'shared/components/DataGrid/Legend';
 import Connect from '../../components/Connect';
 import FirstParagraphOnly from 'static-build/components/FirstParagraphOnly';
+import Title from 'static-build/components/Title';
 import * as toolImages from 'shared/utils/tool-images';
 import { html as README } from 'md:../../../README.md';
 import config from 'consts:config';
@@ -79,7 +80,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
   return (
     <html lang="en">
       <head>
-        <title>Home | Score Overview</title>
+        <Title parts={['Overview']} />
         <meta name="description" content={config.metaDescription} />
         <HeadMeta />
         <link rel="stylesheet" href={pageStyles} />
