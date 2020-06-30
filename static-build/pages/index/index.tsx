@@ -25,12 +25,13 @@ import {
   $heroImage,
   $overviewHeader,
   $overviewGrid,
-  $overview,
-  $consumeGap,
   $gettingStarted,
   $webdev,
+  $overviewContent,
+  $overviewContainer,
 } from './styles.css';
 import { $well } from '../../shared/styles/well.css';
+import { $contentContainer } from 'static-build/shared/styles/sizing.css';
 
 import bundleURL, { imports } from 'client-bundle:client/index/index.ts';
 import analyticsBundleURL from 'client-bundle:client/analytics/index.js';
@@ -114,112 +115,127 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
           </section>
         </header>
         <main>
-          <GithubFAB />
+          <div class={$contentContainer}>
+            <GithubFAB />
 
-          <section id="getting-started">
-            <div class={$sidebarLayout}>
-              <div></div>
-              <div class={$gettingStarted}>
-                <h3>Getting Started</h3>
-                <p>
-                  This homepage shows the aggregated results from a bespoke
-                  suite of build tool tests. A build tool test is a
-                  configuration file created to specifically handle a feature.
-                  We intend for the capability results and the configuration
-                  files to be transparent; to encourage learning & growing
-                  together.
-                </p>
-                <p>
-                  Yes,{' '}
-                  <b>
-                    each of the {possible} feature tests have a hand written
-                    config file!
-                  </b>{' '}
-                  We worked with the build tool authors to ensure fair tests and
-                  succinct configuration. It's all in Github.
-                </p>
-                <p class={$well}>
-                  We highly encourage you to{' '}
-                  <a href={config.githubContribute}>contribute</a> too!
-                </p>
+            <section id="getting-started">
+              <div class={$sidebarLayout}>
+                <div></div>
+                <div class={$gettingStarted}>
+                  <h3>Getting Started</h3>
+                  <p>
+                    This homepage shows the aggregated results from a bespoke
+                    suite of build tool tests. A build tool test is a
+                    configuration file created to specifically handle a feature.
+                    We intend for the capability results and the configuration
+                    files to be transparent; to encourage learning & growing
+                    together.
+                  </p>
+                  <p>
+                    Yes,{' '}
+                    <b>
+                      each of the {possible} feature tests have a hand written
+                      config file!
+                    </b>{' '}
+                    We worked with the build tool authors to ensure fair tests
+                    and succinct configuration. It's all in Github.
+                  </p>
+                  <p class={$well}>
+                    We highly encourage you to{' '}
+                    <a href={config.githubContribute}>contribute</a> too!
+                  </p>
+                </div>
               </div>
-            </div>
-          </section>
+            </section>
 
-          <section id="summary">
-            <a href="#summary" class={$summaryHeader}>
-              <h3 class={$sectionHeader}>
-                <span class={$sectionHashtag}>#</span>
-                Summary
-              </h3>
-            </a>
-            <div class={$sidebarLayout}>
-              <aside>
-                <small>
-                  Current results as of <time>{config.buildDate}</time>{' '}
-                </small>
-              </aside>
-              <div>{renderSummary(tests)}</div>
-            </div>
-          </section>
-
-          <section id="data" class={$consumeGap}>
-            <div class={$sidebarLayout}>
-              <div></div>
-              <div class={$gettingStarted}>
-                <h3>Information</h3>
-                <p>
-                  Below you'll get to see how your favorite, or new to be
-                  favorite, tool is handling our industry best practice test
-                  suite.
-                </p>
-                <p class={$well}>Each tool scores as follows:</p>
-                <Legend />
-                <h4>The Tools</h4>
-                <p>
-                  We chose browserify, parcel, rollup & webpack first out of
-                  popularity; to cover the most surface area. We are actively
-                  aggregating feedback for the next set of tools and tests.
-                </p>
+            <section id="summary">
+              <a href="#summary" class={$summaryHeader}>
+                <h3 class={$sectionHeader}>
+                  <span class={$sectionHashtag}>#</span>
+                  Summary
+                </h3>
+              </a>
+              <div class={$sidebarLayout}>
+                <aside>
+                  <small>
+                    Current results as of <time>{config.buildDate}</time>{' '}
+                  </small>
+                </aside>
+                <div>{renderSummary(tests)}</div>
               </div>
-            </div>
-          </section>
+            </section>
+
+            <section id="data">
+              <div class={$sidebarLayout}>
+                <div></div>
+                <div class={$gettingStarted}>
+                  <h3>Information</h3>
+                  <p>
+                    Below you'll get to see how your favorite, or new to be
+                    favorite, tool is handling our industry best practice test
+                    suite.
+                  </p>
+                  <p class={$well}>Each tool scores as follows:</p>
+                  <Legend />
+                  <h4>The Tools</h4>
+                  <p>
+                    We chose browserify, parcel, rollup & webpack first out of
+                    popularity; to cover the most surface area. We are actively
+                    aggregating feedback for the next set of tools and tests.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </div>
 
           <ToolNav />
 
-          <section class={`${$overview} ${$overviewGrid}`}>
-            <a href="#overview">
-              <h2 id="overview" class={`${$overviewHeader} ${$sectionHeader}`}>
-                <span class={$sectionHashtag}>#</span>
-                Overview
-              </h2>
-            </a>
-            <DataGrid tests={tests} basePath="/" collectionTitle="Overview" />
-          </section>
-
-          {Object.entries(tests).map(([testDir, collection]) => {
-            const sectionId = collection.meta.title
-              .replace(/\s/g, '-')
-              .toLowerCase();
-
-            return (
-              <section>
-                <h3 class={$sectionHeader} id={sectionId}>
-                  <a class={$sectionHashtag} href={`#${sectionId}`}>
-                    #
-                  </a>
-                  <a class={$sectionTitle} href={`${testDir}/`}>
-                    {collection.meta.title}
-                  </a>
-                </h3>
+          <div class={$overviewContainer}>
+            <section class={`${$contentContainer} ${$overviewContent}`}>
+              <div class={$overviewGrid}>
+                <a href="#overview">
+                  <h2
+                    id="overview"
+                    class={`${$overviewHeader} ${$sectionHeader}`}
+                  >
+                    <span class={$sectionHashtag}>#</span>
+                    Overview
+                  </h2>
+                </a>
                 <DataGrid
-                  tests={collection.subTests}
-                  basePath={`${testDir}/`}
-                  collectionTitle={collection.meta.title}
+                  tests={tests}
+                  basePath="/"
+                  collectionTitle="Overview"
                 />
-              </section>
-            );
-          })}
+              </div>
+            </section>
+          </div>
+
+          <div class={$contentContainer}>
+            {Object.entries(tests).map(([testDir, collection]) => {
+              const sectionId = collection.meta.title
+                .replace(/\s/g, '-')
+                .toLowerCase();
+
+              return (
+                <section>
+                  <h3 class={$sectionHeader} id={sectionId}>
+                    <a class={$sectionHashtag} href={`#${sectionId}`}>
+                      #
+                    </a>
+                    <a class={$sectionTitle} href={`${testDir}/`}>
+                      {collection.meta.title}
+                    </a>
+                  </h3>
+                  <DataGrid
+                    tests={collection.subTests}
+                    basePath={`${testDir}/`}
+                    collectionTitle={collection.meta.title}
+                  />
+                </section>
+              );
+            })}
+          </div>
         </main>
         <Connect />
         <Footer />

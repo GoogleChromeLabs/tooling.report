@@ -2,7 +2,14 @@
   position: sticky;
   top: var(--spacing-3);
   z-index: 2;
+}
 
+.toolNavContent {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.toolNavInner {
   background: var(--background);
   display: flex;
   padding: var(--spacing-3) 0;
@@ -13,6 +20,11 @@
 
   @media (prefers-color-scheme: dark) {
     box-shadow: none;
+  }
+
+  @media only screen and (min-width: 700px) {
+    margin-left: calc(var(--section-aside-width) + var(--spacing-3));
+    padding: var(--spacing-3) var(--spacing-3) var(--spacing-3) 0;
   }
 }
 
@@ -35,15 +47,8 @@
     object-fit: contain;
     margin-right: var(--spacing-2);
   }
-}
 
-@media only screen and (min-width: 700px) {
-  .toolNav {
-    margin-left: calc(var(--section-aside-width) + var(--spacing-3));
-    padding: var(--spacing-3) var(--spacing-3) var(--spacing-3) 0;
-  }
-
-  .tool {
+  @media only screen and (min-width: 700px) {
     place-content: left;
 
     & > figcaption {

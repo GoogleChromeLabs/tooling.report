@@ -5,34 +5,24 @@
 @import 'client/index/tooltips/ToolTipContent/styles.css';
 @import 'shared/components/Dot/styles.css';
 
-.overview {
+.overviewContainer {
   background: var(--background-gray-offset);
-  margin: 0 calc(var(--spacing-3) * -1);
-  padding: var(--spacing-6) var(--spacing-3);
+  margin: 6rem 0;
+}
 
-  @media (min-width: 550px) {
-    margin: 0 calc(var(--spacing-6) * -1);
-    padding: var(--spacing-5) var(--spacing-6) var(--spacing-6);
-  }
+.overviewContent {
+  padding-top: var(--spacing-6);
+  padding-bottom: var(--spacing-6);
 
   @media (min-width: 1400px) {
-    --extra-viewport-space: calc(calc(100vw - 1304px) / 2);
-    margin: 0 calc(var(--extra-viewport-space) * -1);
-    padding: var(--spacing-7) var(--extra-viewport-space);
+    padding-top: var(--spacing-7);
+    padding-bottom: var(--spacing-7);
   }
 }
 
 @media (min-width: 1024px) {
   header p {
     margin-right: calc(-1 * var(--spacing-7));
-  }
-}
-
-.consumeGap {
-  margin-bottom: -3rem;
-
-  @media (min-width: 550px) {
-    margin-bottom: -8rem;
   }
 }
 

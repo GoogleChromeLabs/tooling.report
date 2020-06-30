@@ -23,7 +23,8 @@ import FirstParagraphOnly from 'static-build/components/FirstParagraphOnly';
 import BreadCrumbs from 'static-build/components/BreadCrumbs';
 import Title from 'static-build/components/Title';
 
-import { $heroText, $heroImage } from './styles.css';
+import { $heroText, $heroImage, $aboutContent } from './styles.css';
+import { $contentContainer } from 'static-build/shared/styles/sizing.css';
 import { html as README } from 'md:../../../README.md';
 import { html as ABOUT } from 'md:../../../ABOUT.md';
 
@@ -60,7 +61,12 @@ const AboutPage: FunctionalComponent<Props> = () => {
             </div>
           </section>
         </header>
-        <main dangerouslySetInnerHTML={{ __html: ABOUT }} />
+        <main>
+          <div
+            class={`${$contentContainer} ${$aboutContent}`}
+            dangerouslySetInnerHTML={{ __html: ABOUT }}
+          />
+        </main>
         <Footer />
       </body>
     </html>

@@ -2,7 +2,7 @@
 @import 'components/TestCard/styles.css';
 @import 'components/BreadCrumbs/styles.css';
 
-main {
+.faqContent {
   gap: var(--spacing-3);
   padding: var(--spacing-5) var(--spacing-3);
   max-width: 1024px;
