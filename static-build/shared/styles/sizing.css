@@ -18,7 +18,23 @@
   --pageMax: 720px;
   --numTools: 4;
 
+  --page-max-width: 1400px;
+
   @media (min-width: 1200px) {
     --section-aside-width: 250px;
+  }
+}
+
+.contentContainer {
+  max-width: var(--page-max-width);
+  display: grid;
+  gap: 5rem;
+  padding: var(--spacing-5) var(--spacing-3);
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  @media (min-width: 550px) {
+    gap: 10rem;
+    padding: var(--spacing-7) var(--spacing-6) var(--spacing-3);
   }
 }

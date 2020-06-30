@@ -46,6 +46,7 @@ import {
   $testCardList,
   $collectionSummary,
 } from './collection.css';
+import { $contentContainer } from 'static-build/shared/styles/sizing.css';
 import { $well } from '../../shared/styles/well.css';
 import { $heroImage, $heroText } from './styles.css';
 import Connect from 'static-build/components/Connect/index.js';
@@ -89,100 +90,106 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
           </section>
         </header>
 
-        {test.subTests && (
-          <main class={$collectionPage}>
-            <section class={$collectionSummary}>
-              <h3>Why</h3>
-              <article
-                dangerouslySetInnerHTML={{ __html: test.html }}
-              ></article>
-              <p class={$well}>
-                Use the (+) card below & tell us if we missed a capability!
-              </p>
-            </section>
+        <main>
+          {test.subTests && (
+            <div class={`${$contentContainer} ${$collectionPage}`}>
+              <section class={$collectionSummary}>
+                <h3>Why</h3>
+                <article
+                  dangerouslySetInnerHTML={{ __html: test.html }}
+                ></article>
+                <p class={$well}>
+                  Use the (+) card below & tell us if we missed a capability!
+                </p>
+              </section>
 
-            <section>
-              <ul class={$testCardList}>
-                {Object.entries(test.subTests).map(([path, test]) => (
-                  <TestCard link={path + '/'} test={test} />
+              <section>
+                <ul class={$testCardList}>
+                  {Object.entries(test.subTests).map(([path, test]) => (
+                    <TestCard link={path + '/'} test={test} />
+                  ))}
+                  <li>
+                    <a class={$contribCard} href={config.githubContribute}>
+                      +
+                    </a>
+                  </li>
+                </ul>
+              </section>
+
+              <Connect />
+            </div>
+          )}
+
+          {!test.subTests && (
+            <div class={`${$contentContainer} ${$detailPage}`}>
+              <ul class={$testResultList}>
+                {Object.entries(test.results).map(([subject, result]) => (
+                  <TestResultSnippet
+                    name={subject}
+                    result={result.meta.result}
+                  />
                 ))}
-                <li>
-                  <a class={$contribCard} href={config.githubContribute}>
-                    +
-                  </a>
-                </li>
               </ul>
-            </section>
 
-            <Connect />
-          </main>
-        )}
+              <section class={$explainerPost}>
+                <article
+                  dangerouslySetInnerHTML={{ __html: test.html }}
+                ></article>
+              </section>
 
-        {!test.subTests && (
-          <main class={$detailPage}>
-            <ul class={$testResultList}>
-              {Object.entries(test.results).map(([subject, result]) => (
-                <TestResultSnippet name={subject} result={result.meta.result} />
-              ))}
-            </ul>
-
-            <section class={$explainerPost}>
-              <article
-                dangerouslySetInnerHTML={{ __html: test.html }}
-              ></article>
-            </section>
-
-            <section>
-              <h1>Conclusion</h1>
-              <article>
-                {Object.entries(test.results).map(([subject, result]) => {
-                  const summaryInner = (
-                    <div class={$resultSummaryInner}>
-                      <div class={$subjectContainer}>
-                        <span class={$subjectName}>{subject}</span>
-                        <Dot result={result.meta.result} />
+              <section>
+                <h1>Conclusion</h1>
+                <article>
+                  {Object.entries(test.results).map(([subject, result]) => {
+                    const summaryInner = (
+                      <div class={$resultSummaryInner}>
+                        <div class={$subjectContainer}>
+                          <span class={$subjectName}>{subject}</span>
+                          <Dot result={result.meta.result} />
+                        </div>
+                        <div class={$gitHubIconPlaceholder} />
                       </div>
-                      <div class={$gitHubIconPlaceholder} />
-                    </div>
-                  );
+                    );
 
-                  return (
-                    <div class={$result}>
-                      {result.html || result.meta.issue ? (
-                        <details id={subject}>
-                          <summary class={$resultSummary}>
-                            {summaryInner}
-                          </summary>
-                          <div class={$resultsCard}>
-                            <div
-                              class={$results}
-                              dangerouslySetInnerHTML={{
-                                __html: result.html || 'NO',
-                              }}
-                            ></div>
-                            {renderIssueLinksForTest(
-                              test,
-                              subject as BuildTool,
-                            )}
-                          </div>
-                        </details>
-                      ) : (
-                        <div class={$resultSummary}>{summaryInner}</div>
-                      )}
-                      {/* This needs to sit outside the <summary>, as links inside <summary> aren't clickable */}
-                      <a
-                        href={githubLink(result.repositoryPath)}
-                        class={$gitHubIcon}
-                      >
-                        <GithubIcon />
-                      </a>
-                    </div>
-                  );
-                })}
-              </article>
-            </section>
-          </main>
-        )}
+                    return (
+                      <div class={$result}>
+                        {result.html || result.meta.issue ? (
+                          <details id={subject}>
+                            <summary class={$resultSummary}>
+                              {summaryInner}
+                            </summary>
+                            <div class={$resultsCard}>
+                              <div
+                                class={$results}
+                                dangerouslySetInnerHTML={{
+                                  __html: result.html || 'NO',
+                                }}
+                              ></div>
+                              {renderIssueLinksForTest(
+                                test,
+                                subject as BuildTool,
+                              )}
+                            </div>
+                          </details>
+                        ) : (
+                          <div class={$resultSummary}>{summaryInner}</div>
+                        )}
+                        {/* This needs to sit outside the <summary>, as links inside <summary> aren't clickable */}
+                        <a
+                          href={githubLink(result.repositoryPath)}
+                          class={$gitHubIcon}
+                        >
+                          <GithubIcon />
+                        </a>
+                      </div>
+                    );
+                  })}
+                </article>
+              </section>
+            </div>
+          )}
+        </main>
+
         <Footer />
       </body>
     </html>

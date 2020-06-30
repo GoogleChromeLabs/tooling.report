@@ -11,24 +11,29 @@
  * limitations under the License.
  */
 import { h } from 'preact';
-import { $toolNav, $tool } from './styles.css';
+import { $toolNav, $tool, $toolNavInner, $toolNavContent } from './styles.css';
+import { $contentContainer } from 'static-build/shared/styles/sizing.css';
 import config from 'consts:config';
 import * as toolImages from 'shared/utils/tool-images';
 
 function ToolNav() {
   return (
-    <div className={$toolNav}>
-      {config.testSubjects.map(tool => (
-        <figure class={$tool}>
-          <img
-            height="40"
-            width="40"
-            src={toolImages[tool]}
-            alt={`${tool} logo`}
-          />
-          <figcaption>{tool}</figcaption>
-        </figure>
-      ))}
+    <div class={$toolNav}>
+      <div class={`${$contentContainer} ${$toolNavContent}`}>
+        <div class={$toolNavInner}>
+          {config.testSubjects.map(tool => (
+            <figure class={$tool}>
+              <img
+                height="40"
+                width="40"
+                src={toolImages[tool]}
+                alt={`${tool} logo`}
+              />
+              <figcaption>{tool}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
