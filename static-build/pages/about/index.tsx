@@ -21,6 +21,7 @@ import HeaderLinkList from 'static-build/components/HeaderLinkList';
 import { WalkerHero } from 'static-build/components/Heroes';
 import FirstParagraphOnly from 'static-build/components/FirstParagraphOnly';
 import BreadCrumbs from 'static-build/components/BreadCrumbs';
+import Title from 'static-build/components/Title';
 
 import { $heroText, $heroImage } from './styles.css';
 import { html as README } from 'md:../../../README.md';
@@ -32,7 +33,7 @@ const AboutPage: FunctionalComponent<Props> = () => {
   return (
     <html lang="en">
       <head>
-        <title>About</title>
+        <Title parts={['About']} />
         <meta
           name="description"
           content="More direct and ancillary information about this site."
