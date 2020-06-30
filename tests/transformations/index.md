@@ -8,6 +8,6 @@ One of the main reasons we adopt build tooling is to apply transformations to th
 
 When an application's code and resources are represented as a graph of dependencies, transformations can be applied based on a resource's type, where it is used, or the way it is referenced. These tests cover some of the most commonly-used transformations.
 
-[minification]: /transformations/minification/
+[minification]: /transformations/minify-js/
 [compression]: /transformations/compress-images/
 [extracting critical css]: https://web.dev/extract-critical-css/
