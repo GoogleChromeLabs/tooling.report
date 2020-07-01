@@ -11,7 +11,7 @@
  * limitations under the License.
  */
 import { h, Fragment } from 'preact';
-import toolingReportSocial from 'asset-url:../../img/tooling-report-social.jpg';
+import toolingReportSocial from 'asset-url:static-build/img/tooling-report-social.png';
 
 export default function SocialMeta() {
   return (
