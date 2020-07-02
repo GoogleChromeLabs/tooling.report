@@ -21,10 +21,6 @@
   max-height: 40%;
 }
 
-.toolIcon abbr {
-  padding: 0;
-}
-
 .toolName {
   text-transform: capitalize;
   font-weight: var(--font-weight--bold);
