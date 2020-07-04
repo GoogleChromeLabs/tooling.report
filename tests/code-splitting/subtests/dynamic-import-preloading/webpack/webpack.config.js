@@ -1,14 +1,11 @@
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: 'production',
-  devtool: 'eval',
-  entry: {
-    index: './src/index.js',
-  },
-  output: {
-    filename: '[name].js',
-  },
   optimization: {
+    /**
+     * Below values are deliberated to create a separate chunk of `exclaim.js`.
+     * These are not to be used in production grade code.
+     */
     splitChunks: {
       chunks: 'all',
       minChunks: 1,
