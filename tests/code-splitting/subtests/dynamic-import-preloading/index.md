@@ -22,14 +22,6 @@ setTimeout(async () => {
 }, 6000);
 ```
 
-**exclaim.js**
-
-```js
-export function exclaim(msg) {
-  return msg + '!';
-}
-```
-
 **utils.js**
 
 ```js
@@ -42,6 +34,14 @@ export function logCaps(msg) {
 
 export function shout(msg) {
   logCaps(exclaim(msg));
+}
+```
+
+**exclaim.js**
+
+```js
+export function exclaim(msg) {
+  return msg + '!';
 }
 ```
 
