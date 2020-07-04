@@ -1,2 +1,5 @@
 import { exclaim } from './exclaim.js';
-console.log(exclaim('this is profile'));
+function showProfile() {
+  console.log(exclaim('this is profile'));
+}
+export default showProfile;
