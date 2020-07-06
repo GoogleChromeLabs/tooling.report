@@ -28,10 +28,10 @@ function Connect() {
           </h2>
           <p>
             We want to hear from you, let us know how to make this better. Open
-            up a Github issue and we’ll track it there. Thanks!
+            up a GitHub issue and we’ll track it there. Thanks!
           </p>
           <a href={`${config.githubRepository}issues/new`}>
-            Open a Github Issue
+            Open a GitHub Issue
           </a>
         </div>
       </div>

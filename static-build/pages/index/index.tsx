@@ -143,7 +143,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
                       config file!
                     </b>{' '}
                     We worked with the build tool authors to ensure fair tests
-                    and succinct configuration. It's all in Github.
+                    and succinct configuration. It's all in GitHub.
                   </p>
                   <p class={$well}>
                     We highly encourage you to{' '}
