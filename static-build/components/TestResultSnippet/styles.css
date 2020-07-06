@@ -13,6 +13,7 @@
   align-items: center;
   border: 1px solid var(--light-blue);
   margin: var(--spacing-2) auto;
+  padding: 0;
 }
 
 .toolIcon img {
