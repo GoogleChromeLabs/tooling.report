@@ -154,12 +154,12 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
             </section>
 
             <section id="summary">
-              <a href="#summary" class={$summaryHeader}>
-                <h3 class={$sectionHeader}>
+              <h3 class={$sectionHeader}>
+                <a href="#summary" class={$summaryHeader}>
                   <span class={$sectionHashtag}>#</span>
                   Summary
-                </h3>
-              </a>
+                </a>
+              </h3>
               <div class={$sidebarLayout}>
                 <aside>
                   <small>
@@ -198,15 +198,15 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
           <div class={$overviewContainer}>
             <section class={`${$contentContainer} ${$overviewContent}`}>
               <div class={$overviewGrid}>
-                <a href="#overview">
-                  <h2
+                <h2
                     id="overview"
                     class={`${$overviewHeader} ${$sectionHeader}`}
                   >
+                  <a href="#overview">
                     <span class={$sectionHashtag}>#</span>
                     Overview
-                  </h2>
-                </a>
+                  </a>
+                </h2>
                 <DataGrid
                   tests={tests}
                   basePath="/"
