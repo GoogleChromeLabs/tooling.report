@@ -32,7 +32,7 @@ const TestResultSnippet: FunctionalComponent<Props> = ({
         <a href={`#${name}`} class={$toolIcon}>
           <img
             src={toolImages[name as BuildTool]}
-            alt={`${name} bundler logo`}
+            alt={`${name}`}
           />
         </a>
       </figure>
