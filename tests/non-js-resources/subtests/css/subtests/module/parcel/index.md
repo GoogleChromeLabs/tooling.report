@@ -1,5 +1,5 @@
 ---
-result: partial
+result: pass
 issue:
   - url: https://github.com/parcel-bundler/parcel/issues/4480
     fixedSince: 2.0.0-beta.1
