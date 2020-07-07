@@ -1,3 +1,2 @@
-import url from './styles.css';
-
+import url from 'url:./styles.css';
 console.log(url);
