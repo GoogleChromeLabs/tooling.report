@@ -39,6 +39,7 @@ export default function HeadMeta({ titleParts, description }: Props) {
       <title>{title}</title>
       <meta property="og:title" content={title} />
       <meta name="description" content={description} />
+      {/* Twitter don't use the standard meta description which is stupid but whatever */}
       <meta property="og:description" content={description} />
       <link rel="shortcut icon" href={icoURL} />
       <link rel="apple-touch-icon" sizes="180x180" href={appleIconURL} />
@@ -47,6 +48,7 @@ export default function HeadMeta({ titleParts, description }: Props) {
       <link rel="mask-icon" href={safariURL} />
       <meta name="color-scheme" content="dark light" />
       <meta property="og:type" content="article" />
+      {/* Twitter requires the image URL to include the origin which is stupid but whatever */}
       <meta property="og:image" content={config.origin + toolingReportSocial} />
       <meta property="og:site_name" content="tooling.report" />
       <meta name="twitter:site" content="@ChromiumDev" />
