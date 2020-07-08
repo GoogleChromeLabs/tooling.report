@@ -18,9 +18,9 @@ import appleIconURL from 'asset-url:../../img/apple-touch-icon.png';
 import png32URL from 'asset-url:../../img/favicon-32x32.png';
 import png16URL from 'asset-url:../../img/favicon-16x16.png';
 import safariURL from 'asset-url:../../img/safari-pinned-tab.svg';
-import config from 'consts:config';
+import toolingReportSocialURL from 'asset-url:static-build/img/tooling-report-social.png';
 
-import toolingReportSocial from 'asset-url:static-build/img/tooling-report-social.png';
+import config from 'consts:config';
 
 interface Props {
   titleParts: string[];
@@ -49,7 +49,10 @@ export default function HeadMeta({ titleParts, description }: Props) {
       <meta name="color-scheme" content="dark light" />
       <meta property="og:type" content="article" />
       {/* Twitter requires the image URL to include the origin which is stupid but whatever */}
-      <meta property="og:image" content={config.origin + toolingReportSocial} />
+      <meta
+        property="og:image"
+        content={config.origin + toolingReportSocialURL}
+      />
       <meta property="og:site_name" content="tooling.report" />
       <meta name="twitter:site" content="@ChromiumDev" />
       <meta name="twitter:creator" content="@ChromiumDev" />
