@@ -1,6 +1,5 @@
 ---
 title: URL
-importance: 1
 shortDesc: 'Can CSS be imported to produce a stylesheet URL?'
 ---
 

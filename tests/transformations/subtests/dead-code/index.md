@@ -1,6 +1,5 @@
 ---
 title: Dead code elimination
-importance: 1
 shortDesc: 'Can unused code paths be removed from bundles?'
 ---
 

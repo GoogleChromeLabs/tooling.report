@@ -1,6 +1,5 @@
 ---
 title: Images
-importance: 1
 shortDesc: 'Import images from JavaScript'
 ---
 

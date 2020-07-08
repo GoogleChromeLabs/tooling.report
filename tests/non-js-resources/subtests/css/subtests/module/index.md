@@ -1,6 +1,5 @@
 ---
 title: Module
-importance: 1
 shortDesc: 'Can CSS "Modules" be used for scoping?'
 ---
 

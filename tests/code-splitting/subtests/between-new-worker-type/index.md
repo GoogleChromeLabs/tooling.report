@@ -1,6 +1,5 @@
 ---
 title: Between new worker type
-importance: 1
 shortDesc: 'Can entry bundles be created for other contexts?'
 ---
 

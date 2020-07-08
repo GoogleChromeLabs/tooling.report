@@ -1,6 +1,5 @@
 ---
 title: URL
-importance: 1
 shortDesc: 'Import a binary file as an asset URL'
 ---
 

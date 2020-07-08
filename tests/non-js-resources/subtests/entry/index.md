@@ -1,6 +1,5 @@
 ---
 title: Entry points
-importance: 1
 shortDesc: 'Can the entry point be a non-JavaScript resource?'
 ---
 

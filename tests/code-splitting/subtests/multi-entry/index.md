@@ -1,6 +1,5 @@
 ---
 title: Multiple entry points per page
-importance: 1
 shortDesc: 'Can multiple entry points be used without duplicating modules?'
 ---
 

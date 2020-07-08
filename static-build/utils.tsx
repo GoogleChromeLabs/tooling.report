@@ -56,13 +56,18 @@ export function writeFiles(toOutput: OutputMap) {
   });
 }
 
-export function calculateScore(
-  test: Test,
-  tool: BuildTool,
-): { score: number; possible: number } {
+interface ScoreForToolTest {
+  score: number;
+  possible: number;
+}
+
+export function calculateScore(test: Test, tool: BuildTool): ScoreForToolTest {
   let score = 0;
-  let possible = 1;
+  let possible = 0;
+
   if (test.results[tool]) {
+    possible = 1;
+
     switch (test.results[tool].meta.result) {
       case 'pass':
         score = 1;
@@ -73,14 +78,6 @@ export function calculateScore(
       // All other values are value = 0;
     }
   }
-  if (typeof test.meta.importance !== 'number') {
-    console.warn(
-      `No valid \`importance\` defined for "${test.meta.title}". Setting to 0`,
-    );
-    test.meta.importance = 0;
-  }
-  score *= test.meta.importance;
-  possible *= test.meta.importance;
   if (test.subTests) {
     for (const subtest of Object.values(test.subTests)) {
       const subtestScore = calculateScore(subtest, tool);
@@ -91,25 +88,24 @@ export function calculateScore(
   return { score, possible };
 }
 
+interface ToolSummary extends ScoreForToolTest {
+  tool: BuildTool;
+}
+
 export function calculateScoreTotals(tests: Tests): ToolSummary[] {
   const tools = config.testSubjects;
+  const testValues = Object.values(tests);
 
-  return tools.sort().map(tool => {
-    return Object.values(tests).reduce(
-      (score, test) => {
-        let sub_score = calculateScore(test, tool);
+  return tools.map(tool => {
+    let score = 0;
+    let possible = 0;
 
-        score.total += sub_score.score;
-        score.possible += sub_score.possible;
-
-        return score;
-      },
-      {
-        tool,
-        total: 0,
-        possible: 0,
-      },
-    );
+    for (const test of testValues) {
+      const result = calculateScore(test, tool);
+      score += result.score;
+      possible += result.possible;
+    }
+    return { tool, score, possible };
   });
 }
 

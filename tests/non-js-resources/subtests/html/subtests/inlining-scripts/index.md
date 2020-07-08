@@ -1,6 +1,5 @@
 ---
 title: Inlining scripts
-importance: 1
 shortDesc: 'Can processed scripts be inlined into HTML?'
 ---
 
