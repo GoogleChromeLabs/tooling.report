@@ -34,7 +34,6 @@ import { $well } from '../../shared/styles/well.css';
 import { $contentContainer } from 'static-build/shared/styles/sizing.css';
 
 import bundleURL, { imports } from 'client-bundle:client/index/index.ts';
-import analyticsBundleURL from 'client-bundle:client/analytics/index.js';
 import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
 import GithubFAB from '../../components/GithubFAB';
@@ -89,7 +88,6 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
         {imports.map(v => (
           <link rel="preload" as="script" href={v} crossOrigin="" />
         ))}
-        <script type="module" async src={analyticsBundleURL}></script>
       </head>
       <body>
         <header class={$hero}>

@@ -13,7 +13,6 @@
 
 import { h, FunctionalComponent } from 'preact';
 import pageStyles from 'css-bundle:./styles.css';
-import analyticsBundleURL from 'client-bundle:client/analytics/index.js';
 import HeadMeta from 'static-build/components/HeadMeta';
 import Logo from 'static-build/components/Logo';
 import Footer from 'static-build/components/Footer';
@@ -38,7 +37,6 @@ const AboutPage: FunctionalComponent<Props> = () => {
           description="More direct and ancillary information about this site."
         />
         <link rel="stylesheet" href={pageStyles} />
-        <script type="module" async src={analyticsBundleURL}></script>
       </head>
       <body>
         <header>

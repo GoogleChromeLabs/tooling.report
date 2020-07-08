@@ -12,6 +12,7 @@
  */
 import { h, Fragment } from 'preact';
 import sharedStyles from 'css-bundle:static-build/shared/styles/index.css';
+import analyticsBundleURL from 'client-bundle:client/analytics/index.js';
 
 import icoURL from 'asset-url:../../img/favicon.ico';
 import appleIconURL from 'asset-url:../../img/apple-touch-icon.png';
@@ -59,6 +60,7 @@ export default function HeadMeta({ titleParts, description }: Props) {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:image:alt" content="tooling.report" />
       <link rel="stylesheet" href={sharedStyles} />
+      <script type="module" async src={analyticsBundleURL}></script>
     </Fragment>
   );
 }

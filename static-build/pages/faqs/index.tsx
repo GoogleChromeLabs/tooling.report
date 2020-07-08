@@ -15,7 +15,6 @@ import { h, FunctionalComponent, Fragment } from 'preact';
 import pageStyles from 'css-bundle:./styles.css';
 import { $contentContainer } from 'static-build/shared/styles/sizing.css';
 import { $faqContent } from './styles.css';
-import analyticsBundleURL from 'client-bundle:client/analytics/index.js';
 import HeadMeta from 'static-build/components/HeadMeta';
 import Logo from 'static-build/components/Logo';
 import Footer from 'static-build/components/Footer';
@@ -37,7 +36,6 @@ const FAQPage: FunctionalComponent<Props> = () => {
           description="Frequently asked questions we have about this site"
         />
         <link rel="stylesheet" href={pageStyles} />
-        <script type="module" async src={analyticsBundleURL}></script>
       </head>
       <body>
         <header>
