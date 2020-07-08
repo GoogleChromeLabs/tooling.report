@@ -47,7 +47,6 @@ import DataGrid from 'shared/components/DataGrid';
 import Legend from 'shared/components/DataGrid/Legend';
 import Connect from '../../components/Connect';
 import FirstParagraphOnly from 'static-build/components/FirstParagraphOnly';
-import Title from 'static-build/components/Title';
 import * as toolImages from 'shared/utils/tool-images';
 import { html as README } from 'md:../../../README.md';
 import config from 'consts:config';
@@ -81,9 +80,10 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
   return (
     <html lang="en">
       <head>
-        <Title parts={['Overview']} />
-        <meta name="description" content={config.metaDescription} />
-        <HeadMeta />
+        <HeadMeta
+          titleParts={['Overview']}
+          description="A quick and easy way to figure out what the best tool for your next project is, if it’s worth your time to migrate from one tool to another and how to adopt a best practice into your existing code base. Brought to you by web.dev"
+        />
         <link rel="stylesheet" href={pageStyles} />
         <script type="module" src={bundleURL} async />
         {imports.map(v => (

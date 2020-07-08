@@ -51,7 +51,6 @@ import { $well } from '../../shared/styles/well.css';
 import { $heroImage, $heroText } from './styles.css';
 import Connect from 'static-build/components/Connect/index.js';
 import Dot from 'shared/components/Dot/index.js';
-import Title from 'static-build/components/Title/index.js';
 
 interface Props {
   test: Test;
@@ -61,9 +60,10 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
   return (
     <html lang="en">
       <head>
-        <Title parts={[test.meta.title]} />
-        <meta name="description" content={test.meta.shortDesc} />
-        <HeadMeta />
+        <HeadMeta
+          titleParts={[test.meta.title]}
+          description={test.meta.shortDesc}
+        />
         <link rel="stylesheet" href={pageStyles} />
         <script type="module" src={bundleURL} />
         {imports.map(v => (

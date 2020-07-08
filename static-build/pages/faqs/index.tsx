@@ -22,7 +22,6 @@ import Footer from 'static-build/components/Footer';
 import HeaderLinkList from 'static-build/components/HeaderLinkList';
 import { WalkerHero } from 'static-build/components/Heroes';
 import BreadCrumbs from 'static-build/components/BreadCrumbs';
-import Title from 'static-build/components/Title';
 import faqs from 'faqs:';
 
 import { $heroText, $heroImage } from './styles.css';
@@ -33,12 +32,10 @@ const FAQPage: FunctionalComponent<Props> = () => {
   return (
     <html lang="en">
       <head>
-        <Title parts={['FAQs']} />
-        <meta
-          name="description"
-          content="Frequently asked questions we have about this site"
+        <HeadMeta
+          titleParts={['FAQs']}
+          description="Frequently asked questions we have about this site"
         />
-        <HeadMeta />
         <link rel="stylesheet" href={pageStyles} />
         <script type="module" async src={analyticsBundleURL}></script>
       </head>

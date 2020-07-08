@@ -72,7 +72,6 @@ declare module 'consts:config' {
     githubRepository: string;
     githubContribute: string;
     buildDate: string;
-    metaDescription: string;
     githubDefaultBranch: string;
   };
   export default value;
