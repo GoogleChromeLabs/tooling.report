@@ -1,6 +1,5 @@
 ---
 title: Compress images
-importance: 1
 shortDesc: 'Can images be optimized automatically?'
 ---
 

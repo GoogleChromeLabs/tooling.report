@@ -1,6 +1,5 @@
 ---
 title: Basic
-importance: 1
 shortDesc: 'Can non-JavaScript resources have dependencies?'
 ---
 

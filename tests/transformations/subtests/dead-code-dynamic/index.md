@@ -1,6 +1,5 @@
 ---
 title: Dead imported code
-importance: 1
 shortDesc: 'Can dead code be eliminated from dynamic imports?'
 ---
 

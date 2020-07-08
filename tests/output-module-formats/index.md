@@ -1,6 +1,5 @@
 ---
 title: Output module formats
-importance: 1
 shortDesc: 'Generate bundles in popular module formats'
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: Import from `node_modules`
-importance: 1
 shortDesc: 'Can dependencies be imported from node_modules?'
 ---
 

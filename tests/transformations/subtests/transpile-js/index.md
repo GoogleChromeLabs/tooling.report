@@ -1,6 +1,5 @@
 ---
 title: Transpile JS
-importance: 1
 shortDesc: 'Can JavaScript be transpiled for older browsers?'
 ---
 

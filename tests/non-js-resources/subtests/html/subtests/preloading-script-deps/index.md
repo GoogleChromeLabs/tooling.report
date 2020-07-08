@@ -1,6 +1,5 @@
 ---
 title: Preloading script dependencies
-importance: 1
 shortDesc: 'Can preloads be generated for scripts?'
 ---
 

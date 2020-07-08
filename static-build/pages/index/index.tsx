@@ -58,16 +58,16 @@ interface Props {
 }
 
 function renderSummary(tests: Tests): JSX.Element {
-  const tools = calculateScoreTotals(tests);
+  const toolScores = calculateScoreTotals(tests);
 
   return (
     <ul class={$summaryList}>
-      {tools.map(t => (
+      {toolScores.map(toolScore => (
         <SummaryCard
-          name={t.tool}
-          total={t.total}
-          possible={t.possible}
-          image={toolImages[t.tool]}
+          name={toolScore.tool}
+          total={toolScore.score}
+          possible={toolScore.possible}
+          image={toolImages[toolScore.tool]}
         />
       ))}
     </ul>
@@ -199,9 +199,9 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
             <section class={`${$contentContainer} ${$overviewContent}`}>
               <div class={$overviewGrid}>
                 <h2
-                    id="overview"
-                    class={`${$overviewHeader} ${$sectionHeader}`}
-                  >
+                  id="overview"
+                  class={`${$overviewHeader} ${$sectionHeader}`}
+                >
                   <a href="#overview">
                     <span class={$sectionHashtag}>#</span>
                     Overview

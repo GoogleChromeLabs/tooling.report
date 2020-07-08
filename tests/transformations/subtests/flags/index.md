@@ -1,6 +1,5 @@
 ---
 title: Flags
-importance: 1
 shortDesc: 'Can flags be inlined at build time?'
 ---
 

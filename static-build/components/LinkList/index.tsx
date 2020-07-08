@@ -1,9 +1,13 @@
 import { h, FunctionalComponent } from 'preact';
 import { $linkList, $linkItem } from './styles.css';
 
+interface Link {
+  title: string;
+  href: string;
+}
+
 interface Props {
   links: Link[];
-  // todo: insert-spacer: Boolean;
 }
 
 const LinkList: FunctionalComponent<Props> = ({ links }: Props) => {

@@ -1,6 +1,5 @@
 ---
 title: Dependencies
-importance: 1
 shortDesc: 'Resources can depend on other resources'
 ---
 

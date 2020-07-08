@@ -1,6 +1,5 @@
 ---
 title: Importing modules
-importance: 1
 shortDesc: 'Consume modules in various popular formats'
 ---
 

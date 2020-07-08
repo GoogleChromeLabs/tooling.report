@@ -1,6 +1,5 @@
 ---
 title: Basic JavaScript hashing
-importance: 1
 shortDesc: 'Are bundle URLs hashed based on their contents?'
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: Shared references between chunks
-importance: 1
 shortDesc: 'Are module exports between bundles live bindings?'
 ---
 

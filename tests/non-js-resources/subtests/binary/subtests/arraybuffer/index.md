@@ -1,6 +1,5 @@
 ---
 title: Array buffer
-importance: 1
 shortDesc: 'Import a binary file as an array buffer'
 ---
 

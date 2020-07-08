@@ -1,6 +1,5 @@
 ---
 title: Minify JS
-importance: 1
 shortDesc: 'Can JavaScript be minified for production?'
 ---
 

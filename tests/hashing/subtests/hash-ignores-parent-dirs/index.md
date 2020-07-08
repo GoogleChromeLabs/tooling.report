@@ -1,6 +1,5 @@
 ---
 title: Hash ignores parent directories
-importance: 1
 shortDesc: 'Are URL hashes resilient to path changes?'
 ---
 

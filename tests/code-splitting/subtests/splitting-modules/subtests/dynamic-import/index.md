@@ -1,6 +1,5 @@
 ---
 title: Splitting modules between dynamic imports
-importance: 1
 shortDesc: 'Can modules be split along their exports used by different bundles?'
 ---
 

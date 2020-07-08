@@ -1,6 +1,5 @@
 ---
 title: Dynamic import
-importance: 1
 shortDesc: 'Can split points be created using dynamic import?'
 ---
 
