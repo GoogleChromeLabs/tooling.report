@@ -34,7 +34,7 @@ const AboutPage: FunctionalComponent<Props> = () => {
       <head>
         <HeadMeta
           titleParts={['About']}
-          description="More direct and ancillary information about this site."
+          description="Information about the tooling.report website - what is tooling.report?"
         />
         <link rel="stylesheet" href={pageStyles} />
       </head>
