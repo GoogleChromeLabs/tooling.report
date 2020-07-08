@@ -10,12 +10,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { h } from 'preact';
+import { h, Fragment } from 'preact';
 
 interface Props {
   parts: string[];
 }
 
-export default ({ parts }: Props) => (
-  <title>{[...parts, 'Tooling.Report'].join(' | ')}</title>
-);
+export default function Title({ parts }: Props) {
+  const title = [...parts, 'Tooling.Report'].join(' | ');
+
+  return (
+    <Fragment>
+      <title>{title}</title>
+      <meta property="og:title" content={title} />
+    </Fragment>
+  );
+}
