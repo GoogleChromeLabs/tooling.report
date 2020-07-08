@@ -10,9 +10,9 @@
     "atest": "cd \"tests/$TEST\" && npm i --no-progress --no-fund --no-audit --prefer-offline --cache-min 9999999 --no-package-lock && npm run -s build"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^8.0.1",
+    "@rollup/plugin-node-resolve": "^8.1.0",
     "@types/prismjs": "^1.16.1",
-    "async-disk-cache": "^2.0.0",
+    "async-disk-cache": "^2.1.0",
     "cssnano": "^4.1.10",
     "del": "^5.1.0",
     "glob": "^7.1.6",
@@ -26,16 +26,16 @@
     "pnpm": "^4.14.4",
     "postcss": "^7.0.32",
     "postcss-import": "^12.0.1",
-    "postcss-modules": "^2.0.0",
-    "postcss-nested": "^4.2.1",
+    "postcss-modules": "^3.2.0",
+    "postcss-nested": "^4.2.2",
     "postcss-url": "^8.0.0",
-    "preact": "^10.4.4",
+    "preact": "^10.4.5",
     "preact-render-to-string": "^5.1.9",
     "prettier": "^1.19.1",
     "prismjs": "^1.20.0",
-    "rollup": "^2.16.1",
+    "rollup": "^2.21.0",
     "rollup-plugin-terser": "^6.1.0",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.6"
   },
   "husky": {
     "hooks": {
