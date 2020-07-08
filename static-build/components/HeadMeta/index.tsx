@@ -39,7 +39,7 @@ export default function HeadMeta({ titleParts, description }: Props) {
       <title>{title}</title>
       <meta property="og:title" content={title} />
       <meta name="description" content={description} />
-      {/* Twitter don't use the standard meta description which is stupid but whatever */}
+      {/* Twitter won't use the standard meta description which is stupid but whatever */}
       <meta property="og:description" content={description} />
       <link rel="shortcut icon" href={icoURL} />
       <link rel="apple-touch-icon" sizes="180x180" href={appleIconURL} />
