@@ -1,6 +1,11 @@
 ---
 result: partial
-issue: https://github.com/parcel-bundler/parcel/issues/4320
+issue:
+  - url: https://github.com/parcel-bundler/parcel/issues/4320
+    fixedSince: 2.0.0-beta.1
+    status: closed
 ---
 
-Parcel 2 has an undocumented feature that you can prefix an import with `data-url:` to turn the contents of an import into a data URL. It seems that depending on the content, Parcel will either encode it as a an `application/octet-stream` that is URL encoded or use Base64.
+Parcel supports this out-of-the box via an [import with a special scheme](<https://v2.parceljs.org/configuration/plugin-configuration/#predefined-(offical)-named-pipelines>), `data-url:`.
+
+However, this only works in JavaScript imports. If you try and use it in HTML: `<img src="data-url:./img.png">`, the src is replaced with an internal identifier.
