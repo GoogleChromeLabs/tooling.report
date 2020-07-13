@@ -39,6 +39,9 @@ export default function importMapPlugin() {
       );
       const chunks = Object.values(bundle).filter(b => b.type === 'chunk');
 
+      // For assets it's best to keep the hash by default, and remove it for the import map.
+      // This means files which don't resolve assets through the import map (eg, images in CSS)
+      // still get the benefit of hashing.
       for (const asset of assets) {
         const noHashFilename = removeAssetHash(asset.fileName);
         importMap.imports['./' + noHashFilename] = './' + asset.fileName;
@@ -65,13 +68,10 @@ export default function importMapPlugin() {
         });
       }
 
-      const hash = createHash('md5');
-      hash.update(JSON.stringify(importMap));
-
       this.emitFile({
         type: 'asset',
         source: JSON.stringify(importMap),
-        fileName: `import-map-${hash.digest('hex').slice(0, 8)}.json`,
+        fileName: 'import-map.json',
       });
     },
   };
