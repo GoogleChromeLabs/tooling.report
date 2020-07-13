@@ -1,6 +1,5 @@
 ---
 title: SVG
-importance: 1
 shortDesc: 'Do hashed SVG URLs change when subresources change?'
 ---
 

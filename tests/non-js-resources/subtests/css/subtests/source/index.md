@@ -1,6 +1,5 @@
 ---
 title: Source
-importance: 1
 shortDesc: 'Can CSS be imported as a JavaScript string?'
 ---
 

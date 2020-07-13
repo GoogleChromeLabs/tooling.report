@@ -29,7 +29,7 @@ import { html as CREDITS } from 'md:../../../CREDITS.md';
 const links = [
   { title: 'Terms and Privacy', href: 'https://policies.google.com' },
   {
-    title: 'Source on Github',
+    title: 'Source on GitHub',
     href: config.githubRepository,
   },
 ];

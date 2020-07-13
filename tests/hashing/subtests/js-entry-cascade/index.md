@@ -1,6 +1,5 @@
 ---
 title: JS entry-point hashing cascade
-importance: 1
 shortDesc: 'Do dependency changes update entry bundle hashes?'
 ---
 

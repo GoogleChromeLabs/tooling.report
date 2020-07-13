@@ -1,6 +1,5 @@
 ---
 title: JS import() hashing cascade
-importance: 1
 shortDesc: 'Do code-splitted bundle changes update the parent hash?'
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: Service worker
-importance: 1
 shortDesc: 'Can asset URLs be injected into Service Workers?'
 ---
 

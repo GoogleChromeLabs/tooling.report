@@ -1,6 +1,5 @@
 ---
 title: Custom type
-importance: 1
 shortDesc: 'Import custom file types from JavaScript'
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: Avoid cascading hash changes
-importance: 1
 shortDesc: 'Can a map be used to centralized bundle hashes?'
 ---
 

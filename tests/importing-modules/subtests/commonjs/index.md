@@ -1,6 +1,5 @@
 ---
 title: CommonJS
-importance: 1
 shortDesc: 'Can CommonJS modules be bundled?'
 ---
 

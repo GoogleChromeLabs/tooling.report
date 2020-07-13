@@ -1,6 +1,5 @@
 ---
 title: Deduping
-importance: 1
 shortDesc: 'Are JS and non-JS dependencies de-duplicated?'
 ---
 

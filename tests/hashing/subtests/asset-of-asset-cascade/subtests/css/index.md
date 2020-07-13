@@ -1,6 +1,5 @@
 ---
 title: CSS
-importance: 1
 shortDesc: 'Do CSS URL hashes reflect subresources changes?'
 ---
 

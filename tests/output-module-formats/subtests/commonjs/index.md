@@ -1,6 +1,5 @@
 ---
 title: CommonJS
-importance: 1
 shortDesc: 'Can CommonJS bundles be generated?'
 ---
 

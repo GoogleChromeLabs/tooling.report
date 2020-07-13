@@ -1,6 +1,5 @@
 ---
 title: Hashing
-importance: 1
 shortDesc: 'Generate hashed URLs for long-term caching'
 ---
 

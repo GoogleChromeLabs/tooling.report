@@ -1,6 +1,5 @@
 ---
 title: Loading scripts
-importance: 1
 shortDesc: 'Can generated bundles be referenced from HTML?'
 ---
 
