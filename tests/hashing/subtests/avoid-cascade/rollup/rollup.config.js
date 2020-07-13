@@ -32,7 +32,9 @@ export default {
             fileName: name + '.html',
             source: `<!DOCTYPE html><h1>${name} page</h1>
   <script src="https://unpkg.com/systemjs@6.2.5/dist/system.min.js"></script>
-  <script type="systemjs-importmap">${bundle['import-map.json'].source}</script>
+  <script type="systemjs-importmap" src="${Object.keys(bundle).find(file =>
+    file.startsWith('import-map'),
+  )}"></script>
   <script type="module">System.import('./${name}.js');</script>
   <ul>
   <li><a href="./">Index</a></li>

@@ -65,10 +65,13 @@ export default function importMapPlugin() {
         });
       }
 
+      const hash = createHash('md5');
+      hash.update(JSON.stringify(importMap));
+
       this.emitFile({
         type: 'asset',
         source: JSON.stringify(importMap),
-        fileName: 'import-map.json',
+        fileName: `import-map-${hash.digest('hex').slice(0, 8)}.json`,
       });
     },
   };
