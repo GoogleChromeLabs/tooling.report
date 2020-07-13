@@ -12,28 +12,41 @@ optimize the load time.
 # The Test
 
 This test checks to see if it's possible to start network request for the dependecies as soon as the code splitted module start loading.
-
 **index.js**
 
 ```js
 setTimeout(async () => {
-  const { shout } = await import('./utils.js');
+  const { shout } =
+    Math.random() < 0.5
+      ? await import('./utilsA.js')
+      : await import('./utilsB.js');
   shout('this is index');
 }, 6000);
 ```
 
-**utils.js**
+**utilsA.js**
 
 ```js
 import { exclaim } from './exclaim.js';
-
 export function logCaps(msg) {
   if (!msg) return;
   console.log(msg.toUpperCase());
 }
-
 export function shout(msg) {
   logCaps(exclaim(msg));
+}
+```
+
+**utilsB.js**
+
+```js
+import { exclaim } from './exclaim.js';
+export function logNormal(msg) {
+  if (!msg) return;
+  console.log(msg);
+}
+export function shout(msg) {
+  logNormal(exclaim(msg));
 }
 ```
 
