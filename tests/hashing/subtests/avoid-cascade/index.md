@@ -68,7 +68,7 @@ This is an asset!
 This is another asset!
 ```
 
-The build produces four JavaScript bundles and a text file, all with hashed URLs. There should be bundles for the `index.<hash>.js` and `profile.<hash>.js` "routes", another for their `logCaps()` dependency, and a fourth for `lazy.js`.
+The build produces four JavaScript bundles and two text files, all with hashed URLs. There should be bundles for the `index.<hash>.js` and `profile.<hash>.js` "routes", another for their `logCaps()` dependency, and a fourth for `lazy.js`.
 
 To pass this test:
 
