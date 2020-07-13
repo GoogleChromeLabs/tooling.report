@@ -73,8 +73,8 @@ The build produces four JavaScript bundles and two text files, all with hashed U
 To pass this test:
 
 - All output files _except the HTML file_ must be hashed, and their hash must change if their content changes.
-- A change to `some-asset.txt` and `some-asset2.txt` should only change the hash of it's output file and the hash mapping.
-- A change to `utils.js` should only change the hash of it's output file and the hash mapping.
+- Changing `some-asset.txt` or `some-asset2.txt` should only change the hash of its output file and the mapping.
+- Changing `utils.js` should only change the hash of its output file and the mapping.
 - An entry point should still pick up the new `some-asset.txt`, `some-asset2.txt` and `utils.js`.
 
 [import map]: https://github.com/WICG/import-maps
