@@ -76,6 +76,5 @@ To pass this test:
 - A change to `some-asset.txt` and `some-asset2.txt` should only change the hash of it's output file and the hash mapping.
 - A change to `utils.js` should only change the hash of it's output file and the hash mapping.
 - An entry point should still pick up the new `some-asset.txt`, `some-asset2.txt` and `utils.js`.
-- All output files, except the HTML, should be cached without revalidation on repeated visit without change.
 
 [import map]: https://github.com/WICG/import-maps
