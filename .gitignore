@@ -6,3 +6,4 @@ node_modules
 *.css.d.ts
 .parcel-cache
 .DS_Store
+.cache
