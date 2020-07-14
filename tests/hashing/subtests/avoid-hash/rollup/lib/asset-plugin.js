@@ -15,7 +15,7 @@ import { basename } from 'path';
 
 const prefix = 'asset-url:';
 
-export default function assetPlugin({ hashChunk = () => true }) {
+export default function assetPlugin() {
   return {
     name: 'asset-plugin',
     async resolveId(id, importer) {
@@ -30,10 +30,9 @@ export default function assetPlugin({ hashChunk = () => true }) {
       const emitOpts = {
         type: 'asset',
         source: await fs.readFile(realId),
+        name: basename(realId),
       };
       this.addWatchFile(realId);
-
-      emitOpts[hashChunk(realId) ? 'name' : 'fileName'] = basename(realId);
 
       return `export default import.meta.ROLLUP_FILE_URL_${this.emitFile(
         emitOpts,

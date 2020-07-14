@@ -4,6 +4,6 @@
     "build": "rm -rf build && rollup -c"
   },
   "devDependencies": {
-    "rollup": "^2.0.2"
+    "rollup": "^2.21.0"
   }
 }

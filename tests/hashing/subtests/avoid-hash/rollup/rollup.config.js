@@ -11,20 +11,24 @@
  * limitations under the License.
  */
 import assetPlugin from './lib/asset-plugin';
-import unhashedChunkPlugin from './lib/unhashed-chunk-plugin';
+
+const chunkNamer = chunkInfo =>
+  chunkInfo.facadeModuleId.includes('unhashed-')
+    ? '[name].js'
+    : '[name]-[hash].js';
 
 export default {
   input: ['src/hashed-entry.js', 'src/unhashed-entry.js'],
   output: {
     dir: 'build/',
     format: 'esm',
+    assetFileNames: assetInfo => {
+      return assetInfo.name.includes('unhashed-')
+        ? 'assets/[name][extname]'
+        : 'assets/[name]-[hash][extname]';
+    },
+    chunkFileNames: chunkNamer,
+    entryFileNames: chunkNamer,
   },
-  plugins: [
-    assetPlugin({
-      hashChunk(path) {
-        return !path.endsWith('unhashed-asset.txt');
-      },
-    }),
-    unhashedChunkPlugin(),
-  ],
+  plugins: [assetPlugin()],
 };

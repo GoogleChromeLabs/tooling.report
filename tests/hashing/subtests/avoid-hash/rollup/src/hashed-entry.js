@@ -12,9 +12,7 @@
  */
 import hashedUrl from 'asset-url:./hashed-asset.txt';
 import unhashedUrl from 'asset-url:./unhashed-asset.txt';
-import unhashedChunkUrl from 'unhashed-chunk:./unhashed-chunk.js';
-
-console.log('Hashed entry');
 console.log(hashedUrl, unhashedUrl);
+
 import('./hashed-chunk.js');
-import(unhashedChunkUrl);
+import('./unhashed-chunk.js');
