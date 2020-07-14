@@ -10,8 +10,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import cssURL from './styles.css';
-import imgURL from './image.png';
-import fontURL from './font.ttf';
+import cssURL from 'url:./styles.css';
+import imgURL from 'url:./image.png';
+import fontURL from 'url:./font.ttf';
 
 console.log({ cssURL, imgURL, fontURL });
