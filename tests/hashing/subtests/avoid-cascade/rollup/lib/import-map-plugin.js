@@ -39,6 +39,9 @@ export default function importMapPlugin() {
       );
       const chunks = Object.values(bundle).filter(b => b.type === 'chunk');
 
+      // For assets it's best to keep the hash by default, and remove it for the import map.
+      // This means files which don't resolve assets through the import map (eg, images in CSS)
+      // still get the benefit of hashing.
       for (const asset of assets) {
         const noHashFilename = removeAssetHash(asset.fileName);
         importMap.imports['./' + noHashFilename] = './' + asset.fileName;

@@ -31,7 +31,7 @@ export default {
             type: 'asset',
             fileName: name + '.html',
             source: `<!DOCTYPE html><h1>${name} page</h1>
-  <script src="https://unpkg.com/systemjs@6.2.5/dist/system.min.js"></script>
+  <script src="https://unpkg.com/systemjs@6.3.3/dist/s.min.js"></script>
   <script type="systemjs-importmap">${bundle['import-map.json'].source}</script>
   <script type="module">System.import('./${name}.js');</script>
   <ul>
