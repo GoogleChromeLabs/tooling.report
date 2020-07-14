@@ -1,6 +1,7 @@
 ---
-result: fail
-issue: https://github.com/parcel-bundler/parcel/issues/4320
+result: pass
 ---
 
-There is a [plugin infrastructure for Parcel 2](https://github.com/parcel-bundler/parcel/tree/bb5ad3d1adaebb42514750b12d8f7470d66a7bd9) that is probably capable of solving this, but at the time of writing, the documentation doesn’t really tell me _how_.
+If you build HTML pages that reference scripts via `<script src>`, Parcel will use a custom runtime which acts as a registry and loader. This means that dynamically loaded content, such as assets and dynamic imports, can be looked up in the registry.
+
+If you build HTML pages that reference scripts via `<script type="module" src>`, this causes Parcel to output ECMAScript modules rather than use its own loader, which doesn't yet have a central registry, although maybe will in future thanks to [import maps](https://github.com/WICG/import-maps).
