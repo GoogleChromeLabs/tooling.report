@@ -1,25 +1,17 @@
-import textDataUrl from 'data-url:./text.txt';
-import binaryDataUrl from 'data-url:./binary.bin';
+/**
+ * Copyright 2020 Google Inc. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+import fs from 'fs';
+import path from 'path';
 
-function decode(data) {
-  const [prefix, content] = data.split(',', 2);
-  const [, encoding] = prefix.split(';', 2);
-  let array;
-  if (encoding === 'base64') {
-    array = Array.from(atob(content));
-  } else {
-    array = Array.from(decodeURIComponent(content));
-  }
-  return new Uint8Array(array.map(v => v.charCodeAt(0))).buffer;
-}
-
-console.log('Text via decode():', decode(textDataUrl));
-console.log('Binary via decode():', decode(binaryDataUrl));
-
-fetch(textDataUrl)
-  .then(r => r.arrayBuffer())
-  .then(b => console.log('Text via fetch():', b));
-
-fetch(binaryDataUrl)
-  .then(r => r.arrayBuffer())
-  .then(b => console.log('Text via fetch():', b));
+const buffer = fs.readFileSync(path.join(__dirname, 'binary.bin'));
+console.log(buffer.byteLength);
