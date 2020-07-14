@@ -10,6 +10,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+let count = 0;
+
 export function logCaps(msg) {
+  count++;
+  console.log(count);
   console.log(msg.toUpperCase());
 }

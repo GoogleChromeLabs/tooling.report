@@ -1,5 +1,10 @@
 ---
-result: pass
+result: fail
+issue:
+  - url: https://github.com/parcel-bundler/website/issues/631
+  - url: https://github.com/parcel-bundler/website/issues/630
 ---
 
-Parcel can build for different “targets”, which are defined in `package.json`. Per target you can set the `outputFormat`, which can be set to `esmodule`. Chunks will be saved as ES modules, but it will only use dynamic import if your browser support list only contains browsers that support dynamic import. Otherwise, it will use `<script>`-based loading instead.
+Parcel lets you set [targets](https://v2.parceljs.org/configuration/package-json/#targets) in your `package.json` to influence how your project is built, including an 'esmodule' setting.
+
+This will change the target browsers to the ones that support ECMAScript modules, but that doesn't include browsers that support dynamic `import()`. By default Parcel will include a polyfill, unless you set the [`browserslist`](https://v2.parceljs.org/configuration/package-json/#engines-%2F-browserslist) to browsers that support `import()`.
