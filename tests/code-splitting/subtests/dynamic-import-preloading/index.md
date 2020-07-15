@@ -6,8 +6,7 @@ shortDesc: 'Can code splitting be preloaded?'
 
 # Introduction
 
-While loading the module which has been code spllited, it is important to load its dependencies in parallel to
-optimize the load time.
+When creating split points [using dynamic import](/code-splitting/dynamic-import/), it is possible to construct a "waterfall" scenario where JavaScript bundles depend on additional bundles discovered once executed. The ability to preload nested dependency bundles is important in these cases, since doing so can allow the dependency bundles to be downloaded and evaluated in parallel.
 
 # The Test
 
