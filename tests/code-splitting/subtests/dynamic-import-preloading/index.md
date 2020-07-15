@@ -10,7 +10,8 @@ When creating split points [using dynamic import](/code-splitting/dynamic-import
 
 # The Test
 
-This test checks to see if it's possible to start network request for the dependecies as soon as the code splitted module start loading.
+This test checks to see if it's possible to request code-splitted dependency bundles before the consuming bundle has been loaded, either via [preload](https://web.dev/preload-critical-assets/) or async script loading.
+
 **index.js**
 
 ```js
