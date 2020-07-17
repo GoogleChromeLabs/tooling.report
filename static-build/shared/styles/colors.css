@@ -28,7 +28,7 @@
   --text-gray: hsl(0, 0%, 10%);
 
   /* Shadows */
-  --denim-blue-hsl: 206, 36%, 51%;
+  --denim-blue-hsl: 206 36% 51%;
   --card-shadow: 0 8px 2px hsl(var(--denim-blue-hsl) / 2%),
     0 25px 10px hsl(var(--denim-blue-hsl) / 7%),
     0 50px 10px hsl(var(--denim-blue-hsl) / 5%),
