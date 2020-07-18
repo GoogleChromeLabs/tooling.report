@@ -11,3 +11,6 @@
  * limitations under the License.
  */
 export const str = 'This is a string';
+
+import txtURL from 'asset-url:./some-asset2.txt';
+fetch(txtURL).then(async response => console.log(await response.text()));
