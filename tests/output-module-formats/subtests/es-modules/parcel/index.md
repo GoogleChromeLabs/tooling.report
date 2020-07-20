@@ -2,6 +2,7 @@
 result: fail
 issue:
   - url: https://github.com/parcel-bundler/website/issues/631
+    status: closed
   - url: https://github.com/parcel-bundler/website/issues/630
   - url: https://github.com/parcel-bundler/parcel/issues/4890
 ---
