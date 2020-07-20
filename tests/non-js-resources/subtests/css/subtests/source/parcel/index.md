@@ -9,4 +9,4 @@ issue:
 
 Parcel supports this out-of-the box via an [import with a special scheme](<https://v2.parceljs.org/configuration/plugin-configuration/#predefined-(offical)-named-pipelines>), `bundle-text:`.
 
-However, this creates inline sourcemaps in your code, which will inflate the size of your JavaScript in production. The only way to avoid this is to disable sourcemaps altogether.
+However, the inlined CSS string includes a full sourcemap, inflating the size of your JavaScript in production. The only way to avoid this is to disable sourcemaps altogether.
