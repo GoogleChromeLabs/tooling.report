@@ -9,7 +9,7 @@ Parcel has an undocumented way to do this:
 
 ```html
 <!DOCTYPE html>
-<script src="whatever.js">
+<script src="whatever.js"></script>
 ```
 
 The above will result in a separate resource for the script. However:
