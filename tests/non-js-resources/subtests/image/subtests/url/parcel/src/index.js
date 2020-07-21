@@ -1,3 +1,3 @@
-import imagePath from './image.png';
+import imagePath from 'url:./image.png';
 
 console.log(imagePath);

@@ -1,9 +1,0 @@
-{
-  "name": "parcel-transformer-data-url",
-  "main": "dist/index.html",
-  "version": "1.0.0",
-  "dependencies": {
-    "@parcel/plugin": "^2.0.0-alpha.3"
-  },
-  "browser": "dist/index.html"
-}

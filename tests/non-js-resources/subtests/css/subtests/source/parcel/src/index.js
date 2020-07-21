@@ -10,7 +10,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import css from './styles.css';
+import css from 'bundle-text:./styles.css';
 
 const style = document.createElement('style');
 style.textContent = css;
