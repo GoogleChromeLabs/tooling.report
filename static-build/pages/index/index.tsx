@@ -163,6 +163,15 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
                   <small>
                     Current results as of <time>{config.buildDate}</time>{' '}
                   </small>
+                  <select multiple size={Object.entries(tests).length}>
+                    {Object.entries(tests).map(([testDir, collection]) => {
+                      return (
+                        <option value={collection.meta.title} selected={true}>
+                          {collection.meta.title}
+                        </option>
+                      );
+                    })}
+                  </select>
                 </aside>
                 <div>{renderSummary(tests)}</div>
               </div>
