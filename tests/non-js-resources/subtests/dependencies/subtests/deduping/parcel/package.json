@@ -2,11 +2,8 @@
   "scripts": {
     "build": "rm -rf .parcel-cache && parcel build src/index.html"
   },
-  "dependencies": {
-    "@parcel/transformer-raw": "^2.0.0-alpha.3",
-    "parcel": "^2.0.0-alpha.3.2"
-  },
   "devDependencies": {
+    "parcel": "2.0.0-beta.1",
     "postcss-modules": "^1.5.0"
   }
 }

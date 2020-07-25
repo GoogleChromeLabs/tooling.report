@@ -10,5 +10,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import txtURL from './some-asset.txt';
+import txtURL from 'url:./some-asset.txt';
 fetch(txtURL).then(async response => console.log(await response.text()));

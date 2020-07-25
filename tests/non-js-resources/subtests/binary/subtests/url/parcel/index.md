@@ -1,6 +1,9 @@
 ---
-result: partial
-issue: https://github.com/parcel-bundler/parcel/issues/4320
+result: pass
+issue:
+  - url: https://github.com/parcel-bundler/parcel/issues/4320
+    fixedSince: 2.0.0-beta.1
+    status: closed
 ---
 
-This relies on Parcel's [raw transform plugin](https://www.npmjs.com/package/@parcel/transformer-raw). The plugin itself isn't documented, although it's listed in the [official transformers](https://github.com/parcel-bundler/parcel#transformers).
+Parcel supports this out-of-the box via an [import with a special scheme](<https://v2.parceljs.org/configuration/plugin-configuration/#predefined-(offical)-named-pipelines>), `url:`.

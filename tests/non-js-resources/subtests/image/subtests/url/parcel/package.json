@@ -1,9 +1,8 @@
 {
   "scripts": {
-    "build": "rm -rf .parcel-cache && parcel build src/index.js"
+    "build": "rm -rf dist .parcel-cache && parcel build src/index.js"
   },
   "dependencies": {
-    "@parcel/transformer-raw": "^2.0.0-alpha.3",
-    "parcel": "^2.0.0-alpha.3.2"
+    "parcel": "^2.0.0-beta.1"
   }
 }
