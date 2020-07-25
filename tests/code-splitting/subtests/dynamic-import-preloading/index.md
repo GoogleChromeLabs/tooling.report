@@ -58,4 +58,6 @@ export function exclaim(msg) {
 }
 ```
 
-The result should be three scripts: one for the `index.js` module, and another for `utils.js` and `exclaim.js`. When `index.js` executes, it requests for `utils.js` chunk, but in the parallel it starts loading `exclaim.js` as well, because `utils.js` has dependency on `exclaim.js`.
+In the above example, we have a contrived A/B testing scenario, where we load modules on-demand whenever our A/B test condition matches. So randomly `index.js` would request to either `utilsA.js` or `utilsB.js`. And both of these on-demand modules have a shared dependency on `exclaim.js`.
+
+The result should be four scripts: one for the `index.js` module, and another for `utilsA.js` and `utilsB.js`, and `exclaim.js`. When `index.js` executes, it requests for either `utilsA.js` chunk or `utilsB.js` chunk depending upon the generated random number at that time, but in the parallel it starts loading `exclaim.js` as well, because `utilsA.js` and `utilsB.js` has dependency on `exclaim.js`.
