@@ -2,4 +2,4 @@
 result: fail
 ---
 
-Parcel does not provide fine grained control over code splitting which is required to for this test.
+Parcel does not automatically preload a module's dependencies nor does it provide access to the module graph which is required to determine what needs to be preloaded.
