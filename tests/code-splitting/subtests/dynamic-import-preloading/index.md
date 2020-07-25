@@ -1,7 +1,7 @@
 ---
-title: Dynamic import Preloading
+title: Dynamic import preloading
 importance: 1
-shortDesc: 'Can code splitting be preloaded?'
+shortDesc: 'Can lazy-loaded split points be preloaded?'
 ---
 
 # Introduction
