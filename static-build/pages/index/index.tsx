@@ -47,6 +47,7 @@ import Legend from 'shared/components/DataGrid/Legend';
 import Connect from '../../components/Connect';
 import FirstParagraphOnly from 'static-build/components/FirstParagraphOnly';
 import * as toolImages from 'shared/utils/tool-images';
+import * as toolHomepages from 'shared/utils/tool-homepages';
 import { html as README } from 'md:../../../README.md';
 import config from 'consts:config';
 import webdevLogoURL from 'asset-url:../../img/webdev.svg';
@@ -66,6 +67,7 @@ function renderSummary(tests: Tests): JSX.Element {
           total={toolScore.score}
           possible={toolScore.possible}
           image={toolImages[toolScore.tool]}
+          homepage={toolHomepages[toolScore.tool]}
         />
       ))}
     </ul>
