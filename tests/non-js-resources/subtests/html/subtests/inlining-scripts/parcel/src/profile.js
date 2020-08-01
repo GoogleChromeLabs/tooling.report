@@ -12,3 +12,4 @@
  */
 import { logCaps } from './utils.js';
 logCaps('This is profile');
+import('./lazy.js');

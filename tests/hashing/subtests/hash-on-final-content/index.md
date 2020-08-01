@@ -1,6 +1,5 @@
 ---
 title: Hash on final file content
-importance: 1
 shortDesc: 'Are bundle hashes based on final compiled code?'
 ---
 

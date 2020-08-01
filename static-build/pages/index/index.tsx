@@ -34,7 +34,6 @@ import { $well } from '../../shared/styles/well.css';
 import { $contentContainer } from 'static-build/shared/styles/sizing.css';
 
 import bundleURL, { imports } from 'client-bundle:client/index/index.ts';
-import analyticsBundleURL from 'client-bundle:client/analytics/index.js';
 import HeadMeta from '../../components/HeadMeta';
 import Logo from '../../components/Logo';
 import GithubFAB from '../../components/GithubFAB';
@@ -47,8 +46,8 @@ import DataGrid from 'shared/components/DataGrid';
 import Legend from 'shared/components/DataGrid/Legend';
 import Connect from '../../components/Connect';
 import FirstParagraphOnly from 'static-build/components/FirstParagraphOnly';
-import Title from 'static-build/components/Title';
 import * as toolImages from 'shared/utils/tool-images';
+import * as toolHomepages from 'shared/utils/tool-homepages';
 import { html as README } from 'md:../../../README.md';
 import config from 'consts:config';
 import webdevLogoURL from 'asset-url:../../img/webdev.svg';
@@ -58,16 +57,17 @@ interface Props {
 }
 
 function renderSummary(tests: Tests): JSX.Element {
-  const tools = calculateScoreTotals(tests);
+  const toolScores = calculateScoreTotals(tests);
 
   return (
     <ul class={$summaryList}>
-      {tools.map(t => (
+      {toolScores.map(toolScore => (
         <SummaryCard
-          name={t.tool}
-          total={t.total}
-          possible={t.possible}
-          image={toolImages[t.tool]}
+          name={toolScore.tool}
+          total={toolScore.score}
+          possible={toolScore.possible}
+          image={toolImages[toolScore.tool]}
+          homepage={toolHomepages[toolScore.tool]}
         />
       ))}
     </ul>
@@ -81,15 +81,15 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
   return (
     <html lang="en">
       <head>
-        <Title parts={['Overview']} />
-        <meta name="description" content={config.metaDescription} />
-        <HeadMeta />
+        <HeadMeta
+          titleParts={['Overview']}
+          description="A quick and easy way to figure out what the best tool for your next project is, if it’s worth your time to migrate from one tool to another and how to adopt a best practice into your existing code base. Brought to you by web.dev"
+        />
         <link rel="stylesheet" href={pageStyles} />
         <script type="module" src={bundleURL} async />
         {imports.map(v => (
           <link rel="preload" as="script" href={v} crossOrigin="" />
         ))}
-        <script type="module" async src={analyticsBundleURL}></script>
       </head>
       <body>
         <header class={$hero}>
@@ -143,7 +143,7 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
                       config file!
                     </b>{' '}
                     We worked with the build tool authors to ensure fair tests
-                    and succinct configuration. It's all in Github.
+                    and succinct configuration. It's all in GitHub.
                   </p>
                   <p class={$well}>
                     We highly encourage you to{' '}
@@ -154,12 +154,12 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
             </section>
 
             <section id="summary">
-              <a href="#summary" class={$summaryHeader}>
-                <h3 class={$sectionHeader}>
+              <h3 class={$sectionHeader}>
+                <a href="#summary" class={$summaryHeader}>
                   <span class={$sectionHashtag}>#</span>
                   Summary
-                </h3>
-              </a>
+                </a>
+              </h3>
               <div class={$sidebarLayout}>
                 <aside>
                   <small>
@@ -198,15 +198,15 @@ const IndexPage: FunctionalComponent<Props> = ({ tests }: Props) => {
           <div class={$overviewContainer}>
             <section class={`${$contentContainer} ${$overviewContent}`}>
               <div class={$overviewGrid}>
-                <a href="#overview">
-                  <h2
-                    id="overview"
-                    class={`${$overviewHeader} ${$sectionHeader}`}
-                  >
+                <h2
+                  id="overview"
+                  class={`${$overviewHeader} ${$sectionHeader}`}
+                >
+                  <a href="#overview">
                     <span class={$sectionHashtag}>#</span>
                     Overview
-                  </h2>
-                </a>
+                  </a>
+                </h2>
                 <DataGrid
                   tests={tests}
                   basePath="/"

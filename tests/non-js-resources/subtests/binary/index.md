@@ -1,6 +1,5 @@
 ---
 title: Binary
-importance: 1
 shortDesc: 'Import a binary file in various formats'
 ---
 

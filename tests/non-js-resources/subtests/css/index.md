@@ -1,6 +1,5 @@
 ---
 title: CSS
-importance: 1
 shortDesc: 'Import CSS from JavaScript'
 ---
 

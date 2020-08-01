@@ -5,7 +5,7 @@ import { $fab, $fabicon } from './styles.css';
 
 function Logo() {
   return (
-    <a class={$fab} href={config.githubRepository} title="Source on Github">
+    <a class={$fab} href={config.githubRepository} title="Source on GitHub">
       <span class={$fabicon}>
         <GithubIcon />
       </span>

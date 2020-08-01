@@ -10,12 +10,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { h } from 'preact';
-
-interface Props {
-  parts: string[];
-}
-
-export default ({ parts }: Props) => (
-  <title>{[...parts, 'Tooling.Report'].join(' | ')}</title>
-);
+import { logCaps } from './utils.js';
+logCaps('This is index');

@@ -1,6 +1,5 @@
 ---
 title: ECMAScript modules
-importance: 1
 shortDesc: 'Can ECMAScript modules be bundled?'
 ---
 

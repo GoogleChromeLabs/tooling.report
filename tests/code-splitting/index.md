@@ -1,6 +1,5 @@
 ---
 title: Code splitting
-importance: 1
 shortDesc: 'Extract common dependencies into shared bundles'
 ---
 

@@ -33,10 +33,22 @@ module.exports = {
     moduleIds: 'hashed',
     // create a dedicated bootstrap + hash mapping bundle:
     runtimeChunk: 'single',
-    // extract all shared dependencies from entry bundles:
     splitChunks: {
+      // extract all shared dependencies from entry bundles:
       chunks: 'all',
       minSize: 0,
+      cacheGroups: {
+        // change the caching behavior of assets:
+        assets: {
+          // Select assets:
+          test: /\.txt$/,
+          chunks: 'async',
+          // Target:
+          name: 'runtime',
+          // Do not check size limits:
+          enforce: true,
+        },
+      },
     },
   },
 };

@@ -10,11 +10,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import commonjs from '@rollup/plugin-commonjs';
 
 export default {
   input: `src/index.js`,
-  plugins: [commonjs()],
+  plugins: [],
   output: {
     dir: 'build',
     format: 'esm',

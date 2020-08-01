@@ -35,12 +35,11 @@ Tests that are not a pass _must_ link to at least one open issue. It is strongly
 
 ## Contributing to the site
 
-The site’s goal is to visualize the state of the build tool ecosystem. The [repository’s README](https://github.com/GoogleChromeLabs/tooling.report#readme) gives an introduction on how the site is built and how it works. As with all contributions, it is a good idea to [open an issue](https://github.com/GoogleChromeLabs/tooling.report/issues/new/choose first proposing your change before spending time on implementing it.
+The site’s goal is to visualize the state of the build tool ecosystem. The [repository’s README](https://github.com/GoogleChromeLabs/tooling.report#readme) gives an introduction on how the site is built and how it works. As with all contributions, it is a good idea to [open an issue](https://github.com/GoogleChromeLabs/tooling.report/issues/new/) first proposing your change before spending time on implementing it.
 
 ## Community Guidelines
 
-This project follows [Google's Open Source Community
-Guidelines](https://opensource.google.com/conduct/).
+This project follows [Google's Open Source Community Guidelines](https://opensource.google.com/conduct/).
 
 ## Contributor License Agreement
 

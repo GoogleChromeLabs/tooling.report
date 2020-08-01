@@ -11,6 +11,7 @@
  * limitations under the License.
  */
 import del from 'del';
+import { parse as parsePath } from 'path';
 import resolve from '@rollup/plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 
@@ -32,6 +33,18 @@ function resolveFileUrl({ fileName }) {
   return JSON.stringify(fileName.replace(/^static\//, '/'));
 }
 
+const dir = '.tmp/build';
+const staticPath = 'static/[name]-[hash][extname]';
+const jsPath = staticPath.replace('[extname]', '.js');
+
+function jsFileName(chunkInfo) {
+  const parsedPath = parsePath(chunkInfo.facadeModuleId);
+  if (parsedPath.name !== 'index') return jsPath;
+  // Come up with a better name than 'index'
+  const name = parsedPath.dir.split('/').slice(-1);
+  return jsPath.replace('[name]', name);
+}
+
 export default async function({ watch }) {
   await del('.tmp/build');
 
@@ -45,8 +58,6 @@ export default async function({ watch }) {
     markdownPlugin({ processContent: markdownProcessor }),
     cssPlugin(),
   ];
-  const dir = '.tmp/build';
-  const staticPath = 'static/[name]-[hash][extname]';
 
   return {
     input: 'static-build/index.tsx',
@@ -73,8 +84,8 @@ export default async function({ watch }) {
         {
           dir,
           format: 'esm',
-          chunkFileNames: staticPath.replace('[extname]', '.js'),
-          entryFileNames: staticPath.replace('[extname]', '.js'),
+          chunkFileNames: jsFileName,
+          entryFileNames: jsFileName,
         },
         resolveFileUrl,
       ),

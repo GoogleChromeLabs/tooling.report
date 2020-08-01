@@ -1,6 +1,5 @@
 ---
 title: Custom browser-compatible format
-importance: 1
 shortDesc: 'Can bundles use a custom module loader?'
 ---
 

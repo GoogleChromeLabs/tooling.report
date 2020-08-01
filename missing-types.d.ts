@@ -39,7 +39,6 @@ interface Test {
 interface TestMeta {
   title: string;
   shortDesc: string;
-  importance: number;
 }
 
 type TestResults = Record<BuildTool, TestResult>;
@@ -67,25 +66,14 @@ interface ResultMeta {
   }>;
 }
 
-interface ToolSummary {
-  tool: BuildTool;
-  total: number;
-  possible: number;
-}
-
-interface Link {
-  title: string;
-  href: string;
-}
-
 declare module 'consts:config' {
   const value: {
     testSubjects: BuildTool[];
     githubRepository: string;
     githubContribute: string;
     buildDate: string;
-    metaDescription: string;
     githubDefaultBranch: string;
+    origin: string;
   };
   export default value;
 }

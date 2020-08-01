@@ -1,6 +1,5 @@
 ---
 title: Splitting single modules
-importance: 1
 shortDesc: 'Can modules be split apart based on export usage?'
 ---
 

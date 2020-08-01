@@ -1,6 +1,5 @@
 ---
 title: HTML
-importance: 1
 shortDesc: 'Generate resources in HTML documents'
 ---
 

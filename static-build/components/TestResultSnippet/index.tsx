@@ -28,8 +28,13 @@ const TestResultSnippet: FunctionalComponent<Props> = ({
       <a href={`#${name}`} title={`Explain the ${result}`} class={$toolName}>
         {name}
       </a>
-      <figure class={$toolIcon}>
-        <img src={toolImages[name as BuildTool]} alt="" />
+      <figure>
+        <a href={`#${name}`} class={$toolIcon}>
+          <img
+            src={toolImages[name as BuildTool]}
+            alt={`${name}`}
+          />
+        </a>
       </figure>
       <div data-result={result} class={$toolBadge}>
         {result}

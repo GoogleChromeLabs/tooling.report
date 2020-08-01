@@ -18,6 +18,7 @@ interface Props {
   total: number;
   possible: number;
   image: string;
+  homepage: string;
 }
 
 const SummaryCard: FunctionalComponent<Props> = ({
@@ -25,6 +26,7 @@ const SummaryCard: FunctionalComponent<Props> = ({
   total,
   possible,
   image,
+  homepage,
 }: Props) => {
   const percent = Math.floor((total / possible) * 100);
 
@@ -33,7 +35,11 @@ const SummaryCard: FunctionalComponent<Props> = ({
       <figure class={$summaryCardIcon}>
         <img src={image} alt="" />
       </figure>
-      <p class={$cardTitle}>{name}</p>
+      <p class={$cardTitle}>
+        <a href={homepage} rel="noopener" target="_blank">
+          {name}
+        </a>
+      </p>
       <div class={$progressSummary}>
         <div class={$progressBar} style={'width:' + percent + '%'}>
           <div class={$progressText}>{percent}%</div>

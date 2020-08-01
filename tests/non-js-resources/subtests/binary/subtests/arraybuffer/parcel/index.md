@@ -1,7 +1,12 @@
 ---
 result: partial
 issue:
-  - https://github.com/parcel-bundler/parcel/issues/4405
+  - url: https://github.com/parcel-bundler/parcel/issues/4405
+  - url: https://github.com/parcel-bundler/parcel/issues/4320
 ---
 
-Parcel 2 has an undocumented feature that you can prefix an import with `data-url:` to turn the contents of an import into a data URL. It seems that depending on the content, Parcel will either URL encoding or use Base64. To turn that data URL into an `ArrayBuffer`, you can either use `fetch()` which automatically detects the encoding but makes this process inherently async or use your own decoder code, as is listed here in the example.
+Parcel 2 [supports `fs.readFileSync`](https://v2.parceljs.org/features/node-emulation/#%F0%9F%93%84-inlining-fs.readfilesync), which inlines the contents of the file as base64 and converts it into a node Buffer.
+
+However, the node Buffer polyfill is over 8.5k (gzipped), so it adds a lot of unnecessary overhead.
+
+It seems likely that Parcel 2's [plugin system](https://v2.parceljs.org/plugin-system/overview/) will provide a solution once it's documented.

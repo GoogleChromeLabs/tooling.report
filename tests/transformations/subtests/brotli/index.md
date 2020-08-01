@@ -1,6 +1,5 @@
 ---
 title: Brotli
-importance: 1
 shortDesc: 'Can bundles be pre-compressed with Brotli?'
 ---
 

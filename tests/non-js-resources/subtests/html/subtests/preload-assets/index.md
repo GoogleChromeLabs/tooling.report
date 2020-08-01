@@ -1,6 +1,5 @@
 ---
 title: Preloading assets
-importance: 1
 shortDesc: 'Can preloads be generated for assets like fonts?'
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: Asset hash cascading
-importance: 1
 shortDesc: When JS depends on an asset, and the asset is changed, are the hashes correctly updated?
 ---
 

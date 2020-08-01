@@ -1,6 +1,5 @@
 ---
 title: URL
-importance: 1
 shortDesc: 'Can images be imported as asset URLs?'
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: Avoiding hashing for a particular resource
-importance: 1
 shortDesc: 'Can URL hashing be selectively disabled?'
 ---
 

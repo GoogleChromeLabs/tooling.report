@@ -1,6 +1,5 @@
 ---
 title: One entry point per page
-importance: 1
 shortDesc: 'Are common entry dependencies extracted into a shared bundle?'
 ---
 

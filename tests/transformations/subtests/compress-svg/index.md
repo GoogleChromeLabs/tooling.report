@@ -1,6 +1,5 @@
 ---
 title: Compress SVG
-importance: 1
 shortDesc: 'Can SVGs be optimized automatically?'
 ---
 
