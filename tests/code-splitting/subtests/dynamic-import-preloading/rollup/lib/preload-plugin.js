@@ -18,6 +18,7 @@ export default function preload() {
       return `
         const bundleData = ${PLACEHOLDER};
         export async function preloadingImport(path, base) {
+          path = path.replace(/(\\.\\/)*/, '');
           const deps = new Set([path]);
           for(const dep of deps) {
             for(const subdep of (bundleData[dep] || [])) {
@@ -32,7 +33,7 @@ export default function preload() {
             tag.href = dep;
             document.head.append(tag);
           };
-          return import(path);
+          return import("./"+path);
         }
       `;
     },
@@ -63,11 +64,11 @@ export default function preload() {
     },
     generateBundle(options, bundle) {
       const bundleData = {};
-      for (const [fileName, info] of Object.entries(bundle)) {
+      for (const info of Object.values(bundle)) {
         if (info.type !== 'chunk') {
           continue;
         }
-        bundleData[fileName] = info.imports;
+        bundleData[info.fileName] = info.imports;
       }
       for (const chunk of Object.values(bundle)) {
         chunk.code = chunk.code.replace(
