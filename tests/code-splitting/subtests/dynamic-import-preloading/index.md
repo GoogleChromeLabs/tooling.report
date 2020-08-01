@@ -15,13 +15,13 @@ This test checks to see if it's possible to request code-splitted dependency bun
 **index.js**
 
 ```js
-setTimeout(async () => {
+(async () => {
   const { shout } =
     Math.random() < 0.5
       ? await import('./utilsA.js')
       : await import('./utilsB.js');
   shout('this is index');
-}, 6000);
+})();
 ```
 
 **utilsA.js**
