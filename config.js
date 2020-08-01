@@ -1,4 +1,11 @@
 export const testSubjects = ['browserify', 'parcel', 'rollup', 'webpack'];
+export const testSubjectsHomepage = ['http://browserify.org/', 'https://v2.parceljs.org/', 'https://rollupjs.org/', 'https://webpack.js.org/'];
+
+export const browserify = 'http://browserify.org/';
+export const rollup = 'https://rollupjs.org/';
+export const webpack = 'https://webpack.js.org/';
+export const parcel = 'https://v2.parceljs.org/';
+
 export const githubRepository =
   'https://github.com/GoogleChromeLabs/tooling.report/';
 export const githubDefaultBranch = 'live';
