@@ -1,4 +1,3 @@
-import 'regenerator-runtime/runtime';
 setTimeout(async () => {
   const { shout } =
     Math.random() < 0.5

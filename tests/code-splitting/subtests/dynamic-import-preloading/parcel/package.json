@@ -4,5 +4,6 @@
   },
   "dependencies": {
     "parcel": "^2.0.0-alpha.3.2"
-  }
+  },
+  "browserslist": "Chrome 80"
 }
