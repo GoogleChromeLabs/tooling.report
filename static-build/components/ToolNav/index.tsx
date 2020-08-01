@@ -15,6 +15,7 @@ import { $toolNav, $tool, $toolNavInner, $toolNavContent } from './styles.css';
 import { $contentContainer } from 'static-build/shared/styles/sizing.css';
 import config from 'consts:config';
 import * as toolImages from 'shared/utils/tool-images';
+import * as toolHomepages from 'shared/utils/tool-homepages';
 
 function ToolNav() {
   return (
@@ -29,7 +30,11 @@ function ToolNav() {
                 src={toolImages[tool]}
                 alt={`${tool} logo`}
               />
-              <figcaption>{tool}</figcaption>
+              <figcaption>
+                <a href={toolHomepages[tool]} rel="noopener" target="_blank">
+                  {tool}
+                </a>
+              </figcaption>
             </figure>
           ))}
         </div>
