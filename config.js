@@ -1,4 +1,4 @@
-export const testSubjects = {
+export const testSubjectsList = {
   browserify: {
     name: "Browserify",
     homepage: "http://browserify.org/"
@@ -17,6 +17,7 @@ export const testSubjects = {
   }
 };
 
+export const testSubjects = Object.keys(testSubjectsList).map(key => testSubjectsList[key].name);
 export const githubRepository =
   'https://github.com/GoogleChromeLabs/tooling.report/';
 export const githubDefaultBranch = 'live';

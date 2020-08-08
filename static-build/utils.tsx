@@ -93,6 +93,7 @@ interface ToolSummary extends ScoreForToolTest {
 }
 
 export function calculateScoreTotals(tests: Tests): ToolSummary[] {
+
   const tools = config.testSubjects;
   const testValues = Object.values(tests);
 
