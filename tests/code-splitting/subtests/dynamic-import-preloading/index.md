@@ -15,13 +15,18 @@ This test checks to see if it's possible to request code-splitted dependency bun
 **index.js**
 
 ```js
-(async () => {
-  const { shout } =
-    Math.random() < 0.5
-      ? await import('./utilsA.js')
-      : await import('./utilsB.js');
-  shout('this is index');
-})();
+/**
+ * `utilsA` and `utilsB` share a dependency.
+ * One import is conditional to make sure the imports and the
+ * common dependency stay separate files and will cause a
+ * waterfall loading pattern when loaded naïvely.
+ */
+import('./utilsA.js').then(importedModule =>
+  importedModule.shout('this is index'),
+);
+if (Math.random() < 0.5) {
+  import('./utilsB.js');
+}
 ```
 
 **utilsA.js**
@@ -58,6 +63,6 @@ export function exclaim(msg) {
 }
 ```
 
-In the above example, we have a contrived A/B testing scenario, where we load modules on-demand whenever our A/B test condition matches. So randomly `index.js` would request to either `utilsA.js` or `utilsB.js`. And both of these on-demand modules have a shared dependency on `exclaim.js`.
+In the above example, we have a contrived A/B testing scenario, where we load a module on-demand whenever our A/B test condition matches. So `index.js` would request to `utilsA.js` and then randomly request for `utilsB.js` also. And both of these on-demand modules have a shared dependency on `exclaim.js`.
 
-The result should be four scripts: one for the `index.js` module, and another for `utilsA.js` and `utilsB.js`, and `exclaim.js`. When `index.js` executes, it requests for either `utilsA.js` chunk or `utilsB.js` chunk depending upon the generated random number at that time, but in the parallel it starts loading `exclaim.js` as well, because `utilsA.js` and `utilsB.js` has dependency on `exclaim.js`.
+The result should be four scripts: one for the `index.js` module, and another for `utilsA.js` and `utilsB.js`, and `exclaim.js`. When `index.js` executes, it requests for `utilsA.js` chunk and `utilsB.js` chunk depending upon the generated random number at that time, but in the parallel it starts loading `exclaim.js` as well, because `utilsA.js` and `utilsB.js` has dependency on `exclaim.js`.
