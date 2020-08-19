@@ -1,7 +1,4 @@
-(async () => {
-  const { shout } =
-    Math.random() < 0.5
-      ? await import('./utilsA.js')
-      : await import('./utilsB.js');
-  shout('this is index');
-})();
+import('./utilsA.js').then(response => response.shout('this is index'));
+if (Math.random() < 0.5) {
+  import('./utilsB.js');
+}
