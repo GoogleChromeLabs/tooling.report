@@ -1,5 +1,5 @@
 ---
-result: fail
+result: pass
 ---
 
-Webpack extracts the common `objects.js` module as-is into its own shared bundle.
+Webpack optimizes modules separately for each runtime. As each entry has it's own runtime, modules are optimized for each entry.

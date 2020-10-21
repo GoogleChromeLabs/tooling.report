@@ -10,8 +10,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import cssURL from './styles.css';
-document.head.insertAdjacentHTML(
-  'afterend',
-  `<link rel="stylesheet" href="${cssURL}">`,
-);
+import './styles.css';

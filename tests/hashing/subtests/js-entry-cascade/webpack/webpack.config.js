@@ -10,19 +10,62 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-module.exports = [1, 2].map(src => ({
-  entry: {
-    index: `./src${src}/index.js`,
-    profile: `./src${src}/profile.js`,
-  },
-  output: {
-    path: require('path').resolve(__dirname, 'dist', src + ''),
-    filename: '[name].[contenthash:5].js',
-  },
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-      minSize: 0,
+const path = require('path');
+module.exports = [
+  ...[1, 2].map(src => ({
+    name: `web-${src}`,
+    context: path.resolve(__dirname, `src${src}`),
+    entry: {
+      index: './index.js',
+      profile: './profile.js',
     },
-  },
-}));
+    output: {
+      path: path.resolve(__dirname, 'dist', 'web', src + ''),
+      filename: '[name].[contenthash:5].js',
+    },
+    optimization: {
+      splitChunks: {
+        chunks: 'all',
+        minSize: 0,
+      },
+    },
+  })),
+  ...[1, 2].map(src => ({
+    name: `web-dependOn-${src}`,
+    context: path.resolve(__dirname, `src${src}`),
+    entry: {
+      utils: ['./utils.js'],
+      index: {
+        import: './index.js',
+        dependOn: 'utils',
+      },
+      profile: {
+        import: './profile.js',
+        dependOn: 'utils',
+      },
+    },
+    output: {
+      path: path.resolve(__dirname, 'dist', 'web-dependOn', src + ''),
+      filename: '[name].[contenthash:5].js',
+    },
+  })),
+  ...[1, 2].map(src => ({
+    name: `node-${src}`,
+    context: path.resolve(__dirname, `src${src}`),
+    entry: {
+      index: './index.js',
+      profile: './profile.js',
+    },
+    target: 'node',
+    output: {
+      path: path.resolve(__dirname, 'dist', 'node', src + ''),
+      filename: '[name].[contenthash:5].js',
+    },
+    optimization: {
+      splitChunks: {
+        chunks: 'all',
+        minSize: 0,
+      },
+    },
+  })),
+];

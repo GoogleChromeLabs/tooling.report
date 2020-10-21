@@ -15,8 +15,11 @@ module.exports = {
     rules: [
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
-        use: ['file-loader', 'image-webpack-loader'],
+        use: ['image-webpack-loader'],
       },
     ],
+  },
+  stats: {
+    cachedAssets: true,
   },
 };

@@ -1,6 +1,6 @@
 const loaderUtils = require('loader-utils');
 const jsdom = require('jsdom');
-const RawSource = require('webpack-sources/lib/RawSource');
+const RawSource = require('webpack').sources.RawSource;
 
 const ORIGIN = `https://invalid.local`;
 
@@ -31,7 +31,12 @@ module.exports = function htmlLoader(content) {
   ];
 
   const LOADERS = {
-    css: DEFAULT_LOADERS.concat('extract-loader'),
+    css: [
+      `file-loader?${JSON.stringify({
+        name: filenameTemplate.replace(/\.js$/, '.css'),
+      })}`,
+      'extract-loader',
+    ],
     js: [
       resourcePath =>
         'spawn-loader?' +

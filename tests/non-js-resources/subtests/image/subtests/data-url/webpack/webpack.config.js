@@ -15,7 +15,7 @@ module.exports = {
     rules: [
       {
         test: /\.png$/,
-        loader: 'url-loader',
+        type: 'asset/inline',
       },
     ],
   },

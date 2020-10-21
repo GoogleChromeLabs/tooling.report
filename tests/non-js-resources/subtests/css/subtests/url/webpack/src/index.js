@@ -10,8 +10,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// import './styles.css';
-import cssUrl from './styles.css';
+const cssUrl = new URL('./styles.css', import.meta.url);
 document.head.insertAdjacentHTML(
   'afterend',
   `<link rel="stylesheet" href="${cssUrl}">`,

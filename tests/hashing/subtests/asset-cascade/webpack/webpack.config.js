@@ -10,20 +10,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+const path = require('path');
 module.exports = [1, 2, 3].map(src => ({
   entry: `./src${src}/index.js`,
   output: {
+    path: path.resolve(__dirname, 'dist', `${src}`),
     filename: '[name].[contenthash:5].js',
-  },
-  module: {
-    rules: [
-      {
-        test: /\.txt/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[contenthash:5].[ext]',
-        },
-      },
-    ],
+    assetModuleFilename: '[name].[contenthash:5][ext]',
   },
 }));

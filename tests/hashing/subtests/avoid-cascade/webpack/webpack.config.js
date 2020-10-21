@@ -17,21 +17,9 @@ module.exports = {
   },
   output: {
     filename: '[name].[contenthash:5].js',
-  },
-  module: {
-    rules: [
-      {
-        test: /\.txt$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[contenthash:5].[ext]',
-        },
-      },
-    ],
+    assetModuleFilename: '[name].[contenthash:5][ext]',
   },
   optimization: {
-    moduleIds: 'hashed',
-    // create a dedicated bootstrap + hash mapping bundle:
     runtimeChunk: 'single',
     splitChunks: {
       // extract all shared dependencies from entry bundles:

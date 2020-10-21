@@ -4,8 +4,7 @@
     "build": "webpack -p"
   },
   "devDependencies": {
-    "webpack": "4.41.5",
-    "webpack-cli": "3.3.10",
-    "worker-plugin": "4.0.2"
+    "webpack": "^5.1.3",
+    "webpack-cli": "3.3.10"
   }
 }

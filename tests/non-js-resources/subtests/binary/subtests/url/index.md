@@ -20,6 +20,13 @@ fetch(binURL).then(async r => {
 });
 ```
 
+or
+
+```js
+const url = new URL('./binary.bin', import.meta.url);
+fetch(url).then(async r => console.log(await r.arraybuffer()));
+```
+
 **binary.bin**
 
 ```

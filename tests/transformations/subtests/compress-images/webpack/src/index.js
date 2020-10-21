@@ -1,2 +1,2 @@
-import imageUrl from './image.png';
+const imageUrl = new URL('./image.png', import.meta.url);
 console.log(imageUrl);

@@ -14,6 +14,13 @@ module.exports = {
   module: {
     rules: [
       {
+        // TODO workaround for broken @babel/runtime/helpers/esm
+        include: /@babel.runtime.helpers.esm/,
+        resolve: {
+          fullySpecified: false,
+        },
+      },
+      {
         test: /\.js$/,
         loader: 'babel-loader',
         options: {

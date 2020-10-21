@@ -12,7 +12,6 @@
  */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
-// const PreloadPlugin = require('preload-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -21,10 +20,11 @@ module.exports = {
   },
   output: {
     filename: '[name].[contenthash:5].js',
+    publicPath: '',
   },
   optimization: {
     // create a runtime.js script containing the module loader
-    // runtimeChunk: 'single',
+    runtimeChunk: 'single',
 
     splitChunks: {
       // extract shared dependencies from entry bundles:
@@ -36,8 +36,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      excludeChunks: ['profile'],
-      chunks: 'all',
+      chunks: ['index'],
       prefetch: false,
       minify: {
         removeScriptTypeAttributes: true,
@@ -45,23 +44,14 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       filename: 'profile.html',
-      excludeChunks: ['index'],
-      chunks: 'all',
+      chunks: ['profile'],
       prefetch: false,
       minify: {
         removeScriptTypeAttributes: true,
       },
     }),
-    // The following two plugin setups produce the same result:
     new ScriptExtHtmlWebpackPlugin({
-      preload: {
-        test: /\.js$/,
-        chunks: 'async',
-      },
+      preload: /\.js$/,
     }),
-    // new PreloadPlugin({
-    //   rel: 'preload',
-    //   include: 'asyncChunks',
-    // }),
   ],
 };

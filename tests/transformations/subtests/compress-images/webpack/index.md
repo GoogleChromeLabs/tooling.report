@@ -2,7 +2,7 @@
 result: pass
 ---
 
-Images imported using [file-loader] can be processed using [image-webpack-loader] or [imagemin-webpack-plugin], both of which use [Imagemin] for optimization. Both solutions can also be applied to images brought into the build via import statements or solutions like [copy-webpack-plugin].
+Images imported using module type `asset` can be processed using [image-webpack-loader] or [imagemin-webpack-plugin], both of which use [Imagemin] for optimization. Both solutions can also be applied to images brought into the build via import statements or solutions like [copy-webpack-plugin].
 
 [image-webpack-loader]: https://github.com/tcoopman/image-webpack-loader
 [imagemin-webpack-plugin]: https://github.com/Klathmon/imagemin-webpack-plugin

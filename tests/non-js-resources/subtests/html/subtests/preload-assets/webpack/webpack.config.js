@@ -20,6 +20,7 @@ module.exports = {
   },
   output: {
     filename: '[name].[contenthash:5].js',
+    publicPath: '',
   },
   module: {
     rules: [

@@ -11,6 +11,8 @@
  * limitations under the License.
  */
 (async function() {
-  const { logCaps } = await import('./utils.js');
+  const { logCaps } = await import(
+    /* webpackExports: "logCaps" */ './utils.js'
+  );
   logCaps('This is index');
 })();
