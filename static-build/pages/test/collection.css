@@ -47,6 +47,7 @@
   font-family: monospace;
   width: 100%;
   height: 100%;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,9 +67,5 @@
     color: var(--sky-blue);
     transform: translateY(-5px);
     box-shadow: var(--card-shadow--active);
-  }
-  
-  & > a {
-    padding: 0;
   }
 }
