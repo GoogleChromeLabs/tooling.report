@@ -67,4 +67,8 @@
     transform: translateY(-5px);
     box-shadow: var(--card-shadow--active);
   }
+  
+  & > a {
+    padding: 0;
+  }
 }
