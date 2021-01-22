@@ -18,11 +18,8 @@ import binURL from './binary.bin';
 fetch(binURL).then(async r => {
   console.log(await r.arraybuffer());
 });
-```
 
-or
-
-```js
+// OR:
 const url = new URL('./binary.bin', import.meta.url);
 fetch(url).then(async r => console.log(await r.arraybuffer()));
 ```

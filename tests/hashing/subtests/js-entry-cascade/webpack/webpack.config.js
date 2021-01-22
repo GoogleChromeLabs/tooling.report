@@ -30,6 +30,7 @@ module.exports = [
       },
     },
   })),
+  // variant: "web" target, when using `dependsOn` to specify entry bundle dependencies
   ...[1, 2].map(src => ({
     name: `web-dependOn-${src}`,
     context: path.resolve(__dirname, `src${src}`),
@@ -49,6 +50,7 @@ module.exports = [
       filename: '[name].[contenthash:5].js',
     },
   })),
+  // variant: "node" target (intentionally does cascade dependency hashes to entry)
   ...[1, 2].map(src => ({
     name: `node-${src}`,
     context: path.resolve(__dirname, `src${src}`),

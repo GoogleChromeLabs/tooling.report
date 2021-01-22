@@ -2,4 +2,4 @@
 result: pass
 ---
 
-Webpack supports assets via `new URL` by default.
+Webpack supports referencing assets by default using `new URL('./asset-path.abc', import.meta.url)`.

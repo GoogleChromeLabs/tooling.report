@@ -12,7 +12,8 @@
  */
 const path = require('path');
 module.exports = [1, 2, 3].map(src => ({
-  entry: `./src${src}/index.js`,
+  context: path.resolve(__dirname, 'src' + src),
+  entry: `./index.js`,
   output: {
     path: path.resolve(__dirname, 'dist', `${src}`),
     filename: '[name].[contenthash:5].js',

@@ -45,7 +45,7 @@ module.exports = class ServiceWorkerInfoPlugin {
                 asset =>
                   this.filterAssets(asset.name) && !this.test(asset.name),
               )
-              .sort((a, b) => (a < b ? -1 : a > b ? 1 : 0));
+              .sort();
 
             const { outputOptions } = compilation;
             const versionHash = createHash(outputOptions.hashFunction);
