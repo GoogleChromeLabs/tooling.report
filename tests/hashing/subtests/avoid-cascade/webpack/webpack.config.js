@@ -20,6 +20,7 @@ module.exports = {
     assetModuleFilename: '[name].[contenthash:5][ext]',
   },
   optimization: {
+    // create a dedicated bootstrap + hash mapping bundle:
     runtimeChunk: 'single',
     splitChunks: {
       // extract all shared dependencies from entry bundles:

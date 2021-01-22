@@ -19,7 +19,7 @@ module.exports = {
           worker: [
             'InterestingNewWorkerType', // Custom Worker type
             'CSS.paintWorklet.addModule', // Worklet
-            '...',
+            '...', // keep the defaults
           ],
         },
       },
