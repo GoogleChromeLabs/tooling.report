@@ -10,12 +10,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 module.exports = {
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '',
+            },
+          },
+          'css-loader',
+        ],
       },
       {
         test: /\.(ttf|png)$/,
@@ -23,4 +34,5 @@ module.exports = {
       },
     ],
   },
+  plugins: [new MiniCssExtractPlugin()],
 };
