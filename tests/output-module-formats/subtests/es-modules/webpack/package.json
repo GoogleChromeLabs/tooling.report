@@ -4,7 +4,7 @@
     "build": "webpack -p"
   },
   "devDependencies": {
-    "webpack": "4.41.5",
+    "webpack": "5.0.0-beta.14",
     "webpack-cli": "3.3.10"
   }
 }
