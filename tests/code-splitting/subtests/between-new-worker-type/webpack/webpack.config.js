@@ -16,6 +16,7 @@ module.exports = {
       {
         test: /\.m?js$/,
         parser: {
+          // treat invocations of these global functions as bundle entries:
           worker: [
             'InterestingNewWorkerType', // Custom Worker type
             'CSS.paintWorklet.addModule', // Worklet

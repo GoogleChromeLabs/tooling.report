@@ -18,11 +18,9 @@ import binURL from './binary.bin';
 fetch(binURL).then(async r => {
   console.log(await r.arraybuffer());
 });
-
-// OR:
-const url = new URL('./binary.bin', import.meta.url);
-fetch(url).then(async r => console.log(await r.arraybuffer()));
 ```
+
+Bundlers may use something other than a static import to achieve this. The test passes as long as the resulting URL can be stored in a variable.
 
 **binary.bin**
 
