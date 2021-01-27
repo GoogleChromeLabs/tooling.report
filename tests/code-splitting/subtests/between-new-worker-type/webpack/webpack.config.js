@@ -12,19 +12,16 @@
  */
 module.exports = {
   module: {
-    rules: [
-      {
-        test: /\.m?js$/,
-        parser: {
-          // treat invocations of these global functions as bundle entries:
-          worker: [
-            'InterestingNewWorkerType', // Custom Worker type
-            'CSS.paintWorklet.addModule', // Worklet
-            '...', // keep the defaults
-          ],
-        },
+    parser: {
+      javascript: {
+        // treat invocations of these global functions as bundle entries:
+        worker: [
+          'InterestingNewWorkerType', // Custom Worker type
+          'CSS.paintWorklet.addModule', // Worklet
+          '...', // keep the defaults
+        ],
       },
-    ],
+    },
   },
   optimization: {
     splitChunks: {
