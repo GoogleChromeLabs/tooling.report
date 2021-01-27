@@ -17,7 +17,7 @@
     justify-content: center;
     width: 100%;
     transition: 0.2s ease-in-out;
-    will-change: box-shadow, transform;
+    will-change: box-shadow;
     transform-style: preserve-3d;
     position: relative;
 
@@ -153,9 +153,13 @@
 
 /* visually hide bundler names */
 .iconList figcaption {
-  width: 0;
-  height: 0;
-  text-indent: -99999999px;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
 }
 
 .testCardIcon {
