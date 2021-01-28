@@ -153,13 +153,9 @@
 
 /* visually hide bundler names */
 .iconList figcaption {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  width: 1px;
+  width: 0;
+  height: 0;
   overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
 }
 
 .testCardIcon {
