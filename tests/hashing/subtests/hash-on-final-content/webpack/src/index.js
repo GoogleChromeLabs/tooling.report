@@ -10,6 +10,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export function exclaim(msg) {
-  return msg + '!';
-}
+/* this is a test */
+console.log('Yay');

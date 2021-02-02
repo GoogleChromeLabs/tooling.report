@@ -10,10 +10,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import hashedUrl from './hashed-asset.txt';
-import unhashedUrl from './unhashed-asset.txt';
-
 console.log('Hashed entry');
-console.log(hashedUrl, unhashedUrl);
+console.log(new URL('./hashed-asset.txt', import.meta.url));
+console.log(new URL('./unhashed-asset.txt', import.meta.url));
 import('./hashed-chunk.js' /* webpackChunkName: "hashed-dep" */);
 import('./unhashed-chunk.js' /* webpackChunkName: "unhashed-dep" */);

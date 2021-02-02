@@ -11,7 +11,5 @@
  * limitations under the License.
  */
 import { logCaps } from './utils.js';
-// Alternative:
-// require('worker-loader!./worker.js')();
-new Worker('./worker.js', { type: 'module' });
+new Worker(new URL('./worker.js', import.meta.url));
 logCaps('This is index');

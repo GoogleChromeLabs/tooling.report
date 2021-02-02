@@ -10,8 +10,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import workerURL from 'omt!./worker.js';
 import { logCaps } from './utils.js';
 
-new InterestingNewWorkerType(workerURL);
+new InterestingNewWorkerType(new URL('worker.js', import.meta.url));
 logCaps('This is index');

@@ -11,9 +11,6 @@
  * limitations under the License.
  */
 module.exports = function svgLoader(content) {
-  this.cacheable(true);
-  const callback = this.async();
-
   let id = 0;
   const resources = new Map();
 
@@ -51,7 +48,5 @@ module.exports = function svgLoader(content) {
     );
   }
 
-  Promise.all(pending)
-    .then(() => callback(null, content))
-    .catch(callback);
+  return Promise.all(pending).then(() => content);
 };

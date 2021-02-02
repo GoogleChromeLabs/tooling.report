@@ -10,5 +10,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import binURL from './binary.bin';
-fetch(binURL).then(async r => console.log(await r.arraybuffer()));
+const url = new URL('./binary.bin', import.meta.url);
+fetch(url).then(async r => console.log(await r.arraybuffer()));

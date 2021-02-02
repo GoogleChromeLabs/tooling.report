@@ -11,16 +11,11 @@
  * limitations under the License.
  */
 
-const ImageminPlugin = require('imagemin-webpack-plugin');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
 
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.(gif|png|jpe?g|svg)$/i,
-        loader: 'file-loader',
-      },
-    ],
-  },
   plugins: [new ImageminPlugin({})],
+  stats: {
+    cachedAssets: true,
+  },
 };

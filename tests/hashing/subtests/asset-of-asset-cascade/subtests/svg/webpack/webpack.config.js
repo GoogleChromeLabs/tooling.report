@@ -23,6 +23,7 @@ module.exports = [1, 2, 3].map(src => ({
         test: /\.svg$/,
         use: [
           {
+            // TODO: migrate to asset type
             loader: 'file-loader',
             options: {
               name: 'assets/[name].[contenthash:5].[ext]',

@@ -10,5 +10,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import txtUrl from './some-asset.txt';
-console.log(txtUrl);
+console.log(new URL('./some-asset.txt', import.meta.url));

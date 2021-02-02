@@ -15,7 +15,8 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: ['raw-loader', 'extract-loader', 'css-loader'],
+        type: 'asset/source',
+        use: ['extract-loader', 'css-loader'],
       },
     ],
   },

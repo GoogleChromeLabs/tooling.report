@@ -10,21 +10,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const WorkerPlugin = require('worker-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  output: {
-    // at some point this will probably become the default value:
-    globalObject: 'self',
-  },
-  plugins: [new WorkerPlugin()],
   optimization: {
-    // create a dedicated bootstrap + hash mapping bundle:
-    runtimeChunk: 'single',
     // extract all shared dependencies from entry bundles:
     splitChunks: {
       chunks: 'all',
       minSize: 0,
     },
   },
+  plugins: [new HtmlWebpackPlugin()],
 };

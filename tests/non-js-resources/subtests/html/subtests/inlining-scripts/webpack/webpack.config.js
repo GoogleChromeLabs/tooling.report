@@ -11,7 +11,7 @@
  * limitations under the License.
  */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const InlineSourcePlugin = require('html-webpack-inline-source-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -22,12 +22,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       chunks: ['index'],
-      inlineSource: 'index\\.js$',
     }),
     new HtmlWebpackPlugin({
       filename: 'profile.html',
       chunks: ['profile'],
     }),
-    new InlineSourcePlugin(),
+    new ScriptExtHtmlWebpackPlugin({
+      inline: /index\.js$/,
+    }),
   ],
 };

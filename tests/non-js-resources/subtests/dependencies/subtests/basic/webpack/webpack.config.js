@@ -15,12 +15,11 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        enforce: 'pre',
-        use: ['extract-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(css|ttf|png)$/,
-        loader: 'file-loader',
+        test: /\.(ttf|png)$/,
+        type: 'asset',
       },
     ],
   },

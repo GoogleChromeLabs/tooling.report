@@ -20,6 +20,8 @@ fetch(binURL).then(async r => {
 });
 ```
 
+Bundlers may use something other than a static import to achieve this. The test passes as long as the resulting URL can be stored in a variable.
+
 **binary.bin**
 
 ```

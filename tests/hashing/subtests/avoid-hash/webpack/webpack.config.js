@@ -21,22 +21,12 @@ module.exports = {
         ? '[name].js'
         : '[name].[contenthash:5].js';
     },
-    // In Webpack 4, this cannot be a function.
-    // That means we can't hash splitted bundles conditionally.
-    chunkFilename: '[name].[contenthash:5].js',
-  },
-  module: {
-    rules: [
-      {
-        test: /\.txt$/,
-        loader: 'file-loader',
-        options: {
-          name: resource =>
-            /unhashed/.test(resource)
-              ? '[name].[ext]'
-              : '[name].[contenthash:5].[ext]',
-        },
-      },
-    ],
+    chunkFilename: chunkData => {
+      return /unhashed/.test(chunkData.chunk.name)
+        ? '[name].js'
+        : '[name].[contenthash:5].js';
+    },
+    assetModuleFilename: ({ filename }) =>
+      /unhashed/.test(filename) ? '[name][ext]' : '[name].[contenthash:5][ext]',
   },
 };

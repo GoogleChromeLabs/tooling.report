@@ -11,6 +11,8 @@
  * limitations under the License.
  */
 import './styles.css';
-import swURL from 'service-worker:./sw.js';
 
-navigator.serviceWorker.register(swURL);
+navigator.serviceWorker.register(
+  /* webpackChunkName: "sw", webpackEntryOptions: { filename: "sw.js" } */
+  new URL('./sw.js', import.meta.url),
+);

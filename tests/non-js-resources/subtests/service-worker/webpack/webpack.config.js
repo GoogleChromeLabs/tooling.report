@@ -12,11 +12,12 @@
  */
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ServiceWorkerPlugin = require('./lib/sw-plugin');
+const ServiceWorkerInfoPlugin = require('./lib/sw-info-plugin');
 
 module.exports = {
   output: {
     filename: '[name].[contenthash:5].js',
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -45,10 +46,7 @@ module.exports = {
       },
     }),
 
-    // Adds support for `import swURL from 'sw:./sw.js'`.
-    // The SW is compiled with `ASSETS` (a filtered Array of URLs) and `VERSION` (their hash).
-    new ServiceWorkerPlugin({
-      output: 'sw.js',
-    }),
+    // Adds `ASSETS` and `VERSION` to sw.js
+    new ServiceWorkerInfoPlugin(),
   ],
 };

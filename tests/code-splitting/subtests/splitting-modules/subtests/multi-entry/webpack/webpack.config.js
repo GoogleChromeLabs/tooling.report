@@ -23,6 +23,5 @@ module.exports = {
       // allow any size dependency to be shared:
       minSize: 0,
     },
-    runtimeChunk: 'single',
   },
 };

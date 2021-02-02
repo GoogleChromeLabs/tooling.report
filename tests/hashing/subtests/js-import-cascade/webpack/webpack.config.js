@@ -13,8 +13,9 @@
 const path = require('path');
 function generateConfig(src, runtime) {
   return {
+    context: path.resolve(__dirname, `src${src}`),
     entry: {
-      index: `./src${src}/index.js`,
+      index: './index.js',
     },
     output: {
       path: path.resolve(
