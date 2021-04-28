@@ -3,6 +3,9 @@
     "build": "rm -rf .parcel-cache && parcel build src/index.html"
   },
   "dependencies": {
-    "parcel": "^2.0.0-beta.1"
+    "@babel/core": "^7.12.0",
+    "@parcel/transformer-inline-string": "2.0.0-beta.2",
+    "parcel": "^2.0.0-beta.2",
+    "postcss": "^8.2.1"
   }
 }
