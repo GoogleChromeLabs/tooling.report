@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "npm run build:server & npm run build:client",
+    "build:server": "esbuild src/index.js --bundle --define:IS_SERVER=true --outfile=dist/server.js --format=esm --minify",
+    "build:client": "esbuild src/index.js --bundle --define:IS_SERVER=false --outfile=dist/client.js --format=esm --minify"
+  },
+  "devDependencies": {
+    "esbuild": "^0.8.39"
+  }
+}

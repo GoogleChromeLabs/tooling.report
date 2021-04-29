@@ -10,8 +10,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export { default as browserify } from 'asset-url:shared/img/browserify.svg';
-export { default as rollup } from 'asset-url:shared/img/rollup.svg';
-export { default as webpack } from 'asset-url:shared/img/webpack.svg';
-export { default as parcel } from 'asset-url:shared/img/parcel.svg';
-export { default as esbuild } from 'asset-url:shared/img/esbuild.svg';
+export function logCaps(msg) {
+  console.log(msg.toUpperCase());
+}
