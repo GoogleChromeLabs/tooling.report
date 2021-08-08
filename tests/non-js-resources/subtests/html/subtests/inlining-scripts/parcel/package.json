@@ -3,8 +3,6 @@
     "build": "rm -rf .parcel-cache && parcel build src/index.html src/profile.html"
   },
   "dependencies": {
-    "@babel/core": "^7.12.0",
-    "parcel": "^2.0.0-beta.2",
-    "postcss": "^8.2.1"
+    "parcel": "2.0.0-rc.0"
   }
 }
