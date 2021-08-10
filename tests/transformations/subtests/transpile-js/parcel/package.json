@@ -3,6 +3,9 @@
     "build": "rm -rf .parcel-cache && parcel build src/index.js"
   },
   "dependencies": {
-    "parcel": "^2.0.0-alpha.3.2"
-  }
+    "parcel": "2.0.0-rc.0"
+  },
+  "browserslist": [
+    "Safari 9"
+  ]
 }

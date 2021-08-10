@@ -3,6 +3,6 @@
     "build": "rm -rf .parcel-cache && parcel build src/index.html src/profile.html"
   },
   "dependencies": {
-    "parcel": "2.0.0-beta.1"
+    "parcel": "2.0.0-rc.0"
   }
 }
