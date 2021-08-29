@@ -10,6 +10,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import buffer from 'bin:./binary.bin';
+const {Transformer} = require('@parcel/plugin');
 
-console.log(buffer.byteLength);
+module.exports = new Transformer({
+  async transform({asset}) {
+    let contents = await asset.getBuffer();
+
+    asset.type = 'js';
+    asset.setCode(`import base64ToBuffer from 'parcel-transformer-arraybuffer/helpers';
+export default base64ToBuffer(${JSON.stringify(contents.toString('base64'))});
+`);
+
+    return [asset];
+  }
+});
