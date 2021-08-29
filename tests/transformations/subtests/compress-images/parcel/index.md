@@ -1,8 +1,5 @@
 ---
-result: fail
-issue: https://github.com/parcel-bundler/parcel/issues/4320
+result: pass
 ---
 
-There is a [plugin infrastructure for Parcel 2][parcel plugins] could very likely be used to build a simple Imagemin-based image optimization transform. However, at the time of writing the documentation doesn’t yet indicate how to author such plugins.
-
-[parcel plugins]: https://github.com/parcel-bundler/parcel/tree/bb5ad3d1adaebb42514750b12d8f7470d66a7bd9#plugins
+Parcel includes lossless image optimization for PNGs and JPEGs out of the box. It also supports using query parameters when referencing an image to resize or convert images to a different format, or re-encode using a different quality setting.
