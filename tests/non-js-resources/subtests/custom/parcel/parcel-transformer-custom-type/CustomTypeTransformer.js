@@ -10,5 +10,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import customType from 'custom-type:./binary.bin';
-console.log(customType);
+const {Transformer} = require('@parcel/plugin');
+
+module.exports = new Transformer({
+  async transform({asset}) {
+    let contents = await asset.getBuffer();
+
+    asset.type = 'js';
+    asset.setCode(`import { base64ToBuffer, CustomType } from 'parcel-transformer-custom-type/helpers';
+export default new CustomType(base64ToBuffer(${JSON.stringify(contents.toString('base64'))}));
+`);
+
+    return [asset];
+  }
+});

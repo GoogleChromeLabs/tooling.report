@@ -1,6 +1,5 @@
 ---
-result: fail
-issue: https://github.com/parcel-bundler/parcel/issues/4320
+result: pass
 ---
 
-Parcel fails on importing unknown file extension, lamenting the lack of a “transformer”. There is a [plugin infrastructure for Parcel 2](https://github.com/parcel-bundler/parcel/tree/bb5ad3d1adaebb42514750b12d8f7470d66a7bd9) that lets me write my own transformers, but at the time of writing, the documentation doesn’t really tell me _how_.
+A custom [Transformer](https://v2.parceljs.org/plugin-system/transformer/) plugin can be used to wrap the binary data in a custom JavaScript class. The binary data is converted to a Base64 string to be inlined into a generated module. In the generated module, the Base64 string is passed through a function that converts it back to binary, then passed to our `CustomType` constructor and exported. The helper function and `CustomType` class are imported from a file on disk, enabling them to be inlined or deduped like any other module.

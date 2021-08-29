@@ -10,5 +10,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import customType from 'custom-type:./binary.bin';
-console.log(customType);
+export function base64ToBuffer(base64) {
+  const binaryString = atob(base64);
+  const bytes = new Uint8Array(binaryString.length);
+  for (const i of bytes.keys()) {
+    bytes[i] = binaryString.charCodeAt(i);
+  }
+  return bytes.buffer;
+}
+
+export class CustomType {
+  constructor(buffer) {
+    this.buffer = buffer;
+  }
+}
