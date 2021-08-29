@@ -1,6 +1,5 @@
 ---
-result: partial
-issue: https://github.com/parcel-bundler/parcel/issues/4314
+result: pass
 ---
 
-With the `@parcel/transformer-svgo`, Parcel will minify SVGs. The reason this test is a "partial" pass is because the plugin is undocumented.
+Parcel optimizes SVGs by default in production builds using SVGO.
