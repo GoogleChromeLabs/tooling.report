@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "build": "rm -rf dist .parcel-cache && parcel build src/index.html"
+  },
+  "devDependencies": {
+    "@parcel/transformer-worklet": "^2.0.0",
+    "parcel": "^2.0.0"
+  }
+}
