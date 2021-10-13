@@ -10,5 +10,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import txtURL from 'url:./some-asset.txt';
-fetch(txtURL).then(async response => console.log(await response.text()));
+fetch(new URL('some-asset.txt', import.meta.url)).then(async response => console.log(await response.text()));

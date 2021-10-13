@@ -1,2 +1,1 @@
-import url from 'url:./styles.css';
-console.log(url);
+console.log(new URL('styles.css', import.meta.url));

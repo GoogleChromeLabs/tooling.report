@@ -4,5 +4,8 @@
   "main": "CustomTypeTransformer.js",
   "dependencies": {
     "@parcel/plugin": "^2.0.0"
+  },
+  "engines": {
+    "parcel": "^2.0.0"
   }
 }

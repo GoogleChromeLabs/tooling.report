@@ -12,5 +12,4 @@
  */
 export const str = 'This is a string';
 
-import txtURL from 'url:./some-asset2.txt';
-fetch(txtURL).then(async response => console.log(await response.text()));
+fetch(new URL('./some-asset2.txt', import.meta.url)).then(async response => console.log(await response.text()));

@@ -9,4 +9,4 @@ issue:
     status: closed
 ---
 
-Parcel supports this out-of-the box via an [import with a special scheme](<https://v2.parceljs.org/configuration/plugin-configuration/#predefined-(offical)-named-pipelines>), `bundle-text:`.
+Parcel supports this out-of-the box via an [import with a special scheme](https://parceljs.org/features/bundle-inlining/#inlining-a-bundle-as-text), `bundle-text:`.

@@ -8,7 +8,7 @@ issue:
     status: closed
 ---
 
-Putting JavaScript inside of a `<script>` tag will also [inline the resulting bundle into the HTML file](https://v2.parceljs.org/languages/html/#inline-script-and-style-tags):
+Putting JavaScript inside of a `<script>` tag will also [inline the resulting bundle into the HTML file](https://parceljs.org/languages/html#inline-scripts-and-styles):
 
 ```html
 <!DOCTYPE html>

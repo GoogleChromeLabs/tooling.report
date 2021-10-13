@@ -13,4 +13,4 @@
 export const browserify = 'http://browserify.org/';
 export const rollup = 'https://rollupjs.org/';
 export const webpack = 'https://webpack.js.org/';
-export const parcel = 'https://v2.parceljs.org/';
+export const parcel = 'https://parceljs.org/';

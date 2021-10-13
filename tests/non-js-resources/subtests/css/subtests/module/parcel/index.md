@@ -6,4 +6,4 @@ issue:
     status: closed
 ---
 
-Parcel supports [CSS modules across a project, or per file](https://v2.parceljs.org/languages/postcss/#css-modules) if the file ends in `.module.css`.
+Parcel supports [CSS modules across a project, or per file](https://parceljs.org/languages/css/#css-modules) if the file ends in `.module.css`.
