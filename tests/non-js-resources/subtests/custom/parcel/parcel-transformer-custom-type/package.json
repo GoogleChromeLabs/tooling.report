@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "main": "CustomTypeTransformer.js",
   "dependencies": {
-    "@parcel/plugin": "2.0.0-rc.0"
+    "@parcel/plugin": "^2.0.0"
   }
 }

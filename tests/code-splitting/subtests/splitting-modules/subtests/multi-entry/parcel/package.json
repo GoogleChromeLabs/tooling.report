@@ -3,6 +3,6 @@
     "build": "rm -rf .parcel-cache && parcel build src/entry-1.html src/entry-2.html src/entry-3.html"
   },
   "dependencies": {
-    "parcel": "^2.0.0-alpha.3.2"
+    "parcel": "^2.0.0"
   }
 }
