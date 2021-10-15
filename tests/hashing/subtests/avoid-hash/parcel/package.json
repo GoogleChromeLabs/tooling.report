@@ -4,6 +4,7 @@
     "build": "rm -rf .parcel-cache && parcel build src/unhashed.html src/hashed.html"
   },
   "dependencies": {
-    "parcel": "^2.0.0"
+    "parcel": "^2.0.0",
+    "parcel-namer-custom": "link:./namer"
   }
 }
