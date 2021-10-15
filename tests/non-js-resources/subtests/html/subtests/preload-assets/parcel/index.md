@@ -1,6 +1,5 @@
 ---
-result: fail
-issue: https://github.com/parcel-bundler/parcel/issues/3757
+result: pass
 ---
 
-Currently, Parcel 2 does not seem to have a way to do this.
+Parcel uses an HTML file as an entry point. Therefore, developers can add `<link rel="preload">` directly in their HTML. Parcel will take care of updating the referenced URLs to include the proper content hash.

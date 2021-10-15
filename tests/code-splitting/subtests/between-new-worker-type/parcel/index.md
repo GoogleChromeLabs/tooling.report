@@ -1,6 +1,7 @@
 ---
-result: fail
-issue: https://github.com/parcel-bundler/parcel/issues/4320
+result: partial
 ---
 
-There is a [plugin infrastructure for Parcel 2](https://github.com/parcel-bundler/parcel/tree/bb5ad3d1adaebb42514750b12d8f7470d66a7bd9) that is probably capable of solving this, but at the time of writing, the documentation doesn’t really tell me _how_.
+Parcel supports the `worklet:` scheme to get a URL to a worklet file. This can be used to build for a new worklet type. It also automatically detects the `CSS.paintWorklet.addModule(new URL('worklet.js', import.meta.url))` syntax for paint worklets, along with standard `new Worker()` and `navigator.serviceWorker.register`.
+
+This is a partial pass because the shared module utils.js is not currently split into a separate bundle.

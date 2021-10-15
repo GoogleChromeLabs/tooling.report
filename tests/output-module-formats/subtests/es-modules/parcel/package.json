@@ -1,17 +1,8 @@
 {
   "scripts": {
-    "build": "rm -rf .parcel-cache dist && parcel build src/index.js src/profile.js"
-  },
-  "targets": {
-    "main": {
-      "outputFormat": "esmodule",
-      "isLibrary": true,
-      "engines": {
-        "browsers": "Chrome >= 70"
-      }
-    }
+    "build": "rm -rf .parcel-cache dist && parcel build src/index.html src/profile.html"
   },
   "dependencies": {
-    "parcel": "2.0.0-beta.1"
+    "parcel": "^2.0.0"
   }
 }

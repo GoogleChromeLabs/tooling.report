@@ -1,6 +1,5 @@
 ---
-result: fail
-issue: https://github.com/parcel-bundler/parcel/issues/2901
+result: pass
 ---
 
-Parcel does not process the assets referenced in SVGs at all.
+Parcel supports SVGs out of the box.

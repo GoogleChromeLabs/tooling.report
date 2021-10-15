@@ -1,3 +1,1 @@
-import imagePath from 'url:./image.png';
-
-console.log(imagePath);
+console.log(new URL('image.png', import.meta.url));

@@ -1,8 +1,5 @@
 ---
-result: fail
-issue:
-  - https://github.com/parcel-bundler/parcel/issues/4227
-  - https://github.com/parcel-bundler/parcel/issues/3661
+result: pass
 ---
 
-Parcel handles ServiceWorkers correctly, but doesn’t seem to give you access to the list of assets.
+Parcel handles Service Workers out of the box. `@parcel/service-worker` can be used to access a list of hashed asset URLs.

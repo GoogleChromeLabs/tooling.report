@@ -1,0 +1,11 @@
+{
+  "name": "parcel-transformer-arraybuffer",
+  "version": "1.0.0",
+  "main": "ArrayBufferTransformer.js",
+  "dependencies": {
+    "@parcel/plugin": "^2.0.0"
+  },
+  "engines": {
+    "parcel": "^2.0.0"
+  }
+}

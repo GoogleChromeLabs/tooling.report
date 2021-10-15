@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "build": "rm -rf .parcel-cache dist && parcel build src/*.html"
+  },
+  "dependencies": {
+    "parcel": "^2.0.0"
+  },
+  "@parcel/bundler-default": {
+    "minBundleSize": 0
+  }
+}

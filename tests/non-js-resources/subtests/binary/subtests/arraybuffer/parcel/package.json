@@ -3,6 +3,7 @@
     "build": "rm -rf .parcel-cache dist && parcel build src/index.html"
   },
   "dependencies": {
-    "parcel": "2.0.0-beta.1"
+    "parcel": "^2.0.0",
+    "parcel-transformer-arraybuffer": "link:./parcel-transformer-arraybuffer"
   }
 }

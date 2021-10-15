@@ -10,5 +10,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import url from 'url:./binary.bin';
+const url = new URL('./binary.bin', import.meta.url);
 console.log(url);

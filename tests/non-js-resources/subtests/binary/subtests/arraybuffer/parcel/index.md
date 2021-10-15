@@ -1,12 +1,7 @@
 ---
-result: partial
-issue:
-  - url: https://github.com/parcel-bundler/parcel/issues/4405
-  - url: https://github.com/parcel-bundler/parcel/issues/4320
+result: pass
 ---
 
-Parcel 2 [supports `fs.readFileSync`](https://v2.parceljs.org/features/node-emulation/#%F0%9F%93%84-inlining-fs.readfilesync), which inlines the contents of the file as base64 and converts it into a node Buffer.
+This example uses a custom Parcel [Transformer](https://parceljs.org/plugin-system/transformer/) plugin to convert the binary file to Base64 and inline it into a JavaScript module along with a helper to decode it at runtime. The helper is in a separate file, so it is not duplicated and can be code split.
 
-However, the node Buffer polyfill is over 8.5k (gzipped), so it adds a lot of unnecessary overhead.
-
-It seems likely that Parcel 2's [plugin system](https://v2.parceljs.org/plugin-system/overview/) will provide a solution once it's documented.
+As an alternative implementation, one could use an [Optimizer](https://parceljs.org/plugin-system/optimizer/) plugin instead, which would allow the file to be processed through the whole transforming, bundling, and optimizing phases before being inlined back into the original bundle. An example of that is in the [documentation](https://parceljs.org/features/bundle-inlining/#under-the-hood).

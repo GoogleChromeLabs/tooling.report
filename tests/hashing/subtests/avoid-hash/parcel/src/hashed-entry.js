@@ -18,4 +18,4 @@ console.log(hashedUrl, unhashedUrl);
 import('./hashed-chunk.js');
 import('./unhashed-chunk.js');
 
-navigator.serviceWorker.register('sw.js');
+navigator.serviceWorker.register(new URL('sw.js', import.meta.url));

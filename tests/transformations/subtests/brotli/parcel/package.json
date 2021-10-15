@@ -3,6 +3,7 @@
     "build": "rm -rf .parcel-cache && parcel build src/index.html"
   },
   "dependencies": {
-    "parcel": "^2.0.0-alpha.3.2"
+    "parcel": "^2.0.0",
+    "@parcel/compressor-brotli": "^2.0.0"
   }
 }

@@ -3,7 +3,7 @@
     "build": "rm -rf .parcel-cache && parcel build src/index.html"
   },
   "dependencies": {
-    "parcel": "^2.0.0-alpha.3.2"
+    "parcel": "^2.0.0"
   },
   "devDependencies": {
     "postcss-modules": "^1.5.0"

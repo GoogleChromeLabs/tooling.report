@@ -12,5 +12,5 @@
  */
 import { logCaps } from './utils.js';
 
-new Worker('./worker.js');
+new Worker(new URL('./worker.js', import.meta.url), {type: 'module'});
 logCaps('This is index');

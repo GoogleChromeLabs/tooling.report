@@ -7,6 +7,6 @@
     "main": {}
   },
   "dependencies": {
-    "parcel": "^2.0.0-alpha.3.2"
+    "parcel": "^2.0.0"
   }
 }

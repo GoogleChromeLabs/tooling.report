@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "build": "rm -rf .parcel-cache dist && parcel build src/index.html"
+  },
+  "dependencies": {
+    "parcel": "^2.0.0"
+  },
+  "devDependencies": {
+    "@parcel/transformer-image": "^2.0.0"
+  }
+}

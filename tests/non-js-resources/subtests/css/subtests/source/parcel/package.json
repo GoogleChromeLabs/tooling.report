@@ -4,8 +4,8 @@
   },
   "dependencies": {
     "@babel/core": "^7.12.0",
-    "@parcel/transformer-inline-string": "2.0.0-beta.2",
-    "parcel": "^2.0.0-beta.2",
+    "@parcel/transformer-inline-string": "^2.0.0",
+    "parcel": "^2.0.0",
     "postcss": "^8.2.1"
   }
 }

@@ -7,5 +7,3 @@ issue:
 ---
 
 Parcel inlines `<script src>` for static dependencies, which avoids the hash cascade.
-
-With `<script type="module" src>`, the cascade can't be avoided, but it's correctly handled.

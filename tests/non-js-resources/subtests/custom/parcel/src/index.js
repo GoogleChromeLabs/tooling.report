@@ -10,5 +10,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import * as something from './binary.bin';
-console.log(something);
+import customType from 'custom-type:./binary.bin';
+console.log(customType);

@@ -8,6 +8,6 @@ issue:
     status: closed
 ---
 
-Parcel supports this out-of-the box via an [import with a special scheme](<https://v2.parceljs.org/configuration/plugin-configuration/#predefined-(offical)-named-pipelines>), `data-url:`.
+Parcel supports this out-of-the box via an [import with a special scheme](<https://parceljs.org/features/bundle-inlining/#inlining-as-a-data-url), `data-url:`.
 
 This only works with JavaScript imports. If you try and use it in HTML: `<img src="data-url:./img.png">`, the src is replaced with an internal identifier. However, this isn't required to pass the test.

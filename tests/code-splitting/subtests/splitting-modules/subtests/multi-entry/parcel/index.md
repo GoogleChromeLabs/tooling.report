@@ -7,4 +7,4 @@ issue:
     fixedSince: parcel@2.0.0-nightly.146
 ---
 
-Apart from the issues encountered in `code-splitting/multi-entry`, parcel does split out common dependencies above a certain size threshold, but does not split the dependencies themselves.
+Parcel does split out common dependencies above a certain size threshold, but does not split the dependencies themselves.

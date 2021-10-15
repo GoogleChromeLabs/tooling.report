@@ -1,6 +1,5 @@
 ---
-result: fail
-issue: https://github.com/parcel-bundler/parcel/issues/3757
+result: pass
 ---
 
-Currently, Parcel 2 does not seem to have a way to do this.
+Parcel inserts `<script>` elements for the shared dependencies into each HTML page so that they are loaded in parallel with the entry scripts. There is no need for `<link rel="preload">` elements, because the scripts are loaded immediately.
