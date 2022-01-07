@@ -28,15 +28,38 @@ const toOutput: Output = {
   'faqs/index.html': renderPage(<FAQPage />),
 };
 
+function getPrevOrNextData(testEntry: [string, Test]): PaginationData {
+  return {
+    link: './../' + testEntry[0] + '/',
+    meta: {
+      title: testEntry[1].meta.title,
+      shortDesc: testEntry[1].meta.shortDesc,
+    },
+  };
+}
+
 function addTestPages(tests: Tests, basePath = '') {
-  for (const [testPath, test] of Object.entries(tests)) {
+  const testEntries: [string, Test][] = Object.entries(tests);
+  const len = testEntries.length;
+  testEntries.forEach(([testPath, test], i) => {
     const testBasePath = basePath + testPath + '/';
+
+    const prevData: PaginationData =
+      i !== 0
+        ? getPrevOrNextData(testEntries[i - 1])
+        : getPrevOrNextData(testEntries[len - 1]);
+
+    const nextData: PaginationData =
+      i !== len - 1
+        ? getPrevOrNextData(testEntries[i + 1])
+        : getPrevOrNextData(testEntries[0]);
+
     toOutput[testBasePath + 'index.html'] = renderPage(
-      <TestPage test={test} />,
+      <TestPage test={test} prev={prevData} next={nextData} />,
     );
 
     if (test.subTests) addTestPages(test.subTests, testBasePath);
-  }
+  });
 }
 
 addTestPages(testData);

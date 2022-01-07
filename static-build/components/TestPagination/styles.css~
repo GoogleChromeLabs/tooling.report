@@ -1,0 +1,69 @@
+.nav {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  width: 110%;
+  right: 22px;
+  font-size: 15px;
+
+  @media (max-width: 500px) {
+    font-size: small;
+  }
+
+  & a {
+    text-decoration: none;
+  }
+
+  & > div {
+    width: 42%;
+
+    /* @media (max-width: 500px) { */
+    /*   transform: scale(0.7); */
+    /* } */
+  }
+
+  & ul {
+    list-style: none;
+    display: flex;
+    padding-left: 0;
+  }
+}
+
+.container {
+  display: flex;
+
+  & > .svg-holder {
+    flex: 1;
+    align-self: center;
+    fill: var(--background);
+  }
+}
+
+.svg-left {
+  transform: rotate(90deg);
+}
+
+.svg-right {
+  transform: rotate(-90deg);
+}
+
+div.lighter {
+  font-weight: lighter;
+
+  @media (max-width: 500px) {
+    font-size: 14px;
+  }
+
+  /* font-size: small; */
+}
+
+.link-data1 {
+  position: relative;
+  flex: 4;
+}
+
+.link-data2 {
+  flex: 4;
+  text-align: right;
+}
