@@ -1,0 +1,84 @@
+.nav {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+
+  @media (max-width: 500px) {
+    font-size: small;
+  }
+
+  & a {
+    text-decoration: none;
+  }
+
+  & > div {
+    width: 42%;
+
+    /* @media (max-width: 500px) { */
+    /*   transform: scale(0.7); */
+    /* } */
+  }
+
+  & ul {
+    list-style: none;
+    display: flex;
+    padding-left: 0;
+  }
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  & > .svgHolder {
+    flex: 1;
+    fill: var(--vivid-blue);
+    min-width: var(--spacing-3);
+  }
+}
+
+.svgLeft {
+  transform: rotate(90deg);
+  position: relative;
+  right: var(--spacing-3);
+}
+
+.svgRight {
+  transform: rotate(-90deg);
+  position: relative;
+  left: var(--spacing-3);
+}
+
+div.lighter {
+  font-weight: lighter;
+
+  @media (max-width: 500px) {
+    font-size: calc(var(--spacing-3) * 0.8);
+  }
+
+  /* font-size: small; */
+}
+
+.prevLinkData{
+  position: relative;
+  flex: 4;
+  @media (max-width: 500px) {
+    right: var(--spacing-2);
+  }
+}
+
+.nextLinkData{
+  position: relative;
+  flex: 4;
+  text-align: right;
+  @media (max-width: 500px) {
+    left: var(--spacing-2);
+  }
+}
+@media (max-width: 500px) and (orientation: portrait) {
+  .metaData {
+    display: none;
+  }
+}
+

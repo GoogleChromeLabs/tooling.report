@@ -77,3 +77,7 @@ declare module 'consts:config' {
   };
   export default value;
 }
+interface PaginationData {
+  link: string;
+  meta: TestMeta;
+}
