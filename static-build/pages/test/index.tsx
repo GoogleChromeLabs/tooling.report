@@ -187,10 +187,10 @@ const TestPage: FunctionalComponent<Props> = ({ test, prev, next }: Props) => {
                   })}
                 </article>
               </section>
+              <TestPagination prev={prev} next={next} />
             </div>
           )}
         </main>
-        <TestPagination prev={prev} next={next} />
         <Footer />
       </body>
     </html>
