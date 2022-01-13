@@ -1,24 +1,13 @@
 .nav {
   display: flex;
-  position: relative;
-  justify-content: space-between;
+  flex-flow: row wrap;
+  justify-content: center;
   align-items: center;
-  font-size: 15px;
-
-  @media (max-width: 500px) {
-    font-size: small;
-  }
-
-  & a {
-    text-decoration: none;
-  }
+  row-gap: var(--spacing-5);
+  margin-block-start: var(--spacing-5);
 
   & > div {
-    width: 42%;
-
-    /* @media (max-width: 500px) { */
-    /*   transform: scale(0.7); */
-    /* } */
+    width: max(50%, 30ch);
   }
 
   & ul {
@@ -31,51 +20,48 @@
 .container {
   display: flex;
   align-items: center;
+  gap: var(--spacing-5);
+
   & > .svgHolder {
-    flex: 1;
-    fill: var(--vivid-blue);
-    min-width: var(--spacing-3);
+    display: flex;
+    place-content: center;
+    fill: var(--backpack-blue);
+    min-width: var(--spacing-5);
+    background: var(--background);
+    border: 1px solid var(--background-gray-offset);
+    padding: var(--spacing-3);
+    border-radius: 50%;
+    aspect-ratio: 1;
   }
 }
 
 .svgLeft {
   transform: rotate(90deg);
-  position: relative;
-  right: var(--spacing-3);
 }
 
 .svgRight {
   transform: rotate(-90deg);
-  position: relative;
-  left: var(--spacing-3);
 }
 
 div.metaData {
-  font-weight: lighter;
-
-  @media (max-width: 500px) {
-    font-size: calc(var(--spacing-3) * 0.8);
-  }
-
-  /* font-size: small; */
+  font-size: var(--font-size--detail);
+  color: var(--backpack-blue);
 }
 
 .prevLinkData {
-  position: relative;
-  flex: 4;
   @media (max-width: 500px) {
     right: var(--spacing-2);
   }
 }
 
 .nextLinkData {
-  position: relative;
-  flex: 4;
   text-align: right;
+
   @media (max-width: 500px) {
     left: var(--spacing-2);
   }
 }
+
 @media (max-width: 500px) and (orientation: portrait) {
   .metaData {
     display: none;
