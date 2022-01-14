@@ -41,25 +41,28 @@ function getPrevOrNextData(testEntry: [string, Test]): PaginationData {
 function addTestPages(tests: Tests, basePath = '') {
   const testEntries: [string, Test][] = Object.entries(tests);
   const len = testEntries.length;
-  testEntries.forEach(([testPath, test], i) => {
+  for (const [i, [testPath, test]] of testEntries.entries()) {
     const testBasePath = basePath + testPath + '/';
 
-    const prevData: PaginationData =
+    const prevTest: PaginationData =
       i !== 0
         ? getPrevOrNextData(testEntries[i - 1])
         : getPrevOrNextData(testEntries[len - 1]);
 
-    const nextData: PaginationData =
+    const nextTest: PaginationData =
       i !== len - 1
         ? getPrevOrNextData(testEntries[i + 1])
         : getPrevOrNextData(testEntries[0]);
 
+    test.prevTest = prevTest;
+    test.nextTest = nextTest;
+
     toOutput[testBasePath + 'index.html'] = renderPage(
-      <TestPage test={test} prev={prevData} next={nextData} />,
+      <TestPage test={test} />,
     );
 
     if (test.subTests) addTestPages(test.subTests, testBasePath);
-  });
+  }
 }
 
 addTestPages(testData);

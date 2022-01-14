@@ -54,11 +54,10 @@ import TestPagination from 'static-build/components/TestPagination/index.js';
 
 interface Props {
   test: Test;
-  prev: PaginationData;
-  next: PaginationData;
 }
 
-const TestPage: FunctionalComponent<Props> = ({ test, prev, next }: Props) => {
+const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
+  const { prevTest, nextTest } = test;
   return (
     <html lang="en">
       <head>
@@ -187,7 +186,9 @@ const TestPage: FunctionalComponent<Props> = ({ test, prev, next }: Props) => {
                   })}
                 </article>
               </section>
-              <TestPagination prev={prev} next={next} />
+              {prevTest && nextTest && (
+                <TestPagination prevTest={prevTest} nextTest={nextTest} />
+              )}
             </div>
           )}
         </main>

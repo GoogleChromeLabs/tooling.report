@@ -24,16 +24,18 @@ import {
 } from './styles.css';
 
 interface Props {
-  prev: PaginationData;
-  next: PaginationData;
+  prevTest: PaginationData;
+  nextTest: PaginationData;
 }
 
-const TestPagination: FunctionalComponent<Props> = ({ prev, next }: Props) => {
+const TestPagination: FunctionalComponent<Props> = ({
+  prevTest,
+  nextTest,
+}: Props) => {
   return (
     <div class={$nav}>
       <div>
-        {' '}
-        <a href={prev.link}>
+        <a href={prevTest.link}>
           <div class={$container}>
             <div class={$svgHolder}>
               <svg class={$svgLeft} viewBox="0 0 9 5">
@@ -41,18 +43,18 @@ const TestPagination: FunctionalComponent<Props> = ({ prev, next }: Props) => {
               </svg>
             </div>
             <div class={$prevLinkData}>
-              <div>{prev.meta.title}</div>
-              <div class={$metaData}>{prev.meta.shortDesc}</div>
+              <div>{prevTest.meta.title}</div>
+              <div class={$metaData}>{prevTest.meta.shortDesc}</div>
             </div>
           </div>
         </a>
       </div>
       <div>
-        <a href={next.link}>
+        <a href={nextTest.link}>
           <div class={$container}>
             <div class={$nextLinkData}>
-              <div>{next.meta.title}</div>
-              <div class={$metaData}>{next.meta.shortDesc}</div>
+              <div>{nextTest.meta.title}</div>
+              <div class={$metaData}>{nextTest.meta.shortDesc}</div>
             </div>
             <div class={$svgHolder}>
               <svg class={$svgRight} viewBox="0 0 9 5">
