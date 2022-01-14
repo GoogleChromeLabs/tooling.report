@@ -34,6 +34,8 @@ interface Test {
   html: string;
   subTests?: Tests;
   results: TestResults;
+  prevTest?: PaginationData;
+  nextTest?: PaginationData;
 }
 
 interface TestMeta {
