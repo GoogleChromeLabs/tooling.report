@@ -50,19 +50,21 @@ const TestPagination: FunctionalComponent<Props> = ({
         </a>
       </div>
       <div>
-        <a href={nextTest.link}>
-          <div class={$container}>
-            <div class={$nextLinkData}>
-              <div>{nextTest.meta.title}</div>
-              <div class={$metaData}>{nextTest.meta.shortDesc}</div>
+        {nextTest.link && (
+          <a href={nextTest.link}>
+            <div class={$container}>
+              <div class={$nextLinkData}>
+                <div>{nextTest.meta.title}</div>
+                <div class={$metaData}>{nextTest.meta.shortDesc}</div>
+              </div>
+              <div class={$svgHolder}>
+                <svg class={$svgRight} viewBox="0 0 9 5">
+                  <path d="M4.6 2.7L9 0v2.1L4.7 5.3h-.2L0 2.1V0z" />
+                </svg>
+              </div>
             </div>
-            <div class={$svgHolder}>
-              <svg class={$svgRight} viewBox="0 0 9 5">
-                <path d="M4.6 2.7L9 0v2.1L4.7 5.3h-.2L0 2.1V0z" />
-              </svg>
-            </div>
-          </div>
-        </a>
+          </a>
+        )}
       </div>
     </div>
   );
