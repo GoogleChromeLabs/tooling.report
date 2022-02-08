@@ -37,11 +37,11 @@ const TestPagination: FunctionalComponent<Props> = ({
       <div>
         <a href={prevTest.link}>
           <div class={$container}>
-            <div class={$svgHolder}>
+            <span class={$svgHolder}>
               <svg class={$svgLeft} viewBox="0 0 9 5">
                 <path d="M4.6 2.7L9 0v2.1L4.7 5.3h-.2L0 2.1V0z" />
               </svg>
-            </div>
+            </span>
             <div class={$prevLinkData}>
               <div>{prevTest.meta.title}</div>
               <div class={$metaData}>{prevTest.meta.shortDesc}</div>
@@ -57,11 +57,11 @@ const TestPagination: FunctionalComponent<Props> = ({
                 <div>{nextTest.meta.title}</div>
                 <div class={$metaData}>{nextTest.meta.shortDesc}</div>
               </div>
-              <div class={$svgHolder}>
+              <span class={$svgHolder}>
                 <svg class={$svgRight} viewBox="0 0 9 5">
                   <path d="M4.6 2.7L9 0v2.1L4.7 5.3h-.2L0 2.1V0z" />
                 </svg>
-              </div>
+              </span>
             </div>
           </a>
         )}

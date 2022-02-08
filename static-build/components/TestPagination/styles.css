@@ -52,6 +52,8 @@
     display: flex;
     place-content: center;
     fill: var(--backpack-blue);
+    width: calc(var(--touch-icon-size) * 1.5);
+    height: calc(var(--touch-icon-size) * 1.5);
     min-width: var(--spacing-3);
     background: var(--background);
     border: 1px solid var(--background-gray-offset);
