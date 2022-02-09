@@ -5,6 +5,7 @@
 @import 'components/BreadCrumbs/styles.css';
 @import 'components/TestResultSnippet/styles.css';
 @import 'shared/components/Dot/styles.css';
+@import 'components/TestPagination/styles.css';
 
 .heroImage {
   background: var(--ice-blue);

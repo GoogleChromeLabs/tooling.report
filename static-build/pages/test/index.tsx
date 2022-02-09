@@ -50,12 +50,14 @@ import { $well } from '../../shared/styles/well.css';
 import { $heroImage, $heroText } from './styles.css';
 import Connect from 'static-build/components/Connect/index.js';
 import Dot from 'shared/components/Dot/index.js';
+import TestPagination from 'static-build/components/TestPagination/index.js';
 
 interface Props {
   test: Test;
 }
 
 const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
+  const { prevTest, nextTest } = test;
   return (
     <html lang="en">
       <head>
@@ -184,10 +186,12 @@ const TestPage: FunctionalComponent<Props> = ({ test }: Props) => {
                   })}
                 </article>
               </section>
+              {prevTest && nextTest && (
+                <TestPagination prevTest={prevTest} nextTest={nextTest} />
+              )}
             </div>
           )}
         </main>
-
         <Footer />
       </body>
     </html>

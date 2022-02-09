@@ -18,19 +18,71 @@ import TestPage from './pages/test';
 import AboutPage from './pages/about';
 import FAQPage from './pages/faqs';
 import testData from 'test-data:';
+import { parentMap, testURLMap } from './testdata';
 
 interface Output {
   [outputPath: string]: string;
 }
+
 const toOutput: Output = {
   'index.html': renderPage(<IndexPage tests={testData} />),
   'about/index.html': renderPage(<AboutPage />),
   'faqs/index.html': renderPage(<FAQPage />),
 };
+type Location = 'mid entry' | 'first entry' | 'last entry';
+
+function getPrevOrNextData(
+  testEntry: [string, Test],
+  i: Location,
+): PaginationData {
+  if (i === 'mid entry') {
+    return {
+      link: './../' + testEntry[0] + '/',
+      meta: {
+        title: testEntry[1].meta.title,
+        shortDesc: testEntry[1].meta.shortDesc,
+      },
+    };
+  } else if (i === 'first entry') {
+    const parent = parentMap.get(testEntry[1]);
+    return {
+      link: '../',
+      meta: {
+        title: '' + parent?.meta.title,
+        shortDesc: 'goto previous collection page',
+      },
+    };
+  } else {
+    //next link will be hidden
+    return {
+      link: '',
+      meta: {
+        title: '',
+        shortDesc: '',
+      },
+    };
+  }
+}
 
 function addTestPages(tests: Tests, basePath = '') {
-  for (const [testPath, test] of Object.entries(tests)) {
+  const testEntries: [string, Test][] = Object.entries(tests);
+  const len = testEntries.length;
+  for (const [i, [testPath, test]] of testEntries.entries()) {
     const testBasePath = basePath + testPath + '/';
+
+    const prevTest: PaginationData =
+      i !== 0
+        ? getPrevOrNextData(testEntries[i - 1], 'mid entry')
+        : getPrevOrNextData([testPath, test], 'first entry');
+
+    const nextTest: PaginationData =
+      i !== len - 1
+        ? getPrevOrNextData(testEntries[i + 1], 'mid entry')
+        : getPrevOrNextData([testPath, test], 'last entry');
+
+    test.prevTest = prevTest;
+    test.nextTest = nextTest;
+
     toOutput[testBasePath + 'index.html'] = renderPage(
       <TestPage test={test} />,
     );

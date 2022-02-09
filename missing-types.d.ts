@@ -34,6 +34,8 @@ interface Test {
   html: string;
   subTests?: Tests;
   results: TestResults;
+  prevTest?: PaginationData;
+  nextTest?: PaginationData;
 }
 
 interface TestMeta {
@@ -76,4 +78,8 @@ declare module 'consts:config' {
     origin: string;
   };
   export default value;
+}
+interface PaginationData {
+  link: string;
+  meta: TestMeta;
 }
