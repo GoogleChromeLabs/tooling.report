@@ -52,22 +52,13 @@
     display: flex;
     place-content: center;
     fill: var(--backpack-blue);
-    width: calc(var(--touch-icon-size) * 1.5);
-    height: calc(var(--touch-icon-size) * 1.5);
-    min-width: var(--spacing-3);
+    height: var(--spacing-4);
+    width: var(--spacing-4);
     background: var(--background);
     border: 1px solid var(--background-gray-offset);
     padding: var(--spacing-3);
     border-radius: 50%;
     aspect-ratio: 1;
-
-    @media (min-width: 720px) {
-      min-width: var(--spacing-4);
-    }
-
-    @media (min-width: 920px) {
-      min-width: var(--spacing-5);
-    }
   }
 }
 
