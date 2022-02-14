@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "esbuild src/index.js --bundle --minify --sourcemap --format=esm --target=es2018 --outfile=dist/index.js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.8.39"
+  }
+}

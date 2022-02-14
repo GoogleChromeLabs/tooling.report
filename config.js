@@ -1,4 +1,10 @@
-export const testSubjects = ['browserify', 'parcel', 'rollup', 'webpack'];
+export const testSubjects = [
+  'browserify',
+  'parcel',
+  'rollup',
+  'webpack',
+  'esbuild',
+];
 export const githubRepository =
   'https://github.com/GoogleChromeLabs/tooling.report/';
 export const githubDefaultBranch = 'live';
