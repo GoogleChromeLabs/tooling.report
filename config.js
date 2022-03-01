@@ -1,4 +1,23 @@
-export const testSubjects = ['browserify', 'parcel', 'rollup', 'webpack'];
+export const testSubjectsList = {
+  browserify: {
+    name: "Browserify",
+    homepage: "http://browserify.org/"
+  },
+  parcel: {
+    name: "Parcel",
+    homepage: "https://v2.parceljs.org/"
+  },
+  rollup: {
+    name: "Rollup",
+    homepage: "https://rollupjs.org/"
+  },
+  webpack: {
+    name: "Webpack",
+    homepage: "https://webpack.js.org/"
+  }
+};
+
+export const testSubjects = Object.keys(testSubjectsList).map(key => testSubjectsList[key].name);
 export const githubRepository =
   'https://github.com/GoogleChromeLabs/tooling.report/';
 export const githubDefaultBranch = 'live';
