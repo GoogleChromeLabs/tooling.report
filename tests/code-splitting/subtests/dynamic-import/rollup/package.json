@@ -4,6 +4,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "rollup": "^2.0.2"
+    "rollup": "^2.79.2"
   }
 }
